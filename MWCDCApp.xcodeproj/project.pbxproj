@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		376F275717E23F1A00178A06 /* SCEPlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275617E23F1A00178A06 /* SCEPlaceTests.m */; };
+		376F275A17E23F7400178A06 /* SCEPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275917E23F7400178A06 /* SCEPlace.m */; };
 		37E6EA7917E22BE7004976DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7817E22BE7004976DC /* Foundation.framework */; };
 		37E6EA7B17E22BE7004976DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7A17E22BE7004976DC /* CoreGraphics.framework */; };
 		37E6EA7D17E22BE7004976DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7C17E22BE7004976DC /* UIKit.framework */; };
@@ -21,7 +23,6 @@
 		37E6EA9C17E22BE7004976DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7817E22BE7004976DC /* Foundation.framework */; };
 		37E6EA9D17E22BE7004976DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7C17E22BE7004976DC /* UIKit.framework */; };
 		37E6EAA517E22BE7004976DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37E6EAA317E22BE7004976DC /* InfoPlist.strings */; };
-		37E6EAA717E22BE7004976DC /* MWCDCAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E6EAA617E22BE7004976DC /* MWCDCAppTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		376F275617E23F1A00178A06 /* SCEPlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEPlaceTests.m; sourceTree = "<group>"; };
+		376F275817E23F7400178A06 /* SCEPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEPlace.h; sourceTree = "<group>"; };
+		376F275917E23F7400178A06 /* SCEPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEPlace.m; sourceTree = "<group>"; };
 		37E6EA7517E22BE7004976DC /* MWCDCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWCDCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E6EA7817E22BE7004976DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		37E6EA7A17E22BE7004976DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,7 +59,6 @@
 		37E6EA9A17E22BE7004976DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		37E6EAA217E22BE7004976DC /* MWCDCAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MWCDCAppTests-Info.plist"; sourceTree = "<group>"; };
 		37E6EAA417E22BE7004976DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		37E6EAA617E22BE7004976DC /* MWCDCAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWCDCAppTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				37E6EA9117E22BE7004976DC /* SCEDetailViewController.m */,
 				37E6EA9317E22BE7004976DC /* Images.xcassets */,
 				37E6EA7F17E22BE7004976DC /* Supporting Files */,
+				376F275817E23F7400178A06 /* SCEPlace.h */,
+				376F275917E23F7400178A06 /* SCEPlace.m */,
 			);
 			path = MWCDCApp;
 			sourceTree = "<group>";
@@ -142,7 +147,7 @@
 		37E6EAA017E22BE7004976DC /* MWCDCAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				37E6EAA617E22BE7004976DC /* MWCDCAppTests.m */,
+				376F275617E23F1A00178A06 /* SCEPlaceTests.m */,
 				37E6EAA117E22BE7004976DC /* Supporting Files */,
 			);
 			path = MWCDCAppTests;
@@ -256,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E6EA8917E22BE7004976DC /* SCEAppDelegate.m in Sources */,
+				376F275A17E23F7400178A06 /* SCEPlace.m in Sources */,
 				37E6EA9217E22BE7004976DC /* SCEDetailViewController.m in Sources */,
 				37E6EA8F17E22BE7004976DC /* SCEMasterViewController.m in Sources */,
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
@@ -266,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37E6EAA717E22BE7004976DC /* MWCDCAppTests.m in Sources */,
+				376F275717E23F1A00178A06 /* SCEPlaceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +469,7 @@
 				37E6EAAC17E22BE7004976DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		37E6EAAD17E22BE7004976DC /* Build configuration list for PBXNativeTarget "MWCDCAppTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +478,7 @@
 				37E6EAAF17E22BE7004976DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
