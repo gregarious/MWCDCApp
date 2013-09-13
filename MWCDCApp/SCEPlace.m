@@ -10,4 +10,20 @@
 
 @implementation SCEPlace
 
+@synthesize name, coordinate, streetAddress;
+
+@synthesize image;
+
+- (id)initWithName:(NSString *)newName
+     streetAddress:(NSString *)newAddress
+        coordinate:(CLLocationCoordinate2D)newCoord
+{
+    if ((self = [super init])) {
+        name = [newName copy];
+        coordinate = newCoord;  // struct copies when assigned
+        streetAddress = [newAddress copy];
+    }
+    return self;
+}
+
 @end

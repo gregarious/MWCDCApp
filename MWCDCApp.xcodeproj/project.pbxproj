@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
 		376F275717E23F1A00178A06 /* SCEPlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275617E23F1A00178A06 /* SCEPlaceTests.m */; };
 		376F275A17E23F7400178A06 /* SCEPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275917E23F7400178A06 /* SCEPlace.m */; };
 		37E6EA7917E22BE7004976DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7817E22BE7004976DC /* Foundation.framework */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37353CB117E274EE0062B12A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		376F275617E23F1A00178A06 /* SCEPlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEPlaceTests.m; sourceTree = "<group>"; };
 		376F275817E23F7400178A06 /* SCEPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEPlace.h; sourceTree = "<group>"; };
 		376F275917E23F7400178A06 /* SCEPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEPlace.m; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */,
 				37E6EA7B17E22BE7004976DC /* CoreGraphics.framework in Frameworks */,
 				37E6EA7D17E22BE7004976DC /* UIKit.framework in Frameworks */,
 				37E6EA7917E22BE7004976DC /* Foundation.framework in Frameworks */,
@@ -107,6 +110,7 @@
 		37E6EA7717E22BE7004976DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37353CB117E274EE0062B12A /* CoreLocation.framework */,
 				37E6EA7817E22BE7004976DC /* Foundation.framework */,
 				37E6EA7A17E22BE7004976DC /* CoreGraphics.framework */,
 				37E6EA7C17E22BE7004976DC /* UIKit.framework */,
