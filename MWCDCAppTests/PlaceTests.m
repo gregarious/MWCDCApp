@@ -10,19 +10,19 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-#import "SCEPlace.h"
+#import "Place.h"
 
-@interface SCEPlaceTests : XCTestCase {
-    SCEPlace *place;
+@interface PlaceTests : XCTestCase {
+    Place *place;
 }
 @end
 
-@implementation SCEPlaceTests
+@implementation PlaceTests
 
 - (void)setUp
 {
     [super setUp];
-    place = [[SCEPlace alloc] initWithName:@"Shiloh Grill"
+    place = [[Place alloc] initWithName:@"Shiloh Grill"
                              streetAddress:@"123 Shiloh Street"
                                 coordinate:CLLocationCoordinate2DMake(40.431683,-80.006637)];
 }

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "SCEPlace.h"
+#import "Place.h"
 
-@implementation SCEPlace
+@implementation Place
 
 @synthesize name, coordinate, streetAddress;
 

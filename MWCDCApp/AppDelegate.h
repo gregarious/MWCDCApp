@@ -1,5 +1,5 @@
 //
-//  SCEMasterViewController.h
+//  SCEAppDelegate.h
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 9/12/13.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SCEMasterViewController : UITableViewController
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 @end

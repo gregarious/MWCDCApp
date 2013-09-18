@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "SCEAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation SCEAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

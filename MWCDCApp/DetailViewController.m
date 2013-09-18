@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "SCEDetailViewController.h"
+#import "DetailViewController.h"
 
-@interface SCEDetailViewController ()
+@interface DetailViewController ()
 - (void)configureView;
 @end
 
-@implementation SCEDetailViewController
+@implementation DetailViewController
 
 #pragma mark - Managing the detail item
 

@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "SCEMasterViewController.h"
+#import "MasterViewController.h"
 
-#import "SCEDetailViewController.h"
+#import "DetailViewController.h"
 
-@interface SCEMasterViewController () {
+@interface MasterViewController () {
     NSMutableArray *_objects;
 }
 @end
 
-@implementation SCEMasterViewController
+@implementation MasterViewController
 
 - (void)awakeFromNib
 {
