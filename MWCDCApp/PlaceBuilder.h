@@ -1,5 +1,5 @@
 //
-//  QuestionBuilder.h
+//  PlaceBuilder.h
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 9/18/13.
@@ -13,4 +13,13 @@
 - (NSArray *)placesFromJSON: (NSString *)objectNotation
                       error: (NSError **)error;
 
+
+
 @end
+
+extern NSString* const PlaceBuilderErrorDomain;
+
+enum {
+    PlaceBuilderInvalidJSONError,
+    PlaceBuilderIllFormedDataError
+};

@@ -23,7 +23,7 @@
 
 @end
 
-extern NSString* const PlaceDataManagerError;
+extern NSString* const PlaceDataManagerErrorDomain;
 
 enum {
     PlaceDataManagerErrorSearchCode

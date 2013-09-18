@@ -12,8 +12,6 @@
 
 @synthesize name, coordinate, streetAddress;
 
-@synthesize image;
-
 - (id)initWithName:(NSString *)newName
      streetAddress:(NSString *)newAddress
         coordinate:(CLLocationCoordinate2D)newCoord

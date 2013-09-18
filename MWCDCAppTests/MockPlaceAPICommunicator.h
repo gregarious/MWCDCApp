@@ -11,6 +11,6 @@
 
 @interface MockPlaceAPICommunicator : PlaceAPICommunicator
 
-- (BOOL)wasAskedToFetchQuestions;
+- (BOOL)wasAskedToFetchPlaces;
 
 @end

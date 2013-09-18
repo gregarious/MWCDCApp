@@ -10,15 +10,15 @@
 
 @implementation MockPlaceAPICommunicator
 {
-    BOOL _wasAskedToFetchQuestions;
+    BOOL _wasAskedToFetchPlaces;
 }
 
-- (BOOL)wasAskedToFetchQuestions {
-    return _wasAskedToFetchQuestions;
+- (BOOL)wasAskedToFetchPlaces {
+    return _wasAskedToFetchPlaces;
 }
 
 - (void)searchForPlaces {
-    _wasAskedToFetchQuestions = YES;
+    _wasAskedToFetchPlaces = YES;
 }
 
 @end

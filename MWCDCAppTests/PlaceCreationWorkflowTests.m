@@ -61,12 +61,14 @@
     [super tearDown];
 }
 
+// Ensure `fetchPlaces` message gets the communicator
 - (void)testAskingForPlacesMeansRequestingData
 {
     MockPlaceAPICommunicator *communicator = [[MockPlaceAPICommunicator alloc] init];
     mgr.communicator = communicator;
+
     [mgr fetchPlaces];
-    XCTAssertTrue([communicator wasAskedToFetchQuestions], @"The communicator should need to fetch data");
+    XCTAssertTrue([communicator wasAskedToFetchPlaces], @"The communicator should be told to fetch data");
 }
 
 - (void)testErrorIsReturnedToDelegate
@@ -92,7 +94,7 @@
                           @"The underlying error should be available to client code");
 }
 
-- (void)testPlaceJSONIsPassedToQuestionBuilder {
+- (void)testPlaceJSONIsPassedToPlaceBuilder {
     [mgr receivedPlacesJSON: @"Fake JSON"];
     XCTAssertEqualObjects(fakeBuilder.JSON, @"Fake JSON", @"Downloaded JSON is sent to the builder");
     mgr.placeBuilder = nil;

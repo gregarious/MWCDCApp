@@ -45,7 +45,7 @@
         errorInfo = @{NSUnderlyingErrorKey: underlyingError};
     }
     NSError *reportableErr = [NSError
-                              errorWithDomain:PlaceDataManagerError
+                              errorWithDomain:PlaceDataManagerErrorDomain
                               code:PlaceDataManagerErrorSearchCode
                               userInfo:errorInfo];
     [delegate fetchingPlacesFailedWithError:reportableErr];
@@ -54,4 +54,4 @@
 
 @end
 
-NSString* const PlaceDataManagerError = @"PlaceDataManager";
+NSString* const PlaceDataManagerErrorDomain = @"PlaceDataManager";
