@@ -14,6 +14,15 @@
 		37353CBE17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CBC17E3551D0062B12A /* MockPlaceDataManagerDelegate.m */; };
 		376F275717E23F1A00178A06 /* PlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275617E23F1A00178A06 /* PlaceTests.m */; };
 		376F275A17E23F7400178A06 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275917E23F7400178A06 /* Place.m */; };
+		3786658217EBBCB700F341C1 /* PlaceTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658117EBBCB700F341C1 /* PlaceTableViewControllerTests.m */; };
+		3786658517EBBDD400F341C1 /* PlaceTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658417EBBDD400F341C1 /* PlaceTableViewDataSource.m */; };
+		3786658617EBBDD400F341C1 /* PlaceTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658417EBBDD400F341C1 /* PlaceTableViewDataSource.m */; };
+		3786658917EBBDE300F341C1 /* PlaceTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658817EBBDE300F341C1 /* PlaceTableViewDelegate.m */; };
+		3786658A17EBBDE300F341C1 /* PlaceTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658817EBBDE300F341C1 /* PlaceTableViewDelegate.m */; };
+		3786659517EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */; };
+		3786659617EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */; };
+		3786659717EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */; };
+		3786659817EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */; };
 		379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */; };
 		37B599F817E359A800BFAA46 /* MockPlaceAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */; };
 		37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* APICommunicator.m */; };
@@ -62,6 +71,14 @@
 		376F275617E23F1A00178A06 /* PlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTests.m; sourceTree = "<group>"; };
 		376F275817E23F7400178A06 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
 		376F275917E23F7400178A06 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		3786658117EBBCB700F341C1 /* PlaceTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewControllerTests.m; sourceTree = "<group>"; };
+		3786658317EBBDD400F341C1 /* PlaceTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceTableViewDataSource.h; path = MWCDCAppTests/PlaceTableViewDataSource.h; sourceTree = SOURCE_ROOT; };
+		3786658417EBBDD400F341C1 /* PlaceTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceTableViewDataSource.m; path = MWCDCAppTests/PlaceTableViewDataSource.m; sourceTree = SOURCE_ROOT; };
+		3786658717EBBDE300F341C1 /* PlaceTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceTableViewDelegate.h; path = MWCDCAppTests/PlaceTableViewDelegate.h; sourceTree = SOURCE_ROOT; };
+		3786658817EBBDE300F341C1 /* PlaceTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceTableViewDelegate.m; path = MWCDCAppTests/PlaceTableViewDelegate.m; sourceTree = SOURCE_ROOT; };
+		3786659217EBC4BE00F341C1 /* PlaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewController.h; sourceTree = "<group>"; };
+		3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewController.m; sourceTree = "<group>"; };
+		3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceTableViewController.xib; sourceTree = "<group>"; };
 		379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceBuilderTests.m; sourceTree = "<group>"; };
 		37B599F617E359A800BFAA46 /* MockPlaceAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockPlaceAPICommunicator.h; sourceTree = "<group>"; };
 		37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockPlaceAPICommunicator.m; sourceTree = "<group>"; };
@@ -129,6 +146,10 @@
 		37353CB917E354BF0062B12A /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				3786658317EBBDD400F341C1 /* PlaceTableViewDataSource.h */,
+				3786658417EBBDD400F341C1 /* PlaceTableViewDataSource.m */,
+				3786658717EBBDE300F341C1 /* PlaceTableViewDelegate.h */,
+				3786658817EBBDE300F341C1 /* PlaceTableViewDelegate.m */,
 				376F275817E23F7400178A06 /* Place.h */,
 				376F275917E23F7400178A06 /* Place.m */,
 				37353CB517E3546C0062B12A /* PlaceDataManager.h */,
@@ -136,13 +157,53 @@
 				37353CBA17E354FE0062B12A /* PlaceDataManagerDelegate.h */,
 				37D5D09F17E9FB9D0051A7B5 /* PlaceBuilder.h */,
 				37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */,
+				3786659217EBC4BE00F341C1 /* PlaceTableViewController.h */,
+				3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */,
+				3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */,
 			);
 			name = Places;
+			sourceTree = "<group>";
+		};
+		375C3C5E17EBA83300CB1B03 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				37B599F917E359D700BFAA46 /* APICommunicator.h */,
+				37B599FA17E359D700BFAA46 /* APICommunicator.m */,
+				37E909FC17EB5E71000C65A3 /* APICommunicatorDelegate.h */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		375C3C5F17EBA85400CB1B03 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				37353CBB17E3551D0062B12A /* MockPlaceDataManagerDelegate.h */,
+				37353CBC17E3551D0062B12A /* MockPlaceDataManagerDelegate.m */,
+				37D5D0A317E9FBE00051A7B5 /* FakePlaceBuilder.h */,
+				37D5D0A417E9FBE00051A7B5 /* FakePlaceBuilder.m */,
+				37E909F817EB5C82000C65A3 /* MockPlaceDataManager.h */,
+				37E909F917EB5C82000C65A3 /* MockPlaceDataManager.m */,
+			);
+			name = Mocks;
+			sourceTree = "<group>";
+		};
+		375C3C6017EBA86B00CB1B03 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				37B599FE17E35A1D00BFAA46 /* Mocks */,
+				37E909F017EA5A4E000C65A3 /* APICommunicatorTests.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		37B599FD17E35A0D00BFAA46 /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				375C3C5F17EBA85400CB1B03 /* Mocks */,
+				376F275617E23F1A00178A06 /* PlaceTests.m */,
+				37353CB317E352320062B12A /* PlaceCreationWorkflowTests.m */,
+				379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */,
+				3786658117EBBCB700F341C1 /* PlaceTableViewControllerTests.m */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -150,10 +211,12 @@
 		37B599FE17E35A1D00BFAA46 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				37E909F217EA5AD2000C65A3 /* InspectableAPICommunicator.h */,
+				37E909F317EA5AD2000C65A3 /* InspectableAPICommunicator.m */,
+				37E909F517EB5792000C65A3 /* NonNetworkedAPICommunicator.h */,
+				37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */,
 				37B599F617E359A800BFAA46 /* MockPlaceAPICommunicator.h */,
 				37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */,
-				37353CBB17E3551D0062B12A /* MockPlaceDataManagerDelegate.h */,
-				37353CBC17E3551D0062B12A /* MockPlaceDataManagerDelegate.m */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -200,11 +263,9 @@
 				37E6EA9017E22BE7004976DC /* DetailViewController.h */,
 				37E6EA9117E22BE7004976DC /* DetailViewController.m */,
 				37E6EA9317E22BE7004976DC /* Images.xcassets */,
-				37B599F917E359D700BFAA46 /* APICommunicator.h */,
-				37B599FA17E359D700BFAA46 /* APICommunicator.m */,
 				37353CB917E354BF0062B12A /* Places */,
+				375C3C5E17EBA83300CB1B03 /* API */,
 				37E6EA7F17E22BE7004976DC /* Supporting Files */,
-				37E909FC17EB5E71000C65A3 /* APICommunicatorDelegate.h */,
 			);
 			path = MWCDCApp;
 			sourceTree = "<group>";
@@ -223,21 +284,9 @@
 		37E6EAA017E22BE7004976DC /* MWCDCAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				375C3C6017EBA86B00CB1B03 /* API */,
 				37B599FD17E35A0D00BFAA46 /* Places */,
-				376F275617E23F1A00178A06 /* PlaceTests.m */,
-				37353CB317E352320062B12A /* PlaceCreationWorkflowTests.m */,
-				379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */,
-				37B599FE17E35A1D00BFAA46 /* Mocks */,
-				37D5D0A317E9FBE00051A7B5 /* FakePlaceBuilder.h */,
-				37D5D0A417E9FBE00051A7B5 /* FakePlaceBuilder.m */,
 				37E6EAA117E22BE7004976DC /* Supporting Files */,
-				37E909F017EA5A4E000C65A3 /* APICommunicatorTests.m */,
-				37E909F217EA5AD2000C65A3 /* InspectableAPICommunicator.h */,
-				37E909F317EA5AD2000C65A3 /* InspectableAPICommunicator.m */,
-				37E909F517EB5792000C65A3 /* NonNetworkedAPICommunicator.h */,
-				37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */,
-				37E909F817EB5C82000C65A3 /* MockPlaceDataManager.h */,
-				37E909F917EB5C82000C65A3 /* MockPlaceDataManager.m */,
 			);
 			path = MWCDCAppTests;
 			sourceTree = "<group>";
@@ -329,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E6EA9417E22BE7004976DC /* Images.xcassets in Resources */,
+				3786659717EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */,
 				37E6EA8317E22BE7004976DC /* InfoPlist.strings in Resources */,
 				37E6EA8C17E22BE7004976DC /* Main.storyboard in Resources */,
 			);
@@ -339,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E6EAA517E22BE7004976DC /* InfoPlist.strings in Resources */,
+				3786659817EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,11 +401,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E6EA8917E22BE7004976DC /* AppDelegate.m in Sources */,
+				3786659517EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */,
 				37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */,
+				3786658917EBBDE300F341C1 /* PlaceTableViewDelegate.m in Sources */,
 				376F275A17E23F7400178A06 /* Place.m in Sources */,
 				37E6EA9217E22BE7004976DC /* DetailViewController.m in Sources */,
 				37E6EA8F17E22BE7004976DC /* MasterViewController.m in Sources */,
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
+				3786658517EBBDD400F341C1 /* PlaceTableViewDataSource.m in Sources */,
 				37D5D0A117E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */,
 				37353CB717E3546C0062B12A /* PlaceDataManager.m in Sources */,
 			);
@@ -366,9 +420,13 @@
 			files = (
 				37E909F417EA5AD2000C65A3 /* InspectableAPICommunicator.m in Sources */,
 				37E909FA17EB5C82000C65A3 /* MockPlaceDataManager.m in Sources */,
+				3786658217EBBCB700F341C1 /* PlaceTableViewControllerTests.m in Sources */,
 				37D5D0A517E9FBE00051A7B5 /* FakePlaceBuilder.m in Sources */,
+				3786659617EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */,
 				37353CBE17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */,
 				37353CB417E352320062B12A /* PlaceCreationWorkflowTests.m in Sources */,
+				3786658A17EBBDE300F341C1 /* PlaceTableViewDelegate.m in Sources */,
+				3786658617EBBDD400F341C1 /* PlaceTableViewDataSource.m in Sources */,
 				37E909F117EA5A4E000C65A3 /* APICommunicatorTests.m in Sources */,
 				376F275717E23F1A00178A06 /* PlaceTests.m in Sources */,
 				379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */,
