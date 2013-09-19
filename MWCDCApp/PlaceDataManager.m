@@ -19,7 +19,7 @@
 @synthesize delegate, communicator, placeBuilder;
 
 - (void)fetchPlaces {
-    [communicator searchForPlaces];
+    [communicator fetchPlaces];
 }
 
 - (void)searchingForPlacesFailedWithError:(NSError*)err {

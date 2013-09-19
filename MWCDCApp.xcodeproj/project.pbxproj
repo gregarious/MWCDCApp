@@ -11,14 +11,13 @@
 		37353CB417E352320062B12A /* PlaceCreationWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB317E352320062B12A /* PlaceCreationWorkflowTests.m */; };
 		37353CB717E3546C0062B12A /* PlaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataManager.m */; };
 		37353CB817E3546C0062B12A /* PlaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataManager.m */; };
-		37353CBD17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CBC17E3551D0062B12A /* MockPlaceDataManagerDelegate.m */; };
 		37353CBE17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CBC17E3551D0062B12A /* MockPlaceDataManagerDelegate.m */; };
 		376F275717E23F1A00178A06 /* PlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275617E23F1A00178A06 /* PlaceTests.m */; };
 		376F275A17E23F7400178A06 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275917E23F7400178A06 /* Place.m */; };
 		379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */; };
 		37B599F817E359A800BFAA46 /* MockPlaceAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */; };
-		37B599FB17E359D700BFAA46 /* PlaceAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* PlaceAPICommunicator.m */; };
-		37B599FC17E359D700BFAA46 /* PlaceAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* PlaceAPICommunicator.m */; };
+		37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* APICommunicator.m */; };
+		37B599FC17E359D700BFAA46 /* APICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* APICommunicator.m */; };
 		37D5D0A117E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */; };
 		37D5D0A217E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */; };
 		37D5D0A517E9FBE00051A7B5 /* FakePlaceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D5D0A417E9FBE00051A7B5 /* FakePlaceBuilder.m */; };
@@ -36,6 +35,10 @@
 		37E6EA9C17E22BE7004976DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7817E22BE7004976DC /* Foundation.framework */; };
 		37E6EA9D17E22BE7004976DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7C17E22BE7004976DC /* UIKit.framework */; };
 		37E6EAA517E22BE7004976DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37E6EAA317E22BE7004976DC /* InfoPlist.strings */; };
+		37E909F117EA5A4E000C65A3 /* APICommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F017EA5A4E000C65A3 /* APICommunicatorTests.m */; };
+		37E909F417EA5AD2000C65A3 /* InspectableAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F317EA5AD2000C65A3 /* InspectableAPICommunicator.m */; };
+		37E909F717EB5792000C65A3 /* NonNetworkedAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */; };
+		37E909FA17EB5C82000C65A3 /* MockPlaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F917EB5C82000C65A3 /* MockPlaceDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +65,8 @@
 		379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceBuilderTests.m; sourceTree = "<group>"; };
 		37B599F617E359A800BFAA46 /* MockPlaceAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockPlaceAPICommunicator.h; sourceTree = "<group>"; };
 		37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockPlaceAPICommunicator.m; sourceTree = "<group>"; };
-		37B599F917E359D700BFAA46 /* PlaceAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceAPICommunicator.h; sourceTree = "<group>"; };
-		37B599FA17E359D700BFAA46 /* PlaceAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceAPICommunicator.m; sourceTree = "<group>"; };
+		37B599F917E359D700BFAA46 /* APICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICommunicator.h; sourceTree = "<group>"; };
+		37B599FA17E359D700BFAA46 /* APICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICommunicator.m; sourceTree = "<group>"; };
 		37D5D09F17E9FB9D0051A7B5 /* PlaceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceBuilder.h; sourceTree = "<group>"; };
 		37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceBuilder.m; sourceTree = "<group>"; };
 		37D5D0A317E9FBE00051A7B5 /* FakePlaceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakePlaceBuilder.h; sourceTree = "<group>"; };
@@ -88,6 +91,14 @@
 		37E6EA9A17E22BE7004976DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		37E6EAA217E22BE7004976DC /* MWCDCAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MWCDCAppTests-Info.plist"; sourceTree = "<group>"; };
 		37E6EAA417E22BE7004976DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		37E909F017EA5A4E000C65A3 /* APICommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICommunicatorTests.m; sourceTree = "<group>"; };
+		37E909F217EA5AD2000C65A3 /* InspectableAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableAPICommunicator.h; sourceTree = "<group>"; };
+		37E909F317EA5AD2000C65A3 /* InspectableAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableAPICommunicator.m; sourceTree = "<group>"; };
+		37E909F517EB5792000C65A3 /* NonNetworkedAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonNetworkedAPICommunicator.h; sourceTree = "<group>"; };
+		37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonNetworkedAPICommunicator.m; sourceTree = "<group>"; };
+		37E909F817EB5C82000C65A3 /* MockPlaceDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockPlaceDataManager.h; sourceTree = "<group>"; };
+		37E909F917EB5C82000C65A3 /* MockPlaceDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockPlaceDataManager.m; sourceTree = "<group>"; };
+		37E909FC17EB5E71000C65A3 /* APICommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICommunicatorDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +129,6 @@
 		37353CB917E354BF0062B12A /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				37B599F917E359D700BFAA46 /* PlaceAPICommunicator.h */,
-				37B599FA17E359D700BFAA46 /* PlaceAPICommunicator.m */,
 				376F275817E23F7400178A06 /* Place.h */,
 				376F275917E23F7400178A06 /* Place.m */,
 				37353CB517E3546C0062B12A /* PlaceDataManager.h */,
@@ -191,8 +200,11 @@
 				37E6EA9017E22BE7004976DC /* DetailViewController.h */,
 				37E6EA9117E22BE7004976DC /* DetailViewController.m */,
 				37E6EA9317E22BE7004976DC /* Images.xcassets */,
+				37B599F917E359D700BFAA46 /* APICommunicator.h */,
+				37B599FA17E359D700BFAA46 /* APICommunicator.m */,
 				37353CB917E354BF0062B12A /* Places */,
 				37E6EA7F17E22BE7004976DC /* Supporting Files */,
+				37E909FC17EB5E71000C65A3 /* APICommunicatorDelegate.h */,
 			);
 			path = MWCDCApp;
 			sourceTree = "<group>";
@@ -216,9 +228,16 @@
 				37353CB317E352320062B12A /* PlaceCreationWorkflowTests.m */,
 				379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */,
 				37B599FE17E35A1D00BFAA46 /* Mocks */,
-				37E6EAA117E22BE7004976DC /* Supporting Files */,
 				37D5D0A317E9FBE00051A7B5 /* FakePlaceBuilder.h */,
 				37D5D0A417E9FBE00051A7B5 /* FakePlaceBuilder.m */,
+				37E6EAA117E22BE7004976DC /* Supporting Files */,
+				37E909F017EA5A4E000C65A3 /* APICommunicatorTests.m */,
+				37E909F217EA5AD2000C65A3 /* InspectableAPICommunicator.h */,
+				37E909F317EA5AD2000C65A3 /* InspectableAPICommunicator.m */,
+				37E909F517EB5792000C65A3 /* NonNetworkedAPICommunicator.h */,
+				37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */,
+				37E909F817EB5C82000C65A3 /* MockPlaceDataManager.h */,
+				37E909F917EB5C82000C65A3 /* MockPlaceDataManager.m */,
 			);
 			path = MWCDCAppTests;
 			sourceTree = "<group>";
@@ -331,12 +350,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E6EA8917E22BE7004976DC /* AppDelegate.m in Sources */,
-				37B599FB17E359D700BFAA46 /* PlaceAPICommunicator.m in Sources */,
+				37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */,
 				376F275A17E23F7400178A06 /* Place.m in Sources */,
 				37E6EA9217E22BE7004976DC /* DetailViewController.m in Sources */,
 				37E6EA8F17E22BE7004976DC /* MasterViewController.m in Sources */,
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
-				37353CBD17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */,
 				37D5D0A117E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */,
 				37353CB717E3546C0062B12A /* PlaceDataManager.m in Sources */,
 			);
@@ -346,13 +364,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E909F417EA5AD2000C65A3 /* InspectableAPICommunicator.m in Sources */,
+				37E909FA17EB5C82000C65A3 /* MockPlaceDataManager.m in Sources */,
 				37D5D0A517E9FBE00051A7B5 /* FakePlaceBuilder.m in Sources */,
 				37353CBE17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */,
 				37353CB417E352320062B12A /* PlaceCreationWorkflowTests.m in Sources */,
+				37E909F117EA5A4E000C65A3 /* APICommunicatorTests.m in Sources */,
 				376F275717E23F1A00178A06 /* PlaceTests.m in Sources */,
 				379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */,
-				37B599FC17E359D700BFAA46 /* PlaceAPICommunicator.m in Sources */,
+				37B599FC17E359D700BFAA46 /* APICommunicator.m in Sources */,
 				37B599F817E359A800BFAA46 /* MockPlaceAPICommunicator.m in Sources */,
+				37E909F717EB5792000C65A3 /* NonNetworkedAPICommunicator.m in Sources */,
 				37D5D0A217E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */,
 				37353CB817E3546C0062B12A /* PlaceDataManager.m in Sources */,
 			);

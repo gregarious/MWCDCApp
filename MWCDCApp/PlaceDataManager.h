@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "PlaceDataManagerDelegate.h"
-#import "PlaceAPICommunicator.h"
+#import "APICommunicator.h"
 #import "PlaceBuilder.h"
 
 @interface PlaceDataManager : NSObject
 
 @property (nonatomic, weak) id<PlaceDataManagerDelegate> delegate;
-@property (nonatomic, strong) PlaceAPICommunicator *communicator;
+@property (nonatomic, strong) APICommunicator *communicator;
 @property (nonatomic, strong) PlaceBuilder *placeBuilder;
 
 - (void)fetchPlaces;

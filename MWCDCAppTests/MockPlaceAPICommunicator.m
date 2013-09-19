@@ -17,7 +17,7 @@
     return _wasAskedToFetchPlaces;
 }
 
-- (void)searchForPlaces {
+- (void)fetchPlaces {
     _wasAskedToFetchPlaces = YES;
 }
 

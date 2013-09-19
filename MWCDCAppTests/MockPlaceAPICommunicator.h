@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PlaceAPICommunicator.h"
+#import "APICommunicator.h"
 
-@interface MockPlaceAPICommunicator : PlaceAPICommunicator
+@interface MockPlaceAPICommunicator : APICommunicator
 
 - (BOOL)wasAskedToFetchPlaces;
 
