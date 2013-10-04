@@ -9,13 +9,16 @@
 #import <XCTest/XCTest.h>
 
 #import "PlaceTableViewController.h"
-#import "PlaceTableViewDataSource.h"
-#import "PlaceTableViewDelegate.h"
+#import "PlaceTableDataSource.h"
+#import "PlaceTableDelegate.h"
 
 @interface PlaceTableViewControllerTests : XCTestCase
 {
     PlaceTableViewController *vc;
     UITableView *tableView;
+    
+    id <UITableViewDataSource> dataSource;
+    PlaceTableDelegate *delegate;
 }
 @end
 
@@ -27,6 +30,12 @@
     vc = [[PlaceTableViewController alloc] init];
     tableView = [[UITableView alloc] init];
     vc.tableView = tableView;
+    
+    dataSource = [[PlaceTableDataSource alloc] init];
+    delegate = [[PlaceTableDelegate alloc] init];
+    
+    vc.dataSource = dataSource;
+    vc.delegate = delegate;
 }
 
 - (void)tearDown
@@ -38,8 +47,6 @@
 
 - (void)testDelegateIsSetAfterViewLoads
 {
-    id <UITableViewDelegate> delegate = [[PlaceTableViewDelegate alloc] init];
-    vc.delegate = delegate;
     [vc viewDidLoad];
     XCTAssertEqual(delegate,
                    [[vc tableView] delegate],
@@ -48,13 +55,21 @@
 
 - (void)testDataSourceIsSetAfterViewLoads
 {
-    id <UITableViewDataSource> dataSource = [[PlaceTableViewDataSource alloc] init];
-    vc.dataSource = dataSource;
     [vc viewDidLoad];
     XCTAssertEqual(dataSource,
                    [[vc tableView] dataSource],
-                   @"Should set delegate when view loads");
+                   @"Should set dataSource when view loads");
     
+}
+
+- (void)testDataSourceIsConnectedToDelegate
+{
+    vc.dataSource = dataSource;
+    vc.delegate = delegate;
+    [vc viewDidLoad];
+    XCTAssertEqual(vc.delegate.tableDataSource,
+                   dataSource,
+                   @"Should give delegate a reference to the dataSource");
 }
 
 @end

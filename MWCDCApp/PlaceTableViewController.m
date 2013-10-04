@@ -16,6 +16,7 @@
 
 @synthesize tableView, delegate, dataSource;
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,8 +29,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.delegate.tableDataSource = self.dataSource;
     self.tableView.delegate = self.delegate;
     self.tableView.dataSource = self.dataSource;
+
 }
 
 - (void)didReceiveMemoryWarning

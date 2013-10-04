@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface PlaceTableViewDataSource : NSObject <UITableViewDataSource>
+@class Place;
+
+@interface PlaceTableDataSource : NSObject <UITableViewDataSource>
+
+@property (nonatomic, copy) NSArray *places;
+
+- (Place *)placeForIndexPath:(NSIndexPath *)indexPath;
 
 @end

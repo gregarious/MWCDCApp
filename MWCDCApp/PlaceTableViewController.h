@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlaceTableDelegate.h"
+#import "PlaceTableDataSource.h"
 
 @interface PlaceTableViewController : UIViewController
 // not overriding UITableViewController because we want to separate delegate & dataSource duties
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) id <UITableViewDelegate> delegate;
-@property (nonatomic, strong) id <UITableViewDataSource> dataSource;
+@property (nonatomic, strong) PlaceTableDelegate *delegate;
+@property (nonatomic, strong) PlaceTableDataSource *dataSource;
+
 
 @end
