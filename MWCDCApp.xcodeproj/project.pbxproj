@@ -12,7 +12,6 @@
 		37353CB717E3546C0062B12A /* PlaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataManager.m */; };
 		37353CB817E3546C0062B12A /* PlaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataManager.m */; };
 		37353CBE17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CBC17E3551D0062B12A /* MockPlaceDataManagerDelegate.m */; };
-		3741965A1805AC17005B0DD6 /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374196591805AC17005B0DD6 /* AppDelegateTests.m */; };
 		374E223D17FEF9620051897F /* PlaceTableDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374E223C17FEF9620051897F /* PlaceTableDataSourceTests.m */; };
 		3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */; };
 		3761D6AF1802F887004BC847 /* PlaceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3761D6AD1802F887004BC847 /* PlaceDetailViewController.xib */; };
@@ -25,8 +24,6 @@
 		3786658617EBBDD400F341C1 /* PlaceTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658417EBBDD400F341C1 /* PlaceTableDataSource.m */; };
 		3786659517EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */; };
 		3786659617EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */; };
-		3786659717EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */; };
-		3786659817EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */; };
 		379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */; };
 		37B599F817E359A800BFAA46 /* MockPlaceAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */; };
 		37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* APICommunicator.m */; };
@@ -52,6 +49,7 @@
 		37E909F417EA5AD2000C65A3 /* InspectableAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F317EA5AD2000C65A3 /* InspectableAPICommunicator.m */; };
 		37E909F717EB5792000C65A3 /* NonNetworkedAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */; };
 		37E909FA17EB5C82000C65A3 /* MockPlaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F917EB5C82000C65A3 /* MockPlaceDataManager.m */; };
+		37FEB15718060BD100F9F3A5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FEB15618060BD100F9F3A5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +70,6 @@
 		37353CBA17E354FE0062B12A /* PlaceDataManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDataManagerDelegate.h; sourceTree = "<group>"; };
 		37353CBB17E3551D0062B12A /* MockPlaceDataManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockPlaceDataManagerDelegate.h; sourceTree = "<group>"; };
 		37353CBC17E3551D0062B12A /* MockPlaceDataManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockPlaceDataManagerDelegate.m; sourceTree = "<group>"; };
-		374196591805AC17005B0DD6 /* AppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
 		374E223C17FEF9620051897F /* PlaceTableDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableDataSourceTests.m; sourceTree = "<group>"; };
 		3761D6AB1802F887004BC847 /* PlaceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailViewController.h; sourceTree = "<group>"; };
 		3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailViewController.m; sourceTree = "<group>"; };
@@ -86,7 +83,6 @@
 		3786658417EBBDD400F341C1 /* PlaceTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceTableDataSource.m; path = MWCDCAppTests/PlaceTableDataSource.m; sourceTree = SOURCE_ROOT; };
 		3786659217EBC4BE00F341C1 /* PlaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewController.h; sourceTree = "<group>"; };
 		3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewController.m; sourceTree = "<group>"; };
-		3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceTableViewController.xib; sourceTree = "<group>"; };
 		379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceBuilderTests.m; sourceTree = "<group>"; };
 		37B599F617E359A800BFAA46 /* MockPlaceAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockPlaceAPICommunicator.h; sourceTree = "<group>"; };
 		37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockPlaceAPICommunicator.m; sourceTree = "<group>"; };
@@ -124,6 +120,7 @@
 		37E909F817EB5C82000C65A3 /* MockPlaceDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockPlaceDataManager.h; sourceTree = "<group>"; };
 		37E909F917EB5C82000C65A3 /* MockPlaceDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockPlaceDataManager.m; sourceTree = "<group>"; };
 		37E909FC17EB5E71000C65A3 /* APICommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICommunicatorDelegate.h; sourceTree = "<group>"; };
+		37FEB15618060BD100F9F3A5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37FEB15718060BD100F9F3A5 /* MapKit.framework in Frameworks */,
 				37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */,
 				37E6EA7B17E22BE7004976DC /* CoreGraphics.framework in Frameworks */,
 				37E6EA7D17E22BE7004976DC /* UIKit.framework in Frameworks */,
@@ -165,7 +163,6 @@
 				37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */,
 				3786659217EBC4BE00F341C1 /* PlaceTableViewController.h */,
 				3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */,
-				3786659417EBC4BE00F341C1 /* PlaceTableViewController.xib */,
 				3761D6AB1802F887004BC847 /* PlaceDetailViewController.h */,
 				3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */,
 				3761D6AD1802F887004BC847 /* PlaceDetailViewController.xib */,
@@ -254,6 +251,7 @@
 		37E6EA7717E22BE7004976DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37FEB15618060BD100F9F3A5 /* MapKit.framework */,
 				37353CB117E274EE0062B12A /* CoreLocation.framework */,
 				37E6EA7817E22BE7004976DC /* Foundation.framework */,
 				37E6EA7A17E22BE7004976DC /* CoreGraphics.framework */,
@@ -390,7 +388,6 @@
 			files = (
 				3761D6AF1802F887004BC847 /* PlaceDetailViewController.xib in Resources */,
 				37E6EA9417E22BE7004976DC /* Images.xcassets in Resources */,
-				3786659717EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */,
 				37E6EA8317E22BE7004976DC /* InfoPlist.strings in Resources */,
 				37E6EA8C17E22BE7004976DC /* Main.storyboard in Resources */,
 			);
@@ -402,7 +399,6 @@
 			files = (
 				3761D6B218031819004BC847 /* PlaceDetailViewController.xib in Resources */,
 				37E6EAA517E22BE7004976DC /* InfoPlist.strings in Resources */,
-				3786659817EBC4BE00F341C1 /* PlaceTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

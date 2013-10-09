@@ -16,9 +16,6 @@
 
 @implementation PlaceTableViewController
 
-@synthesize tableView, dataSource;
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -64,4 +61,13 @@
     [detailVC setPlace:selectedPlace];
     [[self navigationController] pushViewController:detailVC animated:YES];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        PlaceDetailViewController *detailVC = (PlaceDetailViewController *)[segue destinationViewController];
+        [detailVC setPlace:nil];
+    }
+}
+
 @end

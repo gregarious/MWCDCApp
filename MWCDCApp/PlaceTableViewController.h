@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlaceTableViewController : UIViewController
-// not overriding UITableViewController because we want to separate delegate & dataSource duties
+@interface PlaceTableViewController : UITableViewController
 
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSObject <UITableViewDataSource, UITableViewDelegate> *dataSource;
 
 - (void)userDidSelectPlaceNotification: (NSNotification *)note;
