@@ -7,6 +7,8 @@
 //
 
 #import "PlaceTableViewController.h"
+#import "PlaceTableDataSource.h"
+#import "PlaceDetailViewController.h"
 
 @interface PlaceTableViewController ()
 
@@ -14,7 +16,7 @@
 
 @implementation PlaceTableViewController
 
-@synthesize tableView, delegate, dataSource;
+@synthesize tableView, dataSource;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,10 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.delegate.tableDataSource = self.dataSource;
-    self.tableView.delegate = self.delegate;
+    self.tableView.delegate = self.dataSource;
     self.tableView.dataSource = self.dataSource;
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,4 +41,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(userDidSelectPlaceNotification:)
+     name:PlaceTableDidReceivePlaceNotification
+     object:nil];
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self name:PlaceTableDidReceivePlaceNotification object:nil];
+    [super viewWillDisappear:animated];
+}
+
+- (void)userDidSelectPlaceNotification: (NSNotification *)note {
+    PlaceDetailViewController *detailVC = [[PlaceDetailViewController alloc] init];
+    Place *selectedPlace = (Place *)[note object];
+    [detailVC setPlace:selectedPlace];
+    [[self navigationController] pushViewController:detailVC animated:YES];
+}
 @end

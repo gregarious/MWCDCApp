@@ -11,10 +11,10 @@
 
 @class Place;
 
-@interface PlaceTableDataSource : NSObject <UITableViewDataSource>
+@interface PlaceTableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, copy) NSArray *places;
 
-- (Place *)placeForIndexPath:(NSIndexPath *)indexPath;
-
 @end
+
+extern NSString* const PlaceTableDidReceivePlaceNotification;

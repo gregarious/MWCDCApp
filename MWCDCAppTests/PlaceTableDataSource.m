@@ -9,6 +9,10 @@
 #import "PlaceTableDataSource.h"
 #import "Place.h"
 
+@interface PlaceTableDataSource ()
+- (Place *)placeForIndexPath:(NSIndexPath *)indexPath;
+@end
+
 @implementation PlaceTableDataSource
 
 @synthesize places;
@@ -38,12 +42,27 @@ NSString * const placeCellReuseIdenitifier = @"Place";
     return cell;
 }
 
+- (void)        tableView:(UITableView *)tableView
+  didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSNotification *note = [NSNotification
+                            notificationWithName:PlaceTableDidReceivePlaceNotification
+                            object:[self placeForIndexPath:indexPath]];
+    [[NSNotificationCenter defaultCenter] postNotification:note];
+}
+
+/* private */
+
 - (Place *)placeForIndexPath:(NSIndexPath *)indexPath
 {
     NSParameterAssert([indexPath row] < [places count]);
     NSParameterAssert([indexPath section] == 0);
-
+    
     return [places objectAtIndex:[indexPath row]];
 }
 
+
+
 @end
+
+NSString* const PlaceTableDidReceivePlaceNotification = @"PlaceTableDidReceivePlaceNotification";

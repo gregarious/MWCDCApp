@@ -82,11 +82,4 @@
     XCTAssertEqualObjects(cell.textLabel.text, @"Shiloh Grill", @"Should return a cell with place name as label");
 }
 
-- (void)testPlaceReturnedGivenIndexPath
-{
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    Place *selectedPlace = [dataSource placeForIndexPath:path];
-    XCTAssertEqual(selectedPlace, samplePlace, @"Should return place for requested path");
-}
-
 @end
