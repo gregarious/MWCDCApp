@@ -15,41 +15,62 @@
 
 @implementation PlaceTableDataSource
 
-@synthesize places;
+@synthesize places, lastError;
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     NSParameterAssert(section == 0);
-    return [places count];
+    
+    if (places) {
+        return [places count];
+    }
+    else {
+        return 1;
+    }
+
 }
 
-
 NSString * const placeCellReuseIdenitifier = @"Place";
+NSString * const errorCellReuseIdenitifier = @"PlaceError";
+NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSParameterAssert([indexPath row] < [places count]);
+
     NSParameterAssert([indexPath section] == 0);
-    
-    Place *place = [places objectAtIndex:[indexPath row]];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:placeCellReuseIdenitifier];
+
+    UITableViewCell *cell;
+    if (places) {
+        NSParameterAssert([indexPath row] < [places count]);
+        cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:placeCellReuseIdenitifier];
+        }
+        
+        Place *place = [places objectAtIndex:[indexPath row]];
+        cell.textLabel.text = place.name;
+    }
+    else {
+        NSParameterAssert([indexPath row] == 0);
+        if (lastError) {
+            cell = [tableView dequeueReusableCellWithIdentifier:errorCellReuseIdenitifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:errorCellReuseIdenitifier];
+            }
+            cell.textLabel.text = [lastError localizedDescription];
+        }
+        else {
+            cell = [tableView dequeueReusableCellWithIdentifier:loadingCellReuseIdenitifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:loadingCellReuseIdenitifier];
+            }
+            cell.textLabel.text = @"Loading places...";
+        }
     }
     
-    cell.textLabel.text = place.name;
     return cell;
 }
 
-- (void)        tableView:(UITableView *)tableView
-  didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSNotification *note = [NSNotification
-                            notificationWithName:PlaceTableDidReceivePlaceNotification
-                            object:[self placeForIndexPath:indexPath]];
-    [[NSNotificationCenter defaultCenter] postNotification:note];
-}
 
 /* private */
 

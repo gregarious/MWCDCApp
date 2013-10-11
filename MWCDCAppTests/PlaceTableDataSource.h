@@ -14,6 +14,7 @@
 @interface PlaceTableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, copy) NSArray *places;
+@property (nonatomic, copy) NSError *lastError;
 
 @end
 

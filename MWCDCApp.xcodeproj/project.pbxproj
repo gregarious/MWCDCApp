@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372A71B5180751F9006826D1 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 372A71B3180751E4006826D1 /* libOCMock.a */; };
+		372A71B718083682006826D1 /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A71B618083682006826D1 /* AppDelegateTests.m */; };
+		372A71B91808402C006826D1 /* PlaceFetchConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A71B81808402C006826D1 /* PlaceFetchConfigurationTests.m */; };
+		372A71BC18084044006826D1 /* PlaceFetchConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A71BB18084044006826D1 /* PlaceFetchConfiguration.m */; };
 		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
 		37353CB417E352320062B12A /* PlaceCreationWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB317E352320062B12A /* PlaceCreationWorkflowTests.m */; };
 		37353CB717E3546C0062B12A /* PlaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataManager.m */; };
@@ -23,7 +27,6 @@
 		3786658517EBBDD400F341C1 /* PlaceTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658417EBBDD400F341C1 /* PlaceTableDataSource.m */; };
 		3786658617EBBDD400F341C1 /* PlaceTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658417EBBDD400F341C1 /* PlaceTableDataSource.m */; };
 		3786659517EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */; };
-		3786659617EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */; };
 		379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */; };
 		37B599F817E359A800BFAA46 /* MockPlaceAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599F717E359A800BFAA46 /* MockPlaceAPICommunicator.m */; };
 		37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* APICommunicator.m */; };
@@ -63,6 +66,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		372A71B3180751E4006826D1 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
+		372A71B618083682006826D1 /* AppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
+		372A71B81808402C006826D1 /* PlaceFetchConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceFetchConfigurationTests.m; sourceTree = "<group>"; };
+		372A71BA18084044006826D1 /* PlaceFetchConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceFetchConfiguration.h; sourceTree = "<group>"; };
+		372A71BB18084044006826D1 /* PlaceFetchConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceFetchConfiguration.m; sourceTree = "<group>"; };
 		37353CB117E274EE0062B12A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		37353CB317E352320062B12A /* PlaceCreationWorkflowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCreationWorkflowTests.m; sourceTree = "<group>"; };
 		37353CB517E3546C0062B12A /* PlaceDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDataManager.h; path = MWCDCApp/PlaceDataManager.h; sourceTree = SOURCE_ROOT; };
@@ -140,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372A71B5180751F9006826D1 /* libOCMock.a in Frameworks */,
 				37E6EA9B17E22BE7004976DC /* XCTest.framework in Frameworks */,
 				37E6EA9D17E22BE7004976DC /* UIKit.framework in Frameworks */,
 				37E6EA9C17E22BE7004976DC /* Foundation.framework in Frameworks */,
@@ -166,6 +175,8 @@
 				3761D6AB1802F887004BC847 /* PlaceDetailViewController.h */,
 				3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */,
 				3761D6AD1802F887004BC847 /* PlaceDetailViewController.xib */,
+				372A71BA18084044006826D1 /* PlaceFetchConfiguration.h */,
+				372A71BB18084044006826D1 /* PlaceFetchConfiguration.m */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -212,6 +223,7 @@
 				3786658117EBBCB700F341C1 /* PlaceTableViewControllerTests.m */,
 				374E223C17FEF9620051897F /* PlaceTableDataSourceTests.m */,
 				3761D6B01802F911004BC847 /* PlaceDetailViewControllerTests.m */,
+				372A71B81808402C006826D1 /* PlaceFetchConfigurationTests.m */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -251,6 +263,7 @@
 		37E6EA7717E22BE7004976DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				372A71B3180751E4006826D1 /* libOCMock.a */,
 				37FEB15618060BD100F9F3A5 /* MapKit.framework */,
 				37353CB117E274EE0062B12A /* CoreLocation.framework */,
 				37E6EA7817E22BE7004976DC /* Foundation.framework */,
@@ -296,6 +309,7 @@
 				375C3C6017EBA86B00CB1B03 /* API */,
 				37B599FD17E35A0D00BFAA46 /* Places */,
 				37E6EAA117E22BE7004976DC /* Supporting Files */,
+				372A71B618083682006826D1 /* AppDelegateTests.m */,
 			);
 			path = MWCDCAppTests;
 			sourceTree = "<group>";
@@ -416,6 +430,7 @@
 				376F275A17E23F7400178A06 /* Place.m in Sources */,
 				37E6EA9217E22BE7004976DC /* DetailViewController.m in Sources */,
 				37E6EA8F17E22BE7004976DC /* MasterViewController.m in Sources */,
+				372A71BC18084044006826D1 /* PlaceFetchConfiguration.m in Sources */,
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
 				3786658517EBBDD400F341C1 /* PlaceTableDataSource.m in Sources */,
 				37D5D0A117E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */,
@@ -427,11 +442,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372A71B91808402C006826D1 /* PlaceFetchConfigurationTests.m in Sources */,
 				37E909F417EA5AD2000C65A3 /* InspectableAPICommunicator.m in Sources */,
 				37E909FA17EB5C82000C65A3 /* MockPlaceDataManager.m in Sources */,
 				3786658217EBBCB700F341C1 /* PlaceTableViewControllerTests.m in Sources */,
 				37D5D0A517E9FBE00051A7B5 /* FakePlaceBuilder.m in Sources */,
-				3786659617EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */,
 				37353CBE17E3551D0062B12A /* MockPlaceDataManagerDelegate.m in Sources */,
 				3761D6B11802F911004BC847 /* PlaceDetailViewControllerTests.m in Sources */,
 				37353CB417E352320062B12A /* PlaceCreationWorkflowTests.m in Sources */,
@@ -445,6 +460,7 @@
 				37E909F717EB5792000C65A3 /* NonNetworkedAPICommunicator.m in Sources */,
 				37D5D0A217E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */,
 				37353CB817E3546C0062B12A /* PlaceDataManager.m in Sources */,
+				372A71B718083682006826D1 /* AppDelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +578,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MWCDCApp/MWCDCApp-Prefix.pch";
 				INFOPLIST_FILE = "MWCDCApp/MWCDCApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/greg/projects/MWCDCApp/usr/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -576,6 +596,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MWCDCApp/MWCDCApp-Prefix.pch";
 				INFOPLIST_FILE = "MWCDCApp/MWCDCApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/greg/projects/MWCDCApp/usr/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -597,7 +621,24 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/usr/include\"",
+				);
 				INFOPLIST_FILE = "MWCDCAppTests/MWCDCAppTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/greg/projects/MWCDCApp/usr/lib,
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-force_load",
+					"\"$(SRCROOT)/usr/lib/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -615,7 +656,24 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MWCDCApp/MWCDCApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/usr/include\"",
+				);
 				INFOPLIST_FILE = "MWCDCAppTests/MWCDCAppTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/greg/projects/MWCDCApp/usr/lib,
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-force_load",
+					"\"$(SRCROOT)/usr/lib/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

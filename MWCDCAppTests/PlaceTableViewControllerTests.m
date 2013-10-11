@@ -11,35 +11,26 @@
 #import "PlaceTableViewController.h"
 #import "PlaceDetailViewController.h"
 #import "PlaceTableDataSource.h"
+#import "PlaceDataManager.h"
 #import "Place.h"
+#import "PlaceFetchConfiguration.h"
+#import "OCMock/OCMock.h"
 
-#import <objc/runtime.h>
+/* extra methods on VC to access private variables */
+@implementation PlaceTableViewController (Inspectable)
 
-static const char *notificationKey = "PlaceTableViewControllerTestsAssociatedNotificationKey";
-static const char *viewDidAppearKey = "PlaceTableViewControllerTestsViewDidAppearKey";
-static const char *viewWillDisappearKey = "PlaceTableViewControllerTestsViewWillDisappearKey";
-
-// category to allow directly observing place selection notifications
-@implementation PlaceTableViewController (TestNotificationDelivery)
-
-- (void)placeTableViewControllerTests_userDidSelectPlaceNotification: (NSNotification *)note {
-    objc_setAssociatedObject(self, notificationKey, note, OBJC_ASSOCIATION_RETAIN);
+- (PlaceDataManager *)getDataManager {
+    return dataManager;
 }
 
-@end
-
-// category to spy on viewDidAppear/viewWillDisappear
-@implementation UIViewController (TestSuperclassesCalled)
-
-- (void)placeTableViewControllerTests_viewDidAppear: (BOOL)animated {
-    NSNumber *parameter = [NSNumber numberWithBool:animated];
-    objc_setAssociatedObject(self, viewDidAppearKey, parameter, OBJC_ASSOCIATION_RETAIN);
+- (PlaceTableDataSource *)getTableDataSource {
+    return tableDataSource;
 }
 
-- (void)placeTableViewControllerTests_viewWillDisappear: (BOOL)animated {
-    NSNumber *parameter = [NSNumber numberWithBool:animated];
-    objc_setAssociatedObject(self, viewWillDisappearKey, parameter, OBJC_ASSOCIATION_RETAIN);
+- (void)setTableDataSource:(PlaceTableDataSource *)dataSource {
+    tableDataSource = dataSource;
 }
+
 
 @end
 
@@ -49,24 +40,11 @@ static const char *viewWillDisappearKey = "PlaceTableViewControllerTestsViewWill
     UITableView *tableView;
     UINavigationController *navController;
     
-    NSObject <UITableViewDataSource, UITableViewDelegate> *dataSource;
-    
-    SEL realViewDidAppear, testViewDidAppear;
-    SEL realViewWillDisappear, testViewWillDisappear;
-    SEL realUserDidSelectPlaceNotification, testUserDidSelectPlaceNotification;
+    id mockDataSource;
 }
 @end
 
 @implementation PlaceTableViewControllerTests
-
-+ (void)swapInstanceMethodsForClass:(Class)cls
-                           selector:(SEL)sel1
-                        andSelector:(SEL)sel2
-{
-    Method method1 = class_getInstanceMethod(cls, sel1);
-    Method method2 = class_getInstanceMethod(cls, sel2);
-    method_exchangeImplementations(method1, method2);
-}
 
 - (void)setUp
 {
@@ -77,133 +55,78 @@ static const char *viewWillDisappearKey = "PlaceTableViewControllerTestsViewWill
     tableView = [[UITableView alloc] init];
     vc.tableView = tableView;
     
-    dataSource = [[PlaceTableDataSource alloc] init];
-    vc.dataSource = dataSource;
+    vc.fetchConfiguration = [[PlaceFetchConfiguration alloc] init];
     
-    objc_removeAssociatedObjects(vc);
-    
-    // add spies to ensure view conforms with super requirements
-    [self spyOnSuperCalls];
+    // used in some tests below
+    mockDataSource = [OCMockObject mockForClass:[PlaceTableDataSource class]];
 }
 
 - (void)tearDown
 {
-    objc_removeAssociatedObjects(vc);
+    mockDataSource = nil;
     tableView = nil;
     vc = nil;
     navController = nil;
     
-    [self removeAllSpies];
-    
     [super tearDown];
 }
 
-- (void)testDelegateIsSetAfterViewLoads
-{
-    [vc viewDidLoad];
-    XCTAssertEqual(dataSource,
-                   [[vc tableView] delegate],
-                   @"Should set delegate when view loads");
-}
+#pragma mark - View load behavior
 
 - (void)testDataSourceIsSetAfterViewLoads
 {
+    [vc setTableDataSource:mockDataSource];
     [vc viewDidLoad];
-    XCTAssertEqual(dataSource,
+    XCTAssertEqual(mockDataSource,
                    [[vc tableView] dataSource],
                    @"Should set dataSource when view loads");
+}
+
+#pragma mark - View appearance behavior
+
+- (void)testTableDataSourceConnectedAfterAwakeFromNib
+{
+    [vc awakeFromNib];
+    XCTAssertNotNil([vc getTableDataSource],
+                    @"should create a table data source when view appears");
+}
+
+- (void)testDataManagerIsCreatedBeforeViewAppears
+{
+    [vc viewWillAppear:NO];
+    XCTAssertNotNil([vc getDataManager],
+                    @"should create a data manager when view appears");
+}
+
+- (void)testDataManagerDelegateIsSelfBeforeViewAppears
+{
+    [vc viewWillAppear:NO];
+    XCTAssertEqualObjects([[vc getDataManager] delegate],
+                          vc,
+                          @"should create a PlaceDataManager and become its delegate");
+}
+
+- (void)testDataSourceIsNotifiedAfterFetchError
+{
+    NSError *err = [NSError  errorWithDomain:@"FakeDomain" code:0 userInfo:nil];
     
+    [vc setTableDataSource:mockDataSource];
+    [[mockDataSource expect] setLastError:err];
+
+    [vc fetchingPlacesFailedWithError:err];
+    [mockDataSource verify];
 }
 
-- (void)testDefaultStateOfViewControllerDoesNotReceiveNotifications
+- (void)testDataSourceGetPlacesAfterFetchSuccess
 {
-    [self spyOnPlaceSelectionNotification];
+    NSArray *places = [NSArray array];
+
+    [vc setTableDataSource:mockDataSource];
+    [[mockDataSource expect] setPlaces:[OCMArg any]];
+    [[mockDataSource expect] setLastError:nil];
     
-    [self postNotification];
-    XCTAssertNil(objc_getAssociatedObject(vc, notificationKey),
-                 @"Should not respond to place select notifications by default");
+    [vc didReceivePlaces:places];
+    [mockDataSource verify];
 }
 
-- (void)testViewControllerDoesReceiveNotificationsAfterViewWillAppear
-{
-    [self spyOnPlaceSelectionNotification];
-    
-    [vc viewDidAppear: NO];
-    [self postNotification];
-    XCTAssertNotNil(objc_getAssociatedObject(vc, notificationKey),
-                 @"Should respond to place select notifications if view has appeared");
-}
-
-- (void)testSelectedNotificationPassesPlaceAsObject
-{
-    
-}
-
-- (void)testViewControllerCallsSuperViewDidAppear
-{
-    [vc viewDidAppear:NO];
-    XCTAssertNotNil(objc_getAssociatedObject(vc, viewDidAppearKey), @"-viewDidAppear: should call through to superclass impl");
-}
-
-- (void)testViewControllerCallsSuperViewWillDisappear
-{
-    [vc viewWillDisappear:NO];
-    XCTAssertNotNil(objc_getAssociatedObject(vc, viewWillDisappearKey), @"-viewWillDisappear: should call through to superclass impl");
-}
-
-- (void)testSelectingPlacePushesNewViewController
-{
-    [vc userDidSelectPlaceNotification:nil];
-    UIViewController *currentTopVC = navController.topViewController;
-    XCTAssertNotEqualObjects(currentTopVC, vc, @"should push new view controller after user selcts place");
-}
-
-- (void)testPushedDetailControllerIsAssignedPlace
-{
-    Place *selectedPlace = [[Place alloc] init];
-    NSNotification *note = [NSNotification notificationWithName:PlaceTableDidReceivePlaceNotification object:selectedPlace];
-    [vc userDidSelectPlaceNotification:note];
-    
-    PlaceDetailViewController *detailVC = (PlaceDetailViewController *)navController.topViewController;
-    XCTAssertEqualObjects(detailVC.place, selectedPlace, @"should assign new detail controller the selected place");
-}
-
-/* helpers */
-- (void)postNotification
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:PlaceTableDidReceivePlaceNotification object:nil];
-}
-
-- (void)spyOnSuperCalls
-{
-    realViewDidAppear = @selector(viewDidAppear:);
-    testViewDidAppear = @selector(placeTableViewControllerTests_viewDidAppear:);
-    realViewWillDisappear = @selector(viewWillDisappear:);
-    testViewWillDisappear = @selector(placeTableViewControllerTests_viewWillDisappear:);
-
-    [PlaceTableViewControllerTests swapInstanceMethodsForClass:[UIViewController class] selector:realViewDidAppear andSelector:testViewDidAppear];
-    [PlaceTableViewControllerTests swapInstanceMethodsForClass:[UIViewController class] selector:realViewWillDisappear andSelector:testViewWillDisappear];
-}
-
-- (void)spyOnPlaceSelectionNotification
-{
-    realUserDidSelectPlaceNotification = @selector(userDidSelectPlaceNotification:);
-    testUserDidSelectPlaceNotification = @selector(placeTableViewControllerTests_userDidSelectPlaceNotification:);
-
-    [PlaceTableViewControllerTests swapInstanceMethodsForClass:[PlaceTableViewController class] selector:realUserDidSelectPlaceNotification andSelector:testUserDidSelectPlaceNotification];
-}
-
-- (void)removeAllSpies
-{
-    // don't un-swizzle methods that haven't been swizzled in the first place
-    if (realViewDidAppear) {
-        [PlaceTableViewControllerTests swapInstanceMethodsForClass:[UIViewController class] selector:realViewDidAppear andSelector:testViewDidAppear];
-    }
-    if (realViewWillDisappear) {
-        [PlaceTableViewControllerTests swapInstanceMethodsForClass:[UIViewController class] selector:realViewWillDisappear andSelector:testViewWillDisappear];
-    }
-    if (realUserDidSelectPlaceNotification) {
-        [PlaceTableViewControllerTests swapInstanceMethodsForClass:[PlaceTableViewController class] selector:testUserDidSelectPlaceNotification andSelector:realUserDidSelectPlaceNotification];
-    }
-}
 @end

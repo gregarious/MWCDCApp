@@ -9,6 +9,8 @@
 #import "PlaceTableViewController.h"
 #import "PlaceTableDataSource.h"
 #import "PlaceDetailViewController.h"
+#import "PlaceFetchConfiguration.h"
+#import "PlaceDataManager.h"
 
 @interface PlaceTableViewController ()
 
@@ -20,16 +22,19 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // other init
     }
     return self;
+}
+
+-(void)awakeFromNib {
+    tableDataSource = [[PlaceTableDataSource alloc] init];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.delegate = self.dataSource;
-    self.tableView.dataSource = self.dataSource;
+    self.tableView.dataSource = tableDataSource;
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,28 +43,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(userDidSelectPlaceNotification:)
-     name:PlaceTableDidReceivePlaceNotification
-     object:nil];
-    [super viewDidAppear:animated];
-}
+    dataManager = [[self fetchConfiguration] dataManager];
+    dataManager.delegate = self;
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter]
-     removeObserver:self name:PlaceTableDidReceivePlaceNotification object:nil];
-    [super viewWillDisappear:animated];
-}
-
-- (void)userDidSelectPlaceNotification: (NSNotification *)note {
-    PlaceDetailViewController *detailVC = [[PlaceDetailViewController alloc] init];
-    Place *selectedPlace = (Place *)[note object];
-    [detailVC setPlace:selectedPlace];
-    [[self navigationController] pushViewController:detailVC animated:YES];
+    [super viewWillAppear:animated];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -69,5 +58,17 @@
         [detailVC setPlace:nil];
     }
 }
+
+- (void)fetchingPlacesFailedWithError:(NSError *)error
+{
+    tableDataSource.lastError = error;
+}
+
+- (void)didReceivePlaces:(NSArray *)places
+{
+    tableDataSource.places = places;
+    tableDataSource.lastError = nil;
+}
+
 
 @end

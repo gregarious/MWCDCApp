@@ -37,7 +37,7 @@
     // To create places, we need:
     //  1. a PlaceDataManager (PDM) to run the show
     //  2. a delegate for the PDM
-    //  3. a PlaceAPICommunicator to hook up to the PDMduh)
+    //  3. a PlaceAPICommunicator to hook up to the PDM
     //  4. a PlaceBuilder to build Place objects from JSON
 
     mgr = [[PlaceDataManager alloc] init];

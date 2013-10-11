@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "PlaceTableViewController.h"
+#import "PlaceFetchConfiguration.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+
+    // TODO: see if there's a better way to set up these initial VCs
+    
+    // Inject the basic PlaceFetchConfiguration object into the Places VC
+    UITabBarController *rootVC = (UITabBarController *)[[self window] rootViewController];
+    UINavigationController *placeNavVC = [rootVC viewControllers][1];
+    PlaceTableViewController *placeVC = (PlaceTableViewController *)[placeNavVC topViewController];
+    [placeVC setFetchConfiguration:[[PlaceFetchConfiguration alloc] init]];
+    
     return YES;
 }
 							

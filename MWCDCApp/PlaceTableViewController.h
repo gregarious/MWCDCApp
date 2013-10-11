@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlaceDataManagerDelegate.h"
 
-@interface PlaceTableViewController : UITableViewController
+@class PlaceTableDataSource;
+@class PlaceDataManager;
+@class PlaceFetchConfiguration;
 
-@property (nonatomic, strong) NSObject <UITableViewDataSource, UITableViewDelegate> *dataSource;
+@interface PlaceTableViewController : UITableViewController <PlaceDataManagerDelegate>
+{
+    PlaceDataManager *dataManager;
+    PlaceTableDataSource *tableDataSource;
+}
 
-- (void)userDidSelectPlaceNotification: (NSNotification *)note;
-    
+@property (nonatomic, strong) PlaceFetchConfiguration *fetchConfiguration;
+
 @end
