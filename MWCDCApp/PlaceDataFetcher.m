@@ -1,25 +1,34 @@
 //
-//  PlaceDataManager.m
+//  PlaceDataFetcher.m
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 9/13/13.
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "PlaceDataManager.h"
+#import "PlaceDataFetcher.h"
 
-@interface PlaceDataManager ()
+@interface PlaceDataFetcher ()
 
 - (void)notifyDelegateAboutPlaceSearchError:(NSError *)underlyingError;
 
 @end
 
-@implementation PlaceDataManager
+@implementation PlaceDataFetcher
 
-@synthesize delegate, communicator, placeBuilder;
++ (PlaceDataFetcher *)defaultFetcher
+{
+    PlaceDataFetcher *fetcher = [[PlaceDataFetcher alloc] init];
+    fetcher.communicator = [[APICommunicator alloc] init];
+    fetcher.communicator.delegate = fetcher;
+    
+    fetcher.placeBuilder = [[PlaceBuilder alloc] init];
+    
+    return fetcher;
+}
 
 - (void)fetchPlaces {
-    [communicator fetchPlaces];
+    [self.communicator fetchPlaces];
 }
 
 - (void)searchingForPlacesFailedWithError:(NSError*)err {
@@ -28,13 +37,13 @@
 
 - (void)receivedPlacesJSON:(NSString *)objectNotation {
     NSError *err = nil;
-    NSArray *places = [placeBuilder placesFromJSON: objectNotation
+    NSArray *places = [self.placeBuilder placesFromJSON: objectNotation
                                              error: &err];
     if (!places) {
         [self notifyDelegateAboutPlaceSearchError:err];
     }
     else {
-        [delegate didReceivePlaces:places];
+        [self.delegate didReceivePlaces:places];
     }
 }
 
@@ -45,13 +54,13 @@
         errorInfo = @{NSUnderlyingErrorKey: underlyingError};
     }
     NSError *reportableErr = [NSError
-                              errorWithDomain:PlaceDataManagerErrorDomain
-                              code:PlaceDataManagerErrorSearchCode
+                              errorWithDomain:PlaceDataFetcherErrorDomain
+                              code:PlaceDataFetcherErrorSearchCode
                               userInfo:errorInfo];
-    [delegate fetchingPlacesFailedWithError:reportableErr];
+    [self.delegate fetchingPlacesFailedWithError:reportableErr];
 }
 
 
 @end
 
-NSString* const PlaceDataManagerErrorDomain = @"PlaceDataManager";
+NSString* const PlaceDataFetcherErrorDomain = @"PlaceDataFetcher";

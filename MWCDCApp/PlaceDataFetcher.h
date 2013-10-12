@@ -1,5 +1,5 @@
 //
-//  PlaceDataManager.h
+//  PlaceDataFetcher.h
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 9/13/13.
@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PlaceDataManagerDelegate.h"
+#import "PlaceDataFetcherDelegate.h"
 #import "APICommunicator.h"
 #import "PlaceBuilder.h"
 
-@interface PlaceDataManager : NSObject
+@interface PlaceDataFetcher : NSObject <APICommunicatorDelegate>
 
-@property (nonatomic, weak) id<PlaceDataManagerDelegate> delegate;
+@property (nonatomic, weak) id<PlaceDataFetcherDelegate> delegate;
 @property (nonatomic, strong) APICommunicator *communicator;
 @property (nonatomic, strong) PlaceBuilder *placeBuilder;
+
++ (PlaceDataFetcher *)defaultFetcher;
 
 - (void)fetchPlaces;
 - (void)searchingForPlacesFailedWithError:(NSError *)err;
@@ -23,8 +25,8 @@
 
 @end
 
-extern NSString* const PlaceDataManagerErrorDomain;
+extern NSString* const PlaceDataFetcherErrorDomain;
 
 enum {
-    PlaceDataManagerErrorSearchCode
+    PlaceDataFetcherErrorSearchCode
 };

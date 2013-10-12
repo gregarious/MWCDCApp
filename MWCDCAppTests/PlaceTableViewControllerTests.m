@@ -7,21 +7,20 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <UIKit/UIKit.h>
 
 #import "PlaceTableViewController.h"
 #import "PlaceDetailViewController.h"
 #import "PlaceTableDataSource.h"
-#import "PlaceDataManager.h"
+#import "PlaceDataFetcher.h"
 #import "Place.h"
-#import "PlaceFetchConfiguration.h"
+#import "PlaceTableViewCell.h"
+
 #import "OCMock/OCMock.h"
+
 
 /* extra methods on VC to access private variables */
 @implementation PlaceTableViewController (Inspectable)
-
-- (PlaceDataManager *)getDataManager {
-    return dataManager;
-}
 
 - (PlaceTableDataSource *)getTableDataSource {
     return tableDataSource;
@@ -40,6 +39,7 @@
     UITableView *tableView;
     UINavigationController *navController;
     
+    id mockManager;
     id mockDataSource;
 }
 @end
@@ -49,13 +49,20 @@
 - (void)setUp
 {
     [super setUp];
-    vc = [[PlaceTableViewController alloc] init];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+    vc = [storyboard instantiateViewControllerWithIdentifier:@"PlaceTableViewController"];
     navController = [[UINavigationController alloc] initWithRootViewController:vc];
 
     tableView = [[UITableView alloc] init];
     vc.tableView = tableView;
+//    
+//    MockPlaceFetchConfiguration *config = [[MockPlaceFetchConfiguration alloc] init];
+//    vc.fetchConfiguration = config;
     
-    vc.fetchConfiguration = [[PlaceFetchConfiguration alloc] init];
+//    // the mock config always returns the same manager instance so we can use this to spy
+//    mockManager = config.dataManager;
     
     // used in some tests below
     mockDataSource = [OCMockObject mockForClass:[PlaceTableDataSource class]];
@@ -91,19 +98,14 @@
                     @"should create a table data source when view appears");
 }
 
-- (void)testDataManagerIsCreatedBeforeViewAppears
+- (void)testFetchBeginsWhenViewAppears
 {
+    // test that delegate is set to self and fetching begins
+    [[mockManager expect] setDelegate:vc];
+    [[mockManager expect] fetchPlaces];
+    
     [vc viewWillAppear:NO];
-    XCTAssertNotNil([vc getDataManager],
-                    @"should create a data manager when view appears");
-}
-
-- (void)testDataManagerDelegateIsSelfBeforeViewAppears
-{
-    [vc viewWillAppear:NO];
-    XCTAssertEqualObjects([[vc getDataManager] delegate],
-                          vc,
-                          @"should create a PlaceDataManager and become its delegate");
+    [mockManager verify];
 }
 
 - (void)testDataSourceIsNotifiedAfterFetchError
@@ -117,6 +119,17 @@
     [mockDataSource verify];
 }
 
+- (void)testTableReloadsAfterFetchError
+{
+    id mockTableView = [OCMockObject partialMockForObject:vc.tableView];
+    vc.tableView = mockTableView;
+    
+    [[mockTableView expect] reloadData];
+    
+    [vc fetchingPlacesFailedWithError:nil];
+    [mockTableView verify];
+}
+
 - (void)testDataSourceGetPlacesAfterFetchSuccess
 {
     NSArray *places = [NSArray array];
@@ -127,6 +140,35 @@
     
     [vc didReceivePlaces:places];
     [mockDataSource verify];
+}
+
+- (void)testTableReloadsAfterFetchSuccess
+{
+    id mockTableView = [OCMockObject partialMockForObject:vc.tableView];
+    vc.tableView = mockTableView;
+    
+    [[mockTableView expect] reloadData];
+    
+    [vc didReceivePlaces:nil];
+    [mockTableView verify];
+}
+
+- (void)testDetailControllerGetsPlaceAfterSegue
+{
+    PlaceDetailViewController *detailVC = [[PlaceDetailViewController alloc] init];
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"showPlaceDetail"
+                                                               source:vc
+                                                          destination:detailVC
+                                                       performHandler:^{}];
+    
+    PlaceTableViewCell *cell = [[PlaceTableViewCell alloc] initWithStyle:0 reuseIdentifier:@""];
+    Place *samplePlace = [[Place alloc] init];
+    cell.place = samplePlace;
+    
+    [vc prepareForSegue:segue sender:cell];
+    XCTAssertEqualObjects([detailVC place],
+                          samplePlace,
+                          @"should hand the detail VC a place");
 }
 
 @end

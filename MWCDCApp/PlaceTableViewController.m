@@ -9,8 +9,8 @@
 #import "PlaceTableViewController.h"
 #import "PlaceTableDataSource.h"
 #import "PlaceDetailViewController.h"
-#import "PlaceFetchConfiguration.h"
-#import "PlaceDataManager.h"
+#import "PlaceDataFetcher.h"
+#import "PlaceTableViewCell.h"
 
 @interface PlaceTableViewController ()
 
@@ -45,29 +45,32 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    dataManager = [[self fetchConfiguration] dataManager];
-    dataManager.delegate = self;
-
+    self.dataFetcher.delegate = self;
+    [self.dataFetcher fetchPlaces];
+    
     [super viewWillAppear:animated];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"showPlaceDetail"]) {
+        PlaceTableViewCell *cell = (PlaceTableViewCell *)sender;
         PlaceDetailViewController *detailVC = (PlaceDetailViewController *)[segue destinationViewController];
-        [detailVC setPlace:nil];
+        [detailVC setPlace:cell.place];
     }
 }
 
 - (void)fetchingPlacesFailedWithError:(NSError *)error
 {
     tableDataSource.lastError = error;
+    [self.tableView reloadData];
 }
 
 - (void)didReceivePlaces:(NSArray *)places
 {
     tableDataSource.places = places;
     tableDataSource.lastError = nil;
+    [[self tableView] reloadData];
 }
 
 

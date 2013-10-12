@@ -7,18 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PlaceDataManagerDelegate.h"
+#import "PlaceDataFetcherDelegate.h"
 
 @class PlaceTableDataSource;
-@class PlaceDataManager;
+@class PlaceDataFetcher;
 @class PlaceFetchConfiguration;
 
-@interface PlaceTableViewController : UITableViewController <PlaceDataManagerDelegate>
+@interface PlaceTableViewController : UITableViewController <PlaceDataFetcherDelegate>
 {
-    PlaceDataManager *dataManager;
     PlaceTableDataSource *tableDataSource;
 }
 
-@property (nonatomic, strong) PlaceFetchConfiguration *fetchConfiguration;
+@property (nonatomic, strong) PlaceDataFetcher *dataFetcher;
 
 @end

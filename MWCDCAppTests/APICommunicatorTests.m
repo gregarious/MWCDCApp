@@ -7,14 +7,16 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
 #import "InspectableAPICommunicator.h"
 #import "NonNetworkedAPICommunicator.h"
-#import "MockPlaceDataManager.h"
+#import "APICommunicatorDelegate.h"
 
 @interface APICommunicatorTests : XCTestCase {
     InspectableAPICommunicator *communicator;
     NonNetworkedAPICommunicator *nnCommunicator;
-    MockPlaceDataManager *manager;
+    id mockDelegate;
 }
 
 @end
@@ -26,13 +28,14 @@
     [super setUp];
     communicator = [[InspectableAPICommunicator alloc] init];
     nnCommunicator = [[NonNetworkedAPICommunicator alloc] init];
-    manager = [[MockPlaceDataManager alloc] init];
-    nnCommunicator.delegate = manager;
+    mockDelegate = [OCMockObject niceMockForProtocol:@protocol(APICommunicatorDelegate)];
+    nnCommunicator.delegate = mockDelegate;
 }
 
 - (void)tearDown
 {
     [communicator cancelAndDiscardURLConnection];
+    mockDelegate = nil;
     communicator = nil;
     nnCommunicator = nil;
     [super tearDown];
@@ -63,7 +66,7 @@
                    @"Each fetch call should create a new connection");
 }
 
-/** Test NSURLConnectionDelegate methods **/
+#pragma mark - NSURLConnectionDelegate methods
 
 - (void)testThatCachingIsDisabled
 {
@@ -84,30 +87,35 @@
 - (void)testThat404ReturnsErrorToDelegate
 {
     NSHTTPURLResponse *resp404 = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:404 HTTPVersion:nil headerFields:nil];
+    
+    [[mockDelegate expect] searchingForPlacesFailedWithError:[OCMArg isNotNil]];
+    
     [nnCommunicator fetchPlaces];
     [nnCommunicator connection:nil didReceiveResponse:resp404];
-    XCTAssertNotNil([manager fetchError],
-                    @"Should relay a 404 error to it's delegate");
+    [mockDelegate verify];
 }
 
 - (void)testThat200ReturnsNoError
 {
     NSHTTPURLResponse *resp200 = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+    
+    [[mockDelegate reject] searchingForPlacesFailedWithError:[OCMArg any]];
+    
     [nnCommunicator fetchPlaces];
     [nnCommunicator connection:nil didReceiveResponse:resp200];
-    XCTAssertNil([manager fetchError],
-                 @"Should relay no error if response is 200 OK");
     
 }
 
 - (void)testThatFailedConnectionReturnsErrorToDelegate
 {
-    [nnCommunicator fetchPlaces];
     NSError *error = [NSError errorWithDomain:@"Fake domain" code:99 userInfo:nil];
+
+    [[mockDelegate expect] searchingForPlacesFailedWithError:error];
+    
+    [nnCommunicator fetchPlaces];
     [nnCommunicator connection:nil didFailWithError:error];
-    XCTAssertEqualObjects([manager fetchError],
-                          error,
-                          @"Should relay general connection error to its delegate");
+    
+    [mockDelegate verify];
 }
 
 - (void)testThatReceivedDataIsAddedToBuffer
@@ -125,12 +133,13 @@
 
 - (void)testThatFullResponseIsRelayedToDelegate
 {
+    [[mockDelegate expect] receivedPlacesJSON:@"Success!"];
+    
     [nnCommunicator fetchPlaces];
     [nnCommunicator setResponseBufferContents:[@"Success!" dataUsingEncoding:NSUTF8StringEncoding]];
     [nnCommunicator connectionDidFinishLoading:nil];
-    XCTAssertEqualObjects([manager responseJSON],
-                          @"Success!",
-                          @"Should relay successful response to delegate");
+    
+    [mockDelegate verify];
 }
 
 

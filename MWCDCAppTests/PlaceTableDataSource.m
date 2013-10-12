@@ -8,6 +8,7 @@
 
 #import "PlaceTableDataSource.h"
 #import "Place.h"
+#import "PlaceTableViewCell.h"
 
 @interface PlaceTableDataSource ()
 - (Place *)placeForIndexPath:(NSIndexPath *)indexPath;
@@ -15,14 +16,12 @@
 
 @implementation PlaceTableDataSource
 
-@synthesize places, lastError;
-
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     NSParameterAssert(section == 0);
     
-    if (places) {
-        return [places count];
+    if (self.places) {
+        return self.places.count;
     }
     else {
         return 1;
@@ -39,25 +38,31 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
 
     NSParameterAssert([indexPath section] == 0);
 
-    UITableViewCell *cell;
-    if (places) {
-        NSParameterAssert([indexPath row] < [places count]);
-        cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
+    if (self.places) {
+        NSParameterAssert([indexPath row] < [self.places count]);
+        PlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:placeCellReuseIdenitifier];
+            cell = [[PlaceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:placeCellReuseIdenitifier];
         }
         
-        Place *place = [places objectAtIndex:[indexPath row]];
-        cell.textLabel.text = place.name;
+        Place *place = [self.places objectAtIndex:[indexPath row]];
+
+        cell.nameLabel.text = place.name;
+        
+        // connect a weak ref directly to the object
+        cell.place = place;
+        
+        return cell;
     }
     else {
         NSParameterAssert([indexPath row] == 0);
-        if (lastError) {
+        UITableViewCell *cell;
+        if (self.lastError) {
             cell = [tableView dequeueReusableCellWithIdentifier:errorCellReuseIdenitifier];
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:errorCellReuseIdenitifier];
             }
-            cell.textLabel.text = [lastError localizedDescription];
+            cell.textLabel.text = [self.lastError localizedDescription];
         }
         else {
             cell = [tableView dequeueReusableCellWithIdentifier:loadingCellReuseIdenitifier];
@@ -66,9 +71,9 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
             }
             cell.textLabel.text = @"Loading places...";
         }
+        return cell;
     }
     
-    return cell;
 }
 
 
@@ -76,10 +81,10 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
 
 - (Place *)placeForIndexPath:(NSIndexPath *)indexPath
 {
-    NSParameterAssert([indexPath row] < [places count]);
+    NSParameterAssert([indexPath row] < [self.places count]);
     NSParameterAssert([indexPath section] == 0);
     
-    return [places objectAtIndex:[indexPath row]];
+    return [self.places objectAtIndex:[indexPath row]];
 }
 
 

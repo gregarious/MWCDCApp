@@ -94,11 +94,11 @@
                   @"places nav controller should be initialized with a places table view");
 }
 
-- (void)testPlacesNavHasAnPlaceFetchConfiguration {
+- (void)testPlacesNavHasAnPlaceFetcherSet {
     UINavigationController *placeNavController = (UINavigationController *)([rootVC viewControllers][1]);
     PlaceTableViewController *tableVC = (PlaceTableViewController *)[placeNavController topViewController];
-    XCTAssertNotNil([tableVC fetchConfiguration],
-                    @"places VC should be initialized with a fetch configuration");
+    XCTAssertNotNil([tableVC dataFetcher],
+                    @"places VC should be initialized with a fetcher");
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PlaceTableViewController.h"
-#import "PlaceFetchConfiguration.h"
+#import "PlaceDataFetcher.h"
 
 @implementation AppDelegate
 
@@ -21,7 +21,7 @@
     UITabBarController *rootVC = (UITabBarController *)[[self window] rootViewController];
     UINavigationController *placeNavVC = [rootVC viewControllers][1];
     PlaceTableViewController *placeVC = (PlaceTableViewController *)[placeNavVC topViewController];
-    [placeVC setFetchConfiguration:[[PlaceFetchConfiguration alloc] init]];
+    placeVC.dataFetcher = [PlaceDataFetcher defaultFetcher];
     
     return YES;
 }

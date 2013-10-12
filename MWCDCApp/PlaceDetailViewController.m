@@ -15,9 +15,6 @@
 
 @implementation PlaceDetailViewController
 
-@synthesize place = _place;
-@synthesize nameLabel;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -50,7 +47,7 @@
 /* private */
 - (void)configureView {
     if (self.place) {
-        [nameLabel setText:self.place.name];
+        self.nameLabel.text = self.place.name;
     }
 }
 

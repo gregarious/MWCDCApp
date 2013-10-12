@@ -13,8 +13,6 @@ NSString * const APICommunicatorErrorDomain = @"APICommunicatorErrorDomain";
 
 @implementation APICommunicator
 
-@synthesize delegate;
-
 - (void)fetchPlaces {
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:PLACES_URL]];
 
@@ -24,7 +22,7 @@ NSString * const APICommunicatorErrorDomain = @"APICommunicatorErrorDomain";
 - (void)initiateConnectionForRequest:(NSURLRequest *)request {
     [self cancelAndDiscardURLConnection];
     fetchingConnection = [[NSURLConnection alloc] initWithRequest:request
-                                                         delegate:nil];
+                                                         delegate:self];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
@@ -42,7 +40,7 @@ didReceiveResponse:(NSURLResponse *)response {
                                              code:[httpResponse statusCode]
                                          userInfo:nil];
 
-        [delegate searchingForPlacesFailedWithError:error];
+        [self.delegate searchingForPlacesFailedWithError:error];
         [self cancelAndDiscardURLConnection];
     }
 }
@@ -55,14 +53,14 @@ didReceiveResponse:(NSURLResponse *)response {
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error {
     fetchingConnection = nil;
-    [delegate searchingForPlacesFailedWithError:error];
+    [self.delegate searchingForPlacesFailedWithError:error];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     fetchingConnection = nil;
     NSString *responseString = [[NSString alloc] initWithData:responseBuffer
                                                      encoding:NSUTF8StringEncoding];
-    [delegate receivedPlacesJSON:responseString];
+    [self.delegate receivedPlacesJSON:responseString];
 }
 
 - (void)cancelAndDiscardURLConnection {

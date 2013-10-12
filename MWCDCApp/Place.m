@@ -10,16 +10,14 @@
 
 @implementation Place
 
-@synthesize name, coordinate, streetAddress;
-
 - (id)initWithName:(NSString *)newName
      streetAddress:(NSString *)newAddress
         coordinate:(CLLocationCoordinate2D)newCoord
 {
     if ((self = [super init])) {
-        name = [newName copy];
-        coordinate = newCoord;  // struct copies when assigned
-        streetAddress = [newAddress copy];
+        _name = [newName copy];
+        _coordinate = newCoord;  // struct copies when assigned
+        _streetAddress = [newAddress copy];
     }
     return self;
 }

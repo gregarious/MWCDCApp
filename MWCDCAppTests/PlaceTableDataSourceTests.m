@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "Place.h"
 #import "PlaceTableDataSource.h"
+#import "PlaceTableViewCell.h"
 
 @interface PlaceTableDataSourceTests : XCTestCase
 {
@@ -112,14 +113,23 @@
     XCTAssertEqual([dataSource tableView:nil numberOfRowsInSection:0], 2, @"Two places should report two rows");
 }
 
-- (void)testCellCreatedContainsPlaceNameAsTextLabel
+- (void)testCellCreatedContainsPlace
 {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell *cell = [dataSource tableView:nil cellForRowAtIndexPath:path];
-    XCTAssertEqualObjects(cell.textLabel.text,
-                          @"Shiloh Grill",
-                          @"Should return a cell with place name as label");
+    PlaceTableViewCell *cell = (PlaceTableViewCell *)[dataSource tableView:nil cellForRowAtIndexPath:path];
+    XCTAssertEqualObjects(cell.place,
+                          samplePlace,
+                          @"Should return a cell with a reference to the sample place");
 }
+
+//- (void)testCellCreatedHasExpectedProperties
+//{
+//    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+//    PlaceTableViewCell *cell = (PlaceTableViewCell *)[dataSource tableView:nil cellForRowAtIndexPath:path];
+//    XCTAssertEqualObjects(cell.nameLabel.text,
+//                          samplePlace.name,
+//                          @"Should correctly set the label");
+//}
 
 - (void)testPlaceCellShownIfDataAndError
 {
@@ -128,9 +138,9 @@
                                    userInfo:@{NSLocalizedDescriptionKey: @"Failure accessing places"}];
     [dataSource setLastError:err];
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell *cell = [dataSource tableView:nil cellForRowAtIndexPath:path];
-    XCTAssertEqualObjects(cell.textLabel.text,
-                          @"Shiloh Grill",
+    PlaceTableViewCell *cell = (PlaceTableViewCell *)[dataSource tableView:nil cellForRowAtIndexPath:path];
+    XCTAssertEqualObjects(cell.place,
+                          samplePlace,
                           @"Should return place cell over error if data is set");
 }
 

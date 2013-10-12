@@ -13,8 +13,6 @@
 - (NSArray *)placesFromJSON: (NSString *)objectNotation
                       error: (NSError **)error;
 
-
-
 @end
 
 extern NSString* const PlaceBuilderErrorDomain;
