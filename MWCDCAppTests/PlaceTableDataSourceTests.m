@@ -8,13 +8,12 @@
 
 #import <XCTest/XCTest.h>
 #import "Place.h"
-#import "PlaceTableDataSource.h"
+#import "PlaceViewDataManager.h"
 #import "PlaceTableViewCell.h"
 
 @interface PlaceTableDataSourceTests : XCTestCase
 {
-    PlaceTableDataSource *dataSource;
-    NSArray *placesList;
+    PlaceViewDataManager *dataManager;
     Place *samplePlace;
 }
 @end
@@ -24,12 +23,10 @@
 - (void)setUp
 {
     [super setUp];
-    dataSource = [[PlaceTableDataSource alloc] init];
+    dataManager = [[PlaceViewDataManager alloc] init];
     samplePlace = [[Place alloc] initWithName:@"Shiloh Grill"
                                        streetAddress:@"123 Shiloh St."
                                           coordinate:CLLocationCoordinate2DMake(40, -80)];
-    placesList = @[samplePlace];
-    [dataSource setPlaces: placesList];
 }
 
 - (void)tearDown
@@ -38,111 +35,41 @@
     [super tearDown];
 }
 
-#pragma mark - Cell access domain assertions
-
-- (void)testRowCountExpectsOnlyOneSection
+- (void)testUninitializedStateIfNoPlacesOrErrorSet
 {
-    XCTAssertThrows([dataSource tableView:nil numberOfRowsInSection:1],
-                    @"Should not allow requesting outside of section 0");
+    XCTAssertEqual([dataManager dataStatus],
+                   PlaceViewDataStatusUninitialized,
+                   @"should report uninitialized state if no error or places is set yet");
 }
 
-- (void)testCellCreationExpectsOnlyOneSection
+- (void)testErrorStateIfErrorSet
 {
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:1];
-    XCTAssertThrows([dataSource tableView:nil cellForRowAtIndexPath:path],
-                    @"Should not allow requesting outside of section 0");
+    dataManager.lastError = [NSError errorWithDomain:@"FakeDomain" code:0 userInfo:nil];
+    XCTAssertEqual([dataManager dataStatus],
+                   PlaceViewDataStatusError,
+                   @"should report error state if error was set");
 }
 
-- (void)testCellCreationOnlyCreatesCellsForPlacesItContains
+- (void)testInitializedStateIfPlacesSet
 {
-    NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
-    XCTAssertThrows([dataSource tableView:nil cellForRowAtIndexPath:path],
-                    @"Should not allow requesting rows it doesn't contain");
+    dataManager.places = @[samplePlace];
+    XCTAssertEqual([dataManager dataStatus],
+                   PlaceViewDataStatusInitialized,
+                   @"should report initialized state if error was set");
 }
 
-#pragma mark - Table cell creation: loading/error states
-
-- (void)testStatusCellShownIfNoDataAndNoError
+- (void)testPlaceReturnedFromPlaceAtPosition
 {
-    [dataSource setPlaces:nil];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell *cell = [dataSource tableView:nil cellForRowAtIndexPath:path];
-    XCTAssertEqualObjects(cell.textLabel.text,
-                          @"Loading places...",
-                          @"should return a loading status cell");
-}
-
-- (void)testErrorCellShownIfNoDataAndError
-{
-    [dataSource setPlaces:nil];
-    NSError *err = [NSError errorWithDomain:@"FakeDomain" code:0
-                                   userInfo:@{NSLocalizedDescriptionKey: @"Failure accessing places"}];
-    [dataSource setLastError:err];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell *cell = [dataSource tableView:nil cellForRowAtIndexPath:path];
-    XCTAssertEqualObjects(cell.textLabel.text,
-                          @"Failure accessing places",
-                          @"Should return an error cell when an error occurred and there is no data");
-}
-
-#pragma mark - Table cell creation: data-backed
-
-- (void)testZeroTableRowsIfZeroPlacesSet
-{
-    // Note that this is unlikely: this will only happen if the server successfully responds with 0 places.
-    // Typically, it will have not yet responded or responded with error, which does display a cell
-    [dataSource setPlaces:[NSArray array]];
-    XCTAssertEqual([dataSource tableView:nil numberOfRowsInSection:0], 0, @"Empty places should report zero rows");
-}
-
-- (void)testOneTableRowForUnsetPlaces
-{
-    dataSource.places = nil;
-    XCTAssertEqual([dataSource tableView:nil numberOfRowsInSection:0], 1, @"Should report one row if places not set (means error/loading is displayed");
-}
-
-- (void)testOneTableRowForOnePlace
-{
-    XCTAssertEqual([dataSource tableView:nil numberOfRowsInSection:0], 1, @"One place should report one row");
-}
-
-- (void)testTwoTableRowsForOnePlaces
-{
-    placesList = @[[[Place alloc] init], [[Place alloc] init]];
-    [dataSource setPlaces: placesList];
-    XCTAssertEqual([dataSource tableView:nil numberOfRowsInSection:0], 2, @"Two places should report two rows");
-}
-
-- (void)testCellCreatedContainsPlace
-{
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    PlaceTableViewCell *cell = (PlaceTableViewCell *)[dataSource tableView:nil cellForRowAtIndexPath:path];
-    XCTAssertEqualObjects(cell.place,
+    dataManager.places = @[samplePlace];
+    XCTAssertEqualObjects([dataManager placeForPosition:0],
                           samplePlace,
-                          @"Should return a cell with a reference to the sample place");
+                          @"should return place if list is set");
 }
 
-//- (void)testCellCreatedHasExpectedProperties
-//{
-//    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-//    PlaceTableViewCell *cell = (PlaceTableViewCell *)[dataSource tableView:nil cellForRowAtIndexPath:path];
-//    XCTAssertEqualObjects(cell.nameLabel.text,
-//                          samplePlace.name,
-//                          @"Should correctly set the label");
-//}
-
-- (void)testPlaceCellShownIfDataAndError
+- (void)testNilPlaceReturnedFromPlaceAtPositionIfNoneSet
 {
-    // ensure the error is ignored if there's good data to show
-    NSError *err = [NSError errorWithDomain:@"FakeDomain" code:0
-                                   userInfo:@{NSLocalizedDescriptionKey: @"Failure accessing places"}];
-    [dataSource setLastError:err];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    PlaceTableViewCell *cell = (PlaceTableViewCell *)[dataSource tableView:nil cellForRowAtIndexPath:path];
-    XCTAssertEqualObjects(cell.place,
-                          samplePlace,
-                          @"Should return place cell over error if data is set");
+    XCTAssertNil([dataManager placeForPosition:0],
+                 @"should return nil if places list is not set");
 }
-
 
 @end

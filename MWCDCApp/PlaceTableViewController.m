@@ -7,12 +7,15 @@
 //
 
 #import "PlaceTableViewController.h"
-#import "PlaceTableDataSource.h"
+#import "PlaceViewDataManager.h"
 #import "PlaceDetailViewController.h"
 #import "PlaceDataFetcher.h"
 #import "PlaceTableViewCell.h"
+#import "Place.h"
 
 @interface PlaceTableViewController ()
+
+- (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place;
 
 @end
 
@@ -27,14 +30,10 @@
     return self;
 }
 
--(void)awakeFromNib {
-    tableDataSource = [[PlaceTableDataSource alloc] init];
-}
+#pragma mark - View management
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.tableView.dataSource = tableDataSource;
+- (void)awakeFromNib {
+    dataManager = [[PlaceViewDataManager alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +50,65 @@
     [super viewWillAppear:animated];
 }
 
+#pragma mark - UITableViewDataSource protocol methods
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    NSParameterAssert(section == 0);
+
+    if (dataManager.dataStatus == PlaceViewDataStatusInitialized) {
+        return [dataManager.places count];
+    }
+    else {
+        return 1;
+    }
+}
+
+NSString * const placeCellReuseIdenitifier = @"Place";
+NSString * const errorCellReuseIdenitifier = @"PlaceError";
+NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PlaceViewDataStatus status = dataManager.dataStatus;
+    if (status == PlaceViewDataStatusInitialized) {
+        PlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
+        Place *place = [dataManager placeForPosition:[indexPath row]];
+        [self initializeCell:cell withPlace:place];
+        return cell;
+    }
+    else if (status == PlaceViewDataStatusError) {
+        NSError *err = [dataManager lastError];
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:errorCellReuseIdenitifier];
+        cell.textLabel.text = [err localizedDescription];
+        return cell;
+    }
+    else {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:errorCellReuseIdenitifier];
+        cell.textLabel.text = @"Loading places...";
+        return cell;
+    }
+}
+
+#pragma mark - PlaceDataFetcherDelegate protocol methods
+
+- (void)fetchingPlacesFailedWithError:(NSError *)error
+{
+    dataManager.lastError = error;
+    [self.tableView reloadData];
+}
+
+- (void)didReceivePlaces:(NSArray *)places
+{
+    dataManager.places = places;
+    dataManager.lastError = nil;
+    [[self tableView] reloadData];
+}
+
+#pragma mark - segue relations
+
+// untested
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showPlaceDetail"]) {
@@ -60,18 +118,13 @@
     }
 }
 
-- (void)fetchingPlacesFailedWithError:(NSError *)error
-{
-    tableDataSource.lastError = error;
-    [self.tableView reloadData];
-}
+#pragma mark - Private methods
 
-- (void)didReceivePlaces:(NSArray *)places
+// untested
+- (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place
 {
-    tableDataSource.places = places;
-    tableDataSource.lastError = nil;
-    [[self tableView] reloadData];
+    cell.place = place;
+    cell.nameLabel.text = place.name;
 }
-
 
 @end

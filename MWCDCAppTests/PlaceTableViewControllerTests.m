@@ -11,36 +11,39 @@
 
 #import "PlaceTableViewController.h"
 #import "PlaceDetailViewController.h"
-#import "PlaceTableDataSource.h"
+
+#import "PlaceViewDataManager.h"
 #import "PlaceDataFetcher.h"
 #import "Place.h"
 #import "PlaceTableViewCell.h"
 
 #import "OCMock/OCMock.h"
 
+/** 
+ * Untested behavior:
+ * - segue responds to "showPlaceDetail" identifier and creates a PlaceDetaiLVC
+ *      with the given place
+ * - table cells are initialized with a place reference
+ * - table cells are initialized with various place attributes for display
+ */
 
 /* extra methods on VC to access private variables */
-@implementation PlaceTableViewController (Inspectable)
+@implementation PlaceTableViewController (Accessible)
 
-- (PlaceTableDataSource *)getTableDataSource {
-    return tableDataSource;
+- (PlaceViewDataManager *)getDataManager {
+    return dataManager;
 }
-
-- (void)setTableDataSource:(PlaceTableDataSource *)dataSource {
-    tableDataSource = dataSource;
+- (void)setDataManager:(PlaceViewDataManager *)newDataManager {
+    dataManager = newDataManager;
 }
-
 
 @end
 
 @interface PlaceTableViewControllerTests : XCTestCase
 {
     PlaceTableViewController *vc;
-    UITableView *tableView;
-    UINavigationController *navController;
     
-    id mockManager;
-    id mockDataSource;
+    id mockDataFetcher;
 }
 @end
 
@@ -53,93 +56,144 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     vc = [storyboard instantiateViewControllerWithIdentifier:@"PlaceTableViewController"];
-    navController = [[UINavigationController alloc] initWithRootViewController:vc];
 
-    tableView = [[UITableView alloc] init];
-    vc.tableView = tableView;
-//    
-//    MockPlaceFetchConfiguration *config = [[MockPlaceFetchConfiguration alloc] init];
-//    vc.fetchConfiguration = config;
-    
-//    // the mock config always returns the same manager instance so we can use this to spy
-//    mockManager = config.dataManager;
-    
-    // used in some tests below
-    mockDataSource = [OCMockObject mockForClass:[PlaceTableDataSource class]];
+    mockDataFetcher = [OCMockObject niceMockForClass:[PlaceDataFetcher class]];
+    vc.dataFetcher = mockDataFetcher;
 }
 
 - (void)tearDown
 {
-    mockDataSource = nil;
-    tableView = nil;
+    mockDataFetcher = nil;
     vc = nil;
-    navController = nil;
     
     [super tearDown];
 }
 
-#pragma mark - View load behavior
-
-- (void)testDataSourceIsSetAfterViewLoads
-{
-    [vc setTableDataSource:mockDataSource];
-    [vc viewDidLoad];
-    XCTAssertEqual(mockDataSource,
-                   [[vc tableView] dataSource],
-                   @"Should set dataSource when view loads");
-}
-
 #pragma mark - View appearance behavior
 
-- (void)testTableDataSourceConnectedAfterAwakeFromNib
+- (void)testTableDataManagerConnectedAfterAwakeFromNib
 {
     [vc awakeFromNib];
-    XCTAssertNotNil([vc getTableDataSource],
-                    @"should create a table data source when view appears");
+    XCTAssertNotNil([vc getDataManager],
+                    @"should initialize a data manager when view appears");
 }
 
 - (void)testFetchBeginsWhenViewAppears
 {
     // test that delegate is set to self and fetching begins
-    [[mockManager expect] setDelegate:vc];
-    [[mockManager expect] fetchPlaces];
+    [[mockDataFetcher expect] setDelegate:vc];
+    [[mockDataFetcher expect] fetchPlaces];
     
     [vc viewWillAppear:NO];
-    [mockManager verify];
+    [mockDataFetcher verify];
 }
 
-- (void)testDataSourceIsNotifiedAfterFetchError
-{
-    NSError *err = [NSError  errorWithDomain:@"FakeDomain" code:0 userInfo:nil];
-    
-    [vc setTableDataSource:mockDataSource];
-    [[mockDataSource expect] setLastError:err];
+#pragma mark - UITableViewDataSource protocol behavior: initialized data manager
 
+- (void)testControllerReturnsRowCountIfInitiaized
+{
+    id manager = [[PlaceViewDataManager alloc] init];
+    [vc setDataManager:manager];
+    
+    NSArray *places = @[[[Place alloc] init], [[Place alloc] init]];
+    [manager setPlaces:places];
+    
+    XCTAssertEqual([vc tableView:nil numberOfRowsInSection:0],
+                   (NSInteger)2,
+                   @"should return number of places in data manager");
+}
+
+- (void)testControllerDefersToDataManagerForCellContentIfInitialized
+{
+    id manager = [OCMockObject partialMockForObject:[[PlaceViewDataManager alloc] init]];
+    [vc setDataManager:manager];
+
+    NSArray *places = @[[[Place alloc] init], [[Place alloc] init]];
+    [manager setPlaces:places];
+
+    [[manager expect] placeForPosition:0];
+    [vc tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [manager verify];
+}
+
+#pragma mark - UITableViewDataSource protocol behavior: uninitialized data manager
+- (void)testControllerReportsOneRowIfDataManagerIsUninitialized
+{
+    XCTAssertEqual([vc tableView:nil numberOfRowsInSection:0],
+                   (NSInteger)1,
+                   @"should return single row if uninitialized (status cell)");
+}
+
+- (void)testControllerDoesNotDeferToDataManagerForCellContentIfUninitialized
+{
+    id manager = [OCMockObject partialMockForObject:[[PlaceViewDataManager alloc] init]];
+    [vc setDataManager:manager];
+
+    [[manager reject] placeForPosition:0];
+    [vc tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+}
+
+#pragma mark - UITableViewDataSource protocol behavior: data manager with error
+- (void)testControllerReportsOneRowIfDataManagerHasError
+{
+    id manager = [[PlaceViewDataManager alloc] init];
+    [vc setDataManager:manager];
+    [manager setLastError:[NSError errorWithDomain:@"FakeDomain" code:0 userInfo:nil]];
+
+    // set up mock with error
+    XCTAssertEqual([vc tableView:nil numberOfRowsInSection:0],
+                   (NSInteger)1,
+                   @"should return single row if uninitialized (status cell)");
+}
+
+- (void)testControllerDefersToDataManagerForCellContentIfError
+{
+    id manager = [OCMockObject partialMockForObject:[[PlaceViewDataManager alloc] init]];
+    [vc setDataManager:manager];
+    [manager setLastError:[NSError errorWithDomain:@"FakeDomain" code:0 userInfo:nil]];
+
+    [[manager expect] lastError];
+    [vc tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [manager verify];
+}
+
+#pragma mark - PlaceViewDataManagerDelegate protocol behavior
+
+- (void)testDataManagerIsNotifiedAfterFetchError
+{
+    id mockDataManager = [OCMockObject niceMockForClass:[PlaceViewDataManager class]];
+    NSError *err = [NSError errorWithDomain:@"FakeDomain" code:0 userInfo:nil];
+    
+    [vc setDataManager:mockDataManager];
+
+    [[mockDataManager expect] setLastError:err];
     [vc fetchingPlacesFailedWithError:err];
-    [mockDataSource verify];
+    [mockDataManager verify];
 }
 
 - (void)testTableReloadsAfterFetchError
 {
     id mockTableView = [OCMockObject partialMockForObject:vc.tableView];
     vc.tableView = mockTableView;
-    
+
     [[mockTableView expect] reloadData];
-    
     [vc fetchingPlacesFailedWithError:nil];
+    
     [mockTableView verify];
 }
 
 - (void)testDataSourceGetPlacesAfterFetchSuccess
 {
+    id mockDataManager = [OCMockObject niceMockForClass:[PlaceViewDataManager class]];
     NSArray *places = [NSArray array];
-
-    [vc setTableDataSource:mockDataSource];
-    [[mockDataSource expect] setPlaces:[OCMArg any]];
-    [[mockDataSource expect] setLastError:nil];
     
+    [vc setDataManager:mockDataManager];
+    
+    [[mockDataManager expect] setPlaces:places];
+    [[mockDataManager expect] setLastError:nil];   // also ensure error is reset
     [vc didReceivePlaces:places];
-    [mockDataSource verify];
+    
+    [mockDataManager verify];
 }
 
 - (void)testTableReloadsAfterFetchSuccess
@@ -148,27 +202,9 @@
     vc.tableView = mockTableView;
     
     [[mockTableView expect] reloadData];
+    [vc didReceivePlaces:[NSArray array]];
     
-    [vc didReceivePlaces:nil];
     [mockTableView verify];
-}
-
-- (void)testDetailControllerGetsPlaceAfterSegue
-{
-    PlaceDetailViewController *detailVC = [[PlaceDetailViewController alloc] init];
-    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"showPlaceDetail"
-                                                               source:vc
-                                                          destination:detailVC
-                                                       performHandler:^{}];
-    
-    PlaceTableViewCell *cell = [[PlaceTableViewCell alloc] initWithStyle:0 reuseIdentifier:@""];
-    Place *samplePlace = [[Place alloc] init];
-    cell.place = samplePlace;
-    
-    [vc prepareForSegue:segue sender:cell];
-    XCTAssertEqualObjects([detailVC place],
-                          samplePlace,
-                          @"should hand the detail VC a place");
 }
 
 @end
