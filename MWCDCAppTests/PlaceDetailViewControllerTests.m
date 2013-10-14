@@ -43,9 +43,4 @@
     [super tearDown];
 }
 
-- (void)testThatNameIsDisplayedAfterViewLoads
-{
-    XCTAssertEqualObjects(vc.nameLabel.text, @"Shiloh Grill", @"should display the place name");
-}
-
 @end

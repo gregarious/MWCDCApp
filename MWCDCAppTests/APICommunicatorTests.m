@@ -41,12 +41,6 @@
     [super tearDown];
 }
 
-- (void)testFetchingPlacesCreatesURLConnection
-{
-    [communicator fetchPlaces];
-    XCTAssertNotNil([communicator currentURLConnection], @"Should create a new URL connection for fetching");
-}
-
 - (void)testFetchingPlacesURLIsCorrect
 {
     [communicator fetchPlaces];
@@ -54,6 +48,21 @@
     XCTAssertEqualObjects([[connection originalRequest] URL],
                           [NSURL URLWithString:@"http://mwcdc.scenable.com/api/places/"],
                           @"Should be connecting to the expected URL");
+}
+
+- (void)testFetchingOverlookURLIsCorrect
+{
+    [communicator fetchInterestPoints:1];
+    NSURLConnection *connection = [communicator currentURLConnection];
+    XCTAssertEqualObjects([[connection originalRequest] URL],
+                          [NSURL URLWithString:@"http://mwcdc.scenable.com/api/viewpoints/1/"],
+                          @"Should be connecting to the expected URL");
+}
+
+- (void)testFetchingPlacesCreatesURLConnection
+{
+    [communicator fetchPlaces];
+    XCTAssertNotNil([communicator currentURLConnection], @"Should create a new URL connection for fetching");
 }
 
 - (void)testThatNewFetchCreatesNewConnection

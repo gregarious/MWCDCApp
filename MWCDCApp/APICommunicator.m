@@ -9,6 +9,7 @@
 #import "APICommunicator.h"
 
 NSString * const PLACES_URL = @"http://mwcdc.scenable.com/api/places/";
+NSString * const OVERLOOK_URL_FORMAT = @"http://mwcdc.scenable.com/api/viewpoints/%d/";
 NSString * const APICommunicatorErrorDomain = @"APICommunicatorErrorDomain";
 
 @implementation APICommunicator
@@ -18,6 +19,14 @@ NSString * const APICommunicatorErrorDomain = @"APICommunicatorErrorDomain";
 
     [self initiateConnectionForRequest:request];
 }
+
+- (void)fetchInterestPoints:(NSUInteger)overlookID
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:OVERLOOK_URL_FORMAT, overlookID]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    [self initiateConnectionForRequest:request];
+}
+
 
 - (void)initiateConnectionForRequest:(NSURLRequest *)request {
     [self cancelAndDiscardURLConnection];

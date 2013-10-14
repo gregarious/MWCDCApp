@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370E1E7F180C374800844A63 /* Overlook.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E7E180C374800844A63 /* Overlook.m */; };
+		370E1E82180C375800844A63 /* SkylineDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E81180C375800844A63 /* SkylineDataFetcher.m */; };
+		370E1E85180C376900844A63 /* SkylinePointBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E84180C376900844A63 /* SkylinePointBuilder.m */; };
+		370E1E8A180C37E400844A63 /* OverlookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E89180C37E400844A63 /* OverlookTests.m */; };
 		372A71B5180751F9006826D1 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 372A71B3180751E4006826D1 /* libOCMock.a */; };
 		372A71B718083682006826D1 /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A71B618083682006826D1 /* AppDelegateTests.m */; };
 		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
@@ -22,6 +26,9 @@
 		3786658517EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658417EBBDD400F341C1 /* PlaceViewDataManager.m */; };
 		3786658617EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786658417EBBDD400F341C1 /* PlaceViewDataManager.m */; };
 		3786659517EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */; };
+		378F67CF180C3E2F00066E6B /* SkylinePointBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 378F67CE180C3E2F00066E6B /* SkylinePointBuilderTests.m */; };
+		378F67D2180C4ED600066E6B /* InterestPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 378F67D1180C4ED600066E6B /* InterestPoint.m */; };
+		378F67D4180C4F8200066E6B /* InterestPointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 378F67D3180C4F8200066E6B /* InterestPointTests.m */; };
 		379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */; };
 		37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* APICommunicator.m */; };
 		37B599FC17E359D700BFAA46 /* APICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B599FA17E359D700BFAA46 /* APICommunicator.m */; };
@@ -46,6 +53,8 @@
 		37E909F117EA5A4E000C65A3 /* APICommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F017EA5A4E000C65A3 /* APICommunicatorTests.m */; };
 		37E909F417EA5AD2000C65A3 /* InspectableAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F317EA5AD2000C65A3 /* InspectableAPICommunicator.m */; };
 		37E909F717EB5792000C65A3 /* NonNetworkedAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */; };
+		37EF1CE8180C55380096467B /* SkylinePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EF1CE7180C55380096467B /* SkylinePoint.m */; };
+		37EF1CEA180C5BB30096467B /* SkylinePointTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EF1CE9180C5BB30096467B /* SkylinePointTest.m */; };
 		37FEB15718060BD100F9F3A5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FEB15618060BD100F9F3A5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +69,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370E1E7D180C374800844A63 /* Overlook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Overlook.h; sourceTree = "<group>"; };
+		370E1E7E180C374800844A63 /* Overlook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Overlook.m; sourceTree = "<group>"; };
+		370E1E80180C375800844A63 /* SkylineDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylineDataFetcher.h; sourceTree = "<group>"; };
+		370E1E81180C375800844A63 /* SkylineDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineDataFetcher.m; sourceTree = "<group>"; };
+		370E1E83180C376900844A63 /* SkylinePointBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylinePointBuilder.h; sourceTree = "<group>"; };
+		370E1E84180C376900844A63 /* SkylinePointBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylinePointBuilder.m; sourceTree = "<group>"; };
+		370E1E87180C379B00844A63 /* SkylineFetcherDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkylineFetcherDelegate.h; sourceTree = "<group>"; };
+		370E1E89180C37E400844A63 /* OverlookTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlookTests.m; sourceTree = "<group>"; };
 		372A71B3180751E4006826D1 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		372A71B618083682006826D1 /* AppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
 		37353CB117E274EE0062B12A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -79,6 +96,10 @@
 		3786658417EBBDD400F341C1 /* PlaceViewDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceViewDataManager.m; path = MWCDCAppTests/PlaceViewDataManager.m; sourceTree = SOURCE_ROOT; };
 		3786659217EBC4BE00F341C1 /* PlaceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewController.h; sourceTree = "<group>"; };
 		3786659317EBC4BE00F341C1 /* PlaceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewController.m; sourceTree = "<group>"; };
+		378F67CE180C3E2F00066E6B /* SkylinePointBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylinePointBuilderTests.m; sourceTree = "<group>"; };
+		378F67D0180C4ED600066E6B /* InterestPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestPoint.h; sourceTree = "<group>"; };
+		378F67D1180C4ED600066E6B /* InterestPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestPoint.m; sourceTree = "<group>"; };
+		378F67D3180C4F8200066E6B /* InterestPointTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestPointTests.m; sourceTree = "<group>"; };
 		379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceBuilderTests.m; sourceTree = "<group>"; };
 		37B599F917E359D700BFAA46 /* APICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICommunicator.h; sourceTree = "<group>"; };
 		37B599FA17E359D700BFAA46 /* APICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICommunicator.m; sourceTree = "<group>"; };
@@ -114,6 +135,9 @@
 		37E909F517EB5792000C65A3 /* NonNetworkedAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonNetworkedAPICommunicator.h; sourceTree = "<group>"; };
 		37E909F617EB5792000C65A3 /* NonNetworkedAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonNetworkedAPICommunicator.m; sourceTree = "<group>"; };
 		37E909FC17EB5E71000C65A3 /* APICommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APICommunicatorDelegate.h; sourceTree = "<group>"; };
+		37EF1CE6180C55380096467B /* SkylinePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylinePoint.h; sourceTree = "<group>"; };
+		37EF1CE7180C55380096467B /* SkylinePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylinePoint.m; sourceTree = "<group>"; };
+		37EF1CE9180C5BB30096467B /* SkylinePointTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylinePointTest.m; sourceTree = "<group>"; };
 		37FEB15618060BD100F9F3A5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -144,6 +168,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		370E1E7C180C36EC00844A63 /* Overlooks */ = {
+			isa = PBXGroup;
+			children = (
+				370E1E86180C377E00844A63 /* Data */,
+			);
+			name = Overlooks;
+			sourceTree = "<group>";
+		};
+		370E1E86180C377E00844A63 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				370E1E7D180C374800844A63 /* Overlook.h */,
+				370E1E7E180C374800844A63 /* Overlook.m */,
+				378F67D0180C4ED600066E6B /* InterestPoint.h */,
+				378F67D1180C4ED600066E6B /* InterestPoint.m */,
+				37EF1CE6180C55380096467B /* SkylinePoint.h */,
+				37EF1CE7180C55380096467B /* SkylinePoint.m */,
+				370E1E80180C375800844A63 /* SkylineDataFetcher.h */,
+				370E1E81180C375800844A63 /* SkylineDataFetcher.m */,
+				370E1E87180C379B00844A63 /* SkylineFetcherDelegate.h */,
+				370E1E83180C376900844A63 /* SkylinePointBuilder.h */,
+				370E1E84180C376900844A63 /* SkylinePointBuilder.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		370E1E88180C37D300844A63 /* Overlooks */ = {
+			isa = PBXGroup;
+			children = (
+				370E1E89180C37E400844A63 /* OverlookTests.m */,
+				378F67D3180C4F8200066E6B /* InterestPointTests.m */,
+				37EF1CE9180C5BB30096467B /* SkylinePointTest.m */,
+				378F67CE180C3E2F00066E6B /* SkylinePointBuilderTests.m */,
+			);
+			name = Overlooks;
+			sourceTree = "<group>";
+		};
 		37353CB917E354BF0062B12A /* Places */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +349,7 @@
 				37E6EA9117E22BE7004976DC /* DetailViewController.m */,
 				37E6EA9317E22BE7004976DC /* Images.xcassets */,
 				37353CB917E354BF0062B12A /* Places */,
+				370E1E7C180C36EC00844A63 /* Overlooks */,
 				375C3C5E17EBA83300CB1B03 /* API */,
 				37E6EA7F17E22BE7004976DC /* Supporting Files */,
 			);
@@ -308,8 +370,9 @@
 		37E6EAA017E22BE7004976DC /* MWCDCAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				375C3C6017EBA86B00CB1B03 /* API */,
+				370E1E88180C37D300844A63 /* Overlooks */,
 				37B599FD17E35A0D00BFAA46 /* Places */,
+				375C3C6017EBA86B00CB1B03 /* API */,
 				37E6EAA117E22BE7004976DC /* Supporting Files */,
 				372A71B618083682006826D1 /* AppDelegateTests.m */,
 			);
@@ -423,13 +486,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37EF1CE8180C55380096467B /* SkylinePoint.m in Sources */,
 				37E6EA8917E22BE7004976DC /* AppDelegate.m in Sources */,
 				37BEFB331808C9DA007EF741 /* PlaceTableViewCell.m in Sources */,
+				378F67D2180C4ED600066E6B /* InterestPoint.m in Sources */,
 				3786659517EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */,
 				3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */,
+				370E1E82180C375800844A63 /* SkylineDataFetcher.m in Sources */,
 				37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */,
+				370E1E85180C376900844A63 /* SkylinePointBuilder.m in Sources */,
 				376F275A17E23F7400178A06 /* Place.m in Sources */,
 				37E6EA9217E22BE7004976DC /* DetailViewController.m in Sources */,
+				370E1E7F180C374800844A63 /* Overlook.m in Sources */,
 				37E6EA8F17E22BE7004976DC /* MasterViewController.m in Sources */,
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
 				3786658517EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */,
@@ -446,16 +514,20 @@
 				3786658217EBBCB700F341C1 /* PlaceTableViewControllerTests.m in Sources */,
 				37D5D0A517E9FBE00051A7B5 /* FakePlaceBuilder.m in Sources */,
 				3761D6B11802F911004BC847 /* PlaceDetailViewControllerTests.m in Sources */,
+				378F67CF180C3E2F00066E6B /* SkylinePointBuilderTests.m in Sources */,
 				37353CB417E352320062B12A /* PlaceFetchWorkflowTests.m in Sources */,
 				3786658617EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */,
 				37E909F117EA5A4E000C65A3 /* APICommunicatorTests.m in Sources */,
 				376F275717E23F1A00178A06 /* PlaceTests.m in Sources */,
+				37EF1CEA180C5BB30096467B /* SkylinePointTest.m in Sources */,
 				379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */,
+				378F67D4180C4F8200066E6B /* InterestPointTests.m in Sources */,
 				37B599FC17E359D700BFAA46 /* APICommunicator.m in Sources */,
 				374E223D17FEF9620051897F /* PlaceTableDataSourceTests.m in Sources */,
 				37E909F717EB5792000C65A3 /* NonNetworkedAPICommunicator.m in Sources */,
 				37D5D0A217E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */,
 				37353CB817E3546C0062B12A /* PlaceDataFetcher.m in Sources */,
+				370E1E8A180C37E400844A63 /* OverlookTests.m in Sources */,
 				372A71B718083682006826D1 /* AppDelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
