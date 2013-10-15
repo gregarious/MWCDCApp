@@ -16,8 +16,7 @@
 
 /*
  * Untested behaviors:
- * -
- *
+ * - Everything!
  */
 
 - (void)setUp
@@ -30,11 +29,6 @@
 {
     // Put teardown code here; it will be run once, after the last test case.
     [super tearDown];
-}
-
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end
