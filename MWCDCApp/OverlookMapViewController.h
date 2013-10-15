@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface OverlookListViewController : UIViewController <MKMapViewDelegate>
+@interface OverlookMapViewController : UIViewController <MKMapViewDelegate>
 {
     NSArray *overlooks;
 }

@@ -9,16 +9,16 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "Overlook.h"
-#import "OverlookListViewController.h"
+#import "OverlookMapViewController.h"
 #import "SkylineViewController.h"
 
-@interface OverlookListViewController ()
+@interface OverlookMapViewController ()
 
 - (NSArray *)fixedOverlooks;
 
 @end
 
-@implementation OverlookListViewController 
+@implementation OverlookMapViewController 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -90,10 +90,12 @@ NSString * const skylineSegueIdentifier = @"showSkyline";
 - (NSArray *)fixedOverlooks;
 {
     return @[
-        [[Overlook alloc] initWithName:@"Duquesne Incline"
-                            coordinate:CLLocationCoordinate2DMake(40.438406, -80.019500)],
-        [[Overlook alloc] initWithName:@"Monongahela Incline"
-                            coordinate:CLLocationCoordinate2DMake(40.431383, -80.006111)]
+             [[Overlook alloc] initWithId:1
+                                     name:@"Duquesne Incline"
+                               coordinate:CLLocationCoordinate2DMake(40.438406, -80.019500)],
+             [[Overlook alloc] initWithId:2
+                                     name:@"Monongahela Incline"
+                               coordinate:CLLocationCoordinate2DMake(40.431383, -80.006111)]
     ];
 }
 

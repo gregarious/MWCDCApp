@@ -8,9 +8,9 @@
 
 #import <XCTest/XCTest.h>
 #import <MapKit/MapKit.h>
-#import "OverlookListViewController.h"
+#import "OverlookMapViewController.h"
 
-@implementation OverlookListViewController (Observable)
+@implementation OverlookMapViewController (Observable)
 
 - (NSArray *)getOverlooks {
     return overlooks;
@@ -20,7 +20,7 @@
 
 @interface OverlookListViewControllerTests : XCTestCase
 {
-    OverlookListViewController *vc;
+    OverlookMapViewController *vc;
 }
 @end
 
@@ -39,7 +39,7 @@
 - (void)setUp
 {
     [super setUp];
-    vc = [[OverlookListViewController alloc] initWithNibName:nil bundle:nil];
+    vc = [[OverlookMapViewController alloc] initWithNibName:nil bundle:nil];
 }
 
 - (void)tearDown

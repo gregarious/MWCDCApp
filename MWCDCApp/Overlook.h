@@ -12,13 +12,14 @@
 
 @interface Overlook : NSObject <MKAnnotation>
 
+@property (nonatomic, readonly, assign) NSInteger _id;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly, assign) CLLocationCoordinate2D coordinate;
 
 @property (nonatomic, strong) UIImage *skylineImage;
 @property (nonatomic, strong) NSArray *skylinePoints;
 
-- (id)initWithName:(NSString *)name coordinate:(CLLocationCoordinate2D)coord;
+- (id)initWithId:(NSInteger)_id name:(NSString *)name coordinate:(CLLocationCoordinate2D)coord;
 
 // alias for name property (for MKAnnotation)
 - (NSString *)title;

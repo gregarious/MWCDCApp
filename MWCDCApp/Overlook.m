@@ -10,9 +10,10 @@
 
 @implementation Overlook
 
-- (id)initWithName:(NSString *)name coordinate:(CLLocationCoordinate2D)coord
+- (id)initWithId:(NSInteger)_id name:(NSString *)name coordinate:(CLLocationCoordinate2D)coord
 {
     if (self = [super init]) {
+        __id = _id;
         _name = [name copy];
         _coordinate = coord;
     }

@@ -21,9 +21,9 @@
 - (void)setUp
 {
     [super setUp];
-    overlook = [[Overlook alloc] init];
-    overlook = [[Overlook alloc] initWithName:@"Duquesne Incline"
-                                   coordinate:CLLocationCoordinate2DMake(40.438406, -80.019500)];
+    overlook = [[Overlook alloc] initWithId:1
+                                       name:@"Duquesne Incline"
+                                 coordinate:CLLocationCoordinate2DMake(40.438406, -80.019500)];
 }
 
 - (void)tearDown
@@ -34,6 +34,8 @@
 
 - (void)testOverlookCAnBeInitializedWithArguments
 {
+    XCTAssertEqual(overlook._id, (NSInteger)1, @"should store id");
+    XCTAssertEqualObjects(overlook.name, @"Duquesne Incline", @"should store name");
     XCTAssertEqualWithAccuracy(overlook.coordinate.latitude, 40.438406, 1e-6, "@should store latitude");
     XCTAssertEqualWithAccuracy(overlook.coordinate.longitude, -80.019500, 1e-6, "@should store longitude");
 }
