@@ -12,6 +12,7 @@
 #import "PlaceDataFetcher.h"
 #import "PlaceTableViewCell.h"
 #import "Place.h"
+#import "PlaceCollectionViewController.h"
 
 @interface PlaceTableViewController ()
 
@@ -32,22 +33,10 @@
 
 #pragma mark - View management
 
-- (void)awakeFromNib {
-    dataManager = [[PlaceViewDataManager alloc] init];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.dataFetcher.delegate = self;
-    [self.dataFetcher fetchPlaces];
-    
-    [super viewWillAppear:animated];
 }
 
 #pragma mark - UITableViewDataSource protocol methods
@@ -57,8 +46,8 @@
 {
     NSParameterAssert(section == 0);
 
-    if (dataManager.dataStatus == PlaceViewDataStatusInitialized) {
-        return [dataManager.places count];
+    if (self.dataManager.dataStatus == PlaceViewDataStatusInitialized) {
+        return [self.dataManager.places count];
     }
     else {
         return 1;
@@ -71,15 +60,15 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlaceViewDataStatus status = dataManager.dataStatus;
+    PlaceViewDataStatus status = self.dataManager.dataStatus;
     if (status == PlaceViewDataStatusInitialized) {
         PlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
-        Place *place = [dataManager placeForPosition:[indexPath row]];
+        Place *place = [self.dataManager placeForPosition:[indexPath row]];
         [self initializeCell:cell withPlace:place];
         return cell;
     }
     else if (status == PlaceViewDataStatusError) {
-        NSError *err = [dataManager lastError];
+        NSError *err = [self.dataManager lastError];
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:errorCellReuseIdenitifier];
         cell.textLabel.text = [err localizedDescription];
         return cell;
@@ -91,31 +80,27 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
     }
 }
 
-#pragma mark - PlaceDataFetcherDelegate protocol methods
-
-- (void)fetchingPlacesFailedWithError:(NSError *)error
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    dataManager.lastError = error;
-    [self.tableView reloadData];
-}
-
-- (void)didReceivePlaces:(NSArray *)places
-{
-    dataManager.places = places;
-    dataManager.lastError = nil;
-    [[self tableView] reloadData];
-}
-
-#pragma mark - segue relations
-
-// untested
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showPlaceDetail"]) {
-        PlaceTableViewCell *cell = (PlaceTableViewCell *)sender;
-        PlaceDetailViewController *detailVC = (PlaceDetailViewController *)[segue destinationViewController];
-        [detailVC setPlace:cell.place];
+    NSParameterAssert(indexPath.section == 0);
+    if (self.dataManager.dataStatus == PlaceViewDataStatusInitialized) {
+        // TODO: don't really love the need to create a new cell before doing the segue
+        UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+        
+        // TODO: obviously parent.parent is not optimal
+        PlaceCollectionViewController *placeCollectionRootVC = (PlaceCollectionViewController *)self.parentViewController.parentViewController;
+        [placeCollectionRootVC performSegueWithIdentifier:@"showPlaceDetail" sender:cell];
     }
+}
+
+
+#pragma mark - View syncing to data manager
+
+- (void)setDataManager:(PlaceViewDataManager *)dataManager
+{
+    // TODO: replace this with some kind of data manager callback?
+    _dataManager = dataManager;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Private methods

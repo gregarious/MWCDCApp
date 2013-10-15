@@ -56,4 +56,8 @@
     XCTAssertEqualWithAccuracy(place.coordinate.longitude, -80.006637, 1e-6, @"the Place should store the given longitude");
 }
 
+- (void)testConformanceToMKAnnotation
+{
+    XCTAssertNotNil(place.title, @"should respond to title selector");
+}
 @end

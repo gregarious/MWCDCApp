@@ -1,12 +1,13 @@
 //
-//  PlaceTableViewController.h
+//  PlaceMapViewController.h
 //  MWCDCApp
 //
-//  Created by Greg Nicholas on 9/19/13.
+//  Created by Greg Nicholas on 10/15/13.
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "PlaceDataFetcherDelegate.h"
 
 @class PlaceViewDataManager;
@@ -14,11 +15,11 @@
 @class PlaceTableViewCell;
 @class Place;
 
-@interface PlaceTableViewController : UITableViewController
+@interface PlaceMapViewController : UIViewController <MKMapViewDelegate>
+{
+    __weak IBOutlet MKMapView *_mapView;
+}
 
 @property (nonatomic, strong) PlaceViewDataManager *dataManager;
-
-// private method, made public for simple testing
-- (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place;
 
 @end

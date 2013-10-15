@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface Place : NSObject
+@interface Place : NSObject <MKAnnotation>
 
 // Mandatory properties
 @property (nonatomic, readonly, copy) NSString *name;
@@ -28,5 +29,8 @@
 - (id)initWithName:(NSString *)newName
      streetAddress:(NSString *)newAddress
         coordinate:(CLLocationCoordinate2D)newCoord;
+
+// MKAnnotation protocol methods
+- (NSString *)title;
 
 @end

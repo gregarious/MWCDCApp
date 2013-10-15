@@ -22,4 +22,9 @@
     return self;
 }
 
+- (NSString *)title
+{
+    return self.name;
+}
+
 @end
