@@ -101,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukh-jB-tJS">
-                                <rect key="frame" x="139" y="125" width="42" height="21"/>
+                                <rect key="frame" x="34" y="125" width="258" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -204,10 +204,10 @@
             </objects>
             <point key="canvasLocation" x="-71" y="855"/>
         </scene>
-        <!--View Controller - Overlook Map-->
+        <!--Overlook List View Controller - Overlook Map-->
         <scene sceneID="Emw-1F-2Af">
             <objects>
-                <viewController title="Overlook Map" id="Lxx-XD-MN1" sceneMemberID="viewController">
+                <viewController title="Overlook Map" id="Lxx-XD-MN1" customClass="OverlookListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S8k-Dn-PH9"/>
                         <viewControllerLayoutGuide type="bottom" id="93q-12-vgN"/>
@@ -217,25 +217,29 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UC0-ju-sl8">
-                                <rect key="frame" x="0.0" y="30" width="320" height="480"/>
+                                <rect key="frame" x="5" y="33" width="320" height="447"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Lxx-XD-MN1" id="ntJ-qc-pH6"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="zT9-XG-Bte"/>
                     <connections>
-                        <segue destination="1YW-U5-i8I" kind="push" identifier="showOverlookDetail" id="sw4-vE-ips"/>
+                        <outlet property="mapView" destination="UC0-ju-sl8" id="Tp6-2H-DXP"/>
+                        <segue destination="1YW-U5-i8I" kind="push" identifier="showSkyline" id="sw4-vE-ips"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8U-cQ-u4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="404" y="854"/>
         </scene>
-        <!--View Controller - Points of Interest-->
+        <!--Skyline View Controller - Points of Interest-->
         <scene sceneID="vKL-Nk-KdL">
             <objects>
-                <viewController title="Points of Interest" id="1YW-U5-i8I" sceneMemberID="viewController">
+                <viewController title="Points of Interest" id="1YW-U5-i8I" customClass="SkylineViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="59C-YB-CJq"/>
                         <viewControllerLayoutGuide type="bottom" id="pLZ-Ho-Ljq"/>
@@ -244,15 +248,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hiQ-Ce-uTl">
-                                <rect key="frame" x="0.0" y="5" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </mapView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vya-Lk-sUy">
+                                <rect key="frame" x="25" y="181" width="275" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Foo-4h-E6Y"/>
                     <connections>
+                        <outlet property="testLabel" destination="vya-Lk-sUy" id="HP6-13-XFR"/>
                         <segue destination="ncZ-Nf-Vhe" kind="push" identifier="showInterestPointDetail" id="uOH-DA-xT8"/>
                     </connections>
                 </viewController>

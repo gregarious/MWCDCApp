@@ -18,7 +18,7 @@
 @property (nonatomic, weak) id<APICommunicatorDelegate> delegate;
 
 - (void)fetchPlaces;
-- (void)fetchInterestPoints:(NSUInteger)overlookID;
+- (void)fetchInterestPoints:(NSInteger)overlookID;
 
 - (void)initiateConnectionForRequest:(NSURLRequest *)request;
 - (void)cancelAndDiscardURLConnection;

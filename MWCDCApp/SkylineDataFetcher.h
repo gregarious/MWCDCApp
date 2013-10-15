@@ -7,7 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SkylineDataFetcherDelegate.h"
+#import "APICommunicatorDelegate.h"
 
-@interface SkylineDataFetcher : NSObject
+@class SkylinePointBuilder;
+@class APICommunicator;
+
+@interface SkylineDataFetcher : NSObject <APICommunicatorDelegate>
+{
+    NSInteger currentlyFetchingOverlookID;
+}
+@property (nonatomic, weak) id<SkylineDataFetcherDelegate> delegate;
+@property (nonatomic, strong) APICommunicator *communicator;
+@property (nonatomic, strong) SkylinePointBuilder *objectBuilder;
+
++ (SkylineDataFetcher *)defaultFetcher;
+
+- (void)fetchSkylinePoints:(NSInteger)overlookID;
+
+- (void)fetchingDataFailedWithError:(NSError*)err;
+- (void)receivedDataJSON:(NSString *)objectNotation;
 
 @end
+
+extern NSString* const SkylineDataFetcherErrorDomain;
+enum {
+    SkylineDataFetcherErrorSearchCode
+};
+

@@ -97,7 +97,7 @@
 - (void)testErrorIsReturnedToDelegate
 {
     [[delegate expect] fetchingPlacesFailedWithError:[OCMArg isNotNil]];
-    [fetcher searchingForPlacesFailedWithError:underlyingError];
+    [fetcher fetchingDataFailedWithError:underlyingError];
     [delegate verify];
 }
 
@@ -108,7 +108,7 @@
         return ![error isEqual:underlyingError];
     }]];
     
-    [fetcher searchingForPlacesFailedWithError:underlyingError];
+    [fetcher fetchingDataFailedWithError:underlyingError];
     [delegate verify];
 }
 
@@ -120,14 +120,14 @@
         return [underlyingError isEqual:actualUnderlying];
     }]];
     
-    [fetcher searchingForPlacesFailedWithError:underlyingError];
+    [fetcher fetchingDataFailedWithError:underlyingError];
     [delegate verify];
 }
 
 #pragma mark - Builder-related tests
 
 - (void)testPlaceJSONIsPassedToPlaceBuilder {
-    [fetcher receivedPlacesJSON: @"Fake JSON"];
+    [fetcher receivedDataJSON: @"Fake JSON"];
     XCTAssertEqualObjects(fakeBuilder.JSON, @"Fake JSON", @"Downloaded JSON is sent to the builder");
     fetcher.placeBuilder = nil;
 }
@@ -137,7 +137,7 @@
     fakeBuilder.errorToSet = underlyingError;
 
     [[delegate expect] fetchingPlacesFailedWithError:[OCMArg isNotNil]];
-    [fetcher receivedPlacesJSON:@"Fake JSON"];
+    [fetcher receivedDataJSON:@"Fake JSON"];
     
     [delegate verify];
 }
@@ -146,7 +146,7 @@
     fakeBuilder.arrayToReturn = placesArray;
     
     [[delegate reject] fetchingPlacesFailedWithError:[OCMArg any]];
-    [fetcher receivedPlacesJSON:@"Fake JSON"];
+    [fetcher receivedDataJSON:@"Fake JSON"];
     
     [delegate verify];
 }
@@ -155,7 +155,7 @@
     fakeBuilder.arrayToReturn = placesArray;
     
     [[delegate expect] didReceivePlaces:placesArray];
-    [fetcher receivedPlacesJSON:@"Fake JSON"];
+    [fetcher receivedDataJSON:@"Fake JSON"];
     
     [delegate verify];
 }
@@ -167,7 +167,7 @@
     fakeBuilder.arrayToReturn = empty;
     
     [[delegate expect] didReceivePlaces:empty];
-    [fetcher receivedPlacesJSON:@"Fake JSON"];
+    [fetcher receivedDataJSON:@"Fake JSON"];
     
     [delegate verify];
 }

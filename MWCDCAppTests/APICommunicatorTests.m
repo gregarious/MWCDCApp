@@ -97,7 +97,7 @@
 {
     NSHTTPURLResponse *resp404 = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:404 HTTPVersion:nil headerFields:nil];
     
-    [[mockDelegate expect] searchingForPlacesFailedWithError:[OCMArg isNotNil]];
+    [[mockDelegate expect] fetchingDataFailedWithError:[OCMArg isNotNil]];
     
     [nnCommunicator fetchPlaces];
     [nnCommunicator connection:nil didReceiveResponse:resp404];
@@ -108,7 +108,7 @@
 {
     NSHTTPURLResponse *resp200 = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
     
-    [[mockDelegate reject] searchingForPlacesFailedWithError:[OCMArg any]];
+    [[mockDelegate reject] fetchingDataFailedWithError:[OCMArg any]];
     
     [nnCommunicator fetchPlaces];
     [nnCommunicator connection:nil didReceiveResponse:resp200];
@@ -119,7 +119,7 @@
 {
     NSError *error = [NSError errorWithDomain:@"Fake domain" code:99 userInfo:nil];
 
-    [[mockDelegate expect] searchingForPlacesFailedWithError:error];
+    [[mockDelegate expect] fetchingDataFailedWithError:error];
     
     [nnCommunicator fetchPlaces];
     [nnCommunicator connection:nil didFailWithError:error];
@@ -142,7 +142,7 @@
 
 - (void)testThatFullResponseIsRelayedToDelegate
 {
-    [[mockDelegate expect] receivedPlacesJSON:@"Success!"];
+    [[mockDelegate expect] receivedDataJSON:@"Success!"];
     
     [nnCommunicator fetchPlaces];
     [nnCommunicator setResponseBufferContents:[@"Success!" dataUsingEncoding:NSUTF8StringEncoding]];

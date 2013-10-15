@@ -20,7 +20,7 @@ NSString * const APICommunicatorErrorDomain = @"APICommunicatorErrorDomain";
     [self initiateConnectionForRequest:request];
 }
 
-- (void)fetchInterestPoints:(NSUInteger)overlookID
+- (void)fetchInterestPoints:(NSInteger)overlookID
 {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:OVERLOOK_URL_FORMAT, overlookID]];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
@@ -49,7 +49,7 @@ didReceiveResponse:(NSURLResponse *)response {
                                              code:[httpResponse statusCode]
                                          userInfo:nil];
 
-        [self.delegate searchingForPlacesFailedWithError:error];
+        [self.delegate fetchingDataFailedWithError:error];
         [self cancelAndDiscardURLConnection];
     }
 }
@@ -62,14 +62,14 @@ didReceiveResponse:(NSURLResponse *)response {
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error {
     fetchingConnection = nil;
-    [self.delegate searchingForPlacesFailedWithError:error];
+    [self.delegate fetchingDataFailedWithError:error];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     fetchingConnection = nil;
     NSString *responseString = [[NSString alloc] initWithData:responseBuffer
                                                      encoding:NSUTF8StringEncoding];
-    [self.delegate receivedPlacesJSON:responseString];
+    [self.delegate receivedDataJSON:responseString];
 }
 
 - (void)cancelAndDiscardURLConnection {

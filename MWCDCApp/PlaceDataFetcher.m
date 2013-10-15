@@ -10,7 +10,7 @@
 
 @interface PlaceDataFetcher ()
 
-- (void)notifyDelegateAboutPlaceSearchError:(NSError *)underlyingError;
+- (void)notifyDelegateAboutAPIFetchError:(NSError *)underlyingError;
 
 @end
 
@@ -31,16 +31,16 @@
     [self.communicator fetchPlaces];
 }
 
-- (void)searchingForPlacesFailedWithError:(NSError*)err {
-    [self notifyDelegateAboutPlaceSearchError:err];
+- (void)fetchingDataFailedWithError:(NSError*)err {
+    [self notifyDelegateAboutAPIFetchError:err];
 }
 
-- (void)receivedPlacesJSON:(NSString *)objectNotation {
+- (void)receivedDataJSON:(NSString *)objectNotation {
     NSError *err = nil;
     NSArray *places = [self.placeBuilder placesFromJSON: objectNotation
                                              error: &err];
     if (!places) {
-        [self notifyDelegateAboutPlaceSearchError:err];
+        [self notifyDelegateAboutAPIFetchError:err];
     }
     else {
         [self.delegate didReceivePlaces:places];
@@ -48,7 +48,7 @@
 }
 
 /** private **/
-- (void)notifyDelegateAboutPlaceSearchError:(NSError *)underlyingError {
+- (void)notifyDelegateAboutAPIFetchError:(NSError *)underlyingError {
     NSDictionary *errorInfo = nil;
     if (underlyingError) {
         errorInfo = @{NSUnderlyingErrorKey: underlyingError};

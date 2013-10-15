@@ -20,8 +20,8 @@
 + (PlaceDataFetcher *)defaultFetcher;
 
 - (void)fetchPlaces;
-- (void)searchingForPlacesFailedWithError:(NSError *)err;
-- (void)receivedPlacesJSON:(NSString *)objectNotation;
+- (void)fetchingDataFailedWithError:(NSError *)err;
+- (void)receivedDataJSON:(NSString *)objectNotation;
 
 @end
 
@@ -30,3 +30,4 @@ extern NSString* const PlaceDataFetcherErrorDomain;
 enum {
     PlaceDataFetcherErrorSearchCode
 };
+
