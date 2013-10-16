@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "PlaceTableViewController.h"
+#import "PlaceCollectionViewController.h"
 
 @interface AppDelegateTests : XCTestCase
 {
@@ -83,21 +83,14 @@
 - (void)testPlacesNavHasPlacesTableVCAtTop
 {
     UINavigationController *placeNavController = (UINavigationController *)([rootVC viewControllers][1]);
-    XCTAssertTrue([[placeNavController topViewController] isKindOfClass:[PlaceTableViewController class]],
-                  @"places nav controller should be initialized with a places table view");
-}
-
-- (void)testPlacesNavRootIsAPlacesTableVC
-{
-    UINavigationController *placeNavController = (UINavigationController *)([rootVC viewControllers][1]);
-    XCTAssertTrue([[placeNavController topViewController] isKindOfClass:[PlaceTableViewController class]],
+    XCTAssertTrue([[placeNavController topViewController] isKindOfClass:[PlaceCollectionViewController class]],
                   @"places nav controller should be initialized with a places table view");
 }
 
 - (void)testPlacesNavHasAnPlaceFetcherSet {
     UINavigationController *placeNavController = (UINavigationController *)([rootVC viewControllers][1]);
-    PlaceTableViewController *tableVC = (PlaceTableViewController *)[placeNavController topViewController];
-    XCTAssertNotNil([tableVC dataFetcher],
+    PlaceCollectionViewController *placeVC = (PlaceCollectionViewController *)[placeNavController topViewController];
+    XCTAssertNotNil([placeVC dataFetcher],
                     @"places VC should be initialized with a fetcher");
 }
 

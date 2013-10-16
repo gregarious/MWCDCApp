@@ -58,13 +58,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zca-Ia-ma6">
-                                <rect key="frame" x="0.0" y="65" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="109" width="320" height="371"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="DQE-fc-K2v" kind="embed" identifier="embedContainer" id="U7P-lQ-QiG"/>
                                 </connections>
                             </containerView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vnK-tI-jlU">
+                                <rect key="frame" x="0.0" y="65" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -76,6 +81,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterSearchBar" destination="vnK-tI-jlU" id="NUO-Bd-EBY"/>
                         <segue destination="CDK-Vu-vC7" kind="push" identifier="showPlaceDetail" id="CPO-wy-SFW"/>
                     </connections>
                 </viewController>
@@ -92,7 +98,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KA2-hh-3IM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Iu5-cW-v8K">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

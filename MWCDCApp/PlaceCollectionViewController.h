@@ -13,14 +13,15 @@
 @class PlaceDataFetcher;
 @class PlaceViewDataManager;
 
-@interface PlaceCollectionViewController : UIViewController <PlaceDataFetcherDelegate>
+@interface PlaceCollectionViewController : UIViewController <PlaceDataFetcherDelegate, UISearchBarDelegate>
 {
     PlaceViewDataManager *dataManager;
 }
 
 @property (nonatomic, strong) PlaceDataFetcher *dataFetcher;
-
 @property (nonatomic, weak) ToggleContainerViewController *toggleVC;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *filterSearchBar;
 
 - (IBAction)toggleViews:(id)sender;
 

@@ -10,16 +10,17 @@
 #import "Place.h"
 #import "PlaceTableViewCell.h"
 
+@interface PlaceViewDataManager ()
+- (void)_setDisplayPlaces:(NSArray *)places;
+- (void)filterPlaces;
+@end
+
 @implementation PlaceViewDataManager
 
-- (Place *)placeForPosition:(NSUInteger)position
+- (void)setPlaces:(NSArray *)places
 {
-    if (self.places) {
-        return self.places[position];
-    }
-    else {
-        return nil;
-    }
+    _places = [places copy];
+    [self filterPlaces];
 }
 
 - (PlaceViewDataStatus)dataStatus
@@ -35,83 +36,37 @@
     }
 }
 
-//@interface PlaceViewDataManager ()
-//- (Place *)placeForIndexPath:(NSIndexPath *)indexPath;
-//@end
-//
-//@implementation PlaceViewDataManager
-//
-//- (NSInteger)tableView:(UITableView *)tableView
-// numberOfRowsInSection:(NSInteger)section {
-//    NSParameterAssert(section == 0);
-//    
-//    if (self.places) {
-//        return self.places.count;
-//    }
-//    else {
-//        return 1;
-//    }
-//
-//}
-//
-//NSString * const placeCellReuseIdenitifier = @"Place";
-//NSString * const errorCellReuseIdenitifier = @"PlaceError";
-//NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
-//
-//-(UITableViewCell *)tableView:(UITableView *)tableView
-//        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    NSParameterAssert([indexPath section] == 0);
-//
-//    if (self.places) {
-//        NSParameterAssert([indexPath row] < [self.places count]);
-//        PlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
-//        if (!cell) {
-//            cell = [[PlaceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:placeCellReuseIdenitifier];
-//        }
-//        
-//        Place *place = [self.places objectAtIndex:[indexPath row]];
-//
-//        cell.nameLabel.text = place.name;
-//        
-//        // connect a weak ref directly to the object
-//        cell.place = place;
-//        
-//        return cell;
-//    }
-//    else {
-//        NSParameterAssert([indexPath row] == 0);
-//        UITableViewCell *cell;
-//        if (self.lastError) {
-//            cell = [tableView dequeueReusableCellWithIdentifier:errorCellReuseIdenitifier];
-//            if (!cell) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:errorCellReuseIdenitifier];
-//            }
-//            cell.textLabel.text = [self.lastError localizedDescription];
-//        }
-//        else {
-//            cell = [tableView dequeueReusableCellWithIdentifier:loadingCellReuseIdenitifier];
-//            if (!cell) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:loadingCellReuseIdenitifier];
-//            }
-//            cell.textLabel.text = @"Loading places...";
-//        }
-//        return cell;
-//    }
-//    
-//}
-//
-//
-///* private */
-//
-//- (Place *)placeForIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSParameterAssert([indexPath row] < [self.places count]);
-//    NSParameterAssert([indexPath section] == 0);
-//    
-//    return [self.places objectAtIndex:[indexPath row]];
-//}
+- (void)setFilterQuery:(NSString *)filterQuery
+{
+    _filterQuery = filterQuery;
+    [self filterPlaces];
+}
 
+#pragma mark - private methods
 
+- (void)filterPlaces
+{
+    // only bother filters if places or query exist
+    if (self.places.count > 0 && self.filterQuery != nil && self.filterQuery.length > 0) {
+        NSMutableArray *filteredPlaces = [NSMutableArray array];
+        for (Place *place in self.places) {
+            if ([place.name.lowercaseString rangeOfString:_filterQuery].location != NSNotFound) {
+                [filteredPlaces addObject:place];
+            }
+        }
+        [self _setDisplayPlaces:filteredPlaces];
+    }
+    else {
+        [self _setDisplayPlaces:[self.places copy]];
+    }
+}
+
+// internal method to ensure setting _displayPlaces is KVO compliant
+- (void)_setDisplayPlaces:(NSArray *)places
+{
+    [self willChangeValueForKey:@"displayPlaces"];
+    _displayPlaces = places;
+    [self didChangeValueForKey:@"displayPlaces"];
+}
 
 @end

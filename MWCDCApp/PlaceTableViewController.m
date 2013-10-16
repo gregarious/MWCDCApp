@@ -15,9 +15,12 @@
 #import "PlaceCollectionViewController.h"
 
 @interface PlaceTableViewController ()
-
+{
+    BOOL isObservingManagerData;
+}
 - (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place;
-
+- (void)startObservingManagerData;
+- (void)stopObservingManagerData;
 @end
 
 @implementation PlaceTableViewController
@@ -39,6 +42,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    // TODO: observation start/stop and data initialization feels a little
+    //  spaghetti-ish due to the intederminate ordering of the manager setting
+    //  and view display. Look into verifying correctness and refactoring
+    [super viewWillAppear:animated];
+    [self startObservingManagerData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self stopObservingManagerData];
+    [super viewDidDisappear:animated];
+}
+
 #pragma mark - UITableViewDataSource protocol methods
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -47,7 +65,7 @@
     NSParameterAssert(section == 0);
 
     if (self.dataManager.dataStatus == PlaceViewDataStatusInitialized) {
-        return [self.dataManager.places count];
+        return [self.dataManager.displayPlaces count];
     }
     else {
         return 1;
@@ -62,8 +80,9 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
 {
     PlaceViewDataStatus status = self.dataManager.dataStatus;
     if (status == PlaceViewDataStatusInitialized) {
+        NSParameterAssert([indexPath row] < [self.dataManager.displayPlaces count]);
         PlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
-        Place *place = [self.dataManager placeForPosition:[indexPath row]];
+        Place *place = [self.dataManager.displayPlaces objectAtIndex:[indexPath row]];
         [self initializeCell:cell withPlace:place];
         return cell;
     }
@@ -101,11 +120,38 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
     // TODO: replace this with some kind of data manager callback?
     _dataManager = dataManager;
     [self.tableView reloadData];
+    [self startObservingManagerData];
+}
+
+// observe the manager's `displayPlaces` property
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"displayPlaces"]) {
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Private methods
 
-// untested
+- (void)startObservingManagerData
+{
+    if (_dataManager != nil && !isObservingManagerData) {
+        isObservingManagerData = YES;
+
+        // watch the displayPlaces property
+        [_dataManager addObserver:self
+                       forKeyPath:@"displayPlaces"
+                          options:NSKeyValueObservingOptionNew
+                          context:NULL];
+    }
+}
+
+- (void)stopObservingManagerData
+{
+    isObservingManagerData = NO;
+    [_dataManager removeObserver:self forKeyPath:@"displayPlaces"];
+}
+
 - (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place
 {
     cell.place = place;

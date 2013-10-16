@@ -13,7 +13,11 @@
 #import "PlaceCollectionViewController.h"
 
 @interface PlaceMapViewController ()
-
+{
+    BOOL isObservingManagerData;
+}
+- (void)startObservingManagerData;
+- (void)stopObservingManagerData;
 @end
 
 @implementation PlaceMapViewController
@@ -34,10 +38,24 @@
     
     [_mapView setRegion:initRegion];
     _mapView.delegate = self;
-
-    // TODO: need to handle when data manager isn't set up. also when places not set yet.
-    [_mapView addAnnotations:self.dataManager.places];
+    [self reloadData];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // TODO: observation start/stop feels a little spaghetti-ish due to the
+    //  intederminate ordering of the manager setting and view display. Look into
+    //  verifying correctness and refactoring
+    [super viewWillAppear:animated];
+    [self startObservingManagerData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self stopObservingManagerData];
+    [super viewDidDisappear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -73,5 +91,50 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
     [placeCollectionRootVC performSegueWithIdentifier:@"showPlaceDetail" sender:view];
 }
 
+#pragma mark - View syncing to data manager
+
+- (void)setDataManager:(PlaceViewDataManager *)dataManager
+{
+    _dataManager = dataManager;
+    [self reloadData];
+    [self startObservingManagerData];
+}
+
+// observe the manager's `displayPlaces` property
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"displayPlaces"]) {
+        [self reloadData];
+    }
+}
+
+#pragma mark - Private methods
+
+// naive mirroring of UITableView reloadData
+- (void)reloadData
+{
+    [_mapView removeAnnotations:_mapView.annotations];
+    [_mapView addAnnotations:self.dataManager.displayPlaces];
+}
+
+
+- (void)startObservingManagerData
+{
+    if (_dataManager != nil && !isObservingManagerData) {
+        isObservingManagerData = YES;
+        
+        // watch the displayPlaces property
+        [_dataManager addObserver:self
+                       forKeyPath:@"displayPlaces"
+                          options:NSKeyValueObservingOptionNew
+                          context:NULL];
+    }
+}
+
+- (void)stopObservingManagerData
+{
+    isObservingManagerData = NO;
+    [_dataManager removeObserver:self forKeyPath:@"displayPlaces"];
+}
 
 @end

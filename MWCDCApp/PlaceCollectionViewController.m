@@ -31,7 +31,6 @@
 
 - (void)awakeFromNib {
     // TODO: this kind of sucks. why no init?
-    NSLog(@"Initialized main data manager");
     dataManager = [[PlaceViewDataManager alloc] init];
 }
 
@@ -45,6 +44,8 @@
 {
     self.dataFetcher.delegate = self;
     [self.dataFetcher fetchPlaces];
+    
+    self.filterSearchBar.delegate = self;
     
     [super viewWillAppear:animated];
 }
@@ -61,7 +62,6 @@
     if ([segue.identifier isEqualToString:@"embedContainer"]) {
         self.toggleVC = (ToggleContainerViewController *)segue.destinationViewController;
         self.toggleVC.dataManager = dataManager;
-        NSLog(@"Handed off data manager to ToggleVC");
     }
     else if ([[segue identifier] isEqualToString:@"showPlaceDetail"]) {
         PlaceDetailViewController *detailVC = (PlaceDetailViewController *)[segue destinationViewController];
@@ -91,16 +91,19 @@
 - (void)fetchingPlacesFailedWithError:(NSError *)error
 {
     dataManager.lastError = error;
-    NSLog(@"Error");
     // notify subviews of changes
 }
 
 - (void)didReceivePlaces:(NSArray *)places
 {
-    NSLog(@"Fetched");
     dataManager.places = places;
     dataManager.lastError = nil;
     // notify subviews of changes
 }
 
+#pragma mark - UISearchBarDelegate protocol
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    dataManager.filterQuery = searchText;
+}
 @end

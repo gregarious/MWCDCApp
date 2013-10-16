@@ -51,7 +51,6 @@ NSString * const ToggleTableSegueIdentifier = @"toggleTableMode";
     if ([segue.identifier isEqualToString:ToggleTableSegueIdentifier])
     {
         ((PlaceTableViewController *)contentVC).dataManager = self.dataManager;
-        NSLog(@"Data manager set on TableVC: %@", self.dataManager);
         // initial "toggle"
         if (self.childViewControllers.count == 0) {
             [self addChildViewController:contentVC];
@@ -66,7 +65,6 @@ NSString * const ToggleTableSegueIdentifier = @"toggleTableMode";
     else if ([segue.identifier isEqualToString:ToggleMapSegueIdentifier])
     {
         ((PlaceTableViewController *)contentVC).dataManager = self.dataManager;
-        NSLog(@"Data manager set on MapVC: %@", self.dataManager);
         [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:contentVC];
     }
 }

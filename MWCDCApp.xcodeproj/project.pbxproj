@@ -26,7 +26,7 @@
 		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
 		37353CB417E352320062B12A /* PlaceFetchWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB317E352320062B12A /* PlaceFetchWorkflowTests.m */; };
 		37353CB717E3546C0062B12A /* PlaceDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataFetcher.m */; };
-		374E223D17FEF9620051897F /* PlaceTableDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374E223C17FEF9620051897F /* PlaceTableDataSourceTests.m */; };
+		374E223D17FEF9620051897F /* PlaceViewDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374E223C17FEF9620051897F /* PlaceViewDataManagerTests.m */; };
 		3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */; };
 		3761D6B11802F911004BC847 /* PlaceDetailViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761D6B01802F911004BC847 /* PlaceDetailViewControllerTests.m */; };
 		376F275717E23F1A00178A06 /* PlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F275617E23F1A00178A06 /* PlaceTests.m */; };
@@ -110,7 +110,7 @@
 		37353CB517E3546C0062B12A /* PlaceDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDataFetcher.h; path = MWCDCApp/PlaceDataFetcher.h; sourceTree = SOURCE_ROOT; };
 		37353CB617E3546C0062B12A /* PlaceDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDataFetcher.m; path = MWCDCApp/PlaceDataFetcher.m; sourceTree = SOURCE_ROOT; };
 		37353CBA17E354FE0062B12A /* PlaceDataFetcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDataFetcherDelegate.h; sourceTree = "<group>"; };
-		374E223C17FEF9620051897F /* PlaceTableDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableDataSourceTests.m; sourceTree = "<group>"; };
+		374E223C17FEF9620051897F /* PlaceViewDataManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceViewDataManagerTests.m; sourceTree = "<group>"; };
 		3761D6AB1802F887004BC847 /* PlaceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailViewController.h; sourceTree = "<group>"; };
 		3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailViewController.m; sourceTree = "<group>"; };
 		3761D6B01802F911004BC847 /* PlaceDetailViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailViewControllerTests.m; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 			children = (
 				375C3C5F17EBA85400CB1B03 /* Mocks */,
 				376F275617E23F1A00178A06 /* PlaceTests.m */,
-				374E223C17FEF9620051897F /* PlaceTableDataSourceTests.m */,
+				374E223C17FEF9620051897F /* PlaceViewDataManagerTests.m */,
 				37353CB317E352320062B12A /* PlaceFetchWorkflowTests.m */,
 				379EDF8A17EA18A70044AF1F /* PlaceBuilderTests.m */,
 				3786658117EBBCB700F341C1 /* PlaceTableViewControllerTests.m */,
@@ -587,7 +587,7 @@
 				379EDF8B17EA18A70044AF1F /* PlaceBuilderTests.m in Sources */,
 				378F67D4180C4F8200066E6B /* InterestPointTests.m in Sources */,
 				37083D7D180CCE390049FCC5 /* SkylineViewControllerTests.m in Sources */,
-				374E223D17FEF9620051897F /* PlaceTableDataSourceTests.m in Sources */,
+				374E223D17FEF9620051897F /* PlaceViewDataManagerTests.m in Sources */,
 				37E909F717EB5792000C65A3 /* NonNetworkedAPICommunicator.m in Sources */,
 				370E1E8A180C37E400844A63 /* OverlookTests.m in Sources */,
 				372A71B718083682006826D1 /* AppDelegateTests.m in Sources */,
