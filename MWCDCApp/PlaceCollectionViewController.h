@@ -23,7 +23,10 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *filterSearchBar;
 
-- (IBAction)toggleViews:(id)sender;
+// use this reference to
+@property (weak, nonatomic) IBOutlet UIControl *containerView;
 
+- (IBAction)toggleViews:(id)sender;
+- (void)dismissSearchKeyboard;
 
 @end

@@ -37,7 +37,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    // clear search bar keyboard when container view tapped anywhere
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self
+                                             action:@selector(dismissSearchKeyboard)];
+    [tapRecognizer setCancelsTouchesInView:NO];
+    [self.containerView addGestureRecognizer:tapRecognizer];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,6 +61,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dismissSearchKeyboard
+{
+    [self.filterSearchBar resignFirstResponder];
 }
 
 #pragma mark - Segues

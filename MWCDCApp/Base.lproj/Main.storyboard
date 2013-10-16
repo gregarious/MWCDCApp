@@ -57,7 +57,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zca-Ia-ma6">
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zca-Ia-ma6" customClass="UIControl">
                                 <rect key="frame" x="0.0" y="109" width="320" height="371"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -81,6 +81,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="containerView" destination="zca-Ia-ma6" id="G6H-Gf-E30"/>
                         <outlet property="filterSearchBar" destination="vnK-tI-jlU" id="NUO-Bd-EBY"/>
                         <segue destination="CDK-Vu-vC7" kind="push" identifier="showPlaceDetail" id="CPO-wy-SFW"/>
                     </connections>
