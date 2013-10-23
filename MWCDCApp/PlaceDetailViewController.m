@@ -48,6 +48,8 @@
 - (void)configureView {
     if (self.place) {
         self.nameLabel.text = self.place.name;
+        self.addressLabel.text = self.place.streetAddress;
+        self.descriptionLabel.text = self.place.description;
     }
 }
 

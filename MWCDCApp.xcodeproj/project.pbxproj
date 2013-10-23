@@ -26,6 +26,7 @@
 		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
 		37353CB417E352320062B12A /* PlaceFetchWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB317E352320062B12A /* PlaceFetchWorkflowTests.m */; };
 		37353CB717E3546C0062B12A /* PlaceDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataFetcher.m */; };
+		37431D9F18187C060093F2C1 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37431D9E18187C060093F2C1 /* AsyncImageView.m */; };
 		374E223D17FEF9620051897F /* PlaceViewDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374E223C17FEF9620051897F /* PlaceViewDataManagerTests.m */; };
 		3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */; };
 		3761D6B11802F911004BC847 /* PlaceDetailViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761D6B01802F911004BC847 /* PlaceDetailViewControllerTests.m */; };
@@ -108,6 +109,8 @@
 		37353CB517E3546C0062B12A /* PlaceDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDataFetcher.h; path = MWCDCApp/PlaceDataFetcher.h; sourceTree = SOURCE_ROOT; };
 		37353CB617E3546C0062B12A /* PlaceDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDataFetcher.m; path = MWCDCApp/PlaceDataFetcher.m; sourceTree = SOURCE_ROOT; };
 		37353CBA17E354FE0062B12A /* PlaceDataFetcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDataFetcherDelegate.h; sourceTree = "<group>"; };
+		37431D9D18187C060093F2C1 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		37431D9E18187C060093F2C1 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		374E223C17FEF9620051897F /* PlaceViewDataManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceViewDataManagerTests.m; sourceTree = "<group>"; };
 		3761D6AB1802F887004BC847 /* PlaceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailViewController.h; sourceTree = "<group>"; };
 		3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailViewController.m; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 		375C3C5E17EBA83300CB1B03 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				37431D9D18187C060093F2C1 /* AsyncImageView.h */,
+				37431D9E18187C060093F2C1 /* AsyncImageView.m */,
 				37B599F917E359D700BFAA46 /* APICommunicator.h */,
 				37B599FA17E359D700BFAA46 /* APICommunicator.m */,
 				37E909FC17EB5E71000C65A3 /* APICommunicatorDelegate.h */,
@@ -537,6 +542,7 @@
 				37083D86180D9F290049FCC5 /* PlaceMapViewController.m in Sources */,
 				37083D80180CD3400049FCC5 /* TestSkylinePointTableCell.m in Sources */,
 				37083D8C180DCC6A0049FCC5 /* ToggleContainerViewController.m in Sources */,
+				37431D9F18187C060093F2C1 /* AsyncImageView.m in Sources */,
 				378F67D2180C4ED600066E6B /* InterestPoint.m in Sources */,
 				3786659517EBC4BE00F341C1 /* PlaceTableViewController.m in Sources */,
 				3702D015180CB23E00095CD1 /* OverlookMapViewController.m in Sources */,

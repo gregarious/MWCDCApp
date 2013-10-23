@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsyncImageView.h"
 
 @class Place;
 
@@ -17,5 +18,8 @@
 @property (nonatomic, weak) Place *place;
 
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
+@property (weak, nonatomic) IBOutlet AsyncImageView *thumbnail;
 
 @end

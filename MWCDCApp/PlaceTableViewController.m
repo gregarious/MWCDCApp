@@ -156,6 +156,8 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
 {
     cell.place = place;
     cell.nameLabel.text = place.name;
+    cell.addressLabel.text = place.streetAddress;
+    cell.thumbnail.imageURL = [NSURL URLWithString:@"http://placehold.it/60x60"];
 }
 
 @end

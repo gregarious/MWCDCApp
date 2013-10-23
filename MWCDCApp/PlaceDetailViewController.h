@@ -14,5 +14,7 @@
 
 @property (nonatomic, strong) Place *place;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
