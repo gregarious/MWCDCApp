@@ -11,7 +11,7 @@
 #import "SkylinePoint.h"
 #import "SkylineDataFetcher.h"
 #import "InterestPointDetailViewController.h"
-#import "TestSkylinePointTableCell.h"
+#import "AnnotatedImageView.h"
 
 @interface SkylineViewController ()
 
@@ -46,6 +46,9 @@
     dataStatus = SkylineViewDataStatusUninitialized;
     [self reloadData];
     
+    annotatedImageView.backgroundImageView.image = self.overlook.skylineImage;
+    [annotatedImageView.backgroundImageView sizeToFit];
+    
     [self configureViews];
 }
 
@@ -79,11 +82,11 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:interestPointSegueIdentifier]) {
-        SkylinePoint *point = [sender skylinePoint];
-        InterestPointDetailViewController *detailVC = [segue destinationViewController];
-        detailVC.interestPoint = point.interestPoint;
-    }
+//    if ([segue.identifier isEqualToString:interestPointSegueIdentifier]) {
+//        SkylinePoint *point = [sender skylinePoint];
+//        InterestPointDetailViewController *detailVC = [segue destinationViewController];
+//        detailVC.interestPoint = point.interestPoint;
+//    }
 }
 
 #pragma mark - TableView delegate/data source (development only)
@@ -98,36 +101,36 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
         return 1;
     }
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSParameterAssert(indexPath.section == 0);
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                   reuseIdentifier:@""];
-    if (dataStatus == SkylineViewDataStatusUninitialized) {
-        cell.textLabel.text = @"Loading...";
-    }
-    else if(dataStatus == SkylineViewDataStatusError) {
-        cell.textLabel.text = @"Error!";
-    }
-    else {
-        TestSkylinePointTableCell *skylineCell = [[TestSkylinePointTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SkylineCell"];
-        skylineCell.skylinePoint = skylinePoints[indexPath.row];
-        skylineCell.textLabel.text = skylineCell.skylinePoint.interestPoint.name;
-        cell = skylineCell;
-    }
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSParameterAssert(indexPath.section == 0);
-    if (dataStatus == SkylineViewDataStatusInitialized) {
-        UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-        [self performSegueWithIdentifier:interestPointSegueIdentifier sender:cell];
-    }
-}
-
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSParameterAssert(indexPath.section == 0);
+//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+//                                                   reuseIdentifier:@""];
+//    if (dataStatus == SkylineViewDataStatusUninitialized) {
+//        cell.textLabel.text = @"Loading...";
+//    }
+//    else if(dataStatus == SkylineViewDataStatusError) {
+//        cell.textLabel.text = @"Error!";
+//    }
+//    else {
+//        TestSkylinePointTableCell *skylineCell = [[TestSkylinePointTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SkylineCell"];
+//        skylineCell.skylinePoint = skylinePoints[indexPath.row];
+//        skylineCell.textLabel.text = skylineCell.skylinePoint.interestPoint.name;
+//        cell = skylineCell;
+//    }
+//    return cell;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSParameterAssert(indexPath.section == 0);
+//    if (dataStatus == SkylineViewDataStatusInitialized) {
+//        UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+//        [self performSegueWithIdentifier:interestPointSegueIdentifier sender:cell];
+//    }
+//}
+//
 #pragma mark - Private methods
 
 - (void)reloadData
@@ -136,8 +139,7 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
 }
 - (void)configureViews
 {
-    self.testLabel.text = _overlook.name;
-    [[self testTableView] reloadData];
+    annotatedImageView.imageAnnotations = skylinePoints;
 }
 
 @end

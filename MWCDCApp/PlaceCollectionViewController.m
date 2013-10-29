@@ -11,10 +11,13 @@
 #import "PlaceDataFetcher.h"
 #import "PlaceDetailViewController.h"
 #import "PlaceTableViewCell.h"
+#import "PlaceCategoryPickerViewController.h"
 
 #import <MapKit/MapKit.h>
 
 @interface PlaceCollectionViewController ()
+
+- (void)closeModalPicker;
 
 @end
 
@@ -44,7 +47,6 @@
                                              action:@selector(dismissSearchKeyboard)];
     [tapRecognizer setCancelsTouchesInView:NO];
     [self.containerView addGestureRecognizer:tapRecognizer];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -53,6 +55,10 @@
     [self.dataFetcher fetchPlaces];
     
     self.filterSearchBar.delegate = self;
+
+    // set the filter category if it exists, else use "All Places"
+    NSString *buttonTitle = dataManager.filterCategory ? dataManager.filterCategory : @"All Places";
+    [self.categoryButton setTitle:buttonTitle forState:UIControlStateNormal];
     
     [super viewWillAppear:animated];
 }
@@ -91,7 +97,11 @@
             [detailVC setPlace:cell.place];
         }
     }
-
+    else if ([[segue identifier] isEqualToString:@"showPicker"]) {
+        self.pickerVC = (PlaceCategoryPickerViewController *)segue.destinationViewController;
+        self.pickerVC.categories = @[@"All Places", @"Food", @"Drink", @"Shopping", @"Other"];
+        self.pickerVC.delegate = self;
+    }
 }
 
 - (IBAction)toggleViews:(id)sender {
@@ -118,4 +128,33 @@
 {
     dataManager.filterQuery = searchText;
 }
+
+#pragma mark - Category picker related
+- (void)didCancel
+{
+    [self closeModalPicker];
+}
+
+- (void)didPickCategory:(NSString *)category
+{
+    if ([category isEqualToString:@"All Places"]) {
+        dataManager.filterCategory = nil;
+    }
+    else {
+        dataManager.filterCategory = category;
+    }
+    
+    [self.categoryButton setTitle:category forState:UIControlStateNormal];
+    
+    [self closeModalPicker];
+}
+
+#pragma mark - Private methods
+
+- (void)closeModalPicker
+{
+    // TODO: what is better way to do this?
+    [[[self presentedViewController] presentingViewController] dismissViewControllerAnimated:YES completion:^{}];
+}
+
 @end

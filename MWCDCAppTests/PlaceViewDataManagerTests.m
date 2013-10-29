@@ -94,4 +94,11 @@
     XCTAssertTrue([[dataManager displayPlaces] isEqualToArray:@[bakery]],
                   @"should not filter if no fitler query is in place");
 }
+
+// TODO once category logic in place
+//- (void)testDisplayPlacesRespectsCategory
+//{
+//    
+//}
+
 @end

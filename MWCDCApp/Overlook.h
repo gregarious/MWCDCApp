@@ -17,7 +17,6 @@
 @property (nonatomic, readonly, assign) CLLocationCoordinate2D coordinate;
 
 @property (nonatomic, strong) UIImage *skylineImage;
-@property (nonatomic, strong) NSArray *skylinePoints;
 
 - (id)initWithId:(NSInteger)_id name:(NSString *)name coordinate:(CLLocationCoordinate2D)coord;
 

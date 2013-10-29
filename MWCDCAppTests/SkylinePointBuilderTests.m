@@ -98,8 +98,8 @@
     NSArray *skylinePoints = [builder dataFromJSON:fullJSON error:NULL];
     SkylinePoint *skylinePoint = skylinePoints[0];
     
-    XCTAssertEqualWithAccuracy(skylinePoint.imageCoordinates.x, 1, 0.1);
-    XCTAssertEqualWithAccuracy(skylinePoint.imageCoordinates.y, 1, 0.1);
+    XCTAssertEqualWithAccuracy(skylinePoint.coordinate.x, 1, 0.1);
+    XCTAssertEqualWithAccuracy(skylinePoint.coordinate.y, 1, 0.1);
     
     XCTAssertEqualObjects(skylinePoint.interestPoint.name, @"U.S. Steel Tower");
     XCTAssertEqualObjects(skylinePoint.interestPoint.address, @"600 Grant Street");

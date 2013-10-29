@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, PlaceViewDataStatus) {
 @property (nonatomic, copy) NSError *lastError;
 
 @property (nonatomic, copy) NSString *filterQuery;
+@property (nonatomic, copy) NSString *filterCategory;
 @property (nonatomic, readonly) NSArray *displayPlaces;
 
 - (PlaceViewDataStatus)dataStatus;

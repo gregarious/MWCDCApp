@@ -42,6 +42,13 @@
     [self filterPlaces];
 }
 
+- (void)setFilterCategory:(NSString *)filterCategory
+{
+    _filterCategory = filterCategory;
+    [self filterPlaces];
+}
+
+
 #pragma mark - private methods
 
 - (void)filterPlaces

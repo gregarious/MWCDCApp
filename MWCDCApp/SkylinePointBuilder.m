@@ -79,7 +79,7 @@
                                                            description:dict[@"description"]];
 
     return [[SkylinePoint alloc] initWithInterestPoint:interestPoint
-                                      imageCoordinates:CGPointMake([dict[@"x"] doubleValue],
+                                            coordinate:CGPointMake([dict[@"x"] doubleValue],
                                                                    [dict[@"y"] doubleValue])];
 }
 

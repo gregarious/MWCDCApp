@@ -11,14 +11,19 @@
 @implementation SkylinePoint
 
 - (id)initWithInterestPoint:(InterestPoint *)interestPoint
-           imageCoordinates:(CGPoint)imageCoordinates
+                 coordinate:(CGPoint)coordinate
 {
     self = [super init];
     if (self) {
         _interestPoint = interestPoint;
-        _imageCoordinates = imageCoordinates;
+        _coordinate = coordinate;
     }
     return self;
+}
+
+- (NSString *)title
+{
+    return self.interestPoint.name;
 }
 
 @end

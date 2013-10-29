@@ -10,13 +10,16 @@
 
 #import <Foundation/Foundation.h>
 #import "InterestPoint.h"
+#import "ImageAnnotation.h"
 
-@interface SkylinePoint : NSObject
+@interface SkylinePoint : NSObject <ImageAnnotation>
 
 @property (nonatomic, strong, readonly) InterestPoint *interestPoint;
-@property (nonatomic, assign, readonly) CGPoint imageCoordinates;
+@property (nonatomic, assign, readonly) CGPoint coordinate;
 
 - (id)initWithInterestPoint:(InterestPoint *)interestPoint
-           imageCoordinates:(CGPoint)imageCoordinates;
+                 coordinate:(CGPoint)coordinate;
+
+- (NSString *)title;
 
 @end

@@ -22,9 +22,13 @@
 - (void)setUp
 {
     [super setUp];
-    interestPoint = [[InterestPoint alloc] init];
+    interestPoint = [[InterestPoint alloc]
+                     initWithName:@"Building"
+                     address:@"Somewhere"
+                     description:@"Description"];
+    
     skylinePoint = [[SkylinePoint alloc] initWithInterestPoint:interestPoint
-                                              imageCoordinates:CGPointMake(1.0, 1.0)];
+                                                    coordinate:CGPointMake(1.0, 1.0)];
 }
 
 - (void)tearDown
@@ -37,8 +41,13 @@
 - (void)testCanBeInitializedWithArguments
 {
     XCTAssertEqualObjects(skylinePoint.interestPoint, interestPoint);
-    XCTAssertEqualWithAccuracy(skylinePoint.imageCoordinates.x, 1.0, 0.1);
-    XCTAssertEqualWithAccuracy(skylinePoint.imageCoordinates.y, 1.0, 0.1);
+    XCTAssertEqualWithAccuracy(skylinePoint.coordinate.x, 1.0, 0.1);
+    XCTAssertEqualWithAccuracy(skylinePoint.coordinate.y, 1.0, 0.1);
+}
+
+- (void)testTitleRespondsWithInterestPointName
+{
+    XCTAssertEqualObjects(skylinePoint.title, @"Building", @"should respond with the title of the interest point");
 }
 
 @end
