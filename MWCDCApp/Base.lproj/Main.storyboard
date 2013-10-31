@@ -84,7 +84,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="K82-Vf-xO5" kind="modal" identifier="showPicker" id="BUh-Mz-mDU"/>
+                                            <segue destination="efb-AF-wWk" kind="modal" identifier="showCategoryMenu" id="yGD-PI-8dQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -129,54 +129,59 @@
             </objects>
             <point key="canvasLocation" x="688" y="-84"/>
         </scene>
-        <!--Place Category Picker View Controller-->
-        <scene sceneID="235-Nk-l8w">
+        <!--Place Category Menu View Controller-->
+        <scene sceneID="6dr-9R-U0y">
             <objects>
-                <viewController id="K82-Vf-xO5" customClass="PlaceCategoryPickerViewController" sceneMemberID="viewController">
+                <viewController id="efb-AF-wWk" customClass="PlaceCategoryMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QjP-oo-qJR"/>
-                        <viewControllerLayoutGuide type="bottom" id="o8p-bs-ezJ"/>
+                        <viewControllerLayoutGuide type="top" id="8lk-Me-k3z"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Bw-po-GgB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="O8t-c0-S2l">
+                    <view key="view" contentMode="scaleToFill" id="9tA-jE-l8Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtm-ww-tZm">
-                                <rect key="frame" x="0.0" y="65" width="320" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="K82-Vf-xO5" id="aX1-cN-w4p"/>
-                                    <outlet property="delegate" destination="K82-Vf-xO5" id="HJF-5Y-E54"/>
-                                </connections>
-                            </pickerView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgc-Cq-O9y">
-                                <rect key="frame" x="0.0" y="21" width="320" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCR-Kl-Zh9">
+                                <rect key="frame" x="0.0" y="19" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Choose a category" id="IME-Fe-K87">
-                                        <barButtonItem key="rightBarButtonItem" title="Close" id="1tl-XN-fnI">
+                                    <navigationItem title="Select a Category" id="aUJ-pW-F2q">
+                                        <barButtonItem key="rightBarButtonItem" title="Close" id="aDe-g2-52j">
                                             <connections>
-                                                <action selector="closeButtonTapped:" destination="K82-Vf-xO5" id="VSO-2a-7wc"/>
+                                                <action selector="closeTapped:" destination="efb-AF-wWk" id="T8X-8O-Q9P"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cHF-AF-jpc">
+                                <rect key="frame" x="0.0" y="63" width="320" height="417"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="efb-AF-wWk" id="oiu-Qc-jhl"/>
+                                    <outlet property="delegate" destination="efb-AF-wWk" id="2Ar-yj-g5G"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jtm-ww-tZm" firstAttribute="top" secondItem="Jgc-Cq-O9y" secondAttribute="bottom" id="6NL-bK-EnE"/>
-                            <constraint firstAttribute="trailing" secondItem="jtm-ww-tZm" secondAttribute="trailing" id="9EQ-6T-WJC"/>
-                            <constraint firstItem="Jgc-Cq-O9y" firstAttribute="top" secondItem="QjP-oo-qJR" secondAttribute="bottom" constant="1" id="GxV-Iw-PKC"/>
-                            <constraint firstItem="jtm-ww-tZm" firstAttribute="leading" secondItem="O8t-c0-S2l" secondAttribute="leading" id="Qga-nJ-JC4"/>
-                            <constraint firstItem="jtm-ww-tZm" firstAttribute="leading" secondItem="Jgc-Cq-O9y" secondAttribute="leading" id="WnH-uJ-HBu"/>
-                            <constraint firstItem="jtm-ww-tZm" firstAttribute="trailing" secondItem="Jgc-Cq-O9y" secondAttribute="trailing" id="dY8-jA-nqb"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="leading" secondItem="9tA-jE-l8Y" secondAttribute="leading" id="1Tj-Ps-xMs"/>
+                            <constraint firstAttribute="bottom" secondItem="cHF-AF-jpc" secondAttribute="bottom" id="Hx6-dv-eAk"/>
+                            <constraint firstAttribute="trailing" secondItem="cHF-AF-jpc" secondAttribute="trailing" id="XQr-Oo-kGH"/>
+                            <constraint firstItem="cHF-AF-jpc" firstAttribute="top" secondItem="uCR-Kl-Zh9" secondAttribute="bottom" id="dVU-vW-mrx"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="top" secondItem="9tA-jE-l8Y" secondAttribute="top" constant="19" id="iSZ-90-oT5"/>
+                            <constraint firstItem="cHF-AF-jpc" firstAttribute="leading" secondItem="uCR-Kl-Zh9" secondAttribute="leading" id="utx-ag-hkC"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="trailing" secondItem="cHF-AF-jpc" secondAttribute="trailing" id="xXZ-cM-gYR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="cHF-AF-jpc" id="HmB-XC-v62"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jSF-Ej-ftq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TMo-GM-GLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="-737"/>
+            <point key="canvasLocation" x="665" y="-761"/>
         </scene>
         <!--Toggle Container View Controller-->
         <scene sceneID="WQw-Uy-geY">

@@ -1,5 +1,5 @@
 //
-//  PlaceCategoryPickerDelegate.h
+//  PlaceCategoryMenuDelegate.h
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 10/24/13.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol PlaceCategoryPickerDelegate <NSObject>
+@protocol PlaceCategoryMenuDelegate <NSObject>
 
 - (void)didPickCategory:(NSString *)category;
 - (void)didCancel;

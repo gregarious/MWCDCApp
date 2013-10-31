@@ -11,7 +11,8 @@
 #import "PlaceDataFetcher.h"
 #import "PlaceDetailViewController.h"
 #import "PlaceTableViewCell.h"
-#import "PlaceCategoryPickerViewController.h"
+#import "PlaceCategoryMenuViewController.h"
+#import "ToggleContainerViewController.h"
 
 #import <MapKit/MapKit.h>
 
@@ -97,10 +98,11 @@
             [detailVC setPlace:cell.place];
         }
     }
-    else if ([[segue identifier] isEqualToString:@"showPicker"]) {
-        self.pickerVC = (PlaceCategoryPickerViewController *)segue.destinationViewController;
-        self.pickerVC.categories = @[@"All Places", @"Food", @"Drink", @"Shopping", @"Other"];
-        self.pickerVC.delegate = self;
+    else if ([[segue identifier] isEqualToString:@"showCategoryMenu"]) {
+        self.menuVC = (PlaceCategoryMenuViewController *)segue.destinationViewController;
+        self.menuVC.categories = @[@"All Places", @"Food", @"Drink", @"Shopping", @"Other"];
+        self.menuVC.selectedCategory = dataManager.filterCategory ? dataManager.filterCategory : @"All Places";
+        self.menuVC.delegate = self;
     }
 }
 

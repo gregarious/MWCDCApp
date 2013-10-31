@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ToggleContainerViewController.h"
 #import "PlaceDataFetcherDelegate.h"
-#import "PlaceCategoryPickerDelegate.h"
+#import "PlaceCategoryMenuDelegate.h"
 
 @class PlaceDataFetcher;
 @class PlaceViewDataManager;
-@class PlaceCategoryPickerViewController;
+@class PlaceCategoryMenuViewController;
+@class ToggleContainerViewController;
 
-@interface PlaceCollectionViewController : UIViewController <PlaceDataFetcherDelegate, UISearchBarDelegate, PlaceCategoryPickerDelegate>
+@interface PlaceCollectionViewController : UIViewController <PlaceDataFetcherDelegate, UISearchBarDelegate, PlaceCategoryMenuDelegate>
 {
     PlaceViewDataManager *dataManager;
 }
@@ -23,7 +23,7 @@
 @property (nonatomic, strong) PlaceDataFetcher *dataFetcher;
 @property (nonatomic, weak) ToggleContainerViewController *toggleVC;
 @property (nonatomic, weak)
-    PlaceCategoryPickerViewController *pickerVC;
+    PlaceCategoryMenuViewController *menuVC;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *filterSearchBar;
 @property (weak, nonatomic) IBOutlet UIButton *categoryButton;
