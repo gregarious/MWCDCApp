@@ -42,12 +42,11 @@
 {
     [super viewDidLoad];
 
-    // clear search bar keyboard when container view tapped anywhere
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
-                                             initWithTarget:self
-                                             action:@selector(dismissSearchKeyboard)];
-    [tapRecognizer setCancelsTouchesInView:NO];
-    [self.containerView addGestureRecognizer:tapRecognizer];
+    // set up background tap recognizer to clear search bar keyboard when active
+    contentAreaTapRecognizer = [[UITapGestureRecognizer alloc]
+                                 initWithTarget:self
+                                 action:@selector(dismissSearchKeyboard)];
+    [contentAreaTapRecognizer setCancelsTouchesInView:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -68,11 +67,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)dismissSearchKeyboard
-{
-    [self.filterSearchBar resignFirstResponder];
 }
 
 #pragma mark - Segues
@@ -129,6 +123,25 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     dataManager.filterQuery = searchText;
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    // enable dismissal of the keyboard while blocking content area interaction
+    [self.containerView addGestureRecognizer:contentAreaTapRecognizer];
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    // free content area to receive taps again
+    [self.containerView removeGestureRecognizer:contentAreaTapRecognizer];
+    return YES;
+}
+
+- (void)dismissSearchKeyboard
+{
+    [self.filterSearchBar resignFirstResponder];
 }
 
 #pragma mark - Category picker related

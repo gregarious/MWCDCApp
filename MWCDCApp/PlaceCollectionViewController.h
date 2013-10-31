@@ -18,6 +18,8 @@
 @interface PlaceCollectionViewController : UIViewController <PlaceDataFetcherDelegate, UISearchBarDelegate, PlaceCategoryMenuDelegate>
 {
     PlaceViewDataManager *dataManager;
+    // used to dismiss keyboard when search bar is active
+    UIGestureRecognizer *contentAreaTapRecognizer;
 }
 
 @property (nonatomic, strong) PlaceDataFetcher *dataFetcher;
