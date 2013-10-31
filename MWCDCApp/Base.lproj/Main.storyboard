@@ -233,7 +233,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ef-ya-Ajn">
-                                            <rect key="frame" x="78" y="29" width="209" height="17"/>
+                                            <rect key="frame" x="78" y="27" width="209" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -260,7 +260,7 @@
                                         <constraint firstAttribute="centerY" secondItem="E6u-NK-p2w" secondAttribute="centerY" id="5Tz-RR-Fng"/>
                                         <constraint firstItem="E6u-NK-p2w" firstAttribute="top" secondItem="elO-sl-V3W" secondAttribute="top" constant="6" id="G3f-r6-Bkd"/>
                                         <constraint firstItem="YRJ-CS-4yV" firstAttribute="top" secondItem="elO-sl-V3W" secondAttribute="top" constant="7" id="YoY-Pf-jvU"/>
-                                        <constraint firstItem="7ef-ya-Ajn" firstAttribute="top" secondItem="YRJ-CS-4yV" secondAttribute="bottom" constant="2" id="lAd-pK-IIU"/>
+                                        <constraint firstItem="7ef-ya-Ajn" firstAttribute="top" secondItem="YRJ-CS-4yV" secondAttribute="bottom" id="lAd-pK-IIU"/>
                                         <constraint firstItem="zTE-K8-UfR" firstAttribute="width" secondItem="7ef-ya-Ajn" secondAttribute="width" id="lDj-6V-QPd"/>
                                         <constraint firstItem="E6u-NK-p2w" firstAttribute="leading" secondItem="elO-sl-V3W" secondAttribute="leading" constant="8" id="m4x-qR-lgX"/>
                                         <constraint firstItem="zTE-K8-UfR" firstAttribute="leading" secondItem="YRJ-CS-4yV" secondAttribute="leading" id="pEu-ZM-KQi"/>
