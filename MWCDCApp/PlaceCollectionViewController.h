@@ -32,6 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet UIControl *containerView;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *displayModeToggleButton;
+
 - (IBAction)toggleViews:(id)sender;
 - (void)dismissSearchKeyboard;
 

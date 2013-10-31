@@ -102,6 +102,14 @@
 
 - (IBAction)toggleViews:(id)sender {
     [self.toggleVC swapViewControllers];
+
+    // would be nice to tie this directly to the active child in the ToggleContainerVC #refactor
+    if ([self.displayModeToggleButton.title isEqualToString:@"Map"]) {
+        self.displayModeToggleButton.title = @"List";
+    }
+    else {
+        self.displayModeToggleButton.title = @"Map";
+    }
 }
 
 #pragma mark - PlaceDataFetcherDelegate protocol methods

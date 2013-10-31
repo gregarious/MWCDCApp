@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="-71" y="44"/>
         </scene>
-        <!--Place Collection View Controller-->
+        <!--Place Collection View Controller - Places-->
         <scene sceneID="VTa-Qx-9ik">
             <objects>
                 <viewController id="sFZ-yd-MC5" customClass="PlaceCollectionViewController" sceneMemberID="viewController">
@@ -111,8 +111,8 @@
                             <constraint firstItem="55l-mz-pqz" firstAttribute="top" secondItem="W9A-RJ-wsM" secondAttribute="bottom" id="rvE-FP-rET"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vy2-PL-EvA">
-                        <barButtonItem key="rightBarButtonItem" title="Toggle" id="F7R-3k-V2c">
+                    <navigationItem key="navigationItem" title="Places" id="vy2-PL-EvA">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="F7R-3k-V2c">
                             <connections>
                                 <action selector="toggleViews:" destination="sFZ-yd-MC5" id="1l7-M5-9uJ"/>
                             </connections>
@@ -121,6 +121,7 @@
                     <connections>
                         <outlet property="categoryButton" destination="U0w-EX-xNi" id="8nL-F1-cfl"/>
                         <outlet property="containerView" destination="zca-Ia-ma6" id="G6H-Gf-E30"/>
+                        <outlet property="displayModeToggleButton" destination="F7R-3k-V2c" id="sxH-pB-S4q"/>
                         <outlet property="filterSearchBar" destination="vnK-tI-jlU" id="NUO-Bd-EBY"/>
                         <segue destination="CDK-Vu-vC7" kind="push" identifier="showPlaceDetail" id="CPO-wy-SFW"/>
                     </connections>
