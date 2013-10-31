@@ -23,6 +23,8 @@
 		370E1E8A180C37E400844A63 /* OverlookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E89180C37E400844A63 /* OverlookTests.m */; };
 		371F57DE1819D07800E2E58E /* AnnotatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F57DD1819D07800E2E58E /* AnnotatedImageView.m */; };
 		371F57E01819D0A000E2E58E /* AnnotatedImageViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F57DF1819D0A000E2E58E /* AnnotatedImageViewTests.m */; };
+		3727538A1820B20A00E286B3 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 372753891820B20A00E286B3 /* SMCalloutView.m */; };
+		37275392182189D700E286B3 /* ImageAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37275391182189D600E286B3 /* ImageAnnotationView.m */; };
 		372A71B5180751F9006826D1 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 372A71B3180751E4006826D1 /* libOCMock.a */; };
 		372A71B718083682006826D1 /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A71B618083682006826D1 /* AppDelegateTests.m */; };
 		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
@@ -109,6 +111,10 @@
 		371F57DD1819D07800E2E58E /* AnnotatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedImageView.m; sourceTree = "<group>"; };
 		371F57DF1819D0A000E2E58E /* AnnotatedImageViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedImageViewTests.m; sourceTree = "<group>"; };
 		372753871820537C00E286B3 /* AnnotatedImageViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnnotatedImageViewDelegate.h; sourceTree = "<group>"; };
+		372753881820B20A00E286B3 /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
+		372753891820B20A00E286B3 /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
+		37275390182189D600E286B3 /* ImageAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAnnotationView.h; sourceTree = "<group>"; };
+		37275391182189D600E286B3 /* ImageAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAnnotationView.m; sourceTree = "<group>"; };
 		372A71B3180751E4006826D1 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		372A71B618083682006826D1 /* AppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
 		37353CB117E274EE0062B12A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -264,7 +270,11 @@
 		371F57DB1819CFC200E2E58E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				372753881820B20A00E286B3 /* SMCalloutView.h */,
+				372753891820B20A00E286B3 /* SMCalloutView.m */,
 				3745CD5B1820432300787C4E /* ImageAnnotation.h */,
+				37275390182189D600E286B3 /* ImageAnnotationView.h */,
+				37275391182189D600E286B3 /* ImageAnnotationView.m */,
 				371F57DC1819D07800E2E58E /* AnnotatedImageView.h */,
 				371F57DD1819D07800E2E58E /* AnnotatedImageView.m */,
 				372753871820537C00E286B3 /* AnnotatedImageViewDelegate.h */,
@@ -578,6 +588,7 @@
 				3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */,
 				370E1E82180C375800844A63 /* SkylineDataFetcher.m in Sources */,
 				37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */,
+				3727538A1820B20A00E286B3 /* SMCalloutView.m in Sources */,
 				37083D83180CD8D70049FCC5 /* InterestPointDetailViewController.m in Sources */,
 				370E1E85180C376900844A63 /* SkylinePointBuilder.m in Sources */,
 				376F275A17E23F7400178A06 /* Place.m in Sources */,
@@ -586,6 +597,7 @@
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
 				3786658517EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */,
 				37083D89180DC6700049FCC5 /* PlaceCollectionViewController.m in Sources */,
+				37275392182189D700E286B3 /* ImageAnnotationView.m in Sources */,
 				37D5D0A117E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */,
 				37353CB717E3546C0062B12A /* PlaceDataFetcher.m in Sources */,
 			);

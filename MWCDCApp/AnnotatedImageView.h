@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AnnotatedImageViewDelegate.h"
+#import "SMCalloutView.h"
 
 @interface AnnotatedImageView : UIView
 {
     NSArray *_annotationViews;
+    
+    ImageAnnotationView *_selectedAnnotationView;
+    SMCalloutView *_selectedAnnotationCallout;
 }
 
 @property (nonatomic, strong, readonly) UIImageView *backgroundImageView;
-@property (nonatomic, copy) NSArray *imageAnnotations;
+@property (nonatomic, copy) NSArray *annotations;
 
-- (void)testTap:(id)sender;
+@property (nonatomic, weak) id<AnnotatedImageViewDelegate> delegate;
 
 @end

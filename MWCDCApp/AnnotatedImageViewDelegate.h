@@ -10,10 +10,16 @@
 #import "ImageAnnotation.h"
 
 @class AnnotatedImageView;
+@class ImageAnnotationView;
 
 @protocol AnnotatedImageViewDelegate <NSObject>
 
-- (void)annotatedImageView:(AnnotatedImageView *)annotatedImageView
-                annotation:(id <ImageAnnotation>);
+@optional
+- (ImageAnnotationView *)annotatedImageView:(AnnotatedImageView *)annotatedImageView
+                          viewForAnnotation:(id<ImageAnnotation>)annotation;
+
+- (void)    annotatedImageView:(AnnotatedImageView *)annotatedImageView
+           imageAnnotationView:(ImageAnnotationView *)view
+ calloutAccessoryControlTapped:(UIControl *)control;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SkylineDataFetcherDelegate.h"
+#import "AnnotatedImageViewDelegate.h"
 
 @class Overlook;
 @class SkylineDataFetcher;
@@ -19,7 +20,7 @@ typedef NS_ENUM(NSUInteger, SkylineViewDataStatus) {
     SkylineViewDataStatusError
 };
 
-@interface SkylineViewController : UIViewController <SkylineDataFetcherDelegate>
+@interface SkylineViewController : UIViewController <SkylineDataFetcherDelegate, AnnotatedImageViewDelegate>
 {
     SkylineDataFetcher *dataFetcher;
     NSArray *skylinePoints;

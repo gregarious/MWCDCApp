@@ -7,8 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import <MapKit/MapKit.h>
 #import "AnnotatedImageView.h"
+#import "AnnotatedImageViewDelegate.h"
 #import "ImageAnnotation.h"
 
 /**
@@ -27,6 +29,9 @@
  * Test category to make private variables public
  */
 @implementation AnnotatedImageView (Test)
+- (void)setAnnotationViews:(NSArray *)views {
+    _annotationViews = views;
+}
 - (NSArray *)annotationViews {
     return _annotationViews;
 }
@@ -36,6 +41,7 @@
 @interface AnnotatedImageViewTests : XCTestCase
 {
     AnnotatedImageView *view;
+    MKAnnotationView *firstAnnotationView;
     TestAnnotation *annotation;
 }
 @end
@@ -43,20 +49,13 @@
 @implementation AnnotatedImageViewTests
 
 /* Untested behaviors:
- * - subviews (background, annotation) are stored in officially registered subviews array
- *
+ * - Most everything: TODO
  */
 
 - (void)setUp
 {
     [super setUp];
     view = [[AnnotatedImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
-    
-    annotation = [[TestAnnotation alloc] init];
-    annotation.title = @"Big Building";
-    annotation.coordinate = CGPointMake(50, 60);
-    
-    view.imageAnnotations = @[annotation];
 }
 
 - (void)tearDown
@@ -65,42 +64,12 @@
     [super tearDown];
 }
 
-- (void)testShouldCreateMKAnnotationViewsForEachImageAnnotation
-{
-    XCTAssertEqual(view.annotationViews.count, (NSUInteger)1);
-}
-
-- (void)testShouldCreateMKAnnotationViewsWithCorrectTitles
-{
-    MKAnnotationView *annView = view.annotationViews[0];
-    XCTAssertEqualObjects(annView.annotation.title, @"Big Building");
-}
-
-- (void)testShouldAssignCoordinatesToMKAnnotationViews
-{
-    MKAnnotationView *annView = view.annotationViews[0];
-    XCTAssertEqualWithAccuracy(annView.center.x, 50, 1e-6);
-    XCTAssertEqualWithAccuracy(annView.center.y, 60, 1e-6);
-}
-
-- (void)testShouldNotAssignCoordinatesToMKAnnotations
-{
-    // not strictly necessary, but helps reenforce the fact that the MKAnnotation
-    // coordinates have nothing to do with their placement in the view
-    MKAnnotationView *annView = view.annotationViews[0];
-    XCTAssertEqualWithAccuracy(annView.annotation.coordinate.latitude, 0, 1e-6);
-    XCTAssertEqualWithAccuracy(annView.annotation.coordinate.latitude, 0, 1e-6);
-}
+#pragma mark - Basic subview makeup
 
 - (void)testShouldContainBackgroundImageViewAsSubview
 {
-    XCTAssertTrue([view.subviews indexOfObject:view.backgroundImageView] != NSNotFound, @"ensure background image is officially registered as a subview");
-}
-
-- (void)testShouldContainAnnotationViewAsSubview
-{
-    MKAnnotationView *annView = view.annotationViews[0];
-    XCTAssertTrue([view.subviews indexOfObject:annView] != NSNotFound, @"ensure background image is officially registered as a subview");
+    XCTAssertTrue([view.subviews indexOfObject:view.backgroundImageView] != NSNotFound,
+                  @"ensure background image is officially registered as a subview");
 }
 
 @end

@@ -6,38 +6,35 @@
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "AnnotatedImageView.h"
 #import <MapKit/MapKit.h>
+
+#import "AnnotatedImageView.h"
+#import "ImageAnnotationView.h"
 #import "ImageAnnotation.h"
+#import "SMCalloutView.h"
 
-@interface InternalAnnotation : NSObject <MKAnnotation>
-@property (nonatomic, copy) NSString *title;
+@interface AnnotatedImageView ()
+
+// private methods related to managing tap events
+- (void)annotationViewWasTapped:(UIGestureRecognizer *)gestureRecognizer;
+- (void)calloutAccessoryTapped:(UIGestureRecognizer *)gestureRecognizer;
+- (void)deselectAnnotation;
+
 @end
-
-@implementation InternalAnnotation
-@synthesize coordinate;
-@end
-
 
 @implementation AnnotatedImageView
-
-NSString *annotationReuseIdentifier = @"ImageAnnotation";
-
-- (id)init
-{
-    NSLog(@"in init");
-    return [super init];
-}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        // TODO: should this be getting set up in IB somehow?
         _backgroundImageView = [[UIImageView alloc] init];
+        _backgroundImageView.userInteractionEnabled = YES;
+        [_backgroundImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                           action:@selector(deselectAnnotation)]];
+
         [self addSubview:_backgroundImageView];
-        
-        _annotationViews = [[NSArray alloc] init];
-        NSLog(@"in code");
     }
     return self;
 }
@@ -48,55 +45,38 @@ NSString *annotationReuseIdentifier = @"ImageAnnotation";
     if (self) {
         _backgroundImageView = [[UIImageView alloc] init];
         [self addSubview:_backgroundImageView];
-        
-        _annotationViews = [[NSArray alloc] init];
-        NSLog(@"in frame");
     }
     return self;
 }
 
-- (void)testTap:(id)sender
-{
-    NSLog(@"Hey dudez");
-}
-
-- (void)setImageAnnotations:(NSArray *)imageAnnotations
+- (void)setAnnotations:(NSArray *)annotations
 {
     // clear annotation subviews
-    for (MKAnnotationView* view in _annotationViews) {
+    for (ImageAnnotationView* view in _annotationViews) {
         [view removeFromSuperview];
     }
-    
-    NSMutableArray *_newMKAnnotationViews = [[NSMutableArray alloc] initWithCapacity:imageAnnotations.count];
-    for (id<ImageAnnotation> annotation in imageAnnotations) {
-        // create an MKAnnotation-compliant version of our annotation
-        InternalAnnotation *mapAnnotation = [[InternalAnnotation alloc] init];
-        mapAnnotation.title = annotation.title;
-        MKPinAnnotationView *mapAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:mapAnnotation reuseIdentifier:annotationReuseIdentifier];
+
+    NSMutableArray *newMKAnnotationViews = [[NSMutableArray alloc] initWithCapacity:annotations.count];
+    for (id<ImageAnnotation> annotation in annotations) {
+        ImageAnnotationView *annotationView = [self.delegate annotatedImageView:self
+                                                              viewForAnnotation:annotation];
         
-        // TODO: hook up callout view and add tap capabilities to it
-// Experiments: not working yet
-//        mapAnnotationView.enabled = YES;
-//        mapAnnotationView.canShowCallout = YES;
-//        mapAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//        
-//        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
-//                                                 initWithTarget:self
-//                                                 action:@selector(testTap:)];
-//        [mapAnnotationView.rightCalloutAccessoryView addGestureRecognizer:tapRecognizer];
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                                 initWithTarget:self
+                                                 action:@selector(annotationViewWasTapped:)];
+        [annotationView addGestureRecognizer:tapRecognizer];
 
 
         // set the location of the subview
-        [mapAnnotationView setCenter:annotation.coordinate];
+        annotationView.center = annotationView.annotation.coordinate;
         
         // keep track of the subview in our internal array
-        [_newMKAnnotationViews addObject:mapAnnotationView];
+        [newMKAnnotationViews addObject:annotationView];
 
         // officially register the subview
-        [self addSubview:mapAnnotationView];
+        [self addSubview:annotationView];
     }
-    _annotationViews = [NSArray arrayWithArray:_newMKAnnotationViews];
-    NSLog(@"been set with %d annotations", _annotationViews.count);
+    _annotationViews = [NSArray arrayWithArray:newMKAnnotationViews];
 }
 
 /*
@@ -107,5 +87,59 @@ NSString *annotationReuseIdentifier = @"ImageAnnotation";
     // Drawing code
 }
 */
+
+- (void)annotationViewWasTapped:(UIGestureRecognizer *)gestureRecognizer
+{
+    ImageAnnotationView *view = (ImageAnnotationView *)gestureRecognizer.view;
+    
+    SMCalloutView *callout = [SMCalloutView new];
+    
+    if ([view.annotation respondsToSelector:@selector(title)]) {
+        callout.title = view.annotation.title;
+    }
+    if ([view.annotation respondsToSelector:@selector(subtitle)]) {
+        callout.subtitle = view.annotation.subtitle;
+    }
+    
+    if (view.leftCalloutAccessoryView) {
+        callout.leftAccessoryView = view.leftCalloutAccessoryView;
+        [callout.leftAccessoryView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(calloutAccessoryTapped:)]];
+    }
+    
+    if (view.rightCalloutAccessoryView) {
+        callout.rightAccessoryView = view.rightCalloutAccessoryView;
+        [callout.rightAccessoryView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(calloutAccessoryTapped:)]];
+    }
+    
+    [self deselectAnnotation];
+    
+    _selectedAnnotationView = view;
+    _selectedAnnotationCallout = callout;
+
+    [_selectedAnnotationCallout presentCalloutFromRect:view.frame
+                                                inView:self
+                                     constrainedToView:self
+                              permittedArrowDirections:SMCalloutArrowDirectionDown
+                                              animated:SMCalloutAnimationStretch];
+
+}
+
+- (void)calloutAccessoryTapped:(UIGestureRecognizer *)gestureRecognizer
+{
+    // alert the delegate of the callout tap event
+    // (we follow the MKAnnotationView standard of only responding if the accessory
+    //  view is a UIControl, just cause)
+    if ([gestureRecognizer.view isKindOfClass:UIControl.class]) {
+        [self.delegate annotatedImageView:self
+                      imageAnnotationView:_selectedAnnotationView
+            calloutAccessoryControlTapped:(UIControl *)gestureRecognizer.view];
+    }
+}
+
+- (void)deselectAnnotation
+{
+    [_selectedAnnotationCallout dismissCalloutAnimated:NO];
+    _selectedAnnotationCallout = nil;
+}
 
 @end
