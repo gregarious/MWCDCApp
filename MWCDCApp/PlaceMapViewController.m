@@ -69,6 +69,11 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
+    // use the default annotation for current location
+    if (annotation == mapView.userLocation){
+        return nil;
+    }
+
     MKAnnotationView *view = [_mapView dequeueReusableAnnotationViewWithIdentifier:placeAnnotationReuseIdentifier];
     if (view == nil) {
         view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
