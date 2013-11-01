@@ -29,7 +29,7 @@
         <scene sceneID="cUi-kZ-frf">
             <objects>
                 <navigationController title="Places Stack" id="rS3-R9-Ivy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Places" id="S80-ua-J9j"/>
+                    <tabBarItem key="tabBarItem" title="Business" id="S80-ua-J9j"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="-71" y="44"/>
         </scene>
-        <!--Place Collection View Controller - Places-->
+        <!--Place Collection View Controller - Businesses-->
         <scene sceneID="VTa-Qx-9ik">
             <objects>
                 <viewController id="sFZ-yd-MC5" customClass="PlaceCollectionViewController" sceneMemberID="viewController">
@@ -111,7 +111,7 @@
                             <constraint firstItem="55l-mz-pqz" firstAttribute="top" secondItem="W9A-RJ-wsM" secondAttribute="bottom" id="rvE-FP-rET"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Places" id="vy2-PL-EvA">
+                    <navigationItem key="navigationItem" title="Businesses" id="vy2-PL-EvA">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="F7R-3k-V2c">
                             <connections>
                                 <action selector="toggleViews:" destination="sFZ-yd-MC5" id="1l7-M5-9uJ"/>
@@ -559,7 +559,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UC0-ju-sl8">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UC0-ju-sl8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
@@ -575,7 +575,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                             <constraint firstItem="UC0-ju-sl8" firstAttribute="leading" secondItem="Cit-I8-HD4" secondAttribute="leading" id="pjQ-2V-ueT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zT9-XG-Bte"/>
+                    <navigationItem key="navigationItem" title="Overlooks" id="zT9-XG-Bte"/>
                     <connections>
                         <outlet property="mapView" destination="UC0-ju-sl8" id="Tp6-2H-DXP"/>
                         <segue destination="1YW-U5-i8I" kind="push" identifier="showSkyline" id="sw4-vE-ips"/>
@@ -598,7 +598,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Foo-4h-E6Y"/>
+                    <navigationItem key="navigationItem" title="Skyline" id="Foo-4h-E6Y"/>
                     <connections>
                         <outlet property="annotatedImageView" destination="2zu-Su-iOK" id="Yt3-yJ-arQ"/>
                         <segue destination="ncZ-Nf-Vhe" kind="push" identifier="showInterestPointDetail" id="uOH-DA-xT8"/>
@@ -673,14 +673,18 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About MWCDC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wel-ce-3bK">
-                                <rect key="frame" x="101" y="162" width="119" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="9JD-Zf-yi2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PTi-QM-Dg4" firstAttribute="top" secondItem="9JD-Zf-yi2" secondAttribute="bottom" constant="-49" id="MWY-nD-5ov"/>
+                            <constraint firstAttribute="trailing" secondItem="9JD-Zf-yi2" secondAttribute="trailing" id="a5z-i9-IPB"/>
+                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="leading" secondItem="rc4-KC-KJd" secondAttribute="leading" id="ckg-d3-5QX"/>
+                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="top" secondItem="rc4-KC-KJd" secondAttribute="top" id="sU8-U6-x9i"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" id="GPv-H0-pMn"/>
                 </viewController>
@@ -700,14 +704,18 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home Screen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAf-Eu-mQE">
-                                <rect key="frame" x="107" y="158" width="107" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="EIt-12-7sB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EIt-12-7sB" firstAttribute="leading" secondItem="KG1-mK-zvR" secondAttribute="leading" id="7dD-ob-H9O"/>
+                            <constraint firstItem="EIt-12-7sB" firstAttribute="top" secondItem="KG1-mK-zvR" secondAttribute="top" id="MFY-Iy-lrU"/>
+                            <constraint firstAttribute="bottom" secondItem="EIt-12-7sB" secondAttribute="bottom" id="bQ8-Qp-jiL"/>
+                            <constraint firstAttribute="trailing" secondItem="EIt-12-7sB" secondAttribute="trailing" id="vh8-Iz-4Wj"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="Eg2-ul-xH7"/>
                 </viewController>
@@ -717,9 +725,11 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="640" height="892"/>
         <image name="call" width="126" height="118"/>
         <image name="directions" width="146" height="110"/>
         <image name="fb" width="176" height="60"/>
+        <image name="home" width="638" height="904"/>
         <image name="menu" width="142" height="118"/>
         <image name="site" width="172" height="66"/>
         <image name="tw" width="170" height="64"/>

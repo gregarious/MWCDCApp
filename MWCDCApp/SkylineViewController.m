@@ -123,6 +123,7 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
 - (void)configureViews
 {
     annotatedImageView.annotations = skylinePoints;
+    self.navigationItem.title = self.overlook.name;
 }
 
 

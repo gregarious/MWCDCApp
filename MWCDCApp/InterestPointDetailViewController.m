@@ -50,6 +50,8 @@
     self.nameLabel.text = self.interestPoint.name;
     self.addressLabel.text = self.interestPoint.address;
     self.descriptionLabel.text = self.interestPoint.description;
+    
+    self.navigationItem.title = self.interestPoint.name;
 }
 
 @end
