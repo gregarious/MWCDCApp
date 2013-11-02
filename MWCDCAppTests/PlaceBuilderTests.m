@@ -17,7 +17,7 @@
     NSString *basicJSON;
     NSString *nameOmittedJSON;
     NSString *addressOmittedJSON;
-    NSString *coordinateOmittedJSON;
+    NSString *nullCoordinateJSON;
 }
 @end
 
@@ -30,23 +30,23 @@
     fullJSON = @"[{"
         @"\"id\": 54,"
         @"\"name\": \"Shiloh Grill\","
-        @"\"address\": \"123 Shiloh Street\","
+        @"\"street_address\": \"123 Shiloh Street\","
         @"\"latitude\": 40.431683,"
         @"\"longitude\": -80.006637,"
         @"\"description\": \"This is a fun restaurant and it has food!\","
         @"\"hours\": \"\","
         @"\"fb_id\": \"\","
-        @"\"twitter_id\": \"ShilohGrill\","
+        @"\"twitter_handle\": \"ShilohGrill\","
         @"\"phone\": \"(412) 431-4000\","
         @"\"website\": \"http://shilohgrill.com/\","
         @"\"category\": \"restaurant\""
     @"}]";
     
-    basicJSON = @"[{\"name\": \"\", \"address\": \"\", \"latitude\": 0, \"longitude\": 0}]";
+    basicJSON = @"[{\"name\": \"\", \"address\": \"\"}]";
 
-    nameOmittedJSON = @"[{\"address\": \"\", \"latitude\": 0, \"longitude\": 0}]";
+    nameOmittedJSON = @"[{\"street_address\": \"\", \"latitude\": 0, \"longitude\": 0}]";
     addressOmittedJSON = @"[{\"name\": \"\", \"latitude\": 0, \"longitude\": 0}]";
-    coordinateOmittedJSON = @"[{\"name\": \"\", \"address\": \"\"}]";
+    nullCoordinateJSON = @"[{\"name\": \"\", \"street_address\": \"\", \"latitude\": null, \"longitude\": null}]";
 }
 
 - (void)tearDown
@@ -120,10 +120,13 @@
                  @"Should not attempt to parse JSON without address");
 }
 
-- (void)testJSONWithOmittedCoordinatesYieldsNull {
-    NSArray* places = [builder placesFromJSON:coordinateOmittedJSON error:NULL];
-    XCTAssertEqualObjects(places[0], [NSNull null],
-                 @"Should not attempt to parse JSON without coords");
+- (void)testJSONWithNullCoordinatesYieldsPlaceWithZeroCoords {
+    NSArray* places = [builder placesFromJSON:nullCoordinateJSON error:NULL];
+    Place *place = places[0];
+    
+    XCTAssertNotNil(place, @"Should successfully parse");
+    XCTAssertEqualWithAccuracy(place.coordinate.latitude, 0, 1e-6, @"Should set coordinates to 0 if JSON has null");
+    XCTAssertEqualWithAccuracy(place.coordinate.latitude, 0, 1e-6, @"Should set coordinates to 0 if JSON has null");
 }
 
 
@@ -148,7 +151,7 @@
     XCTAssertEqualObjects(place.description, @"This is a fun restaurant and it has food!", @"Should set description");
     XCTAssertEqualObjects(place.hours, @"", @"Should set hours");
     XCTAssertEqualObjects(place.fbId, @"", @"Should set fbId");
-    XCTAssertEqualObjects(place.twitterId, @"ShilohGrill", @"Should set twitterId");
+    XCTAssertEqualObjects(place.twitterHandle, @"ShilohGrill", @"Should set twitterId");
     XCTAssertEqualObjects(place.phone, @"(412) 431-4000", @"Should set phone");
     XCTAssertEqualObjects(place.website, @"http://shilohgrill.com/", @"Should set website");
     XCTAssertEqualObjects(place.category, @"restaurant", @"Should set category as a string");

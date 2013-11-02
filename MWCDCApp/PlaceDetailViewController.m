@@ -65,7 +65,7 @@
         
         self.nameLabel.text = self.place.name;
         self.addressLabel.text = self.place.streetAddress;
-        self.descriptionLabel.text = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy lomo, ethnic dreamcatcher umami chia vero magna. Exercitation ea kale chips, readymade asymmetrical Brooklyn post-ironic reprehenderit iPhone minim fanny pack ex before they sold out. Labore sustainable cred, sartorial vero pour-over kale chips Blue Bottle cliche selvage post-ironic retro plaid aliqua Bushwick. Delectus pickled magna commodo Etsy wolf viral, fap sriracha irony. Ullamco pop-up mumblecore, cupidatat Godard vegan art party meh non narwhal flexitarian American Apparel chillwave. Quis organic small batch, Schlitz narwhal next level cardigan officia mlkshk Godard anim bicycle rights lo-fi. Put a bird on it velit synth, 90's church-key pop-up reprehenderit +1 you probably haven't heard of them iPhone Thundercats semiotics Echo Park art party pariatur.\n\nMoo cow.";
+        self.descriptionLabel.text = self.place.description;
         
         self.imageView.imageURL = [NSURL URLWithString:@"http://placehold.it/60x60"];
         

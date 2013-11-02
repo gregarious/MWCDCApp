@@ -21,7 +21,7 @@
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, copy) NSString *hours;
 @property (nonatomic, copy) NSString *fbId;
-@property (nonatomic, copy) NSString *twitterId;
+@property (nonatomic, copy) NSString *twitterHandle;
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *website;
 @property (nonatomic, copy) NSString *category;

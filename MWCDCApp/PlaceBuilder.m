@@ -62,7 +62,7 @@
 /** private **/
 - (Place *)buildPlaceFromDictionary:(NSDictionary *)placeDict {
     if (placeDict[@"name"] == nil ||
-        placeDict[@"address"] == nil ||
+        placeDict[@"street_address"] == nil ||
         placeDict[@"latitude"] == nil ||
         placeDict[@"longitude"] == nil) {
         
@@ -70,11 +70,16 @@
     }
     
     CLLocationCoordinate2D coord;
-    coord = CLLocationCoordinate2DMake([placeDict[@"latitude"] doubleValue],
+    if ([placeDict[@"latitude"] isEqual:[NSNull null]] || [placeDict[@"longitude"] isEqual:[NSNull null]]) {
+        coord = CLLocationCoordinate2DMake(0, 0);
+    }
+    else {
+        coord = CLLocationCoordinate2DMake([placeDict[@"latitude"] doubleValue],
                                        [placeDict[@"longitude"] doubleValue]);
-                                       
+    }
+    
     Place *place = [[Place alloc] initWithName:placeDict[@"name"]
-                                 streetAddress:placeDict[@"address"]
+                                 streetAddress:placeDict[@"street_address"]
                                     coordinate:coord];
 
     // simple assignment for all other properties that are present
@@ -87,8 +92,8 @@
     if (placeDict[@"fb_id"] != nil) {
         [place setFbId:placeDict[@"fb_id"]];
     }
-    if (placeDict[@"twitter_id"] != nil) {
-        [place setTwitterId:placeDict[@"twitter_id"]];
+    if (placeDict[@"twitter_handle"] != nil) {
+        [place setTwitterHandle:placeDict[@"twitter_handle"]];
     }
     if (placeDict[@"phone"] != nil) {
         [place setPhone:placeDict[@"phone"]];
