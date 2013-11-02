@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 @property (weak, nonatomic) IBOutlet AsyncImageView *imageView;
 

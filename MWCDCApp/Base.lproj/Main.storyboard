@@ -271,6 +271,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="7ef-ya-Ajn" id="sSm-U8-A5z"/>
+                                    <outlet property="categoryLabel" destination="zTE-K8-UfR" id="1h2-b4-oNd"/>
                                     <outlet property="nameLabel" destination="YRJ-CS-4yV" id="MtL-vR-S6t"/>
                                     <outlet property="thumbnail" destination="E6u-NK-p2w" id="r74-qF-QsS"/>
                                 </connections>
@@ -523,6 +524,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="addressLabel" destination="9zi-Pf-1x9" id="adJ-xo-7DY"/>
+                        <outlet property="categoryLabel" destination="vOJ-7N-6If" id="S1c-0H-TJC"/>
                         <outlet property="contentView" destination="6Xh-GV-YWk" id="f9R-Ol-old"/>
                         <outlet property="descriptionLabel" destination="Ygq-DG-kC2" id="YQ3-Uf-Qlt"/>
                         <outlet property="imageView" destination="ryR-pY-C0E" id="zdT-BK-blO"/>

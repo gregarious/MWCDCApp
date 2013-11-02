@@ -29,9 +29,16 @@
     grill = [[Place alloc] initWithName:@"Shiloh Grill"
                                        streetAddress:@"123 Shiloh St."
                                           coordinate:CLLocationCoordinate2DMake(40, -80)];
+    grill.categoryId = 1;
+    grill.categoryLabel = @"Restaurants";
+    
     bakery = [[Place alloc] initWithName:@"Grandview Bakery"
                            streetAddress:@"215 Shiloh St."
                               coordinate:CLLocationCoordinate2DMake(40, -80)];
+    bakery.categoryId = 2;
+    bakery.categoryLabel = @"Sweets";
+
+    
     samplePlaces = @[grill, bakery];
 }
 
@@ -95,10 +102,26 @@
                   @"should not filter if no fitler query is in place");
 }
 
-// TODO once category logic in place
-//- (void)testDisplayPlacesRespectsCategory
-//{
-//    
-//}
+- (void)testFilterCategoriesAreCorrect
+{
+    dataManager.places = samplePlaces;
+    
+    NSArray *categories = dataManager.availableCategories;
+    XCTAssertEqual(categories.count, (NSUInteger)2, @"should only have 2 categories");
+    
+    XCTAssertNotNil(categories);
+    XCTAssertTrue([categories indexOfObject:@"Restaurants"] != NSNotFound, @"'Restaurants' should be a category");
+    XCTAssertTrue([categories indexOfObject:@"Sweets"] != NSNotFound, @"'Sweets' should be a category");
+}
+
+
+- (void)testDisplayPlacesRespectsCategory
+{
+    dataManager.places = @[grill, bakery];
+    dataManager.filterCategory = @"Sweets";
+    XCTAssertTrue([[dataManager displayPlaces] isEqualToArray:@[bakery]],
+                  @"should filter out non-category matches");
+
+}
 
 @end

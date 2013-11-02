@@ -157,7 +157,11 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
     cell.place = place;
     cell.nameLabel.text = place.name;
     cell.addressLabel.text = place.streetAddress;
+    cell.categoryLabel.text = place.categoryLabel;
+    
     cell.thumbnail.imageURL = [NSURL URLWithString:place.imageURLString];
+    cell.thumbnail.crossfadeImages = NO;
+
 }
 
 @end

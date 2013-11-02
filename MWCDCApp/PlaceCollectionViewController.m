@@ -94,7 +94,9 @@
     }
     else if ([[segue identifier] isEqualToString:@"showCategoryMenu"]) {
         self.menuVC = (PlaceCategoryMenuViewController *)segue.destinationViewController;
-        self.menuVC.categories = @[@"All Places", @"Food", @"Drink", @"Shopping", @"Other"];
+        NSMutableArray *categories = [NSMutableArray arrayWithArray:dataManager.availableCategories];
+        [categories insertObject:@"All Places" atIndex:0];
+        self.menuVC.categories = categories;
         self.menuVC.selectedCategory = dataManager.filterCategory ? dataManager.filterCategory : @"All Places";
         self.menuVC.delegate = self;
     }

@@ -48,24 +48,44 @@
     [self filterPlaces];
 }
 
+- (NSArray *)availableCategories
+{
+    NSMutableSet *set = [NSMutableSet set];
+    
+    for(Place *p in self.places) {
+        if (p.categoryLabel != nil) {
+            [set addObject:p.categoryLabel];
+        }
+    }
+
+    NSSortDescriptor *d = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
+    return [set sortedArrayUsingDescriptors:@[d]];
+}
+
 
 #pragma mark - private methods
 
 - (void)filterPlaces
 {
     // only bother filters if places or query exist
-    if (self.places.count > 0 && self.filterQuery != nil && self.filterQuery.length > 0) {
-        NSMutableArray *filteredPlaces = [NSMutableArray array];
-        for (Place *place in self.places) {
-            if ([place.name.lowercaseString rangeOfString:_filterQuery].location != NSNotFound) {
-                [filteredPlaces addObject:place];
-            }
+    NSMutableArray *filteredPlaces = [NSMutableArray array];
+    for (Place *place in self.places) {
+        BOOL matchesSearch = YES;
+        if (self.filterQuery != nil && self.filterQuery.length) {
+            matchesSearch = ([place.name.lowercaseString rangeOfString:_filterQuery].location != NSNotFound);
         }
-        [self _setDisplayPlaces:filteredPlaces];
+        
+        BOOL matchesCategory = YES;
+        if (self.filterCategory != nil) {
+            matchesCategory = ([place.categoryLabel isEqualToString:self.filterCategory]);
+        }
+        
+        if (matchesSearch && matchesCategory) {
+            [filteredPlaces addObject:place];
+        }
     }
-    else {
-        [self _setDisplayPlaces:[self.places copy]];
-    }
+    [self _setDisplayPlaces:filteredPlaces];
+
 }
 
 // internal method to ensure setting _displayPlaces is KVO compliant

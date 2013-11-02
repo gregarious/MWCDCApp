@@ -29,8 +29,9 @@
 
 - (void)prepareForReuse
 {
-    self.nameLabel = nil;
-    self.addressLabel = nil;
+    self.nameLabel.text = nil;
+    self.addressLabel.text = nil;
+    self.categoryLabel.text = nil;
     self.thumbnail.imageURL = nil;
 }
 
