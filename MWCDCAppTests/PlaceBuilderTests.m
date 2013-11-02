@@ -39,7 +39,9 @@
         @"\"twitter_handle\": \"ShilohGrill\","
         @"\"phone\": \"(412) 431-4000\","
         @"\"website\": \"http://shilohgrill.com/\","
-        @"\"category\": \"restaurant\""
+        @"\"image_url\": \"http://shilohgrill.com/pic.png\","
+        @"\"category_id\": 1,"
+        @"\"category_label\": \"restaurant\""
     @"}]";
     
     basicJSON = @"[{\"name\": \"\", \"address\": \"\"}]";
@@ -154,7 +156,11 @@
     XCTAssertEqualObjects(place.twitterHandle, @"ShilohGrill", @"Should set twitterId");
     XCTAssertEqualObjects(place.phone, @"(412) 431-4000", @"Should set phone");
     XCTAssertEqualObjects(place.website, @"http://shilohgrill.com/", @"Should set website");
-    XCTAssertEqualObjects(place.category, @"restaurant", @"Should set category as a string");
+    XCTAssertEqual(place.categoryId, (NSInteger)1, @"Should set category id as number");
+    XCTAssertEqualObjects(place.categoryLabel, @"restaurant", @"Should set category as a string");
+    
+    XCTAssertEqualObjects(place.imageURLString, @"http://shilohgrill.com/pic.png", @"Should set image url");
+    
     
 }
 

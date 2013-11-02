@@ -19,12 +19,19 @@
     }
     return self;
 }
+//
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+//{
+//    [super setSelected:selected animated:animated];
+//
+//    // Configure the view for the selected state
+//}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)prepareForReuse
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    self.nameLabel = nil;
+    self.addressLabel = nil;
+    self.thumbnail.imageURL = nil;
 }
 
 @end

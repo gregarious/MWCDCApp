@@ -24,7 +24,11 @@
 @property (nonatomic, copy) NSString *twitterHandle;
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *website;
-@property (nonatomic, copy) NSString *category;
+
+@property (nonatomic, copy) NSString *imageURLString;
+
+@property (nonatomic, assign) NSInteger categoryId;
+@property (nonatomic, copy) NSString *categoryLabel;
 
 - (id)initWithName:(NSString *)newName
      streetAddress:(NSString *)newAddress

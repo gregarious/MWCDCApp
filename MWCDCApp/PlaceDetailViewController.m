@@ -67,7 +67,7 @@
         self.addressLabel.text = self.place.streetAddress;
         self.descriptionLabel.text = self.place.description;
         
-        self.imageView.imageURL = [NSURL URLWithString:@"http://placehold.it/60x60"];
+        self.imageView.imageURL = [NSURL URLWithString:self.place.imageURLString];
         
         self.mapView.delegate = self;
         [self.mapView addAnnotation:self.place];

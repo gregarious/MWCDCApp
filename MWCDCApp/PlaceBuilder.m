@@ -101,10 +101,17 @@
     if (placeDict[@"website"] != nil) {
         [place setWebsite:placeDict[@"website"]];
     }
-    if (placeDict[@"category"] != nil) {
-        [place setCategory:placeDict[@"category"]];
+    
+    if (placeDict[@"image_url"] != nil) {
+        [place setImageURLString:placeDict[@"image_url"]];
     }
-
+    
+    if (placeDict[@"category_id"] != nil) {
+        [place setCategoryId:[placeDict[@"category_id"] integerValue]];
+    }
+    if (placeDict[@"category_label"] != nil) {
+        [place setCategoryLabel:placeDict[@"category_label"]];
+    }
     
     return place;
 }
