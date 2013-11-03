@@ -28,25 +28,32 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        // TODO: should this be getting set up in IB somehow?
-        _backgroundImageView = [[UIImageView alloc] init];
-        _backgroundImageView.userInteractionEnabled = YES;
-        [_backgroundImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                           action:@selector(deselectAnnotation)]];
+        // TODO: either set this stuff up in IB, or use initWithFrame. also consider using constraints
+        
+        // TODO: this should be whole window, why is self.frame.size.width = 480?
+        CGRect scrollFrame = CGRectMake(0, 0, self.bounds.size.width, [[UIScreen mainScreen] bounds].size.height);
+        _contentWrapperView = [[UIScrollView alloc] initWithFrame:scrollFrame];
+        
+        self.userInteractionEnabled = YES;
+        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                   action:@selector(deselectAnnotation)]];
 
-        [self addSubview:_backgroundImageView];
+        _backgroundImageView = [[UIImageView alloc] init];
+        [_contentWrapperView addSubview:_backgroundImageView];
+
+        [self addSubview:_contentWrapperView];
     }
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (void)layoutSubviews
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        _backgroundImageView = [[UIImageView alloc] init];
-        [self addSubview:_backgroundImageView];
-    }
-    return self;
+    // ensure background image size is correct
+    [_backgroundImageView sizeToFit];
+    
+    CGSize sz = self.bounds.size;
+    sz.width = _backgroundImageView.bounds.size.width;
+    _contentWrapperView.contentSize = sz;
 }
 
 - (void)setAnnotations:(NSArray *)annotations
@@ -68,13 +75,13 @@
 
 
         // set the location of the subview
-        annotationView.center = annotationView.annotation.coordinate;
+        annotationView.center = CGPointMake(annotationView.annotation.coordinate.x, annotationView.annotation.coordinate.y);
         
         // keep track of the subview in our internal array
         [newMKAnnotationViews addObject:annotationView];
 
         // officially register the subview
-        [self addSubview:annotationView];
+        [_contentWrapperView addSubview:annotationView];
     }
     _annotationViews = [NSArray arrayWithArray:newMKAnnotationViews];
 }
@@ -117,7 +124,7 @@
     _selectedAnnotationCallout = callout;
 
     [_selectedAnnotationCallout presentCalloutFromRect:view.frame
-                                                inView:self
+                                                inView:_contentWrapperView
                                      constrainedToView:self
                               permittedArrowDirections:SMCalloutArrowDirectionDown
                                               animated:SMCalloutAnimationStretch];

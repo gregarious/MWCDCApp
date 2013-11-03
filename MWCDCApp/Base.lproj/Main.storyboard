@@ -635,60 +635,61 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest Point Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwW-C8-5e6">
-                                <rect key="frame" x="82" y="200" width="218" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hd-hZ-rda" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Interest Point Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwW-C8-5e6">
+                                        <rect key="frame" x="93" y="149" width="218" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="218" id="WTY-9S-XPU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yF-l7-7cW">
+                                        <rect key="frame" x="93" y="177" width="218" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="AN0-UG-liy">
+                                        <rect key="frame" x="25" y="222" width="280" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="skylineDev" translatesAutoresizingMaskIntoConstraints="NO" id="4DA-rK-aAQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="142" id="5aK-i0-HXO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LAp-4u-6Q6" customClass="AsyncImageView">
+                                        <rect key="frame" x="11" y="149" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="FBo-hf-gis"/>
+                                            <constraint firstAttribute="width" constant="60" id="pAX-zE-Mvs"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="218" id="WTY-9S-XPU"/>
+                                    <constraint firstItem="4DA-rK-aAQ" firstAttribute="top" secondItem="8hd-hZ-rda" secondAttribute="top" id="792-jZ-Bd8"/>
+                                    <constraint firstItem="4DA-rK-aAQ" firstAttribute="leading" secondItem="8hd-hZ-rda" secondAttribute="leading" id="PQv-gg-v5l"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yF-l7-7cW">
-                                <rect key="frame" x="82" y="228" width="218" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="AN0-UG-liy">
-                                <rect key="frame" x="14" y="273" width="280" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Skyline_dev" translatesAutoresizingMaskIntoConstraints="NO" id="4DA-rK-aAQ">
-                                <rect key="frame" x="0.0" y="62" width="320" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="WEj-wj-zCH"/>
-                                    <constraint firstAttribute="height" constant="128" id="fbH-BB-E3t"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LAp-4u-6Q6" customClass="AsyncImageView">
-                                <rect key="frame" x="14" y="198" width="60" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="FBo-hf-gis"/>
-                                    <constraint firstAttribute="width" constant="60" id="pAX-zE-Mvs"/>
-                                </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3oJ-ZU-VYK" firstAttribute="top" secondItem="4DA-rK-aAQ" secondAttribute="bottom" constant="-126" id="18F-tx-Ibf"/>
-                            <constraint firstItem="UwW-C8-5e6" firstAttribute="leading" secondItem="LAp-4u-6Q6" secondAttribute="trailing" constant="8" id="3au-3p-sbd"/>
-                            <constraint firstItem="LAp-4u-6Q6" firstAttribute="top" secondItem="4DA-rK-aAQ" secondAttribute="bottom" constant="8" id="Bzj-Gc-BzU"/>
-                            <constraint firstItem="4DA-rK-aAQ" firstAttribute="leading" secondItem="yhv-gJ-obW" secondAttribute="leading" id="MAB-cD-b6Y"/>
-                            <constraint firstItem="7yF-l7-7cW" firstAttribute="leading" secondItem="LAp-4u-6Q6" secondAttribute="trailing" constant="8" id="O0x-pV-VpY"/>
-                            <constraint firstItem="AN0-UG-liy" firstAttribute="top" secondItem="LAp-4u-6Q6" secondAttribute="bottom" constant="15" id="PQ3-5V-zt4"/>
-                            <constraint firstItem="7yF-l7-7cW" firstAttribute="top" secondItem="UwW-C8-5e6" secondAttribute="bottom" constant="8" id="SSz-Zu-vIS"/>
-                            <constraint firstAttribute="trailing" secondItem="AN0-UG-liy" secondAttribute="trailing" constant="26" id="WoO-y9-m5s"/>
-                            <constraint firstAttribute="trailing" secondItem="4DA-rK-aAQ" secondAttribute="trailing" id="anN-Bm-P49"/>
-                            <constraint firstItem="LAp-4u-6Q6" firstAttribute="leading" secondItem="yhv-gJ-obW" secondAttribute="leading" constant="14" id="bQb-3i-Ouh"/>
-                            <constraint firstItem="7yF-l7-7cW" firstAttribute="width" secondItem="UwW-C8-5e6" secondAttribute="width" id="dJT-Mv-wrq"/>
-                            <constraint firstItem="LAp-4u-6Q6" firstAttribute="top" secondItem="UwW-C8-5e6" secondAttribute="top" constant="-2" id="jmM-cJ-uQu"/>
-                            <constraint firstItem="LAp-4u-6Q6" firstAttribute="leading" secondItem="AN0-UG-liy" secondAttribute="leading" id="ud9-mG-HOz"/>
+                            <constraint firstItem="8hd-hZ-rda" firstAttribute="leading" secondItem="yhv-gJ-obW" secondAttribute="leading" id="32J-0T-rPd"/>
+                            <constraint firstAttribute="trailing" secondItem="8hd-hZ-rda" secondAttribute="trailing" id="Qcu-Iy-eoT"/>
+                            <constraint firstItem="F8d-dY-N0V" firstAttribute="top" secondItem="8hd-hZ-rda" secondAttribute="bottom" id="Vlo-sL-s93"/>
+                            <constraint firstItem="8hd-hZ-rda" firstAttribute="top" secondItem="3oJ-ZU-VYK" secondAttribute="bottom" id="hyA-Oj-3pJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JaL-3N-K5Y"/>
@@ -767,7 +768,6 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
         </scene>
     </scenes>
     <resources>
-        <image name="Skyline_dev" width="320" height="360"/>
         <image name="about" width="640" height="892"/>
         <image name="btnCall" width="146" height="45"/>
         <image name="btnDirections" width="146" height="45"/>
@@ -775,6 +775,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
         <image name="btnTwitter" width="96" height="44"/>
         <image name="btnWebsite" width="96" height="44"/>
         <image name="home" width="638" height="904"/>
+        <image name="skylineDev" width="1280" height="568"/>
         <image name="tabAbout" width="27" height="32"/>
         <image name="tabBusinesses" width="32" height="32"/>
         <image name="tabOverlooks" width="32" height="32"/>

@@ -97,12 +97,12 @@ NSString * const skylineSegueIdentifier = @"showSkyline";
     Overlook *duquesne = [[Overlook alloc] initWithId:1
                                                  name:@"Duquesne Incline"
                                            coordinate:CLLocationCoordinate2DMake(40.438406, -80.019500)];
-    duquesne.skylineImage = [UIImage imageNamed:@"Skyline_dev"];
+    duquesne.skylineImage = [UIImage imageNamed:@"skylineDev"];
     
-    Overlook *mon = [[Overlook alloc] initWithId:2
+    Overlook *mon = [[Overlook alloc] initWithId:1
                                             name:@"Monongahela Incline"
                                       coordinate:CLLocationCoordinate2DMake(40.431383, -80.006111)];
-    mon.skylineImage = [UIImage imageNamed:@"Skyline_dev"];
+    mon.skylineImage = [UIImage imageNamed:@"skylineDev"];
     
     return @[duquesne, mon];
 }

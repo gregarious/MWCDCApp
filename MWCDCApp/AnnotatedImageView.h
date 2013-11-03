@@ -12,9 +12,11 @@
 
 @interface AnnotatedImageView : UIView
 {
+    UIScrollView *_contentWrapperView;
+ 
+    ImageAnnotationView *_selectedAnnotationView;
     NSArray *_annotationViews;
     
-    ImageAnnotationView *_selectedAnnotationView;
     SMCalloutView *_selectedAnnotationCallout;
 }
 
