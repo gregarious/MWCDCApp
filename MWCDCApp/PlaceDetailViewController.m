@@ -58,6 +58,28 @@
                                            reuseIdentifier:reuseId];
 }
 
+- (void)callButtonTapped:(id)sender
+{
+    NSLog(@"Call!");
+}
+
+- (void)directionsButtonTapped:(id)sender
+{
+    NSLog(@"Directions!");
+}
+
+- (IBAction)facebookButtonTapped:(id)sender {
+    NSLog(@"Facebook!");
+}
+
+- (IBAction)twitterButtonTapped:(id)sender {
+    NSLog(@"Twitter!");
+}
+
+- (IBAction)websiteButtonTapped:(id)sender {
+    NSLog(@"Website!");
+}
+
 /* private */
 - (void)configureView {
     if (self.place && self.nameLabel) {

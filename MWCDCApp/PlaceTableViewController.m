@@ -99,6 +99,11 @@ NSString * const loadingCellReuseIdenitifier = @"PlaceLoading";
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSParameterAssert(indexPath.section == 0);

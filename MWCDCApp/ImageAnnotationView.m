@@ -14,7 +14,7 @@
 {
     [_iconImageView removeFromSuperview];
     
-    _iconImage = [UIImage imageNamed:@"skyline_dot"];
+    _iconImage = [UIImage imageNamed:@"skylineMarker"];
     self.bounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y,
                              self.iconImage.size.width, self.iconImage.size.height);
     

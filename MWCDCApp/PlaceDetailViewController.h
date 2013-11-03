@@ -28,4 +28,11 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+// action buttons
+- (IBAction)callButtonTapped:(id)sender;
+- (IBAction)directionsButtonTapped:(id)sender;
+- (IBAction)facebookButtonTapped:(id)sender;
+- (IBAction)twitterButtonTapped:(id)sender;
+- (IBAction)websiteButtonTapped:(id)sender;
+
 @end
