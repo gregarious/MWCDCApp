@@ -41,6 +41,9 @@
         _backgroundImageView = [[UIImageView alloc] init];
         [_contentWrapperView addSubview:_backgroundImageView];
 
+        // TODO: remove debug position fix
+        _contentWrapperView.contentOffset = CGPointMake(450, 0);
+        
         [self addSubview:_contentWrapperView];
     }
     return self;
