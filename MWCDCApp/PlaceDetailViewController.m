@@ -60,24 +60,24 @@
 
 - (void)callButtonTapped:(id)sender
 {
-    NSLog(@"Call!");
+    NSLog(@"Calling %@", self.place.phone);
 }
 
 - (void)directionsButtonTapped:(id)sender
 {
-    NSLog(@"Directions!");
+    NSLog(@"Directions to %@", self.place.streetAddress);
 }
 
 - (IBAction)facebookButtonTapped:(id)sender {
-    NSLog(@"Facebook!");
+    NSLog(@"Opening Facebook for profile '%@'", self.place.fbId);
 }
 
 - (IBAction)twitterButtonTapped:(id)sender {
-    NSLog(@"Twitter!");
+    NSLog(@"Opening Twitter for handle '%@'", self.place.twitterHandle);
 }
 
 - (IBAction)websiteButtonTapped:(id)sender {
-    NSLog(@"Website!");
+    NSLog(@"Opening %@", self.place.website);
 }
 
 /* private */
@@ -96,6 +96,22 @@
         [self.mapView addAnnotation:self.place];
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.place.coordinate, 500, 500);
         [self.mapView setRegion:region];
+        
+        if (self.place.phone == nil || self.place.phone.length == 0) {
+            self.callButton.enabled = NO;
+        }
+        if (self.place.streetAddress == nil || self.place.streetAddress.length == 0) {
+            self.directionsButton.enabled = NO;
+        }
+        if (self.place.fbId == nil || self.place.fbId.length == 0) {
+            self.facebookButton.enabled = NO;
+        }
+        if (self.place.twitterHandle == nil || self.place.twitterHandle.length == 0) {
+            self.twitterButton.enabled = NO;
+        }
+        if (self.place.website == nil || self.place.website.length == 0) {
+            self.websiteButton.enabled = NO;
+        }
     }
 }
 

@@ -28,7 +28,14 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-// action buttons
+// Button outlets
+@property (weak, nonatomic) IBOutlet UIButton *callButton;
+@property (weak, nonatomic) IBOutlet UIButton *directionsButton;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
+@property (weak, nonatomic) IBOutlet UIButton *websiteButton;
+
+// Button action callbacks
 - (IBAction)callButtonTapped:(id)sender;
 - (IBAction)directionsButtonTapped:(id)sender;
 - (IBAction)facebookButtonTapped:(id)sender;

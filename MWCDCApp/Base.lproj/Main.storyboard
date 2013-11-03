@@ -515,13 +515,18 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="addressLabel" destination="9zi-Pf-1x9" id="adJ-xo-7DY"/>
+                        <outlet property="callButton" destination="KoI-Je-esx" id="MVf-bI-Ght"/>
                         <outlet property="categoryLabel" destination="vOJ-7N-6If" id="S1c-0H-TJC"/>
                         <outlet property="contentView" destination="6Xh-GV-YWk" id="f9R-Ol-old"/>
                         <outlet property="descriptionLabel" destination="Ygq-DG-kC2" id="YQ3-Uf-Qlt"/>
+                        <outlet property="directionsButton" destination="8Uf-MO-WOd" id="Z1u-cM-Itx"/>
+                        <outlet property="facebookButton" destination="5b6-aI-pvj" id="HNT-fO-Opb"/>
                         <outlet property="imageView" destination="ryR-pY-C0E" id="zdT-BK-blO"/>
                         <outlet property="mapView" destination="fVc-tI-FXD" id="G2i-lc-9dX"/>
                         <outlet property="nameLabel" destination="ukh-jB-tJS" id="wfj-gH-RIV"/>
                         <outlet property="scrollView" destination="aOD-0V-eg8" id="A4m-BJ-LRr"/>
+                        <outlet property="twitterButton" destination="fNH-l7-AIv" id="n3k-xf-Yfx"/>
+                        <outlet property="websiteButton" destination="khp-ni-ycv" id="Qnb-6J-7Ns"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENp-br-aZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
