@@ -29,7 +29,7 @@
         <scene sceneID="cUi-kZ-frf">
             <objects>
                 <navigationController title="Places Stack" id="rS3-R9-Ivy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Business" id="S80-ua-J9j"/>
+                    <tabBarItem key="tabBarItem" title="Business" image="tabBusinesses" id="S80-ua-J9j"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -541,7 +541,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
         <scene sceneID="PIa-Gb-qUi">
             <objects>
                 <navigationController title="Viewpoints Stack" definesPresentationContext="YES" id="VoK-IK-H7P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Overlooks" id="T9K-cl-QMs"/>
+                    <tabBarItem key="tabBarItem" title="Overlooks" image="tabOverlooks" id="T9K-cl-QMs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qc9-G0-hUn">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -719,7 +719,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                             <constraint firstItem="9JD-Zf-yi2" firstAttribute="top" secondItem="rc4-KC-KJd" secondAttribute="top" id="sU8-U6-x9i"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" id="GPv-H0-pMn"/>
+                    <tabBarItem key="tabBarItem" title="About" image="tabAbout" id="GPv-H0-pMn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVs-Xe-brO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -750,7 +750,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                             <constraint firstAttribute="trailing" secondItem="EIt-12-7sB" secondAttribute="trailing" id="vh8-Iz-4Wj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="Eg2-ul-xH7"/>
+                    <tabBarItem key="tabBarItem" title="Welcome" image="tabWelcome" id="Eg2-ul-xH7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYf-32-bmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -766,6 +766,10 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
         <image name="home" width="638" height="904"/>
         <image name="menu" width="142" height="118"/>
         <image name="site" width="172" height="66"/>
+        <image name="tabAbout" width="27" height="32"/>
+        <image name="tabBusinesses" width="32" height="32"/>
+        <image name="tabOverlooks" width="32" height="32"/>
+        <image name="tabWelcome" width="32" height="32"/>
         <image name="tw" width="170" height="64"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
