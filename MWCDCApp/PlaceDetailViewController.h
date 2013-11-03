@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
 @property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 @property (weak, nonatomic) IBOutlet UIButton *websiteButton;
+@property (weak, nonatomic) IBOutlet UILabel *callButtonLabel;
 
 // Button action callbacks
 - (IBAction)callButtonTapped:(id)sender;

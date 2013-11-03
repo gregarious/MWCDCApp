@@ -28,6 +28,7 @@
 		372753951822C2FD00E286B3 /* PlaceCategoryMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 372753941822C2FD00E286B3 /* PlaceCategoryMenuViewController.m */; };
 		372A71B5180751F9006826D1 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 372A71B3180751E4006826D1 /* libOCMock.a */; };
 		372A71B718083682006826D1 /* AppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A71B618083682006826D1 /* AppDelegateTests.m */; };
+		372D88E91826008200FEFA0C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372D88E81826008200FEFA0C /* AddressBook.framework */; };
 		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
 		37353CB417E352320062B12A /* PlaceFetchWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB317E352320062B12A /* PlaceFetchWorkflowTests.m */; };
 		37353CB717E3546C0062B12A /* PlaceDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataFetcher.m */; };
@@ -121,6 +122,7 @@
 		372753941822C2FD00E286B3 /* PlaceCategoryMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCategoryMenuViewController.m; sourceTree = "<group>"; };
 		372A71B3180751E4006826D1 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/lib/libOCMock.a; sourceTree = "<group>"; };
 		372A71B618083682006826D1 /* AppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateTests.m; sourceTree = "<group>"; };
+		372D88E81826008200FEFA0C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		37353CB117E274EE0062B12A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		37353CB317E352320062B12A /* PlaceFetchWorkflowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceFetchWorkflowTests.m; sourceTree = "<group>"; };
 		37353CB517E3546C0062B12A /* PlaceDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDataFetcher.h; path = MWCDCApp/PlaceDataFetcher.h; sourceTree = SOURCE_ROOT; };
@@ -192,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372D88E91826008200FEFA0C /* AddressBook.framework in Frameworks */,
 				37FEB15718060BD100F9F3A5 /* MapKit.framework in Frameworks */,
 				37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */,
 				37E6EA7B17E22BE7004976DC /* CoreGraphics.framework in Frameworks */,
@@ -423,6 +426,7 @@
 		37E6EA7717E22BE7004976DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				372D88E81826008200FEFA0C /* AddressBook.framework */,
 				372A71B3180751E4006826D1 /* libOCMock.a */,
 				37FEB15618060BD100F9F3A5 /* MapKit.framework */,
 				37353CB117E274EE0062B12A /* CoreLocation.framework */,

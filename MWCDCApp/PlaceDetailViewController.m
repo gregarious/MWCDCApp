@@ -8,9 +8,11 @@
 
 #import "PlaceDetailViewController.h"
 #import "Place.h"
+#import <AddressBook/ABPerson.h>
 
 @interface PlaceDetailViewController ()
 - (void)configureView;
+- (NSString *)processPhoneNumber:(NSString *)phoneNumber;
 @end
 
 @implementation PlaceDetailViewController
@@ -54,30 +56,65 @@
     }
     
     static NSString *reuseId = @"DetailPin";
+    
     return [[MKPinAnnotationView alloc] initWithAnnotation:annotation
                                            reuseIdentifier:reuseId];
 }
 
-- (void)callButtonTapped:(id)sender
+- (IBAction)callButtonTapped:(id)sender
 {
-    NSLog(@"Calling %@", self.place.phone);
+    // strip spaces and parenthesis from numbers
+    NSString *processedNumber = [self processPhoneNumber:self.place.phone];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", processedNumber]];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
-- (void)directionsButtonTapped:(id)sender
+- (IBAction)directionsButtonTapped:(id)sender
 {
-    NSLog(@"Directions to %@", self.place.streetAddress);
+    // create MKPlacemark
+    NSMutableDictionary *addressDict;
+    addressDict[(NSString *)kABPersonAddressStreetKey] = self.place.streetAddress;
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:self.place.coordinate addressDictionary:addressDict];
+    
+    // use placemark to create item to route directions to in Maps
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    mapItem.name = self.place.name;
+    
+    [mapItem openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving}];
 }
 
 - (IBAction)facebookButtonTapped:(id)sender {
-    NSLog(@"Opening Facebook for profile '%@'", self.place.fbId);
+    // try to open with Facebook app
+    NSString* fbURL = [NSString stringWithFormat:@"fb://profile/%@", self.place.fbId];
+    BOOL fbOpened = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fbURL]];
+
+    // fall back to Safari at facebook.com if that fails
+    if (!fbOpened) {
+        NSString *webURL = [NSString stringWithFormat:@"http://www.facebook.com/%@", self.place.fbId];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:webURL]];
+    }
 }
 
 - (IBAction)twitterButtonTapped:(id)sender {
-    NSLog(@"Opening Twitter for handle '%@'", self.place.twitterHandle);
+    // try to open with Twitter app
+    NSString* twitterURL = [NSString stringWithFormat:@"twitter://user?screen_name=%@", self.place.twitterHandle];
+    BOOL twitterOpened = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterURL]];
+
+    // fall back to Safari at twitter.com if that fails
+    if (!twitterOpened) {
+        NSString *webURL = [NSString stringWithFormat:@"http://twitter.com/%@", self.place.twitterHandle];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:webURL]];
+    }
 }
 
-- (IBAction)websiteButtonTapped:(id)sender {
-    NSLog(@"Opening %@", self.place.website);
+- (IBAction)websiteButtonTapped:(id)sender
+{
+    // ensure url has 'http' protocol
+    NSString *urlString = self.place.website;
+    if (![[urlString substringToIndex:4] isEqualToString:@"http"]) {
+        urlString = [NSString stringWithFormat:@"http://%@", urlString];
+    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 
 /* private */
@@ -99,10 +136,12 @@
         
         if (self.place.phone == nil || self.place.phone.length == 0) {
             self.callButton.enabled = NO;
+            self.callButtonLabel.text = @"Unknown number";
         }
-        if (self.place.streetAddress == nil || self.place.streetAddress.length == 0) {
-            self.directionsButton.enabled = NO;
+        else {
+            self.callButtonLabel.text = [self processPhoneNumber:self.place.phone];
         }
+        
         if (self.place.fbId == nil || self.place.fbId.length == 0) {
             self.facebookButton.enabled = NO;
         }
@@ -113,6 +152,25 @@
             self.websiteButton.enabled = NO;
         }
     }
+}
+
+- (NSString *)processPhoneNumber:(NSString *)phoneNumber
+{
+    NSMutableString *mutablePhoneNumber = [NSMutableString stringWithString:phoneNumber];
+    
+    [mutablePhoneNumber replaceOccurrencesOfString:@" "
+                                        withString:@"-"
+                                           options:NSLiteralSearch
+                                             range:NSMakeRange(0, mutablePhoneNumber.length)];
+    [mutablePhoneNumber replaceOccurrencesOfString:@"("
+                                        withString:@""
+                                           options:NSLiteralSearch
+                                             range:NSMakeRange(0, mutablePhoneNumber.length)];
+    [mutablePhoneNumber replaceOccurrencesOfString:@")"
+                                        withString:@""
+                                           options:NSLiteralSearch
+                                             range:NSMakeRange(0, mutablePhoneNumber.length)];
+    return mutablePhoneNumber;
 }
 
 @end

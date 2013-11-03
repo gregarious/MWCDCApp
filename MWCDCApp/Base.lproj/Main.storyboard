@@ -355,13 +355,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukh-jB-tJS">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukh-jB-tJS">
                                                 <rect key="frame" x="80" y="134" width="220" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zi-Pf-1x9">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zi-Pf-1x9">
                                                 <rect key="frame" x="80" y="155" width="230" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
@@ -456,6 +456,16 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                                                     <action selector="websiteButtonTapped:" destination="yME-hU-tX8" eventType="touchUpInside" id="cHM-xv-Abz"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="NH9-A8-O0Q" userLabel="Phone number label">
+                                                <rect key="frame" x="50" y="232" width="100" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="Xma-Rc-x8M"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.21176472306251526" green="0.57254904508590698" blue="0.69411766529083252" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
@@ -463,9 +473,11 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                                             <constraint firstItem="vOJ-7N-6If" firstAttribute="width" secondItem="9zi-Pf-1x9" secondAttribute="width" id="33a-e3-KHX"/>
                                             <constraint firstItem="ryR-pY-C0E" firstAttribute="top" secondItem="fVc-tI-FXD" secondAttribute="bottom" constant="14" id="4Rz-ki-GeY"/>
                                             <constraint firstItem="9zi-Pf-1x9" firstAttribute="leading" secondItem="vOJ-7N-6If" secondAttribute="leading" id="60l-y2-MA4"/>
+                                            <constraint firstItem="NH9-A8-O0Q" firstAttribute="leading" secondItem="KoI-Je-esx" secondAttribute="trailing" constant="-108" id="6eA-8Z-4XW"/>
                                             <constraint firstItem="KoI-Je-esx" firstAttribute="top" secondItem="8Uf-MO-WOd" secondAttribute="top" id="79P-pw-rEJ"/>
                                             <constraint firstItem="9zi-Pf-1x9" firstAttribute="leading" secondItem="ryR-pY-C0E" secondAttribute="trailing" constant="8" symbolic="YES" id="AIr-qV-Uak"/>
                                             <constraint firstAttribute="trailing" secondItem="Ygq-DG-kC2" secondAttribute="trailing" constant="17" id="BGb-2t-TZG"/>
+                                            <constraint firstItem="NH9-A8-O0Q" firstAttribute="centerY" secondItem="KoI-Je-esx" secondAttribute="centerY" id="DFx-87-lwW"/>
                                             <constraint firstItem="8Uf-MO-WOd" firstAttribute="leading" secondItem="KoI-Je-esx" secondAttribute="trailing" constant="4" id="DkI-Ts-yzi"/>
                                             <constraint firstAttribute="width" secondItem="fVc-tI-FXD" secondAttribute="width" id="EaF-Iu-Ks9"/>
                                             <constraint firstItem="KoI-Je-esx" firstAttribute="leading" secondItem="6Xh-GV-YWk" secondAttribute="leading" constant="12" id="Eoe-H8-Mtw"/>
@@ -516,6 +528,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                     <connections>
                         <outlet property="addressLabel" destination="9zi-Pf-1x9" id="adJ-xo-7DY"/>
                         <outlet property="callButton" destination="KoI-Je-esx" id="MVf-bI-Ght"/>
+                        <outlet property="callButtonLabel" destination="NH9-A8-O0Q" id="tTs-9j-dsx"/>
                         <outlet property="categoryLabel" destination="vOJ-7N-6If" id="S1c-0H-TJC"/>
                         <outlet property="contentView" destination="6Xh-GV-YWk" id="f9R-Ol-old"/>
                         <outlet property="descriptionLabel" destination="Ygq-DG-kC2" id="YQ3-Uf-Qlt"/>
