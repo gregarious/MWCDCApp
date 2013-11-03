@@ -51,6 +51,7 @@
 		37C62BA918233F44007BEDF5 /* mwcdc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 37C62BA818233F44007BEDF5 /* mwcdc.gpx */; };
 		37D5D0A117E9FB9D0051A7B5 /* PlaceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */; };
 		37D5D0A517E9FBE00051A7B5 /* FakePlaceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D5D0A417E9FBE00051A7B5 /* FakePlaceBuilder.m */; };
+		37E42C281825D590002E9325 /* CurrentLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E42C271825D590002E9325 /* CurrentLocationTracker.m */; };
 		37E6EA7917E22BE7004976DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7817E22BE7004976DC /* Foundation.framework */; };
 		37E6EA7B17E22BE7004976DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7A17E22BE7004976DC /* CoreGraphics.framework */; };
 		37E6EA7D17E22BE7004976DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E6EA7C17E22BE7004976DC /* UIKit.framework */; };
@@ -156,6 +157,8 @@
 		37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceBuilder.m; sourceTree = "<group>"; };
 		37D5D0A317E9FBE00051A7B5 /* FakePlaceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakePlaceBuilder.h; sourceTree = "<group>"; };
 		37D5D0A417E9FBE00051A7B5 /* FakePlaceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakePlaceBuilder.m; sourceTree = "<group>"; };
+		37E42C261825D590002E9325 /* CurrentLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentLocationTracker.h; sourceTree = "<group>"; };
+		37E42C271825D590002E9325 /* CurrentLocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentLocationTracker.m; sourceTree = "<group>"; };
 		37E6EA7517E22BE7004976DC /* MWCDCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWCDCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E6EA7817E22BE7004976DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		37E6EA7A17E22BE7004976DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -290,6 +293,8 @@
 				37BEFB301808C9BF007EF741 /* Views */,
 				37BEFB2F1808C60C007EF741 /* Data */,
 				37BEFB2E1808C5FE007EF741 /* Controllers */,
+				37E42C261825D590002E9325 /* CurrentLocationTracker.h */,
+				37E42C271825D590002E9325 /* CurrentLocationTracker.m */,
 			);
 			name = Places;
 			sourceTree = "<group>";
@@ -598,6 +603,7 @@
 				376F275A17E23F7400178A06 /* Place.m in Sources */,
 				370E1E7F180C374800844A63 /* Overlook.m in Sources */,
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
+				37E42C281825D590002E9325 /* CurrentLocationTracker.m in Sources */,
 				3786658517EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */,
 				37083D89180DC6700049FCC5 /* PlaceCollectionViewController.m in Sources */,
 				372753951822C2FD00E286B3 /* PlaceCategoryMenuViewController.m in Sources */,

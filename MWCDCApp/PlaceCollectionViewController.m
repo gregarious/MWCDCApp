@@ -35,7 +35,12 @@
 
 - (void)awakeFromNib {
     // TODO: this kind of sucks. why no init?
-    dataManager = [[PlaceViewDataManager alloc] init];
+    dataManager = [PlaceViewDataManager new];
+    
+    // if needing location servers for place sorting, uncomment this
+    // to initialize the shared tracker so it gets a head start in
+    // locating the user
+    // [CurrentLocationTracker sharedTracker];
 }
 
 - (void)viewDidLoad

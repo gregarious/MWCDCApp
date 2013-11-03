@@ -34,7 +34,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    MKCoordinateRegion initRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(40.436136, -80.010681), 2500, 2500);
+    
+    CLLocationCoordinate2D center;
+    CLLocationDistance meterRadius;
+    
+    // TODO: if smarter location-based region is needed, use the CurrentLocationTracker
+    //       here to help find a better initial region
+    
+    center = CLLocationCoordinate2DMake(40.432136, -80.012980),
+    meterRadius = 2500;
+    
+    MKCoordinateRegion initRegion = MKCoordinateRegionMakeWithDistance(center, meterRadius, meterRadius);
     
     [_mapView setRegion:initRegion];
     _mapView.delegate = self;
