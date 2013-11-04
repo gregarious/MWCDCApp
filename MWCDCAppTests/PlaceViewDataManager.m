@@ -67,17 +67,35 @@
 
 - (void)filterPlaces
 {
+    // set up regex once for search query
+    NSError *error = NULL;
+    NSString *pattern = [NSString stringWithFormat:@"\\b%@", self.filterQuery];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+
     // only bother filters if places or query exist
     NSMutableArray *filteredPlaces = [NSMutableArray array];
     for (Place *place in self.places) {
-        BOOL matchesSearch = YES;
-        if (self.filterQuery != nil && self.filterQuery.length) {
-            matchesSearch = ([place.name.lowercaseString rangeOfString:_filterQuery].location != NSNotFound);
-        }
-        
         BOOL matchesCategory = YES;
         if (self.filterCategory != nil) {
             matchesCategory = ([place.categoryLabel isEqualToString:self.filterCategory]);
+        }
+        
+        // if it's not a match, don't bother with expensive regex search
+        if (!matchesCategory) {
+            continue;
+        }
+        
+        BOOL matchesSearch = YES;
+        
+        if (self.filterQuery != nil && self.filterQuery.length) {
+            NSString *searchText = [NSString stringWithFormat:@"%@ %@ %@", place.name, place.streetAddress, place.description];
+            NSRange textRange = NSMakeRange(0, searchText.length);
+            NSRange matchRange = [regex rangeOfFirstMatchInString:searchText
+                                                          options:NSMatchingReportProgress
+                                                            range:textRange];
+            matchesSearch = (matchRange.location != NSNotFound);
         }
         
         if (matchesSearch && matchesCategory) {
