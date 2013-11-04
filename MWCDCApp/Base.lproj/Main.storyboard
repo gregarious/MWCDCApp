@@ -826,7 +826,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tMb-1Z-Zkr">
-                                <rect key="frame" x="12" y="353" width="296" height="66"/>
+                                <rect key="frame" x="12" y="304" width="296" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -838,7 +838,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                             <constraint firstItem="7R1-x8-3FW" firstAttribute="top" secondItem="fwH-Zv-4xH" secondAttribute="bottom" constant="42" id="RXG-34-Utr"/>
                             <constraint firstItem="tMb-1Z-Zkr" firstAttribute="centerX" secondItem="7R1-x8-3FW" secondAttribute="centerX" id="Y7B-Yj-048"/>
                             <constraint firstAttribute="bottom" secondItem="EIt-12-7sB" secondAttribute="bottom" id="bQ8-Qp-jiL"/>
-                            <constraint firstItem="ecA-w3-n9l" firstAttribute="top" secondItem="tMb-1Z-Zkr" secondAttribute="bottom" constant="12" id="gcI-wu-QfI"/>
+                            <constraint firstItem="ecA-w3-n9l" firstAttribute="top" secondItem="tMb-1Z-Zkr" secondAttribute="bottom" constant="61" id="gcI-wu-QfI"/>
                             <constraint firstAttribute="trailing" secondItem="EIt-12-7sB" secondAttribute="trailing" id="vh8-Iz-4Wj"/>
                         </constraints>
                     </view>
