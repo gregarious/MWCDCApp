@@ -64,12 +64,4 @@
     [super tearDown];
 }
 
-#pragma mark - Basic subview makeup
-
-- (void)testShouldContainBackgroundImageViewAsSubview
-{
-    XCTAssertTrue([view.subviews indexOfObject:view.backgroundImageView] != NSNotFound,
-                  @"ensure background image is officially registered as a subview");
-}
-
 @end

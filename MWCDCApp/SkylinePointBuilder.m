@@ -77,7 +77,8 @@
     InterestPoint *interestPoint = [[InterestPoint alloc] initWithName:dict[@"name"]
                                                                address:dict[@"address"]
                                                            description:dict[@"description"]];
-
+    interestPoint.imageUrl = dict[@"image"];
+    
     return [[SkylinePoint alloc] initWithInterestPoint:interestPoint
                                             coordinate:CGPointMake([dict[@"x"] doubleValue],
                                                                    [dict[@"y"] doubleValue])];

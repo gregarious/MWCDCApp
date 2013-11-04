@@ -31,6 +31,7 @@
 		37353CB217E274EE0062B12A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37353CB117E274EE0062B12A /* CoreLocation.framework */; };
 		37353CB417E352320062B12A /* PlaceFetchWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB317E352320062B12A /* PlaceFetchWorkflowTests.m */; };
 		37353CB717E3546C0062B12A /* PlaceDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 37353CB617E3546C0062B12A /* PlaceDataFetcher.m */; };
+		373565321828149C00942F14 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 373565311828149C00942F14 /* WelcomeViewController.m */; };
 		37431D9F18187C060093F2C1 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37431D9E18187C060093F2C1 /* AsyncImageView.m */; };
 		374E223D17FEF9620051897F /* PlaceViewDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 374E223C17FEF9620051897F /* PlaceViewDataManagerTests.m */; };
 		3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */; };
@@ -125,6 +126,8 @@
 		37353CB517E3546C0062B12A /* PlaceDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDataFetcher.h; path = MWCDCApp/PlaceDataFetcher.h; sourceTree = SOURCE_ROOT; };
 		37353CB617E3546C0062B12A /* PlaceDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDataFetcher.m; path = MWCDCApp/PlaceDataFetcher.m; sourceTree = SOURCE_ROOT; };
 		37353CBA17E354FE0062B12A /* PlaceDataFetcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDataFetcherDelegate.h; sourceTree = "<group>"; };
+		373565301828149C00942F14 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		373565311828149C00942F14 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		37431D9D18187C060093F2C1 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		37431D9E18187C060093F2C1 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		37431DA318199B330093F2C1 /* PlaceCategoryMenuDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceCategoryMenuDelegate.h; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 				370E1E7C180C36EC00844A63 /* Overlooks */,
 				375C3C5E17EBA83300CB1B03 /* API */,
 				37E6EA7F17E22BE7004976DC /* Supporting Files */,
+				373565301828149C00942F14 /* WelcomeViewController.h */,
+				373565311828149C00942F14 /* WelcomeViewController.m */,
 			);
 			path = MWCDCApp;
 			sourceTree = "<group>";
@@ -603,6 +608,7 @@
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
 				37E42C281825D590002E9325 /* CurrentLocationTracker.m in Sources */,
 				3786658517EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */,
+				373565321828149C00942F14 /* WelcomeViewController.m in Sources */,
 				37083D89180DC6700049FCC5 /* PlaceCollectionViewController.m in Sources */,
 				372753951822C2FD00E286B3 /* PlaceCategoryMenuViewController.m in Sources */,
 				37275392182189D700E286B3 /* ImageAnnotationView.m in Sources */,

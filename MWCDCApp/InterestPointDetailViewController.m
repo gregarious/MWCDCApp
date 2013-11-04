@@ -64,7 +64,9 @@
         self.addressLabel.text = self.interestPoint.address;
         self.descriptionLabel.text = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy lomo, ethnic dreamcatcher umami chia vero magna. Exercitation ea kale chips, readymade asymmetrical Brooklyn post-ironic reprehenderit iPhone minim fanny pack ex before they sold out. Labore sustainable cred, sartorial vero pour-over kale chips Blue Bottle cliche selvage post-ironic retro plaid aliqua Bushwick.";
         
-        self.imageView.imageURL = [NSURL URLWithString:self.interestPoint.imageUrl];
+        // TODO: remove when server delivers abs url
+        NSURL *baseMediaURL = [NSURL URLWithString:@"http://mwcdc.scenable.com/media/"];
+        self.imageView.imageURL = [NSURL URLWithString:self.interestPoint.imageUrl relativeToURL:baseMediaURL];
         
         self.navigationItem.title = self.interestPoint.name;
     }
