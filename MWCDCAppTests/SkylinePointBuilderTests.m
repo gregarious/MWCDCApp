@@ -29,6 +29,7 @@
     @"    \"name\": \"U.S. Steel Tower\", "
     @"    \"address\": \"600 Grant Street\", "
     @"    \"description\": \"Big ol' building\", "
+    @"    \"image\": \"image.png\","
     @"    \"label\": \"2\", "
     @"    \"x\": 1, "
     @"    \"y\": 1"
@@ -104,6 +105,8 @@
     XCTAssertEqualObjects(skylinePoint.interestPoint.name, @"U.S. Steel Tower");
     XCTAssertEqualObjects(skylinePoint.interestPoint.address, @"600 Grant Street");
     XCTAssertEqualObjects(skylinePoint.interestPoint.description, @"Big ol' building");
+    
+    XCTAssertEqualObjects(skylinePoint.interestPoint.imageUrl, @"image.png");
 }
 
 @end

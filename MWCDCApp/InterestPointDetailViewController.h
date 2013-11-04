@@ -14,6 +14,10 @@
 @interface InterestPointDetailViewController : UIViewController
 
 @property (nonatomic, weak) InterestPoint *interestPoint;
+@property (nonatomic, assign) CGPoint mapCoordinate;
+
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIImageView *markerImageView;
 
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *addressLabel;

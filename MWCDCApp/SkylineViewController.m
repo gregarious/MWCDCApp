@@ -89,6 +89,7 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
         SkylinePoint *point = sender;
         InterestPointDetailViewController *detailVC = [segue destinationViewController];
         detailVC.interestPoint = point.interestPoint;
+        detailVC.mapCoordinate = point.coordinate;
     }
 }
 
@@ -99,7 +100,7 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
 {
     ImageAnnotationView *view = [[ImageAnnotationView alloc] init];
     view.annotation = annotation;
-    view.iconImage = [UIImage imageNamed:@"skyline_dot"];
+    view.iconImage = [UIImage imageNamed:@"skylineMarker"];
     
     view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 

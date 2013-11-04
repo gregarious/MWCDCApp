@@ -9,6 +9,7 @@
 #import "InterestPointDetailViewController.h"
 #import "InterestPoint.h"
 #import "AsyncImageView.h"
+#import "ImageAnnotationView.h"
 
 @interface InterestPointDetailViewController ()
 
@@ -33,9 +34,19 @@
     [self configureViews];
 }
 
+- (void)setMapCoordinate:(CGPoint)mapCoordinate
+{
+    _mapCoordinate = mapCoordinate;
+    [self configureViews];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [self configureViews];
 }
 
@@ -48,13 +59,17 @@
 #pragma mark - Private methods
 - (void)configureViews
 {
-    self.nameLabel.text = self.interestPoint.name;
-    self.addressLabel.text = self.interestPoint.address;
-    self.descriptionLabel.text = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy lomo, ethnic dreamcatcher umami chia vero magna. Exercitation ea kale chips, readymade asymmetrical Brooklyn post-ironic reprehenderit iPhone minim fanny pack ex before they sold out. Labore sustainable cred, sartorial vero pour-over kale chips Blue Bottle cliche selvage post-ironic retro plaid aliqua Bushwick.";
+    if (self.interestPoint != nil) {
+        self.nameLabel.text = self.interestPoint.name;
+        self.addressLabel.text = self.interestPoint.address;
+        self.descriptionLabel.text = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy lomo, ethnic dreamcatcher umami chia vero magna. Exercitation ea kale chips, readymade asymmetrical Brooklyn post-ironic reprehenderit iPhone minim fanny pack ex before they sold out. Labore sustainable cred, sartorial vero pour-over kale chips Blue Bottle cliche selvage post-ironic retro plaid aliqua Bushwick.";
+        
+        self.imageView.imageURL = [NSURL URLWithString:self.interestPoint.imageUrl];
+        
+        self.navigationItem.title = self.interestPoint.name;
+    }
     
-    self.imageView.imageURL = [NSURL URLWithString:@"http://placehold.it/60x60"];
-    
-    self.navigationItem.title = self.interestPoint.name;
+    // TODO: handle marker positioning
 }
 
 @end

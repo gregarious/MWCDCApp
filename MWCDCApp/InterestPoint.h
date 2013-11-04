@@ -14,6 +14,8 @@
 @property (nonatomic, copy, readonly) NSString *address;
 @property (nonatomic, copy, readonly) NSString *description;
 
+@property (nonatomic, copy) NSString *imageUrl;
+
 - (id)initWithName:(NSString *)name
            address:(NSString *)address
        description:(NSString *)description;
