@@ -590,7 +590,7 @@ Occaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis 
                             <constraint firstItem="UC0-ju-sl8" firstAttribute="leading" secondItem="Cit-I8-HD4" secondAttribute="leading" id="pjQ-2V-ueT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Overlook" id="zT9-XG-Bte"/>
+                    <navigationItem key="navigationItem" title="Overlooks" id="zT9-XG-Bte"/>
                     <connections>
                         <outlet property="mapView" destination="UC0-ju-sl8" id="Tp6-2H-DXP"/>
                         <segue destination="1YW-U5-i8I" kind="push" identifier="showSkyline" id="sw4-vE-ips"/>
