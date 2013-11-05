@@ -12,7 +12,7 @@
 
 @interface SkylinePointBuilder ()
 - (SkylinePoint *)buildSkylinePointFromDictionary:(NSDictionary *)dataDict;
-- (void)setError:(NSError **)error withCode:(NSInteger)code;
+- (BOOL)setError:(NSError **)error withCode:(NSInteger)code;
 @end
 
 @implementation SkylinePointBuilder
@@ -84,12 +84,13 @@
                                                                    [dict[@"y"] doubleValue])];
 }
 
-- (void)setError:(NSError **)error withCode:(NSInteger)code {
+- (BOOL)setError:(NSError **)error withCode:(NSInteger)code {
     if (error) {
         *error = [NSError errorWithDomain:SkylinePointBuilderErrorDomain
                                      code:code
                                  userInfo:nil];
     }
+    return YES;
 }
 
 @end

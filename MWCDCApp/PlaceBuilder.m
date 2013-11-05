@@ -12,7 +12,7 @@
 @interface PlaceBuilder ()
 
 - (Place *)buildPlaceFromDictionary:(NSDictionary *)placeDict;
-- (void)setError:(NSError **)error withCode:(NSInteger)code;
+- (BOOL)setError:(NSError **)error withCode:(NSInteger)code;
 
 @end
 
@@ -116,12 +116,13 @@
     return place;
 }
 
-- (void)setError:(NSError **)error withCode:(NSInteger)code {
+- (BOOL)setError:(NSError **)error withCode:(NSInteger)code {
     if (error) {
         *error = [NSError errorWithDomain:PlaceBuilderErrorDomain
                                      code:code
                                  userInfo:nil];
     }
+    return YES;
 }
 
 
