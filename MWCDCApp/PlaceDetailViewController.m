@@ -17,6 +17,8 @@
 
 @implementation PlaceDetailViewController
 
+NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy lomo, ethnic dreamcatcher umami chia vero magna. Exercitation ea kale chips, readymade asymmetrical Brooklyn post-ironic reprehenderit iPhone minim fanny pack ex before they sold out. Labore sustainable cred, sartorial vero pour-over kale chips Blue Bottle cliche selvage post-ironic retro plaid aliqua Bushwick. Delectus pickled magna commodo Etsy wolf viral, fap sriracha irony. Ullamco pop-up mumblecore, cupidatat Godard vegan art party meh non narwhal flexitarian American Apparel chillwave. Quis organic small batch, Schlitz narwhal next level cardigan officia mlkshk Godard anim bicycle rights lo-fi. Put a bird on it velit synth, 90's church-key pop-up reprehenderit +1 you probably haven't heard of them iPhone Thundercats semiotics Echo Park art party pariatur.\nRaw denim odio artisan gentrify small batch, flexitarian butcher adipisicing mumblecore forage dolor mixtape PBR&B duis. Cray aesthetic wolf master cleanse in. Mlkshk post-ironic hashtag excepteur, mollit Marfa sed Pitchfork 90's wayfarers deep v. Forage direct trade dolor Wes Anderson Intelligentsia, placeat 90's Carles asymmetrical. 8-bit yr pickled, veniam blog ethnic gastropub brunch art party Banksy quis aliqua hella gluten-free salvia. Try-hard polaroid Odd Future vero Intelligentsia freegan. Flannel before they sold out stumptown butcher mixtape umami.\nOccaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis fugiat Austin. Cray nesciunt Helvetica, post-ironic chia Godard sriracha est Schlitz 3 wolf moon. Yr ugh small batch synth, DIY readymade blog butcher farm-to-table proident meggings. Quis ullamco keytar, semiotics Banksy scenester voluptate mlkshk. In meggings Tonx Helvetica, dolore viral food truck beard master cleanse umami keffiyeh stumptown banjo delectus. Twee Godard before they sold out forage, vegan exercitation fashion axe master cleanse esse ut +1 Brooklyn ea semiotics nihil. Master cleanse artisan Shoreditch delectus farm-to-table, chillwave single-origin coffee irure raw denim sed cillum nihil.";
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -125,9 +127,9 @@
         
         self.nameLabel.text = self.place.name;
         self.addressLabel.text = self.place.streetAddress;
-        self.descriptionLabel.text = self.place.description;
+
         self.categoryLabel.text = self.place.categoryLabel;
-        
+
         self.imageView.imageURL = [NSURL URLWithString:self.place.imageURLString];
         
         self.mapView.delegate = self;
@@ -153,6 +155,16 @@
         if (self.place.website == nil || self.place.website.length == 0) {
             self.websiteButton.enabled = NO;
         }
+
+        // set and fit description label
+        self.descriptionLabel.text = bigDesc;
+        [[self descriptionLabel] sizeToFit];
+
+        CGRect newBounds = self.contentView.bounds;
+        newBounds.size.height += self.descriptionLabel.bounds.size.height;
+        self.contentView.bounds = newBounds;
+        self.scrollView.contentSize = newBounds.size;
+        self.view.bounds = newBounds;
     }
 }
 
