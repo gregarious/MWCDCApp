@@ -42,4 +42,11 @@
 - (IBAction)overlooksButton:(id)sender {
     self.tabBarController.selectedIndex = 2;
 }
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+}
+
+
 @end
