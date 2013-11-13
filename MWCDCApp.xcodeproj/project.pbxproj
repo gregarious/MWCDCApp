@@ -789,6 +789,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MWCDCApp/MWCDCApp-Prefix.pch";
 				INFOPLIST_FILE = "MWCDCApp/MWCDCApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/greg/projects/MWCDCApp/usr/lib,
@@ -810,6 +811,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MWCDCApp/MWCDCApp-Prefix.pch";
 				INFOPLIST_FILE = "MWCDCApp/MWCDCApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/greg/projects/MWCDCApp/usr/lib,

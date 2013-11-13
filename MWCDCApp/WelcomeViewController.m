@@ -47,8 +47,12 @@
 {
     // fix for potential bug in iOS 7 where the bottomLayoutGuide in a UITabBarController
     // changes from 49 to 0 after the first tab is chosen
-    if (self.bottomLayoutGuide.length == 0.0) {
-        _bottomLayoutSpaceConstraint.constant = 49;
+
+    // iOS 6 has no bottomLayoutGuide
+    if ([self respondsToSelector:@selector(bottomLayoutGuide)]) {
+        if (self.bottomLayoutGuide.length == 0.0) {
+            _bottomLayoutSpaceConstraint.constant = 49;
+        }
     }
     [self.view layoutSubviews];
 }
