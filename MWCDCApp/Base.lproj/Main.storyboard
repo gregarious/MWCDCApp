@@ -671,6 +671,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Welcome" image="tabWelcome" id="Eg2-ul-xH7"/>
+                    <connections>
+                        <outlet property="bottomLayoutSpaceConstraint" destination="uhX-8o-z5E" id="w8S-W9-OJw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYf-32-bmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,4 +12,6 @@
 - (IBAction)businessesButton:(id)sender;
 - (IBAction)overlooksButton:(id)sender;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutSpaceConstraint;
+
 @end
