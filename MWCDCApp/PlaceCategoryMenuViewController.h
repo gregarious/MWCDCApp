@@ -17,6 +17,7 @@
 @property (nonatomic, weak) id <PlaceCategoryMenuDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navBarTopSpaceConstraint;
 
 - (IBAction)closeTapped:(id)sender;
 

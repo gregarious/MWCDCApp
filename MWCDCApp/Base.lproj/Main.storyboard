@@ -123,6 +123,7 @@
                         <outlet property="categoryButton" destination="U0w-EX-xNi" id="8nL-F1-cfl"/>
                         <outlet property="containerView" destination="zca-Ia-ma6" id="G6H-Gf-E30"/>
                         <outlet property="displayModeToggleButton" destination="F7R-3k-V2c" id="sxH-pB-S4q"/>
+                        <outlet property="filterContainerView" destination="55l-mz-pqz" id="y6Z-Ve-YDp"/>
                         <outlet property="filterSearchBar" destination="vnK-tI-jlU" id="NUO-Bd-EBY"/>
                         <segue destination="yME-hU-tX8" kind="push" identifier="showPlaceDetail" id="JUB-Z5-kdi"/>
                     </connections>
@@ -144,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCR-Kl-Zh9">
-                                <rect key="frame" x="0.0" y="19" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Select a Category" id="aUJ-pW-F2q">
@@ -157,7 +158,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cHF-AF-jpc">
-                                <rect key="frame" x="0.0" y="63" width="320" height="417"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -168,16 +169,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="leading" secondItem="9tA-jE-l8Y" secondAttribute="leading" id="1Tj-Ps-xMs"/>
-                            <constraint firstAttribute="bottom" secondItem="cHF-AF-jpc" secondAttribute="bottom" id="Hx6-dv-eAk"/>
-                            <constraint firstAttribute="trailing" secondItem="cHF-AF-jpc" secondAttribute="trailing" id="XQr-Oo-kGH"/>
-                            <constraint firstItem="cHF-AF-jpc" firstAttribute="top" secondItem="uCR-Kl-Zh9" secondAttribute="bottom" id="dVU-vW-mrx"/>
-                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="top" secondItem="9tA-jE-l8Y" secondAttribute="top" constant="19" id="iSZ-90-oT5"/>
-                            <constraint firstItem="cHF-AF-jpc" firstAttribute="leading" secondItem="uCR-Kl-Zh9" secondAttribute="leading" id="utx-ag-hkC"/>
-                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="trailing" secondItem="cHF-AF-jpc" secondAttribute="trailing" id="xXZ-cM-gYR"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="leading" secondItem="9tA-jE-l8Y" secondAttribute="leading" id="3CO-kw-nvq"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="leading" secondItem="cHF-AF-jpc" secondAttribute="leading" id="IoR-qn-3Jh"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="bottom" secondItem="cHF-AF-jpc" secondAttribute="top" id="LJh-fe-NYX"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="top" secondItem="9tA-jE-l8Y" secondAttribute="top" id="fWW-4t-amo"/>
+                            <constraint firstAttribute="trailing" secondItem="uCR-Kl-Zh9" secondAttribute="trailing" id="kqe-uM-SKe"/>
+                            <constraint firstItem="uCR-Kl-Zh9" firstAttribute="trailing" secondItem="cHF-AF-jpc" secondAttribute="trailing" id="siI-O9-J6G"/>
+                            <constraint firstItem="2Bw-po-GgB" firstAttribute="top" secondItem="cHF-AF-jpc" secondAttribute="bottom" id="we5-71-Gy6"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
+                        <outlet property="navBarTopSpaceConstraint" destination="fWW-4t-amo" id="o8f-BV-STQ"/>
                         <outlet property="tableView" destination="cHF-AF-jpc" id="HmB-XC-v62"/>
                     </connections>
                 </viewController>

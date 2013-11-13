@@ -25,6 +25,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidLayoutSubviews
+{
+    // can't fix the nav bar's top to the top layout guide in IB for some unknown reason.
+    // do it manually here for iOS 7 (this isn't necessary for iOS 6)
+    if ([self respondsToSelector:@selector(topLayoutGuide)]) {
+        self.navBarTopSpaceConstraint.constant = self.topLayoutGuide.length;
+    }
+    [self.view layoutSubviews];
+}
+
 #pragma mark - Data handling
 
 - (void)setCategories:(NSArray *)categories

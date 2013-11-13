@@ -29,6 +29,7 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *filterSearchBar;
 @property (weak, nonatomic) IBOutlet UIButton *categoryButton;
+@property (weak, nonatomic) IBOutlet UIView *filterContainerView;
 
 @property (weak, nonatomic) IBOutlet UIControl *containerView;
 

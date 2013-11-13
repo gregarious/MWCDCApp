@@ -60,10 +60,18 @@
     [self.dataFetcher fetchPlaces];
     
     self.filterSearchBar.delegate = self;
-
+    
     // set the filter category if it exists, else use "All Places"
     NSString *buttonTitle = dataManager.filterCategory ? dataManager.filterCategory : @"All Places";
     [self.categoryButton setTitle:buttonTitle forState:UIControlStateNormal];
+
+    // iOS 6 styles
+    if ([[[UIDevice currentDevice] systemVersion] intValue] < 7) {
+        // shrink the size of the category button
+        [self.categoryButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[button(==30)]" options:0 metrics:nil views:@{@"button": self.categoryButton}]];
+        // make the background color for the whole bar match the search bar background
+        self.filterContainerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ios6_searchbar_bkgd"]];
+    }
     
     [super viewWillAppear:animated];
 }
