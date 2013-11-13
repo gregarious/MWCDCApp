@@ -534,10 +534,10 @@
             </objects>
             <point key="canvasLocation" x="1366" y="845"/>
         </scene>
-        <!--View Controller - About-->
+        <!--About View Controller - About-->
         <scene sceneID="Huf-z3-I3L">
             <objects>
-                <viewController title="About" id="KJJ-6Q-64u" sceneMemberID="viewController">
+                <viewController title="About" id="KJJ-6Q-64u" customClass="AboutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tr6-Hm-Jj6"/>
                         <viewControllerLayoutGuide type="bottom" id="PTi-QM-Dg4"/>
@@ -551,11 +551,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3rK-Es-NEH">
-                                <rect key="frame" x="12" y="304" width="296" height="66"/>
+                                <rect key="frame" x="12" y="353" width="296" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Emy-la-3ZO">
-                                <rect key="frame" x="20" y="81" width="280" height="188"/>
+                                <rect key="frame" x="20" y="54" width="280" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">From our past as “Coal Hill,” a neighborhood of miners and their families living on and around the very mines in which they worked, Mount Washington has become one of Pittsburgh’s most desirable neighborhoods, transforming into a vibrant community surrounded by walking trails in a lush park. 
 </string>
@@ -566,16 +566,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3rK-Es-NEH" firstAttribute="centerX" secondItem="Emy-la-3ZO" secondAttribute="centerX" id="4Mn-Ow-3pq"/>
-                            <constraint firstItem="3rK-Es-NEH" firstAttribute="centerX" secondItem="9JD-Zf-yi2" secondAttribute="centerX" id="Rjt-jR-aJA"/>
-                            <constraint firstAttribute="bottom" secondItem="9JD-Zf-yi2" secondAttribute="bottom" id="Tau-pr-ndJ"/>
-                            <constraint firstItem="PTi-QM-Dg4" firstAttribute="top" secondItem="3rK-Es-NEH" secondAttribute="bottom" constant="61" id="VER-nd-CNj"/>
-                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="top" secondItem="rc4-KC-KJd" secondAttribute="top" id="Y2u-B8-7Q3"/>
-                            <constraint firstItem="Emy-la-3ZO" firstAttribute="leading" secondItem="rc4-KC-KJd" secondAttribute="leading" constant="20" symbolic="YES" id="sFR-lk-eWD"/>
-                            <constraint firstItem="Emy-la-3ZO" firstAttribute="top" secondItem="9JD-Zf-yi2" secondAttribute="bottom" constant="-399" id="yD6-wm-pYn"/>
+                            <constraint firstItem="PTi-QM-Dg4" firstAttribute="top" secondItem="3rK-Es-NEH" secondAttribute="bottom" constant="12" id="CEh-Ir-VWG"/>
+                            <constraint firstAttribute="bottom" secondItem="9JD-Zf-yi2" secondAttribute="bottom" id="HU4-n9-Lmt"/>
+                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="centerX" secondItem="3rK-Es-NEH" secondAttribute="centerX" id="aJD-1i-oEc"/>
+                            <constraint firstItem="Emy-la-3ZO" firstAttribute="top" secondItem="Tr6-Hm-Jj6" secondAttribute="bottom" constant="34" id="aea-1e-991"/>
+                            <constraint firstItem="Emy-la-3ZO" firstAttribute="centerX" secondItem="9JD-Zf-yi2" secondAttribute="centerX" id="eRK-Mk-WxM"/>
+                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="top" secondItem="rc4-KC-KJd" secondAttribute="top" id="jSk-EH-ymd"/>
+                            <constraint firstItem="Emy-la-3ZO" firstAttribute="leading" secondItem="rc4-KC-KJd" secondAttribute="leading" constant="20" symbolic="YES" id="snW-r0-PVO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="tabAbout" id="GPv-H0-pMn"/>
+                    <connections>
+                        <outlet property="_bottomLayoutSpaceConstraint" destination="CEh-Ir-VWG" id="kvX-59-899"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVs-Xe-brO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
