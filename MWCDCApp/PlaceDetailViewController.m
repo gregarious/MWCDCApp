@@ -7,7 +7,10 @@
 //
 
 #import "PlaceDetailViewController.h"
+#import "PlaceDetailContentView.h"
 #import "Place.h"
+#import "AsyncImageView.h"
+
 #import <AddressBook/ABPerson.h>
 
 @interface PlaceDetailViewController ()
@@ -17,13 +20,11 @@
 
 @implementation PlaceDetailViewController
 
-NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy lomo, ethnic dreamcatcher umami chia vero magna. Exercitation ea kale chips, readymade asymmetrical Brooklyn post-ironic reprehenderit iPhone minim fanny pack ex before they sold out. Labore sustainable cred, sartorial vero pour-over kale chips Blue Bottle cliche selvage post-ironic retro plaid aliqua Bushwick. Delectus pickled magna commodo Etsy wolf viral, fap sriracha irony. Ullamco pop-up mumblecore, cupidatat Godard vegan art party meh non narwhal flexitarian American Apparel chillwave. Quis organic small batch, Schlitz narwhal next level cardigan officia mlkshk Godard anim bicycle rights lo-fi. Put a bird on it velit synth, 90's church-key pop-up reprehenderit +1 you probably haven't heard of them iPhone Thundercats semiotics Echo Park art party pariatur.\nRaw denim odio artisan gentrify small batch, flexitarian butcher adipisicing mumblecore forage dolor mixtape PBR&B duis. Cray aesthetic wolf master cleanse in. Mlkshk post-ironic hashtag excepteur, mollit Marfa sed Pitchfork 90's wayfarers deep v. Forage direct trade dolor Wes Anderson Intelligentsia, placeat 90's Carles asymmetrical. 8-bit yr pickled, veniam blog ethnic gastropub brunch art party Banksy quis aliqua hella gluten-free salvia. Try-hard polaroid Odd Future vero Intelligentsia freegan. Flannel before they sold out stumptown butcher mixtape umami.\nOccaecat whatever ea, elit beard Cosby sweater keytar adipisicing actually quis fugiat Austin. Cray nesciunt Helvetica, post-ironic chia Godard sriracha est Schlitz 3 wolf moon. Yr ugh small batch synth, DIY readymade blog butcher farm-to-table proident meggings. Quis ullamco keytar, semiotics Banksy scenester voluptate mlkshk. In meggings Tonx Helvetica, dolore viral food truck beard master cleanse umami keffiyeh stumptown banjo delectus. Twee Godard before they sold out forage, vegan exercitation fashion axe master cleanse esse ut +1 Brooklyn ea semiotics nihil. Master cleanse artisan Shoreditch delectus farm-to-table, chillwave single-origin coffee irure raw denim sed cillum nihil.";
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -31,13 +32,24 @@ NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _scrollView = [[UIScrollView alloc] init];
+    [self.view addSubview:self.scrollView];
+    
+    _contentView = [[NSBundle mainBundle] loadNibNamed:@"PlaceDetailContentView"
+                                                 owner:self
+                                               options:nil][0];
+    self.contentView.delegate = self;
+    [self.scrollView addSubview:self.contentView];
+    
     [self configureView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _contentView = nil;
+    _scrollView = nil;
 }
 
 - (void)setPlace:(Place *)newPlace
@@ -63,7 +75,7 @@ NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy 
                                            reuseIdentifier:reuseId];
 }
 
-- (IBAction)callButtonTapped:(id)sender
+- (void)placeDetailContainerViewCallButtonTapped:(id)view
 {
     // strip spaces and parenthesis from numbers
     NSString *processedNumber = [self processPhoneNumber:self.place.phone];
@@ -71,7 +83,7 @@ NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy 
     [[UIApplication sharedApplication] openURL:url];
 }
 
-- (IBAction)directionsButtonTapped:(id)sender
+- (void)placeDetailContainerViewDirectionsButtonTapped:(id)view
 {
     // create MKPlacemark
     NSMutableDictionary *addressDict;
@@ -85,7 +97,8 @@ NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy 
     [mapItem openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving}];
 }
 
-- (IBAction)facebookButtonTapped:(id)sender {
+- (void)placeDetailContainerViewFacebookButtonTapped:(id)view
+{
     // TODO: hook up fb id lookup
 //    // try to open with Facebook app
 //    NSString* fbURL = [NSString stringWithFormat:@"fb://profile/%@", self.place.fbId];
@@ -98,7 +111,8 @@ NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy 
 //    }
 }
 
-- (IBAction)twitterButtonTapped:(id)sender {
+- (void)placeDetailContainerViewTwitterButtonTapped:(id)view
+{
     // try to open with Twitter app
     NSString* twitterURL = [NSString stringWithFormat:@"twitter://user?screen_name=%@", self.place.twitterHandle];
     BOOL twitterOpened = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterURL]];
@@ -110,7 +124,7 @@ NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy 
     }
 }
 
-- (IBAction)websiteButtonTapped:(id)sender
+- (void)placeDetailContainerViewWebsiteButtonTapped:(id)view
 {
     // ensure url has 'http' protocol
     NSString *urlString = self.place.website;
@@ -122,49 +136,55 @@ NSString *bigDesc = @"Literally mollit tousled 8-bit Tonx qui pork belly occupy 
 
 /* private */
 - (void)configureView {
-    if (self.place && self.nameLabel) {
+    if (self.place && self.contentView) {
         self.navigationItem.title = self.place.name;
         
-        self.nameLabel.text = self.place.name;
-        self.addressLabel.text = self.place.streetAddress;
+        self.contentView.nameLabel.text = self.place.name;
+        self.contentView.addressLabel.text = self.place.streetAddress;
 
-        self.categoryLabel.text = self.place.categoryLabel;
+        self.contentView.categoryLabel.text = self.place.categoryLabel;
 
-        self.imageView.imageURL = [NSURL URLWithString:self.place.imageURLString];
+        self.contentView.thumbnailImage.imageURL = [NSURL URLWithString:self.place.imageURLString];
         
-        self.mapView.delegate = self;
-        [self.mapView addAnnotation:self.place];
+        self.contentView.mapView.delegate = self;
+        [self.contentView.mapView addAnnotation:self.place];
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.place.coordinate, 500, 500);
-        [self.mapView setRegion:region];
+        [self.contentView.mapView setRegion:region];
         
         if (self.place.phone == nil || self.place.phone.length == 0) {
-            self.callButton.enabled = NO;
-            self.callButtonLabel.enabled = NO;
-            self.callButtonLabel.text = @"Unknown number";
+//            self.callButton.enabled = NO;
+            self.contentView.callButtonLabel.enabled = NO;
+            self.contentView.callButtonLabel.text = @"Unknown number";
         }
         else {
-            self.callButtonLabel.text = [self processPhoneNumber:self.place.phone];
+            self.contentView.callButtonLabel.text = [self processPhoneNumber:self.place.phone];
         }
         
         if (self.place.fbId == nil || self.place.fbId.length == 0) {
-            self.facebookButton.enabled = NO;
+//            self.facebookButton.enabled = NO;
         }
         if (self.place.twitterHandle == nil || self.place.twitterHandle.length == 0) {
-            self.twitterButton.enabled = NO;
+//            self.twitterButton.enabled = NO;
         }
         if (self.place.website == nil || self.place.website.length == 0) {
-            self.websiteButton.enabled = NO;
+//            self.websiteButton.enabled = NO;
         }
+        
+        self.contentView.descriptionLabel.text = self.place.description;
+        
+        // add constraints
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
 
-        // set and fit description label
-        self.descriptionLabel.text = bigDesc;
-        [[self descriptionLabel] sizeToFit];
-
-        CGRect newBounds = self.contentView.bounds;
-        newBounds.size.height += self.descriptionLabel.bounds.size.height;
-        self.contentView.bounds = newBounds;
-        self.scrollView.contentSize = newBounds.size;
-        self.view.bounds = newBounds;
+        NSDictionary *viewsDictionary = @{@"scrollView": self.scrollView,
+                                          @"contentView": self.contentView};
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
+        [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics: 0 views:viewsDictionary]];
+        [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics: 0 views:viewsDictionary]];
+        
+        // fill parent view's background with content view's background color
+        self.view.backgroundColor = self.contentView.backgroundColor;
     }
 }
 

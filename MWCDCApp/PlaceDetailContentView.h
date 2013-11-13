@@ -1,5 +1,5 @@
 //
-//  PlaceDetailContainerView.h
+//  PlaceDetailContentView.h
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 11/7/13.
@@ -11,7 +11,7 @@
 @class AsyncImageView;
 @protocol PlaceDetailActionDelegate;
 
-@interface PlaceDetailContainerView : UIView
+@interface PlaceDetailContentView : UIView
 
 @property (weak, nonatomic) id<PlaceDetailActionDelegate> delegate;
 
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *callButtonLabel;
 

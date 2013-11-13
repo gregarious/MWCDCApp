@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class PlaceDetailContentView;
+
 @protocol PlaceDetailActionDelegate <NSObject>
 
-- placeDetailContainerViewCallButtonTapped:(PlaceDetailContainerView *)view;
-- placeDetailContainerViewDirectionsButtonTapped:(PlaceDetailContainerView *)view;
-- placeDetailContainerViewFacebookButtonTapped:(PlaceDetailContainerView *)view;
-- placeDetailContainerViewTwitterButtonTapped:(PlaceDetailContainerView *)view;
-- placeDetailContainerViewWebsiteButtonTapped:(PlaceDetailContainerView *)view;
+@optional
+- (void)placeDetailContainerViewCallButtonTapped:(PlaceDetailContentView *)view;
+- (void)placeDetailContainerViewDirectionsButtonTapped:(PlaceDetailContentView *)view;
+- (void)placeDetailContainerViewFacebookButtonTapped:(PlaceDetailContentView *)view;
+- (void)placeDetailContainerViewTwitterButtonTapped:(PlaceDetailContentView *)view;
+- (void)placeDetailContainerViewWebsiteButtonTapped:(PlaceDetailContentView *)view;
 
 @end

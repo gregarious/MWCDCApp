@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3702D015180CB23E00095CD1 /* OverlookMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3702D014180CB23E00095CD1 /* OverlookMapViewController.m */; };
 		3702D017180CB25A00095CD1 /* OverlookListViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3702D016180CB25A00095CD1 /* OverlookListViewControllerTests.m */; };
-		3705325E182C2E2C00CB5490 /* PlaceDetailContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3705325D182C2E2C00CB5490 /* PlaceDetailContainerView.m */; };
-		37053260182C2E4400CB5490 /* PlaceDetailContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3705325F182C2E4400CB5490 /* PlaceDetailContainerView.xib */; };
+		3705325E182C2E2C00CB5490 /* PlaceDetailContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3705325D182C2E2C00CB5490 /* PlaceDetailContentView.m */; };
+		37053260182C2E4400CB5490 /* PlaceDetailContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3705325F182C2E4400CB5490 /* PlaceDetailContentView.xib */; };
 		37083D7B180CC6930049FCC5 /* SkylineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D7A180CC6930049FCC5 /* SkylineViewController.m */; };
 		37083D7D180CCE390049FCC5 /* SkylineViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D7C180CCE390049FCC5 /* SkylineViewControllerTests.m */; };
 		37083D83180CD8D70049FCC5 /* InterestPointDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D82180CD8D70049FCC5 /* InterestPointDetailViewController.m */; };
@@ -89,9 +89,9 @@
 		3702D013180CB23E00095CD1 /* OverlookMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlookMapViewController.h; sourceTree = "<group>"; };
 		3702D014180CB23E00095CD1 /* OverlookMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlookMapViewController.m; sourceTree = "<group>"; };
 		3702D016180CB25A00095CD1 /* OverlookListViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlookListViewControllerTests.m; sourceTree = "<group>"; };
-		3705325C182C2E2C00CB5490 /* PlaceDetailContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailContainerView.h; sourceTree = "<group>"; };
-		3705325D182C2E2C00CB5490 /* PlaceDetailContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailContainerView.m; sourceTree = "<group>"; };
-		3705325F182C2E4400CB5490 /* PlaceDetailContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceDetailContainerView.xib; sourceTree = "<group>"; };
+		3705325C182C2E2C00CB5490 /* PlaceDetailContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailContentView.h; sourceTree = "<group>"; };
+		3705325D182C2E2C00CB5490 /* PlaceDetailContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailContentView.m; sourceTree = "<group>"; };
+		3705325F182C2E4400CB5490 /* PlaceDetailContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceDetailContentView.xib; sourceTree = "<group>"; };
 		37053261182C320F00CB5490 /* PlaceDetailActionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceDetailActionDelegate.h; sourceTree = "<group>"; };
 		37083D79180CC6930049FCC5 /* SkylineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylineViewController.h; sourceTree = "<group>"; };
 		37083D7A180CC6930049FCC5 /* SkylineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineViewController.m; sourceTree = "<group>"; };
@@ -241,9 +241,9 @@
 			children = (
 				3761D6AB1802F887004BC847 /* PlaceDetailViewController.h */,
 				3761D6AC1802F887004BC847 /* PlaceDetailViewController.m */,
-				3705325C182C2E2C00CB5490 /* PlaceDetailContainerView.h */,
-				3705325D182C2E2C00CB5490 /* PlaceDetailContainerView.m */,
-				3705325F182C2E4400CB5490 /* PlaceDetailContainerView.xib */,
+				3705325C182C2E2C00CB5490 /* PlaceDetailContentView.h */,
+				3705325D182C2E2C00CB5490 /* PlaceDetailContentView.m */,
+				3705325F182C2E4400CB5490 /* PlaceDetailContentView.xib */,
 				37053261182C320F00CB5490 /* PlaceDetailActionDelegate.h */,
 			);
 			name = "Place Detail";
@@ -588,7 +588,7 @@
 				37C62BA918233F44007BEDF5 /* mwcdc.gpx in Resources */,
 				37E6EA8317E22BE7004976DC /* InfoPlist.strings in Resources */,
 				37E6EA8C17E22BE7004976DC /* Main.storyboard in Resources */,
-				37053260182C2E4400CB5490 /* PlaceDetailContainerView.xib in Resources */,
+				37053260182C2E4400CB5490 /* PlaceDetailContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +630,7 @@
 				37E6EA8517E22BE7004976DC /* main.m in Sources */,
 				37E42C281825D590002E9325 /* CurrentLocationTracker.m in Sources */,
 				3786658517EBBDD400F341C1 /* PlaceViewDataManager.m in Sources */,
-				3705325E182C2E2C00CB5490 /* PlaceDetailContainerView.m in Sources */,
+				3705325E182C2E2C00CB5490 /* PlaceDetailContentView.m in Sources */,
 				373565321828149C00942F14 /* WelcomeViewController.m in Sources */,
 				37083D89180DC6700049FCC5 /* PlaceCollectionViewController.m in Sources */,
 				372753951822C2FD00E286B3 /* PlaceCategoryMenuViewController.m in Sources */,

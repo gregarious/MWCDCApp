@@ -1,15 +1,15 @@
 //
-//  PlaceDetailContainerView.m
+//  PlaceDetailContentView.m
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 11/7/13.
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "PlaceDetailContainerView.h"
+#import "PlaceDetailContentView.h"
 #import "PlaceDetailActionDelegate.h"
 
-@implementation PlaceDetailContainerView
+@implementation PlaceDetailContentView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,6 +28,7 @@
     // Drawing code
 }
 */
+
 
 - (IBAction)callTapped:(id)sender {
     [self.delegate placeDetailContainerViewCallButtonTapped:self];
