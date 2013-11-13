@@ -23,7 +23,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *callButtonLabel;
+@property (weak, nonatomic) IBOutlet UIButton *callButton;
+@property (weak, nonatomic) IBOutlet UIButton *directionsButton;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
+@property (weak, nonatomic) IBOutlet UIButton *websiteButton;
 
 - (IBAction)callTapped:(id)sender;
 - (IBAction)directionsTapped:(id)sender;

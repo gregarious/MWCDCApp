@@ -49,16 +49,19 @@
                         <action selector="directionsTapped:" destination="1" eventType="touchUpInside" id="7Gj-16-xq8"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf1-ZQ-yDw" userLabel="Call Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf1-ZQ-yDw" userLabel="Call Button">
                     <rect key="frame" x="12" y="218" width="146" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="5FG-1K-qAa"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" backgroundImage="btnCall">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="36" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="555-555-5555" backgroundImage="btnCall">
+                        <color key="titleColor" red="0.10588236153125763" green="0.50980395078659058" blue="0.65098041296005249" alpha="1" colorSpace="deviceRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="disabled" title="Unavailable"/>
                     <connections>
                         <action selector="callTapped:" destination="1" eventType="touchUpInside" id="8gf-1H-OKL"/>
                     </connections>
@@ -99,16 +102,6 @@
                         <action selector="websiteTapped:" destination="1" eventType="touchUpInside" id="rOu-sS-usH"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="2gi-ci-uQp" userLabel="Phone number label">
-                    <rect key="frame" x="48" y="232" width="100" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="1aa-YB-2bH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.2117647231" green="0.57254904510000004" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5zK-pA-hKs">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -141,7 +134,6 @@
                 <constraint firstItem="ale-sz-elA" firstAttribute="leading" secondItem="LRl-05-aTz" secondAttribute="trailing" constant="2" id="LUq-IW-S2a"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GfB-9L-IrR" secondAttribute="trailing" constant="12" id="MlZ-u4-HeJ"/>
                 <constraint firstItem="ale-sz-elA" firstAttribute="top" secondItem="LRl-05-aTz" secondAttribute="top" id="QEV-QX-RQY"/>
-                <constraint firstItem="2gi-ci-uQp" firstAttribute="leading" secondItem="yf1-ZQ-yDw" secondAttribute="trailing" constant="-110" id="QiY-J0-7VB"/>
                 <constraint firstItem="LRl-05-aTz" firstAttribute="baseline" secondItem="FS8-vE-tTi" secondAttribute="baseline" id="Rcd-ql-dTs"/>
                 <constraint firstItem="kHe-HY-BKv" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="12" id="RtS-97-AIm"/>
                 <constraint firstItem="4i2-bH-WuL" firstAttribute="top" secondItem="FS8-vE-tTi" secondAttribute="bottom" constant="18" id="TeI-eP-KFf"/>
@@ -160,7 +152,6 @@
                 <constraint firstItem="yf1-ZQ-yDw" firstAttribute="top" secondItem="IDw-Wn-mPc" secondAttribute="top" id="iPR-3n-e0e"/>
                 <constraint firstItem="yf1-ZQ-yDw" firstAttribute="leading" secondItem="kHe-HY-BKv" secondAttribute="leading" id="iaU-mT-988"/>
                 <constraint firstItem="GfB-9L-IrR" firstAttribute="trailing" secondItem="CbI-cv-KRz" secondAttribute="trailing" id="jOt-pW-ZdX"/>
-                <constraint firstItem="yf1-ZQ-yDw" firstAttribute="centerY" secondItem="2gi-ci-uQp" secondAttribute="centerY" id="lJG-2l-t62"/>
                 <constraint firstItem="4i2-bH-WuL" firstAttribute="trailing" secondItem="ale-sz-elA" secondAttribute="trailing" id="mKI-SJ-4o3"/>
                 <constraint firstItem="FS8-vE-tTi" firstAttribute="leading" secondItem="yf1-ZQ-yDw" secondAttribute="leading" id="rWT-wa-6a3"/>
                 <constraint firstItem="5zK-pA-hKs" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="sHZ-XD-o9t"/>
@@ -172,12 +163,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addressLabel" destination="GfB-9L-IrR" id="VKo-aw-zHm"/>
-                <outlet property="callButtonLabel" destination="2gi-ci-uQp" id="GsW-dE-U1f"/>
+                <outlet property="callButton" destination="yf1-ZQ-yDw" id="lbE-24-GDt"/>
                 <outlet property="categoryLabel" destination="CbI-cv-KRz" id="fTM-eF-uwt"/>
                 <outlet property="descriptionLabel" destination="4i2-bH-WuL" id="Yyb-Ov-AYC"/>
+                <outlet property="directionsButton" destination="IDw-Wn-mPc" id="I1T-1A-qpz"/>
+                <outlet property="facebookButton" destination="FS8-vE-tTi" id="VAD-ya-VTW"/>
                 <outlet property="mapView" destination="5zK-pA-hKs" id="GIu-Ek-gEB"/>
                 <outlet property="nameLabel" destination="LTt-Ww-tMH" id="vnv-B8-7O4"/>
                 <outlet property="thumbnailImage" destination="kHe-HY-BKv" id="zTf-Vy-C1f"/>
+                <outlet property="twitterButton" destination="LRl-05-aTz" id="TaA-BL-mGR"/>
+                <outlet property="websiteButton" destination="ale-sz-elA" id="FhR-Yp-SZC"/>
             </connections>
         </view>
     </objects>

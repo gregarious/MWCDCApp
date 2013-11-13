@@ -14,6 +14,10 @@
 #import <AddressBook/ABPerson.h>
 
 @interface PlaceDetailViewController ()
+{
+    BOOL areContainerConstraintsSet;
+}
+
 - (void)configureView;
 - (NSString *)processPhoneNumber:(NSString *)phoneNumber;
 @end
@@ -137,53 +141,57 @@
 /* private */
 - (void)configureView {
     if (self.place && self.contentView) {
+        // set simple properties
         self.navigationItem.title = self.place.name;
         
         self.contentView.nameLabel.text = self.place.name;
         self.contentView.addressLabel.text = self.place.streetAddress;
-
         self.contentView.categoryLabel.text = self.place.categoryLabel;
-
         self.contentView.thumbnailImage.imageURL = [NSURL URLWithString:self.place.imageURLString];
         
+        // configure map view
         self.contentView.mapView.delegate = self;
         [self.contentView.mapView addAnnotation:self.place];
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.place.coordinate, 500, 500);
         [self.contentView.mapView setRegion:region];
         
+        // disable any buttons whose actions are unavailable
         if (self.place.phone == nil || self.place.phone.length == 0) {
-//            self.callButton.enabled = NO;
-            self.contentView.callButtonLabel.enabled = NO;
-            self.contentView.callButtonLabel.text = @"Unknown number";
+            self.contentView.callButton.enabled = NO;
         }
         else {
-            self.contentView.callButtonLabel.text = [self processPhoneNumber:self.place.phone];
+            // set a custom phone number label
+            NSString *phoneNumber = [self processPhoneNumber:self.place.phone];
+            [self.contentView.callButton setTitle:phoneNumber forState:UIControlStateNormal];
         }
         
         if (self.place.fbId == nil || self.place.fbId.length == 0) {
-//            self.facebookButton.enabled = NO;
+            self.contentView.facebookButton.enabled = NO;
         }
         if (self.place.twitterHandle == nil || self.place.twitterHandle.length == 0) {
-//            self.twitterButton.enabled = NO;
+            self.contentView.twitterButton.enabled = NO;
         }
         if (self.place.website == nil || self.place.website.length == 0) {
-//            self.websiteButton.enabled = NO;
+            self.contentView.websiteButton.enabled = NO;
         }
         
         self.contentView.descriptionLabel.text = self.place.description;
         
-        // add constraints
-        self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-        self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        // add constraints, if they have not yet been set
+        if (!areContainerConstraintsSet) {
+            self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+            self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
 
-        NSDictionary *viewsDictionary = @{@"scrollView": self.scrollView,
-                                          @"contentView": self.contentView};
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
-        [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics: 0 views:viewsDictionary]];
-        [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics: 0 views:viewsDictionary]];
+            NSDictionary *viewsDictionary = @{@"scrollView": self.scrollView,
+                                              @"contentView": self.contentView};
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
+            [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics: 0 views:viewsDictionary]];
+            [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics: 0 views:viewsDictionary]];
+            areContainerConstraintsSet = YES;
+        }
         
-        // fill parent view's background with content view's background color
+        // in case content view doesn't fill our view height, match the background colors
         self.view.backgroundColor = self.contentView.backgroundColor;
     }
 }
