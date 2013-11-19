@@ -568,14 +568,14 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3L-guy" userLabel="About Label">
-                                <rect key="frame" x="12" y="28" width="296" height="317"/>
+                                <rect key="frame" x="12" y="48" width="296" height="297"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="296" id="ogM-hT-RfY"/>
                                 </constraints>
-                                <string key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
+                                <mutableString key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
  The Mount Washington Community Development Corporation’s mission is to cultivate growth, development, and community investment. We identify the opportunities to bring residents and business owners together with support resources to create an even stronger and more livable community.
-</string>
+</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -587,7 +587,7 @@
                             <constraint firstAttribute="centerX" secondItem="3rK-Es-NEH" secondAttribute="centerX" id="2mS-Wy-fHO"/>
                             <constraint firstItem="PTi-QM-Dg4" firstAttribute="top" secondItem="3rK-Es-NEH" secondAttribute="bottom" constant="12" id="CEh-Ir-VWG"/>
                             <constraint firstAttribute="bottom" secondItem="9JD-Zf-yi2" secondAttribute="bottom" id="HU4-n9-Lmt"/>
-                            <constraint firstItem="r0R-3L-guy" firstAttribute="top" secondItem="Tr6-Hm-Jj6" secondAttribute="bottom" constant="20" symbolic="YES" id="OlY-et-0pp"/>
+                            <constraint firstItem="r0R-3L-guy" firstAttribute="top" secondItem="Tr6-Hm-Jj6" secondAttribute="bottom" priority="750" constant="28" id="OlY-et-0pp"/>
                             <constraint firstItem="9JD-Zf-yi2" firstAttribute="top" secondItem="rc4-KC-KJd" secondAttribute="top" id="jSk-EH-ymd"/>
                             <constraint firstItem="3rK-Es-NEH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r0R-3L-guy" secondAttribute="bottom" constant="8" symbolic="YES" id="nd6-JP-GPd"/>
                             <constraint firstAttribute="centerX" secondItem="r0R-3L-guy" secondAttribute="centerX" id="pK4-jx-edv"/>
