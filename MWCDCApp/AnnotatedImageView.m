@@ -51,9 +51,9 @@
 
 - (void)layoutSubviews
 {
-    // ensure background image size is correct
-    [_backgroundImageView sizeToFit];
-    
+    [super layoutSubviews];
+
+    // TODO: make this more auto layout friendly
     CGSize sz = self.bounds.size;
     sz.width = _backgroundImageView.bounds.size.width;
     _contentWrapperView.contentSize = sz;

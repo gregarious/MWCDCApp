@@ -1,14 +1,20 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "home_bkgd_4.png"
+      "filename" : "bkgd_home_35.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "home_bkgd_4@2x.png"
+      "filename" : "bkgd_home_35@2x.png"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "bkgd_home@2x.png",
+      "subtype" : "retina4",
+      "scale" : "2x"
     }
   ],
   "info" : {

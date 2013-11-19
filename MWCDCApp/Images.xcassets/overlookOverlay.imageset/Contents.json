@@ -3,16 +3,16 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "bkgd_about_35.png"
+      "filename" : "overlook_overlay_35.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "bkgd_about_35@2x.png"
+      "filename" : "overlook_overlay.png"
     },
     {
       "idiom" : "iphone",
-      "filename" : "bkgd_about@2x.png",
+      "filename" : "overlook_overlay-1.png",
       "subtype" : "retina4",
       "scale" : "2x"
     }

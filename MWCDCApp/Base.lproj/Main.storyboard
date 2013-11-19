@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yWA-Rm-UqO">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
@@ -450,12 +450,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skylineDev" translatesAutoresizingMaskIntoConstraints="NO" id="4DA-rK-aAQ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_skyline_dev" translatesAutoresizingMaskIntoConstraints="NO" id="4DA-rK-aAQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="skylineMarker" translatesAutoresizingMaskIntoConstraints="NO" id="fit-Et-b0J">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="_skylineMarker_dev" translatesAutoresizingMaskIntoConstraints="NO" id="fit-Et-b0J">
                                                 <rect key="frame" x="128" y="56" width="18" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -550,33 +550,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="9JD-Zf-yi2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="9JD-Zf-yi2" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3rK-Es-NEH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3rK-Es-NEH" userLabel="Logo">
                                 <rect key="frame" x="12" y="353" width="296" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="kXf-pj-LGZ"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Emy-la-3ZO">
-                                <rect key="frame" x="20" y="54" width="280" height="188"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3L-guy" userLabel="About Label">
+                                <rect key="frame" x="12" y="28" width="296" height="317"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">From our past as “Coal Hill,” a neighborhood of miners and their families living on and around the very mines in which they worked, Mount Washington has become one of Pittsburgh’s most desirable neighborhoods, transforming into a vibrant community surrounded by walking trails in a lush park. 
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="ogM-hT-RfY"/>
+                                </constraints>
+                                <string key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
+ The Mount Washington Community Development Corporation’s mission is to cultivate growth, development, and community investment. We identify the opportunities to bring residents and business owners together with support resources to create an even stronger and more livable community.
 </string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="9JD-Zf-yi2" secondAttribute="centerX" id="0XX-nc-AkU"/>
+                            <constraint firstAttribute="centerX" secondItem="3rK-Es-NEH" secondAttribute="centerX" id="2mS-Wy-fHO"/>
                             <constraint firstItem="PTi-QM-Dg4" firstAttribute="top" secondItem="3rK-Es-NEH" secondAttribute="bottom" constant="12" id="CEh-Ir-VWG"/>
                             <constraint firstAttribute="bottom" secondItem="9JD-Zf-yi2" secondAttribute="bottom" id="HU4-n9-Lmt"/>
-                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="centerX" secondItem="3rK-Es-NEH" secondAttribute="centerX" id="aJD-1i-oEc"/>
-                            <constraint firstItem="Emy-la-3ZO" firstAttribute="top" secondItem="Tr6-Hm-Jj6" secondAttribute="bottom" constant="34" id="aea-1e-991"/>
-                            <constraint firstItem="Emy-la-3ZO" firstAttribute="centerX" secondItem="9JD-Zf-yi2" secondAttribute="centerX" id="eRK-Mk-WxM"/>
+                            <constraint firstItem="r0R-3L-guy" firstAttribute="top" secondItem="Tr6-Hm-Jj6" secondAttribute="bottom" constant="20" symbolic="YES" id="OlY-et-0pp"/>
                             <constraint firstItem="9JD-Zf-yi2" firstAttribute="top" secondItem="rc4-KC-KJd" secondAttribute="top" id="jSk-EH-ymd"/>
-                            <constraint firstItem="Emy-la-3ZO" firstAttribute="leading" secondItem="rc4-KC-KJd" secondAttribute="leading" constant="20" symbolic="YES" id="snW-r0-PVO"/>
+                            <constraint firstItem="3rK-Es-NEH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r0R-3L-guy" secondAttribute="bottom" constant="8" symbolic="YES" id="nd6-JP-GPd"/>
+                            <constraint firstAttribute="centerX" secondItem="r0R-3L-guy" secondAttribute="centerX" id="pK4-jx-edv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="tabAbout" id="GPv-H0-pMn"/>
@@ -688,11 +696,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="about" width="320" height="568"/>
-        <image name="home" width="320" height="568"/>
+        <image name="_skylineMarker_dev" width="48" height="48"/>
+        <image name="_skyline_dev" width="1280" height="568"/>
+        <image name="about" width="320" height="480"/>
+        <image name="home" width="320" height="480"/>
         <image name="logo" width="296" height="66"/>
-        <image name="skylineDev" width="1280" height="568"/>
-        <image name="skylineMarker" width="48" height="48"/>
         <image name="tabAbout" width="27" height="32"/>
         <image name="tabBusinesses" width="32" height="32"/>
         <image name="tabOverlooks" width="32" height="32"/>
