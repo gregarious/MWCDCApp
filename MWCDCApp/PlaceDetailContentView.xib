@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
@@ -39,22 +39,28 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDw-Wn-mPc" userLabel="Directions Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDw-Wn-mPc" userLabel="Directions Button">
                     <rect key="frame" x="162" y="218" width="146" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="gDu-Hn-CYA"/>
+                        <constraint firstAttribute="width" constant="146" id="iiO-1Q-1Yr"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" backgroundImage="btnDirections">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="disabled" backgroundImage="btnCall_disabled"/>
                     <connections>
                         <action selector="directionsTapped:" destination="1" eventType="touchUpInside" id="7Gj-16-xq8"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf1-ZQ-yDw" userLabel="Call Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf1-ZQ-yDw" userLabel="Call Button">
                     <rect key="frame" x="12" y="218" width="146" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="5FG-1K-qAa"/>
+                        <constraint firstAttribute="width" constant="146" id="C73-Gt-YWU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="titleEdgeInsets" minX="36" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -62,43 +68,49 @@
                         <color key="titleColor" red="0.10588236153125763" green="0.50980395078659058" blue="0.65098041296005249" alpha="1" colorSpace="deviceRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="disabled" title="Unavailable"/>
+                    <state key="disabled" title="Unavailable" backgroundImage="btnCall_disabled">
+                        <color key="titleColor" red="0.79607850313186646" green="0.79607850313186646" blue="0.79607850313186646" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
                     <connections>
                         <action selector="callTapped:" destination="1" eventType="touchUpInside" id="8gf-1H-OKL"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FS8-vE-tTi" userLabel="Facebook Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FS8-vE-tTi" userLabel="Facebook Button">
                     <rect key="frame" x="12" y="275" width="96" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="62j-vp-acL"/>
+                        <constraint firstAttribute="width" constant="96" id="pzq-HT-bwd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" backgroundImage="btnFacebook">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="disabled" backgroundImage="btnFacebook_disabled"/>
                     <connections>
                         <action selector="facebookTapped:" destination="1" eventType="touchUpInside" id="kI0-Q4-ycN"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRl-05-aTz" userLabel="Twitter Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRl-05-aTz" userLabel="Twitter Button">
                     <rect key="frame" x="112" y="275" width="96" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" backgroundImage="btnTwitter">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="disabled" backgroundImage="btnTwitter_disabled"/>
                     <connections>
                         <action selector="twitterTapped:" destination="1" eventType="touchUpInside" id="M2a-3V-meE"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ale-sz-elA" userLabel="Website Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ale-sz-elA" userLabel="Website Button">
                     <rect key="frame" x="210" y="275" width="96" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" backgroundImage="btnWebsite">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="disabled" backgroundImage="btnWebsite_disabled"/>
                     <connections>
                         <action selector="websiteTapped:" destination="1" eventType="touchUpInside" id="rOu-sS-usH"/>
                     </connections>
@@ -121,7 +133,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LRl-05-aTz" firstAttribute="leading" secondItem="FS8-vE-tTi" secondAttribute="trailing" constant="4" id="1kH-Ya-26f"/>
-                <constraint firstItem="IDw-Wn-mPc" firstAttribute="width" secondItem="yf1-ZQ-yDw" secondAttribute="width" id="2ag-6c-4Ri"/>
                 <constraint firstItem="ale-sz-elA" firstAttribute="baseline" secondItem="LRl-05-aTz" secondAttribute="baseline" id="4fr-wc-1Ol"/>
                 <constraint firstAttribute="trailing" secondItem="5zK-pA-hKs" secondAttribute="trailing" id="6xZ-sJ-slz"/>
                 <constraint firstItem="ale-sz-elA" firstAttribute="width" secondItem="LRl-05-aTz" secondAttribute="width" id="8AH-PE-lM0"/>
@@ -158,7 +169,6 @@
                 <constraint firstItem="5zK-pA-hKs" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="sHZ-XD-o9t"/>
                 <constraint firstItem="yf1-ZQ-yDw" firstAttribute="baseline" secondItem="IDw-Wn-mPc" secondAttribute="baseline" id="t3i-tD-aqG"/>
                 <constraint firstItem="4i2-bH-WuL" firstAttribute="leading" secondItem="FS8-vE-tTi" secondAttribute="leading" id="u6f-lN-Lwl"/>
-                <constraint firstItem="IDw-Wn-mPc" firstAttribute="height" secondItem="yf1-ZQ-yDw" secondAttribute="height" id="uYk-0l-KWl"/>
                 <constraint firstItem="kHe-HY-BKv" firstAttribute="top" secondItem="5zK-pA-hKs" secondAttribute="bottom" constant="14" id="wkP-fB-DKk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -179,9 +189,13 @@
     </objects>
     <resources>
         <image name="btnCall" width="146" height="45"/>
+        <image name="btnCall_disabled" width="144" height="44"/>
         <image name="btnDirections" width="146" height="45"/>
         <image name="btnFacebook" width="96" height="44"/>
+        <image name="btnFacebook_disabled" width="97" height="44"/>
         <image name="btnTwitter" width="96" height="44"/>
+        <image name="btnTwitter_disabled" width="97" height="44"/>
         <image name="btnWebsite" width="96" height="44"/>
+        <image name="btnWebsite_disabled" width="97" height="44"/>
     </resources>
 </document>

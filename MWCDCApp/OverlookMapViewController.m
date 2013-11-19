@@ -35,7 +35,7 @@
 
     overlooks = [self fixedOverlooks];
     
-    MKCoordinateRegion initRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(40.436136, -80.010681), 2500, 2500);
+    MKCoordinateRegion initRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(40.430136, -80.010681), 2500, 2500);
     
     [self.mapView setRegion:initRegion];
     [self.mapView addAnnotations:overlooks];

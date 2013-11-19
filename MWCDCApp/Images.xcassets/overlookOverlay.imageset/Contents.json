@@ -8,11 +8,11 @@
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "overlook_overlay.png"
+      "filename" : "overlook_overlay_35@2x.png"
     },
     {
       "idiom" : "iphone",
-      "filename" : "overlook_overlay-1.png",
+      "filename" : "overlook_overlay@2x.png",
       "subtype" : "retina4",
       "scale" : "2x"
     }
