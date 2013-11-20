@@ -573,9 +573,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="296" id="ogM-hT-RfY"/>
                                 </constraints>
-                                <mutableString key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
+                                <string key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
  The Mount Washington Community Development Corporation’s mission is to cultivate growth, development, and community investment. We identify the opportunities to bring residents and business owners together with support resources to create an even stronger and more livable community.
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -674,7 +674,7 @@
                                     <constraint firstAttribute="bottom" secondItem="tMb-1Z-Zkr" secondAttribute="bottom" constant="12" id="iWh-DA-sx5"/>
                                     <constraint firstAttribute="centerY" secondItem="k64-t3-N2g" secondAttribute="centerY" constant="-6.5" id="icu-R9-c7q"/>
                                     <constraint firstAttribute="centerY" secondItem="Gzo-bw-czO" secondAttribute="centerY" constant="-6.5" id="qjd-6H-kHM"/>
-                                    <constraint firstItem="7R1-x8-3FW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cDR-QY-vtW" secondAttribute="top" priority="500" constant="20" symbolic="YES" id="uBQ-Nm-qzu"/>
+                                    <constraint firstItem="7R1-x8-3FW" firstAttribute="top" secondItem="cDR-QY-vtW" secondAttribute="top" priority="500" constant="20" symbolic="YES" id="uBQ-Nm-qzu"/>
                                 </constraints>
                             </view>
                         </subviews>
