@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "circle_marker.png"
+      "filename" : "marker.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "circle_marker@2x.png"
+      "filename" : "marker@2x.png"
     }
   ],
   "info" : {

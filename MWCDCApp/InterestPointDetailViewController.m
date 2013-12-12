@@ -9,7 +9,6 @@
 #import "InterestPointDetailViewController.h"
 #import "InterestPoint.h"
 #import "AsyncImageView.h"
-#import "ImageAnnotationView.h"
 
 @interface InterestPointDetailViewController ()
 

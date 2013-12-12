@@ -11,16 +11,17 @@
 #import "SkylinePoint.h"
 #import "SkylineDataFetcher.h"
 #import "InterestPointDetailViewController.h"
-#import "AnnotatedImageView.h"
-#import "ImageAnnotationView.h"
 #import "SkylineView.h"
 #import "MarkerView.h"
+#import "InterestPointDetailView.h"
+
+float DETAIL_VIEW_RELATIVE_WIDTH = 2.0/3.0;
 
 @interface SkylineViewController ()
 {
     UIScrollView *scrollView;
     SkylineView *skylineView;
-    UIView *detailView;
+    InterestPointDetailView *detailView;
     NSMutableArray *detailViewConstraints;
 }
 
@@ -125,20 +126,6 @@
     }
 }
 
-#pragma mark - Segue methods
-
-NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:interestPointSegueIdentifier]) {
-        SkylinePoint *point = sender;
-        InterestPointDetailViewController *detailVC = [segue destinationViewController];
-        detailVC.interestPoint = point.interestPoint;
-        detailVC.mapCoordinate = point.coordinate;
-    }
-}
-
 #pragma mark - Subview interaction handling
 
 - (void)handleMarkerTap:(UITapGestureRecognizer *)sender
@@ -149,13 +136,15 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
 
 - (void)showDetailPaneForMarkerView:(MarkerView *)markerView
 {
-    detailView = [UIView new];
-    detailView.backgroundColor = [UIColor whiteColor];
+    detailView = [[NSBundle mainBundle] loadNibNamed:@"InterestPointDetailView"
+                                  owner:self
+                                options:nil][0];
+    detailView.alpha = 0.8;
     
-    /** configure name label **/
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, self.topLayoutGuide.length+20, 300, 30)];
-    label.text = markerView.skylinePoint.interestPoint.name;
-    [detailView addSubview:label];
+    InterestPoint *ip = markerView.skylinePoint.interestPoint;
+    detailView.nameLabel.text = ip.name;
+    detailView.addressLabel.text = ip.address;
+    detailView.descriptionLabel.text = ip.description;
     
     [self.view addSubview:detailView];
     
@@ -165,10 +154,11 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
     swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     [detailView addGestureRecognizer:swipeRecognizer];
     
-    /** disable and readjust scroll view **/
+    /** disable and pan scroll view **/
     [scrollView setScrollEnabled:NO];
     
-    CGFloat anchorX = markerView.skylinePoint.coordinate.x-((1.0/6.0)*self.view.frame.size.width)+.5*markerView.frame.size.width;
+    float unobscuredViewCenterX = (DETAIL_VIEW_RELATIVE_WIDTH/4.0)*self.view.frame.size.width;
+    CGFloat anchorX = markerView.skylinePoint.coordinate.x-unobscuredViewCenterX+.5*markerView.frame.size.width;
     // clamp content of scroll view to left edge
     if (anchorX < 0) {
         anchorX = 0.0;
@@ -177,15 +167,15 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
     
     [scrollView setContentOffset:CGPointMake(anchorX, 0) animated:YES];
     
-    
     /** set layout constraints for detail view **/
     detailView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSNumber *detailWidth = [NSNumber numberWithFloat:self.view.frame.size.width*2/3];
+    NSNumber *detailWidth = [NSNumber numberWithFloat:self.view.frame.size.width*DETAIL_VIEW_RELATIVE_WIDTH];
     
     detailViewConstraints = [NSMutableArray new];
-    [detailViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[detailView]|"
+    NSNumber *topLayoutSpace = [NSNumber numberWithFloat:self.topLayoutGuide.length];
+    [detailViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-topLayout-[detailView]|"
                                                                                        options:0
-                                                                                       metrics:nil
+                                                                                       metrics:@{@"topLayout": topLayoutSpace}
                                                                                          views:@{@"detailView": detailView}]];
     
     [detailViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[detailView(detailWidth)]|"
@@ -229,29 +219,6 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
     }
     [scrollView setScrollEnabled:YES];
 }
-
-//#pragma mark - AnnotatedImageViewDelegate methods
-//
-//- (ImageAnnotationView *)annotatedImageView:(AnnotatedImageView *)annotatedImageView
-//                          viewForAnnotation:(id<ImageAnnotation>)annotation
-//{
-//    ImageAnnotationView *view = [[ImageAnnotationView alloc] init];
-//    view.annotation = annotation;
-//    view.iconImage = [UIImage imageNamed:@"skylineMarker"];
-//    
-//    view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//
-//    return view;
-//}
-//
-//- (void)    annotatedImageView:(AnnotatedImageView *)annotatedImageView
-//           imageAnnotationView:(ImageAnnotationView *)view
-// calloutAccessoryControlTapped:(UIControl *)control
-//{
-//    SkylinePoint *skylinePoint = (SkylinePoint *)view.annotation;
-//    [self performSegueWithIdentifier:interestPointSegueIdentifier sender:skylinePoint];
-//}
-//
 
 #pragma mark - Misc utility methods
 
