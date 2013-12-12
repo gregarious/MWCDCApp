@@ -93,6 +93,7 @@
     self.navigationItem.title = self.overlook.name;
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -105,11 +106,15 @@
 {
     NSMutableArray *mvs = [NSMutableArray arrayWithCapacity:points.count];
     for (SkylinePoint *point in points) {
-        [mvs addObject:[[MarkerView alloc] initWithPoint:point]];
+        MarkerView *mv = [[MarkerView alloc] initWithPoint:point];
+        mv.userInteractionEnabled = YES;
+        [mv addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                         action:@selector(handleMarkerTap:)]];
+
+        [mvs addObject:mv];
     }
     skylineView.markerViews = mvs;
     dataStatus = SkylineViewDataStatusInitialized;
-    NSLog(@"and we're back");
 }
 
 - (void)fetchingSkylinePointsFailedWithError:(NSError *)error
@@ -138,8 +143,8 @@ NSString * const interestPointSegueIdentifier = @"showInterestPointDetail";
 
 - (void)handleMarkerTap:(UITapGestureRecognizer *)sender
 {
-    MarkerView *marker = (MarkerView *)sender.view;
-    [self showDetailPaneForMarkerView:marker];
+    MarkerView *mv = (MarkerView *)sender.view;
+    [self showDetailPaneForMarkerView:mv];
 }
 
 - (void)showDetailPaneForMarkerView:(MarkerView *)markerView

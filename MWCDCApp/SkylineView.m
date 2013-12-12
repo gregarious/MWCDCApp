@@ -34,22 +34,23 @@
 
 - (void)setMarkerViews:(NSArray *)markerViews
 {
-    // if marker views have already been set up, remove them from the view
-    // hierarchy, and clear out all the constraints
+    // if marker views have already been set up, remove them from the hierarchy
     if (self.markerViews != nil) {
         for (MarkerView* mv in self.markerViews) {
             [mv removeFromSuperview];
         }
-        [self removeConstraints:markerConstraints];
-        markerConstraints = nil;
     }
-    
+
+    // add all the subviews
     _markerViews = markerViews;
     for (MarkerView* mv in self.markerViews) {
         [self addSubview:mv];
     }
+    
+    // reset the constraints
+    [self removeConstraints:markerConstraints];
+    markerConstraints = nil;
     [self setMarkerConstraints];
-
 }
 
 - (void)setBackgroundConstraints
@@ -69,6 +70,7 @@
                                                               metrics:nil
                                                                 views:@{@"background": self.backgroundView}];
         [backgroundConstraints addObjectsFromArray:constraints];
+        [self addConstraints:backgroundConstraints];
     }
 }
 

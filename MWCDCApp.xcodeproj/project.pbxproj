@@ -304,12 +304,12 @@
 		371F57DB1819CFC200E2E58E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				372753881820B20A00E286B3 /* SMCalloutView.h */,
-				372753891820B20A00E286B3 /* SMCalloutView.m */,
 				37A42DEE185A0ACE0086F2C4 /* MarkerView.h */,
 				37A42DEF185A0ACE0086F2C4 /* MarkerView.m */,
 				37A42DEB185A09A20086F2C4 /* SkylineView.h */,
 				37A42DEC185A09A20086F2C4 /* SkylineView.m */,
+				372753881820B20A00E286B3 /* SMCalloutView.h */,
+				372753891820B20A00E286B3 /* SMCalloutView.m */,
 				3745CD5B1820432300787C4E /* ImageAnnotation.h */,
 				37275390182189D600E286B3 /* ImageAnnotationView.h */,
 				37275391182189D600E286B3 /* ImageAnnotationView.m */,
