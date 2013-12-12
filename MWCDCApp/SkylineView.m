@@ -44,6 +44,7 @@
     // add all the subviews
     _markerViews = markerViews;
     for (MarkerView* mv in self.markerViews) {
+        mv.alpha = .6;
         [self addSubview:mv];
     }
     
