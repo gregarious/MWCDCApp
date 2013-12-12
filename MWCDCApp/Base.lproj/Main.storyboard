@@ -416,21 +416,17 @@
         <!--Skyline View Controller - Points of Interest-->
         <scene sceneID="vKL-Nk-KdL">
             <objects>
-                <viewController title="Points of Interest" id="1YW-U5-i8I" customClass="SkylineViewController" sceneMemberID="viewController">
+                <viewController title="Points of Interest" hidesBottomBarWhenPushed="YES" id="1YW-U5-i8I" customClass="SkylineViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="59C-YB-CJq"/>
                         <viewControllerLayoutGuide type="bottom" id="pLZ-Ho-Ljq"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2zu-Su-iOK" customClass="AnnotatedImageView">
+                    <view key="view" contentMode="scaleToFill" id="2zu-Su-iOK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Skyline" id="Foo-4h-E6Y"/>
-                    <connections>
-                        <outlet property="annotatedImageView" destination="2zu-Su-iOK" id="Yt3-yJ-arQ"/>
-                        <segue destination="ncZ-Nf-Vhe" kind="push" identifier="showInterestPointDetail" id="uOH-DA-xT8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0l3-Mc-Cfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -448,7 +444,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hd-hZ-rda" userLabel="Content View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hd-hZ-rda" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -495,7 +491,7 @@
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="AN0-UG-liy">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="AN0-UG-liy">
                                         <rect key="frame" x="12" y="232" width="296" height="135"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>

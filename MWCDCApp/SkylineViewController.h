@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SkylineDataFetcherDelegate.h"
-#import "AnnotatedImageViewDelegate.h"
 
 @class Overlook;
 @class SkylineDataFetcher;
-@class AnnotatedImageView;
+@class SkylineView;
 
 typedef NS_ENUM(NSUInteger, SkylineViewDataStatus) {
     SkylineViewDataStatusUninitialized,
@@ -20,13 +19,11 @@ typedef NS_ENUM(NSUInteger, SkylineViewDataStatus) {
     SkylineViewDataStatusError
 };
 
-@interface SkylineViewController : UIViewController <SkylineDataFetcherDelegate, AnnotatedImageViewDelegate>
+@interface SkylineViewController : UIViewController <SkylineDataFetcherDelegate>
 {
     SkylineDataFetcher *dataFetcher;
-    NSArray *skylinePoints;
     
     SkylineViewDataStatus dataStatus;
-    IBOutlet AnnotatedImageView *annotatedImageView;
 }
 
 @property (nonatomic, strong) Overlook *overlook;
