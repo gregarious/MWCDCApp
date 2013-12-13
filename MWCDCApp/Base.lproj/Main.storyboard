@@ -520,13 +520,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amazing view,                incredible neighborhood." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="7R1-x8-3FW" userLabel="Tagline">
-                                <rect key="frame" x="47" y="283" width="227" height="46"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amazing view," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R1-x8-3FW" userLabel="Tagline 1">
+                                <rect key="frame" x="94" y="271" width="132" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="227" id="dWs-3G-fO6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -534,15 +531,24 @@
                                 <rect key="frame" x="12" y="353" width="296" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incredible neighborhood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-QF-EY9" userLabel="Tagline 2">
+                                <rect key="frame" x="48" y="297" width="225" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EIt-12-7sB" firstAttribute="top" secondItem="KG1-mK-zvR" secondAttribute="top" id="3Ot-z0-3aW"/>
                             <constraint firstAttribute="centerX" secondItem="EIt-12-7sB" secondAttribute="centerX" id="NGm-ps-Fry"/>
                             <constraint firstItem="EIt-12-7sB" firstAttribute="centerX" secondItem="tMb-1Z-Zkr" secondAttribute="centerX" id="PJW-p8-CB2"/>
-                            <constraint firstItem="EIt-12-7sB" firstAttribute="centerX" secondItem="7R1-x8-3FW" secondAttribute="centerX" id="RxF-un-QBZ"/>
+                            <constraint firstItem="tMb-1Z-Zkr" firstAttribute="top" secondItem="qhC-QF-EY9" secondAttribute="bottom" constant="30" id="ViN-MY-qaB"/>
+                            <constraint firstItem="7R1-x8-3FW" firstAttribute="centerX" secondItem="EIt-12-7sB" secondAttribute="centerX" id="b1y-50-dPj"/>
                             <constraint firstItem="ecA-w3-n9l" firstAttribute="top" secondItem="tMb-1Z-Zkr" secondAttribute="bottom" constant="12" id="nKp-t4-BFJ"/>
-                            <constraint firstItem="tMb-1Z-Zkr" firstAttribute="top" secondItem="7R1-x8-3FW" secondAttribute="bottom" constant="24" id="xGc-wa-733"/>
+                            <constraint firstItem="qhC-QF-EY9" firstAttribute="top" secondItem="7R1-x8-3FW" secondAttribute="bottom" id="uoA-us-Rea"/>
+                            <constraint firstItem="EIt-12-7sB" firstAttribute="centerX" secondItem="qhC-QF-EY9" secondAttribute="centerX" id="yot-h6-tyc"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Welcome" image="tabWelcome" id="Eg2-ul-xH7"/>

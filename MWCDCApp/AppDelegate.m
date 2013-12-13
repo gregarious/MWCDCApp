@@ -14,7 +14,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    self.window.tintColor = [UIColor colorWithRed:82/255.0
+                                            green:202/255.0
+                                             blue:220/255.0
+                                            alpha:1];
+    
     // TODO: see if there's a better way to set up these initial VCs
     
     // Inject the basic PlaceFetchConfiguration object into the Places VC
