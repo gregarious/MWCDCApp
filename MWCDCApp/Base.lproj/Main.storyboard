@@ -475,8 +475,8 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="5Gb-5B-YT7"/>
                                 </constraints>
-                                <mutableString key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
- The Mount Washington Community Development Corporation’s mission is to cultivate growth, development, and community investment. We identify the opportunities to bring residents and business owners together with support resources to create an even stronger and more livable community.</mutableString>
+                                <string key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
+ The Mount Washington Community Development Corporation’s mission is to cultivate growth, development, and community investment. We identify the opportunities to bring residents and business owners together with support resources to create an even stronger and more livable community.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
