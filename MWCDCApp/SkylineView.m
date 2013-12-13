@@ -83,8 +83,10 @@
         for (MarkerView* mv in self.markerViews) {
             mv.translatesAutoresizingMaskIntoConstraints = NO;
 
-            NSNumber *xPos = [NSNumber numberWithFloat:mv.skylinePoint.coordinate.x];
-            NSNumber *yPos = [NSNumber numberWithFloat:mv.skylinePoint.coordinate.y];
+            CGFloat centerOffsetX = mv.image.size.width/2.0;
+            CGFloat centerOffsetY = mv.image.size.height/2.0;
+            NSNumber *xPos = [NSNumber numberWithFloat:mv.skylinePoint.coordinate.x-centerOffsetX];
+            NSNumber *yPos = [NSNumber numberWithFloat:mv.skylinePoint.coordinate.y-centerOffsetY];
             [markerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-xPos-[marker]"
                                                                                           options:0
                                                                                           metrics:@{@"xPos": xPos}

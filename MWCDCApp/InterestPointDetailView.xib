@@ -11,30 +11,22 @@
             <rect key="frame" x="0.0" y="0.0" width="378" height="256"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqW-Ez-vY7" userLabel="Name Label">
-                    <rect key="frame" x="20" y="20" width="338" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AqW-Ez-vY7" userLabel="Name Label">
+                    <rect key="frame" x="20" y="20" width="44" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="338" id="KHS-ac-peW"/>
-                        <constraint firstAttribute="height" constant="21" id="pcm-Nl-rzO"/>
-                    </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsW-FT-vX3" userLabel="Address Label">
-                    <rect key="frame" x="20" y="40" width="338" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tsW-FT-vX3" userLabel="Address Label">
+                    <rect key="frame" x="20" y="42" width="53" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="338" id="hzY-xK-C9X"/>
-                    </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="333" translatesAutoresizingMaskIntoConstraints="NO" id="fzo-be-hCg">
-                    <rect key="frame" x="20" y="69" width="333" height="167"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="338" translatesAutoresizingMaskIntoConstraints="NO" id="fzo-be-hCg">
+                    <rect key="frame" x="20" y="67" width="338" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <string key="text">Completed in 2003, this is the only convention center in the world with LEED Gold Certification in new construction and Platinum Certification in existing building. The convention center is flexible, functional, and has state of the art technology to share with show organizers, exhibitors, and guests. One popular feature is the outdoor space available, which includes a large water feature and several terraces.</string>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -42,13 +34,15 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tsW-FT-vX3" firstAttribute="leading" secondItem="fzo-be-hCg" secondAttribute="leading" id="7Fz-9D-C9E" userLabel="Description Label"/>
-                <constraint firstAttribute="bottom" secondItem="fzo-be-hCg" secondAttribute="bottom" constant="20" symbolic="YES" id="AoA-0Y-4e5"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fzo-be-hCg" secondAttribute="bottom" constant="20" symbolic="YES" id="AoA-0Y-4e5"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AqW-Ez-vY7" secondAttribute="trailing" constant="20" symbolic="YES" id="COb-2o-qo7"/>
                 <constraint firstItem="AqW-Ez-vY7" firstAttribute="leading" secondItem="tsW-FT-vX3" secondAttribute="leading" id="EhK-QP-y9m"/>
                 <constraint firstItem="AqW-Ez-vY7" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="FAd-lQ-OBM"/>
-                <constraint firstItem="fzo-be-hCg" firstAttribute="top" secondItem="AqW-Ez-vY7" secondAttribute="bottom" constant="28" id="LpX-8X-Xjl"/>
-                <constraint firstItem="tsW-FT-vX3" firstAttribute="top" secondItem="1" secondAttribute="top" constant="40" id="ab8-Uj-4X7"/>
+                <constraint firstItem="tsW-FT-vX3" firstAttribute="top" secondItem="AqW-Ez-vY7" secondAttribute="bottom" constant="2" id="U4I-ws-LBg"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tsW-FT-vX3" secondAttribute="trailing" constant="20" symbolic="YES" id="ghc-Dk-yzi"/>
                 <constraint firstItem="AqW-Ez-vY7" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="jee-VC-ugR"/>
                 <constraint firstItem="fzo-be-hCg" firstAttribute="top" secondItem="tsW-FT-vX3" secondAttribute="bottom" constant="8" symbolic="YES" id="kD0-h7-B2z"/>
+                <constraint firstAttribute="trailing" secondItem="fzo-be-hCg" secondAttribute="trailing" constant="20" symbolic="YES" id="vLx-WH-NuJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

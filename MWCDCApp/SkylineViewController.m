@@ -16,7 +16,7 @@
 #import "InterestPointDetailView.h"
 
 CGFloat DETAIL_VIEW_RELATIVE_WIDTH = 2.0/3.0;
-CGFloat DEFAULT_MARKER_ALPHA = 0.8;
+CGFloat DEFAULT_MARKER_ALPHA = 0.7;
 
 @interface SkylineViewController ()
 {
