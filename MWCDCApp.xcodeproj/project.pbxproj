@@ -13,7 +13,6 @@
 		37053260182C2E4400CB5490 /* PlaceDetailContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3705325F182C2E4400CB5490 /* PlaceDetailContentView.xib */; };
 		37083D7B180CC6930049FCC5 /* SkylineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D7A180CC6930049FCC5 /* SkylineViewController.m */; };
 		37083D7D180CCE390049FCC5 /* SkylineViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D7C180CCE390049FCC5 /* SkylineViewControllerTests.m */; };
-		37083D83180CD8D70049FCC5 /* InterestPointDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D82180CD8D70049FCC5 /* InterestPointDetailViewController.m */; };
 		37083D86180D9F290049FCC5 /* PlaceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D85180D9F290049FCC5 /* PlaceMapViewController.m */; };
 		37083D89180DC6700049FCC5 /* PlaceCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D88180DC6700049FCC5 /* PlaceCollectionViewController.m */; };
 		37083D8C180DCC6A0049FCC5 /* ToggleContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D8B180DCC6A0049FCC5 /* ToggleContainerViewController.m */; };
@@ -98,8 +97,6 @@
 		37083D79180CC6930049FCC5 /* SkylineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylineViewController.h; sourceTree = "<group>"; };
 		37083D7A180CC6930049FCC5 /* SkylineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineViewController.m; sourceTree = "<group>"; };
 		37083D7C180CCE390049FCC5 /* SkylineViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineViewControllerTests.m; sourceTree = "<group>"; };
-		37083D81180CD8D70049FCC5 /* InterestPointDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestPointDetailViewController.h; sourceTree = "<group>"; };
-		37083D82180CD8D70049FCC5 /* InterestPointDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestPointDetailViewController.m; sourceTree = "<group>"; };
 		37083D84180D9F290049FCC5 /* PlaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMapViewController.h; sourceTree = "<group>"; };
 		37083D85180D9F290049FCC5 /* PlaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMapViewController.m; sourceTree = "<group>"; };
 		37083D87180DC6700049FCC5 /* PlaceCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCollectionViewController.h; sourceTree = "<group>"; };
@@ -233,8 +230,6 @@
 				3702D014180CB23E00095CD1 /* OverlookMapViewController.m */,
 				37083D79180CC6930049FCC5 /* SkylineViewController.h */,
 				37083D7A180CC6930049FCC5 /* SkylineViewController.m */,
-				37083D81180CD8D70049FCC5 /* InterestPointDetailViewController.h */,
-				37083D82180CD8D70049FCC5 /* InterestPointDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -628,7 +623,6 @@
 				3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */,
 				370E1E82180C375800844A63 /* SkylineDataFetcher.m in Sources */,
 				37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */,
-				37083D83180CD8D70049FCC5 /* InterestPointDetailViewController.m in Sources */,
 				370E1E85180C376900844A63 /* SkylinePointBuilder.m in Sources */,
 				376F275A17E23F7400178A06 /* Place.m in Sources */,
 				370E1E7F180C374800844A63 /* Overlook.m in Sources */,

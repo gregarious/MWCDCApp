@@ -10,7 +10,6 @@
 #import "Overlook.h"
 #import "SkylinePoint.h"
 #import "SkylineDataFetcher.h"
-#import "InterestPointDetailViewController.h"
 #import "SkylineView.h"
 #import "MarkerView.h"
 #import "InterestPointDetailView.h"
