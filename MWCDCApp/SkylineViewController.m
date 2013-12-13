@@ -223,12 +223,11 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
         anchorX = 0.0;
     }
     
-    /** disable all markers from being tapped **/
-    for (MarkerView *m in skylineView.markerViews) {
-        if (m != markerView) {
-            m.userInteractionEnabled = NO;
-        }
+    /** disable all markers from being tapped and highlight selected one **/
+    for (MarkerView *mv in skylineView.markerViews) {
+        mv.userInteractionEnabled = NO;
     }
+    markerView.highlighted = YES;
     
     /** set layout constraints for detail view **/
     detailView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -290,6 +289,11 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
 {
     // move the detail view completely off-screen
     detailViewTrailingEdgeConstraint.constant = [detailViewWidth floatValue];
+    
+    // reset all highlighting
+    for (MarkerView *mv in skylineView.markerViews) {
+        mv.highlighted = NO;
+    }
     
     /** Pane closing animations include:
       * - sliding detail view off screen

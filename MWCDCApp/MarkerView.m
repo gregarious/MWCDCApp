@@ -13,11 +13,13 @@
 
 - (id)initWithPoint:(SkylinePoint *)skylinePoint
 {
-    self = [super initWithImage:[UIImage imageNamed:@"circle_marker"]];
+    self = [super initWithImage:[UIImage imageNamed:@"skylineMarker"]
+               highlightedImage:[UIImage imageNamed:@"skylineMarkerSelected"]];
     if (self) {
         _skylinePoint = skylinePoint;
     }
     return self;
 }
+
 
 @end
