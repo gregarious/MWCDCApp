@@ -14,6 +14,18 @@
 
 @implementation WelcomeViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // if targeting any platforms < iOS 7, the asset catalog R4 entry will be
+    // ignored. As a result, we're creating a separate R4 image set and loading
+    // it manually if there's a R4 resolution
+    if([UIScreen mainScreen].bounds.size.height >= 481) {
+        self.backgroundImage.image = [UIImage imageNamed:@"homeR4"];
+    }
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationPortrait | UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
@@ -24,15 +36,6 @@
     return YES;
 }
 
-
-- (IBAction)businessesButton:(id)sender {
-    self.tabBarController.selectedIndex = 1;
-}
-
-- (IBAction)overlooksButton:(id)sender {
-    self.tabBarController.selectedIndex = 2;
-}
-
 - (void)viewDidLayoutSubviews
 {
     // fix for potential bug in iOS 7 where the bottomLayoutGuide in a UITabBarController
@@ -41,7 +44,8 @@
     // iOS 6 has no bottomLayoutGuide
     if ([self respondsToSelector:@selector(bottomLayoutGuide)]) {
         if (self.bottomLayoutGuide.length == 0.0) {
-            _bottomLayoutSpaceConstraint.constant = 49;
+            // 49+12 = 61
+            _bottomLayoutSpaceConstraint.constant = 61;
         }
     }
     [self.view layoutSubviews];

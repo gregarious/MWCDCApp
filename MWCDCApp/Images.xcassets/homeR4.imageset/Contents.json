@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "bkgd_about_35.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "bkgd_about_35@2x.png"
+      "filename" : "bkgd_home@2x.png"
     }
   ],
   "info" : {

@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface WelcomeViewController : UIViewController
-- (IBAction)businessesButton:(id)sender;
-- (IBAction)overlooksButton:(id)sender;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutSpaceConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @end

@@ -11,5 +11,6 @@
 @interface AboutViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutSpaceConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @end

@@ -14,6 +14,18 @@
 
 @implementation AboutViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // if targeting any platforms < iOS 7, the asset catalog R4 entry will be
+    // ignored. As a result, we're creating a separate R4 image set and loading
+    // it manually if there's a R4 resolution
+    if([UIScreen mainScreen].bounds.size.height >= 481) {
+        self.backgroundImage.image = [UIImage imageNamed:@"aboutR4"];
+    }
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
@@ -36,7 +48,7 @@
     // iOS 6 has no bottomLayoutGuide
     if ([self respondsToSelector:@selector(bottomLayoutGuide)]) {
         if (self.bottomLayoutGuide.length == 0.0) {
-            // 49+12 = 61. no contentView here, so we need a 12pt buffer at the bottom
+            // 49+12 = 61
             _bottomLayoutSpaceConstraint.constant = 61;
         }
     }
