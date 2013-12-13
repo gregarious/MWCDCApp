@@ -56,6 +56,16 @@
     _scrollView = nil;
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait | UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
 - (void)setPlace:(Place *)newPlace
 {
     if (_place != newPlace) {

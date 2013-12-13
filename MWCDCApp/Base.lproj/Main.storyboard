@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller - Main Menu-->
+        <!--Root Tab Bar Controller - Main Menu-->
         <scene sceneID="QAb-BU-Hnr">
             <objects>
-                <tabBarController title="Main Menu" definesPresentationContext="YES" id="yWA-Rm-UqO" sceneMemberID="viewController">
+                <tabBarController title="Main Menu" definesPresentationContext="YES" id="yWA-Rm-UqO" customClass="RootTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="LvG-QG-zrw">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-729" y="462"/>
         </scene>
-        <!--Navigation Controller - Places Stack-->
+        <!--Place Navigation Controller - Places Stack-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
-                <navigationController title="Places Stack" id="rS3-R9-Ivy" sceneMemberID="viewController">
+                <navigationController title="Places Stack" id="rS3-R9-Ivy" customClass="PlaceNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Business" image="tabBusinesses" id="S80-ua-J9j"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
@@ -353,10 +353,10 @@
             </objects>
             <point key="canvasLocation" x="2228" y="-84"/>
         </scene>
-        <!--Navigation Controller - Viewpoints Stack-->
+        <!--Overlook Navigation Controller - Viewpoints Stack-->
         <scene sceneID="PIa-Gb-qUi">
             <objects>
-                <navigationController title="Viewpoints Stack" definesPresentationContext="YES" id="VoK-IK-H7P" sceneMemberID="viewController">
+                <navigationController title="Viewpoints Stack" definesPresentationContext="YES" id="VoK-IK-H7P" customClass="OverlookNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Overlooks" image="tabOverlooks" id="T9K-cl-QMs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qc9-G0-hUn">
                         <autoresizingMask key="autoresizingMask"/>
@@ -406,6 +406,7 @@
                     <navigationItem key="navigationItem" title="Choose an overlook" id="zT9-XG-Bte"/>
                     <connections>
                         <outlet property="mapView" destination="UC0-ju-sl8" id="Tp6-2H-DXP"/>
+                        <outlet property="overlayImage" destination="5Aq-p6-6JF" id="iAd-k3-tIO"/>
                         <segue destination="1YW-U5-i8I" kind="push" identifier="showSkyline" id="sw4-vE-ips"/>
                     </connections>
                 </viewController>
@@ -424,7 +425,20 @@
                     <view key="view" contentMode="scaleToFill" id="2zu-Su-iOK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your iPhone to view the skyline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-iB-SvB">
+                                <rect key="frame" x="50" y="222" width="220" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="s6s-iB-SvB" secondAttribute="centerX" id="Vkf-u3-yV9"/>
+                            <constraint firstAttribute="centerY" secondItem="s6s-iB-SvB" secondAttribute="centerY" constant="0.5" id="s4t-Aj-Jf0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Skyline" id="Foo-4h-E6Y"/>
                 </viewController>
@@ -578,6 +592,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Welcome" image="tabWelcome" id="Eg2-ul-xH7"/>
+                    <connections>
+                        <outlet property="bottomLayoutSpaceConstraint" destination="3TN-Jf-Hmy" id="jdO-ho-zz4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYf-32-bmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

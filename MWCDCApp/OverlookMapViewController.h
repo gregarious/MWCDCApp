@@ -12,6 +12,7 @@
 @interface OverlookMapViewController : UIViewController <MKMapViewDelegate>
 {
     NSArray *overlooks;
+    IBOutlet UIImageView *overlayImage;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

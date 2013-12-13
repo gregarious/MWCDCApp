@@ -15,7 +15,7 @@
 @interface OverlookMapViewController ()
 
 - (NSArray *)fixedOverlooks;
-
+- (void)setViewContentForOrientation:(UIInterfaceOrientation)orientation;
 @end
 
 @implementation OverlookMapViewController 
@@ -35,16 +35,37 @@
 
     overlooks = [self fixedOverlooks];
     
-    MKCoordinateRegion initRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(40.430136, -80.010681), 2500, 2500);
-    
-    [self.mapView setRegion:initRegion];
+    self.mapView.scrollEnabled = NO;
     [self.mapView addAnnotations:overlooks];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setViewContentForOrientation:[UIApplication sharedApplication].statusBarOrientation];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setViewContentForOrientation:(UIInterfaceOrientation)orientation
+{
+    if (orientation == UIInterfaceOrientationLandscapeLeft ||
+        orientation == UIInterfaceOrientationLandscapeRight) {
+        overlayImage.hidden = YES;
+        self.mapView.region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(40.435136, -80.010681), 3500, 3500);
+    }
+    else {
+        overlayImage.hidden = NO;
+        self.mapView.region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(40.435136, -80.010681), 2500, 2500);
+    }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self setViewContentForOrientation:toInterfaceOrientation];
 }
 
 #pragma mark - MKMapViewDelegate methods

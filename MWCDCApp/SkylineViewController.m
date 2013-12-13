@@ -33,6 +33,9 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
 - (void)showDetailPaneForMarkerView:(MarkerView *)markerView;
 - (void)hideDetailPane;
 
+// rotation-based display helpers
+- (void)setViewContentForOrientation:(UIInterfaceOrientation)orientation;
+
 // misc utility methods
 - (void)reloadData;
 
@@ -97,11 +100,44 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
     self.navigationItem.title = self.overlook.name;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    [self setViewContentForOrientation:orientation];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotate
+{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self setViewContentForOrientation:toInterfaceOrientation];
+}
+
+- (void)setViewContentForOrientation:(UIInterfaceOrientation)orientation
+{
+    if (orientation == UIInterfaceOrientationLandscapeLeft ||
+        orientation == UIInterfaceOrientationLandscapeRight) {
+        scrollView.hidden = NO;
+    }
+    else {
+        scrollView.hidden = YES;
+    }
 }
 
 #pragma mark - SkylineDataFetcherDelegate methods
@@ -198,7 +234,13 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
     detailView.translatesAutoresizingMaskIntoConstraints = NO;
     
     detailViewConstraints = [NSMutableArray new];
-    NSNumber *topLayoutSpace = [NSNumber numberWithFloat:self.topLayoutGuide.length];
+    NSNumber *topLayoutSpace;
+    if ([self respondsToSelector:@selector(topLayoutGuide)]) {
+        topLayoutSpace = [NSNumber numberWithFloat:self.topLayoutGuide.length];
+    }
+    else {
+        topLayoutSpace = [NSNumber numberWithInt:0];
+    }
     [detailViewConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-topLayout-[detailView]|"
                                                                                        options:0
                                                                                        metrics:@{@"topLayout": topLayoutSpace}

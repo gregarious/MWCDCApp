@@ -47,6 +47,7 @@
     MKCoordinateRegion initRegion = MKCoordinateRegionMakeWithDistance(center, meterRadius, meterRadius);
     
     [_mapView setRegion:initRegion];
+
     _mapView.delegate = self;
     [self reloadData];
 }
