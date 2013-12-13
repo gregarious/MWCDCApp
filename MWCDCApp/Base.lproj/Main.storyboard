@@ -458,27 +458,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="9JD-Zf-yi2" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="9JD-Zf-yi2" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3rK-Es-NEH" userLabel="Logo">
                                 <rect key="frame" x="12" y="353" width="296" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="kXf-pj-LGZ"/>
+                                    <constraint firstAttribute="height" constant="66" id="UVn-yo-TBf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3L-guy" userLabel="About Label">
-                                <rect key="frame" x="12" y="48" width="296" height="297"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3L-guy" userLabel="About Label">
+                                <rect key="frame" x="20" y="28" width="280" height="309"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="296" id="ogM-hT-RfY"/>
+                                    <constraint firstAttribute="width" constant="280" id="5Gb-5B-YT7"/>
                                 </constraints>
-                                <string key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
- The Mount Washington Community Development Corporation’s mission is to cultivate growth, development, and community investment. We identify the opportunities to bring residents and business owners together with support resources to create an even stronger and more livable community.
-</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <mutableString key="text">Formerly known as “Coal Hill,” Mount Washington is a neighborhood settled by miners and their families around the very mines in which they worked. Today Mount Washington is one of Pittsburgh’s most desirable neighborhoods, with a vibrant community surrounded by a lush park.
+ The Mount Washington Community Development Corporation’s mission is to cultivate growth, development, and community investment. We identify the opportunities to bring residents and business owners together with support resources to create an even stronger and more livable community.</mutableString>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -486,12 +485,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="9JD-Zf-yi2" secondAttribute="centerX" id="0XX-nc-AkU"/>
-                            <constraint firstAttribute="centerX" secondItem="3rK-Es-NEH" secondAttribute="centerX" id="2mS-Wy-fHO"/>
+                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="centerX" secondItem="3rK-Es-NEH" secondAttribute="centerX" id="1HT-LV-TIB"/>
+                            <constraint firstItem="3rK-Es-NEH" firstAttribute="top" secondItem="r0R-3L-guy" secondAttribute="bottom" constant="16" id="ArJ-Sg-1df"/>
                             <constraint firstItem="PTi-QM-Dg4" firstAttribute="top" secondItem="3rK-Es-NEH" secondAttribute="bottom" constant="12" id="CEh-Ir-VWG"/>
-                            <constraint firstItem="r0R-3L-guy" firstAttribute="top" secondItem="Tr6-Hm-Jj6" secondAttribute="bottom" priority="750" constant="28" id="OlY-et-0pp"/>
+                            <constraint firstItem="r0R-3L-guy" firstAttribute="top" secondItem="Tr6-Hm-Jj6" secondAttribute="bottom" constant="8" id="SO9-1C-W28"/>
+                            <constraint firstItem="9JD-Zf-yi2" firstAttribute="centerX" secondItem="r0R-3L-guy" secondAttribute="centerX" id="eoV-D0-eAz"/>
                             <constraint firstItem="9JD-Zf-yi2" firstAttribute="top" secondItem="rc4-KC-KJd" secondAttribute="top" id="jSk-EH-ymd"/>
-                            <constraint firstItem="3rK-Es-NEH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r0R-3L-guy" secondAttribute="bottom" constant="8" symbolic="YES" id="nd6-JP-GPd"/>
-                            <constraint firstAttribute="centerX" secondItem="r0R-3L-guy" secondAttribute="centerX" id="pK4-jx-edv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="tabAbout" id="GPv-H0-pMn"/>
@@ -514,7 +513,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ecA-w3-n9l"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KG1-mK-zvR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="EIt-12-7sB" userLabel="Background">
@@ -522,7 +521,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amazing view,                incredible neighborhood." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="227" translatesAutoresizingMaskIntoConstraints="NO" id="7R1-x8-3FW" userLabel="Tagline">
-                                <rect key="frame" x="47" y="371" width="227" height="46"/>
+                                <rect key="frame" x="47" y="283" width="227" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="227" id="dWs-3G-fO6"/>
@@ -532,7 +531,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="tMb-1Z-Zkr" userLabel="Footer Logo">
-                                <rect key="frame" x="12" y="441" width="296" height="66"/>
+                                <rect key="frame" x="12" y="353" width="296" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -547,7 +546,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Welcome" image="tabWelcome" id="Eg2-ul-xH7"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundImage" destination="EIt-12-7sB" id="p9T-k3-Ty7"/>
                         <outlet property="bottomLayoutSpaceConstraint" destination="nKp-t4-BFJ" id="RFk-NQ-XyF"/>
