@@ -216,8 +216,8 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
     
     // determine where the scroll view's content view needs to move to be centered in
     // the left pane (this value gets set in the animation block below)
-    float unobscuredViewCenterX = (DETAIL_VIEW_RELATIVE_WIDTH/4.0)*self.view.frame.size.width;
-    CGFloat anchorX = markerView.skylinePoint.coordinate.x-unobscuredViewCenterX+.5*markerView.frame.size.width;
+    float unobscuredViewCenterX = ((1.0-DETAIL_VIEW_RELATIVE_WIDTH)/2.0)*self.view.frame.size.width;
+    CGFloat anchorX = markerView.skylinePoint.coordinate.x-unobscuredViewCenterX;
     // clamp content of scroll view to left edge
     if (anchorX < 0) {
         anchorX = 0.0;
