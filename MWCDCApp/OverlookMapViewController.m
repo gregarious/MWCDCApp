@@ -65,6 +65,7 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    // show slight variations of the overlook map depending on device orienttaion
     [self setViewContentForOrientation:toInterfaceOrientation];
 }
 

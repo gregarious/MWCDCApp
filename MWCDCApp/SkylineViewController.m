@@ -115,6 +115,7 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
 
 - (BOOL)shouldAutorotate
 {
+    // disallow transition from landscape to portrait
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
         return NO;
@@ -131,6 +132,7 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
 
 - (void)setViewContentForOrientation:(UIInterfaceOrientation)orientation
 {
+    // if device is in portrait mode, hide the content so the rotate message underneath shows
     if (orientation == UIInterfaceOrientationLandscapeLeft ||
         orientation == UIInterfaceOrientationLandscapeRight) {
         scrollView.hidden = NO;
