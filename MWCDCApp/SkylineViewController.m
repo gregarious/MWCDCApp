@@ -101,6 +101,9 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
                                                                        options:0
                                                                        metrics:nil
                                                                          views:@{@"skyline": skylineView}]];
+
+    // bring the status window back up sinze the scroll view is now on top
+    [self.view bringSubviewToFront:self.dataStatusView];
     
     self.navigationItem.title = self.overlook.name;
 }
@@ -386,7 +389,6 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
                showLoadingIndicator:YES
                        retryEnabled:NO];
     [self.view bringSubviewToFront:self.dataStatusView];
-
 }
 
 @end

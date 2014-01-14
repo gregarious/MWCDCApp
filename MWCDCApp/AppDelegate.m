@@ -14,9 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window.tintColor = [UIColor colorWithRed:82/255.0
-                                            green:202/255.0
-                                             blue:220/255.0
+    // 82, 202, 22 is RGB of official branding, but looks a little washed out with default iOS 7 components
+    self.window.tintColor = [UIColor colorWithRed:15/255.0
+                                            green:129/255.0
+                                             blue:168/255.0
                                             alpha:1];
     
     // TODO: see if there's a better way to set up these initial VCs
