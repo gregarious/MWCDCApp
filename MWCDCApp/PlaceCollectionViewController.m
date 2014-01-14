@@ -21,8 +21,8 @@
 @interface PlaceCollectionViewController ()
 
 - (void)closeModalPicker;
-
 - (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place;
+- (void)reloadContentViewData;
 
 @end
 
@@ -84,6 +84,8 @@
 }
 
 NSString * const placeCellReuseIdenitifier = @"PlaceCell";
+NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
+
 - (void)setViewMode:(PlaceCollectionViewMode)viewMode
 {
     _viewMode = viewMode;
@@ -109,10 +111,19 @@ NSString * const placeCellReuseIdenitifier = @"PlaceCell";
         mapView = [[MKMapView alloc] init];
         mapView.delegate = self;
 
+        CLLocationCoordinate2D center;
+        CLLocationDistance meterRadius;
+        
+        center = CLLocationCoordinate2DMake(40.432136, -80.012980),
+        meterRadius = 2500;
+        
+        [mapView setRegion:MKCoordinateRegionMakeWithDistance(center, meterRadius, meterRadius)];
+        
         subview = mapView;
     }
 
     [self.contentView addSubview:subview];
+    [self reloadContentViewData];
 
     // TODO: do a transition when toggling
     
@@ -204,13 +215,12 @@ NSString * const placeCellReuseIdenitifier = @"PlaceCell";
 
 - (void)didReceivePlaces:(NSArray *)places
 {
-    // TODO: consider some kind of notification if no data is found?
-//    [self hideDataStatus];
+    [self hideDataStatus];
     self.contentView.enabled = YES;
     dataManager.places = places;
 
     // TODO: either tie directly to datastore with KVO or genrealize this for map view
-    [tableView reloadData];
+    [self reloadContentViewData];
 }
 
 - (void)fetchingPlacesFailedWithError:(NSError *)error
@@ -260,6 +270,34 @@ NSString * const placeCellReuseIdenitifier = @"PlaceCell";
     [self performSegueWithIdentifier:@"showPlaceDetail" sender:place];
 }
 
+#pragma mark - MKMapViewDelegate methods
+- (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    // use the default annotation for current location
+    if (annotation == mv.userLocation){
+        return nil;
+    }
+    
+    MKAnnotationView *view = [mv dequeueReusableAnnotationViewWithIdentifier:placeAnnotationReuseIdentifier];
+    if (view == nil) {
+        view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                               reuseIdentifier:placeAnnotationReuseIdentifier];
+        view.enabled = YES;
+        view.canShowCallout = YES;
+        view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    }
+    else {
+        view.annotation = annotation;
+    }
+    
+    return view;
+}
+
+- (void)mapView:(MKMapView *)mv annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    // the annotation is the Place itself
+    [self performSegueWithIdentifier:@"showPlaceDetail" sender:view.annotation];
+}
 
 #pragma mark - UISearchBarDelegate protocol
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -326,7 +364,17 @@ NSString * const placeCellReuseIdenitifier = @"PlaceCell";
     
     cell.thumbnail.imageURL = [NSURL URLWithString:place.imageURLString];
     cell.thumbnail.crossfadeImages = NO;
-    
-    NSLog(@"init cell %@", place.name);
 }
+
+- (void)reloadContentViewData
+{
+    if (tableView) {
+        [tableView reloadData];
+    }
+    if (mapView) {
+        [mapView removeAnnotations:mapView.annotations];
+        [mapView addAnnotations:dataManager.displayPlaces];
+    }
+}
+
 @end
