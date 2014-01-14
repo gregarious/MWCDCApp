@@ -8,8 +8,8 @@
 
 #import "APICommunicator.h"
 
-NSString * const PLACES_URL = @"http://mwcdc.scenable.com/api/places/";
-NSString * const OVERLOOK_URL_FORMAT = @"http://mwcdc.scenable.com/api/viewpoints/%d/";
+NSString * const PLACES_URL = @"http://mwcdcappserver-mountwashington.dotcloud.com/api/places/";
+NSString * const OVERLOOK_URL_FORMAT = @"http://mwcdcappserver-mountwashington.dotcloud.com/api/viewpoints/%d/";
 NSString * const APICommunicatorErrorDomain = @"APICommunicatorErrorDomain";
 
 @implementation APICommunicator

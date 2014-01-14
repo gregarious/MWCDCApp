@@ -11,7 +11,7 @@
 #import "PlaceDataFetcherDelegate.h"
 
 @class PlaceViewDataManager;
-@class PlaceDataFetcher;
+@class PlaceDataStore;
 @class PlaceTableViewCell;
 @class Place;
 

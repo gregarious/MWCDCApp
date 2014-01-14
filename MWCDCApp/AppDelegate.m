@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PlaceCollectionViewController.h"
-#import "PlaceDataFetcher.h"
+#import "PlaceDataStore.h"
 
 @implementation AppDelegate
 
@@ -25,7 +25,7 @@
     UITabBarController *rootVC = (UITabBarController *)[[self window] rootViewController];
     UINavigationController *placeNavVC = [rootVC viewControllers][1];
     PlaceCollectionViewController *placeVC = (PlaceCollectionViewController *)(placeNavVC.topViewController);
-    placeVC.dataFetcher = [PlaceDataFetcher defaultFetcher];
+    placeVC.dataStore = [PlaceDataStore defaultFetcher];
     
     return YES;
 }

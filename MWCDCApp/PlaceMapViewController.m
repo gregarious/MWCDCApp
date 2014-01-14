@@ -8,7 +8,7 @@
 
 #import "PlaceMapViewController.h"
 #import "PlaceViewDataManager.h"
-#import "PlaceDataFetcher.h"
+#import "PlaceDataStore.h"
 #import "PlaceDetailViewController.h"
 #import "PlaceCollectionViewController.h"
 

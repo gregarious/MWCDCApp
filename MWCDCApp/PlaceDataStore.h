@@ -11,13 +11,13 @@
 #import "APICommunicator.h"
 #import "PlaceBuilder.h"
 
-@interface PlaceDataFetcher : NSObject <APICommunicatorDelegate>
+@interface PlaceDataStore : NSObject <APICommunicatorDelegate>
 
 @property (nonatomic, weak) id<PlaceDataFetcherDelegate> delegate;
 @property (nonatomic, strong) APICommunicator *communicator;
 @property (nonatomic, strong) PlaceBuilder *placeBuilder;
 
-+ (PlaceDataFetcher *)defaultFetcher;
++ (PlaceDataStore *)defaultFetcher;
 
 - (void)fetchPlaces;
 - (void)fetchingDataFailedWithError:(NSError *)err;

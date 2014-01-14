@@ -6,19 +6,19 @@
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "PlaceDataFetcher.h"
+#import "PlaceDataStore.h"
 
-@interface PlaceDataFetcher ()
+@interface PlaceDataStore ()
 
 - (void)notifyDelegateAboutAPIFetchError:(NSError *)underlyingError;
 
 @end
 
-@implementation PlaceDataFetcher
+@implementation PlaceDataStore
 
-+ (PlaceDataFetcher *)defaultFetcher
++ (PlaceDataStore *)defaultFetcher
 {
-    PlaceDataFetcher *fetcher = [[PlaceDataFetcher alloc] init];
+    PlaceDataStore *fetcher = [[PlaceDataStore alloc] init];
     fetcher.communicator = [[APICommunicator alloc] init];
     fetcher.communicator.delegate = fetcher;
     
@@ -59,7 +59,6 @@
                               userInfo:errorInfo];
     [self.delegate fetchingPlacesFailedWithError:reportableErr];
 }
-
 
 @end
 
