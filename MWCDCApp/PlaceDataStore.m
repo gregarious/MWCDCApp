@@ -1,31 +1,32 @@
 //
-//  PlaceDataFetcher.m
+//  PlaceDataStore.m
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 9/13/13.
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "PlaceDataFetcher.h"
+#import "PlaceDataStore.h"
 
-@interface PlaceDataFetcher ()
+@interface PlaceDataStore ()
 
 - (void)notifyDelegateAboutAPIFetchError:(NSError *)underlyingError;
 
 @end
 
-@implementation PlaceDataFetcher
+@implementation PlaceDataStore
 
-+ (PlaceDataFetcher *)defaultFetcher
++ (PlaceDataStore *)defaultStore
 {
-    PlaceDataFetcher *fetcher = [[PlaceDataFetcher alloc] init];
-    fetcher.communicator = [[APICommunicator alloc] init];
-    fetcher.communicator.delegate = fetcher;
+    PlaceDataStore *store = [[PlaceDataStore alloc] init];
+    store.communicator = [[APICommunicator alloc] init];
+    store.communicator.delegate = store;
     
-    fetcher.placeBuilder = [[PlaceBuilder alloc] init];
+    store.placeBuilder = [[PlaceBuilder alloc] init];
     
-    return fetcher;
+    return store;
 }
+
 
 - (void)fetchPlaces {
     [self.communicator fetchPlaces];
@@ -59,7 +60,6 @@
                               userInfo:errorInfo];
     [self.delegate fetchingPlacesFailedWithError:reportableErr];
 }
-
 
 @end
 

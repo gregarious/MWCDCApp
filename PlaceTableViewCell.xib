@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="M5X-1F-AgU" customClass="PlaceTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M5X-1F-AgU" id="EXF-MO-KPh">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZTc-dr-qqp" userLabel="Thumbnail" customClass="AsyncImageView">
+                        <rect key="frame" x="8" y="8" width="64" height="64"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="oMo-Nc-qIY"/>
+                            <constraint firstAttribute="height" constant="64" id="tcY-Hu-y3P"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ar-iM-c10" userLabel="Name Label">
+                        <rect key="frame" x="80" y="8" width="41" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aCl-mt-l40" userLabel="Address Label">
+                        <rect key="frame" x="80" y="29" width="36" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMw-fg-Ckr" userLabel="Category Label">
+                        <rect key="frame" x="80" y="57" width="31" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9Ar-iM-c10" secondAttribute="trailing" id="2Et-22-WwK"/>
+                    <constraint firstItem="aCl-mt-l40" firstAttribute="top" secondItem="9Ar-iM-c10" secondAttribute="bottom" constant="1" id="A7N-xq-Qha"/>
+                    <constraint firstItem="9Ar-iM-c10" firstAttribute="leading" secondItem="aCl-mt-l40" secondAttribute="leading" id="Ppv-Ra-IKS"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aCl-mt-l40" secondAttribute="trailing" id="PzD-tp-J2e"/>
+                    <constraint firstItem="ZTc-dr-qqp" firstAttribute="leading" secondItem="EXF-MO-KPh" secondAttribute="leading" constant="8" id="SXA-bH-1lH"/>
+                    <constraint firstItem="9Ar-iM-c10" firstAttribute="top" secondItem="ZTc-dr-qqp" secondAttribute="top" id="ShE-s3-1pW"/>
+                    <constraint firstItem="ZTc-dr-qqp" firstAttribute="bottom" secondItem="RMw-fg-Ckr" secondAttribute="bottom" id="UBg-Ld-TDG"/>
+                    <constraint firstItem="9Ar-iM-c10" firstAttribute="leading" secondItem="ZTc-dr-qqp" secondAttribute="trailing" constant="8" id="WcY-K9-aie"/>
+                    <constraint firstItem="aCl-mt-l40" firstAttribute="leading" secondItem="RMw-fg-Ckr" secondAttribute="leading" id="Yad-2w-3Ry"/>
+                    <constraint firstAttribute="centerY" secondItem="ZTc-dr-qqp" secondAttribute="centerY" id="y1p-HL-Q2H"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="aCl-mt-l40" id="eOJ-BJ-G90"/>
+                <outlet property="categoryLabel" destination="RMw-fg-Ckr" id="mco-Z4-ceb"/>
+                <outlet property="nameLabel" destination="9Ar-iM-c10" id="1Km-p8-I3K"/>
+                <outlet property="thumbnail" destination="ZTc-dr-qqp" id="SvE-mf-WKK"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

@@ -13,7 +13,7 @@
 #import <OCMock/OCMock.h>
 
 #import "Place.h"
-#import "PlaceDataFetcher.h"
+#import "PlaceDataStore.h"
 #import "PlaceDataFetcherDelegate.h"
 #import "APICommunicator.h"
 #import "FakePlaceBuilder.h"
@@ -21,7 +21,7 @@
 
 @interface PlaceFetchWorkflowTests : XCTestCase {
 @private
-    PlaceDataFetcher *fetcher;
+    PlaceDataStore *fetcher;
     id delegate;
     NSError *underlyingError;
     FakePlaceBuilder *fakeBuilder;
@@ -41,8 +41,8 @@
     //  3. a PlaceAPICommunicator to hook up to the PDF
     //  4. a PlaceBuilder to build Place objects from PDF
 
-    fetcher = [[PlaceDataFetcher alloc] init];
-    delegate = [OCMockObject niceMockForProtocol:@protocol(PlaceDataFetcherDelegate)];
+    fetcher = [[PlaceDataStore alloc] init];
+    delegate = [OCMockObject niceMockForProtocol:@protocol(PlaceDataFetcherStore)];
     fakeBuilder = [[FakePlaceBuilder alloc] init];
 
     fetcher.delegate = delegate;
@@ -66,14 +66,14 @@
 
 - (void)testDefaultFetcherConfiguresAllComponents
 {
-    PlaceDataFetcher *defaultFetcher = [PlaceDataFetcher defaultFetcher];
+    PlaceDataStore *defaultFetcher = [PlaceDataStore defaultStore];
     XCTAssertNotNil(defaultFetcher.communicator);
     XCTAssertNotNil(defaultFetcher.placeBuilder);
 }
 
 - (void)testDefaultFetcherSetsCommunicatorDelegateToSelf
 {
-    PlaceDataFetcher *defaultFetcher = [PlaceDataFetcher defaultFetcher];
+    PlaceDataStore *defaultFetcher = [PlaceDataStore defaultStore];
     XCTAssertNotNil(defaultFetcher);
     XCTAssertEqualObjects(defaultFetcher.communicator.delegate,
                           defaultFetcher,

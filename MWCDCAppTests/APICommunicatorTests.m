@@ -46,7 +46,7 @@
     [communicator fetchPlaces];
     NSURLConnection *connection = [communicator currentURLConnection];
     XCTAssertEqualObjects([[connection originalRequest] URL],
-                          [NSURL URLWithString:@"http://mwcdc.scenable.com/api/places/"],
+                          [NSURL URLWithString:@"http://mwcdcappserver-mountwashington.dotcloud.com/api/places/"],
                           @"Should be connecting to the expected URL");
 }
 
@@ -55,7 +55,7 @@
     [communicator fetchInterestPoints:1];
     NSURLConnection *connection = [communicator currentURLConnection];
     XCTAssertEqualObjects([[connection originalRequest] URL],
-                          [NSURL URLWithString:@"http://mwcdc.scenable.com/api/viewpoints/1/"],
+                          [NSURL URLWithString:@"http://mwcdcappserver-mountwashington.dotcloud.com/api/viewpoints/1/"],
                           @"Should be connecting to the expected URL");
 }
 

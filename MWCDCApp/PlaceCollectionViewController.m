@@ -8,17 +8,22 @@
 
 #import "PlaceCollectionViewController.h"
 #import "PlaceViewDataManager.h"
-#import "PlaceDataFetcher.h"
+#import "PlaceDataStore.h"
 #import "PlaceDetailViewController.h"
 #import "PlaceTableViewCell.h"
 #import "PlaceCategoryMenuViewController.h"
-#import "ToggleContainerViewController.h"
+#import "Place.h"
 
 #import <MapKit/MapKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface PlaceCollectionViewController ()
-
+{
+    BOOL isObservingManagerData;
+}
 - (void)closeModalPicker;
+- (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place;
+- (void)reloadContentViewData;
 
 @end
 
@@ -33,16 +38,6 @@
     return self;
 }
 
-- (void)awakeFromNib {
-    // TODO: this kind of sucks. why no init?
-    dataManager = [PlaceViewDataManager new];
-    
-    // if needing location servers for place sorting, uncomment this
-    // to initialize the shared tracker so it gets a head start in
-    // locating the user
-    // [CurrentLocationTracker sharedTracker];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,13 +47,104 @@
                                  initWithTarget:self
                                  action:@selector(dismissSearchKeyboard)];
     [contentAreaTapRecognizer setCancelsTouchesInView:YES];
+    
+    self.viewMode = PlaceCollectionViewModeTable;
+    
+    self.dataStatusView.layer.cornerRadius = 8;
+    self.dataStatusView.layer.masksToBounds = YES;
+    
+    // create a data manager to store data once it is fetched
+    dataManager = [PlaceViewDataManager new];
+    // watch the manager's displayPlaces property for changes
+    [dataManager addObserver:self
+                  forKeyPath:@"displayPlaces"
+                     options:NSKeyValueObservingOptionNew
+                     context:NULL];
+
+    // do the initial fetch of data
+    self.dataStore.delegate = self;
+    [self.dataStore fetchPlaces];
+    
+    [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
+    self.contentView.enabled = NO;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+NSString * const placeCellReuseIdenitifier = @"PlaceCell";
+NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
+
+- (void)setViewMode:(PlaceCollectionViewMode)viewMode
+{
+    _viewMode = viewMode;
+    
+    UIView *subview;
+    if (viewMode == PlaceCollectionViewModeTable) {
+        [mapView removeFromSuperview];
+        
+        tableView = [[UITableView alloc] init];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        
+        // TODO: cache the nib at least
+        UINib *nib = [UINib nibWithNibName:@"PlaceTableViewCell" bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:placeCellReuseIdenitifier];
+        
+        [self.contentView addSubview:tableView];
+        subview = tableView;
+    }
+    else {
+        [tableView removeFromSuperview];
+        
+        mapView = [[MKMapView alloc] init];
+        mapView.delegate = self;
+
+        CLLocationCoordinate2D center;
+        CLLocationDistance meterRadius;
+        
+        center = CLLocationCoordinate2DMake(40.432136, -80.012980),
+        meterRadius = 2500;
+        
+        [mapView setRegion:MKCoordinateRegionMakeWithDistance(center, meterRadius, meterRadius)];
+        
+        subview = mapView;
+    }
+
+    [self.contentView addSubview:subview];
+    [self reloadContentViewData];
+
+    // TODO: do a transition when toggling
+    
+    // Hack to force a layout problem during the first time the Places tab opens: the top
+    // layout guide isn't set the first time this method is called, so we have to fake it
+    // here. Probably related to the layout guide constraint hacks in Welcome/About VCs?
+    NSNumber *topLayoutOffset;
+    if (self.topLayoutGuide.length == 0.0) {
+        topLayoutOffset = [NSNumber numberWithFloat:-64.0];
+    }
+    else {
+        topLayoutOffset = [NSNumber numberWithFloat:0.0];
+    }
+    
+    // set up constraints so subview takes up whole content view frame
+    subview.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *views = @{@"subview": subview};
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(topLayoutOffset)-[subview]|"
+                                                                          options:0
+                                                                             metrics:@{@"topLayoutOffset": topLayoutOffset}
+                                                                            views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subview]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:views]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.dataFetcher.delegate = self;
-    [self.dataFetcher fetchPlaces];
-    
     self.filterSearchBar.delegate = self;
     
     // set the filter category if it exists, else use "All Places"
@@ -76,34 +162,12 @@
     [super viewWillAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Segues
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"embedContainer"]) {
-        self.toggleVC = (ToggleContainerViewController *)segue.destinationViewController;
-        self.toggleVC.dataManager = dataManager;
-    }
-    else if ([[segue identifier] isEqualToString:@"showPlaceDetail"]) {
+    if ([[segue identifier] isEqualToString:@"showPlaceDetail"]) {
         PlaceDetailViewController *detailVC = (PlaceDetailViewController *)[segue destinationViewController];
-        
-        // TODO: shouldn't have to do all the type parsing here. child controllers should process this?
-        if ([sender isKindOfClass:[MKAnnotationView class]]) {
-            // the Place object is the annotation itself
-            MKAnnotationView *annotationView = sender;
-            Place *place = (Place *)annotationView.annotation;
-            [detailVC setPlace:place];
-        }
-        else if ([sender isKindOfClass:[UITableViewCell class]]) {
-            PlaceTableViewCell *cell = (PlaceTableViewCell *)sender;
-            PlaceDetailViewController *detailVC = (PlaceDetailViewController *)[segue destinationViewController];
-            [detailVC setPlace:cell.place];
-        }
+        [detailVC setPlace:(Place *)sender];
     }
     else if ([[segue identifier] isEqualToString:@"showCategoryMenu"]) {
         self.menuVC = (PlaceCategoryMenuViewController *)segue.destinationViewController;
@@ -116,30 +180,99 @@
 }
 
 - (IBAction)toggleViews:(id)sender {
-    [self.toggleVC swapViewControllers];
-
-    // would be nice to tie this directly to the active child in the ToggleContainerVC #refactor
-    if ([self.displayModeToggleButton.title isEqualToString:@"Map"]) {
-        self.displayModeToggleButton.title = @"List";
+    if (self.viewMode == PlaceCollectionViewModeTable) {
+        self.displayModeToggleButton.title = @"Map";
+        self.viewMode = PlaceCollectionViewModeMap;
     }
     else {
-        self.displayModeToggleButton.title = @"Map";
+        self.displayModeToggleButton.title = @"List";
+        self.viewMode = PlaceCollectionViewModeTable;
     }
 }
+
 
 #pragma mark - PlaceDataFetcherDelegate protocol methods
 
-- (void)fetchingPlacesFailedWithError:(NSError *)error
-{
-    dataManager.lastError = error;
-    // notify subviews of changes
-}
-
 - (void)didReceivePlaces:(NSArray *)places
 {
+    [self hideDataStatus];
+    self.contentView.enabled = YES;
     dataManager.places = places;
-    dataManager.lastError = nil;
-    // notify subviews of changes
+}
+
+- (void)fetchingPlacesFailedWithError:(NSError *)error
+{
+    [self showDataStatusWithMessage:@"Problem loading data" showLoadingIndicator:NO retryEnabled:YES];
+}
+
+#pragma mark - UITableViewDelegate/DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    NSParameterAssert(section == 0);
+    if (dataManager.displayPlaces) {
+        return dataManager.displayPlaces.count;
+    }
+    else {
+        return 0;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSParameterAssert([indexPath row] < dataManager.displayPlaces.count);
+
+    PlaceTableViewCell *cell = [tv dequeueReusableCellWithIdentifier:placeCellReuseIdenitifier];
+    if (!cell) {
+        cell = [[PlaceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:placeCellReuseIdenitifier];
+    }
+    
+    Place *place = [dataManager.displayPlaces objectAtIndex:[indexPath row]];
+    [self initializeCell:cell withPlace:place];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSParameterAssert(indexPath.section == 0);
+
+    Place *place = [dataManager.displayPlaces objectAtIndex:[indexPath row]];
+    [self performSegueWithIdentifier:@"showPlaceDetail" sender:place];
+}
+
+#pragma mark - MKMapViewDelegate methods
+- (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    // use the default annotation for current location
+    if (annotation == mv.userLocation){
+        return nil;
+    }
+    
+    MKAnnotationView *view = [mv dequeueReusableAnnotationViewWithIdentifier:placeAnnotationReuseIdentifier];
+    if (view == nil) {
+        view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                               reuseIdentifier:placeAnnotationReuseIdentifier];
+        view.enabled = YES;
+        view.canShowCallout = YES;
+        view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    }
+    else {
+        view.annotation = annotation;
+    }
+    
+    return view;
+}
+
+- (void)mapView:(MKMapView *)mv annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    // the annotation is the Place itself
+    [self performSegueWithIdentifier:@"showPlaceDetail" sender:view.annotation];
 }
 
 #pragma mark - UISearchBarDelegate protocol
@@ -151,14 +284,14 @@
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     // enable dismissal of the keyboard while blocking content area interaction
-    [self.containerView addGestureRecognizer:contentAreaTapRecognizer];
+    [self.contentView addGestureRecognizer:contentAreaTapRecognizer];
     return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
 {
     // free content area to receive taps again
-    [self.containerView removeGestureRecognizer:contentAreaTapRecognizer];
+    [self.contentView removeGestureRecognizer:contentAreaTapRecognizer];
     return YES;
 }
 
@@ -187,12 +320,74 @@
     [self closeModalPicker];
 }
 
-#pragma mark - Private methods
+#pragma mark - Data status view methods
+
+- (void)showDataStatusWithMessage:(NSString *)message showLoadingIndicator:(BOOL)shouldShowLoadingIndicator retryEnabled:(BOOL)shouldEnableRetry
+{
+    self.dataStatusLabel.text = message;
+    if (shouldShowLoadingIndicator) {
+        [self.dataStatusLoadingIndicator startAnimating];
+    }
+    else {
+        [self.dataStatusLoadingIndicator stopAnimating];
+    }
+    
+    self.dataStatusRetryButton.enabled = shouldEnableRetry;
+    self.dataStatusRetryButton.hidden = !shouldEnableRetry;
+    
+    self.dataStatusView.hidden = NO;
+    
+    [self.dataStatusView layoutIfNeeded];
+}
+
+- (void)hideDataStatus
+{
+    self.dataStatusView.hidden = YES;
+}
+
+- (void)retryDataLoad:(id)sender
+{
+    [self.dataStore fetchPlaces];
+    [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
+    self.contentView.enabled = NO;
+}
+
+#pragma mark - Data manager KVO methods
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"displayPlaces"]) {
+        [self reloadContentViewData];
+    }
+}
+
+#pragma mark - Private utility methods
 
 - (void)closeModalPicker
 {
-    // TODO: what is better way to do this?
-    [[[self presentedViewController] presentingViewController] dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+- (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place
+{
+    cell.place = place;
+    cell.nameLabel.text = place.name;
+    cell.addressLabel.text = place.streetAddress;
+    cell.categoryLabel.text = place.categoryLabel;
+    
+    cell.thumbnail.imageURL = [NSURL URLWithString:place.imageURLString];
+    cell.thumbnail.crossfadeImages = NO;
+}
+
+- (void)reloadContentViewData
+{
+    if (tableView) {
+        [tableView reloadData];
+    }
+    if (mapView) {
+        [mapView removeAnnotations:mapView.annotations];
+        [mapView addAnnotations:dataManager.displayPlaces];
+    }
 }
 
 @end

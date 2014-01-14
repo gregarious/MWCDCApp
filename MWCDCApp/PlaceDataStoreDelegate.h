@@ -1,5 +1,5 @@
 //
-//  PlaceDataFetcherDelegate.h
+//  PlaceDataFetcherStore.h
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 9/13/13.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol PlaceDataFetcherDelegate <NSObject>
+@protocol PlaceDataFetcherStore <NSObject>
 
 - (void)fetchingPlacesFailedWithError: (NSError *)error;
 - (void)didReceivePlaces: (NSArray *)places;
