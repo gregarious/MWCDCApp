@@ -14,7 +14,6 @@
 		37083D7B180CC6930049FCC5 /* SkylineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D7A180CC6930049FCC5 /* SkylineViewController.m */; };
 		37083D7D180CCE390049FCC5 /* SkylineViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D7C180CCE390049FCC5 /* SkylineViewControllerTests.m */; };
 		37083D89180DC6700049FCC5 /* PlaceCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D88180DC6700049FCC5 /* PlaceCollectionViewController.m */; };
-		37083D8F180DD7510049FCC5 /* ToggleSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D8E180DD7510049FCC5 /* ToggleSegue.m */; };
 		370E1E7F180C374800844A63 /* Overlook.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E7E180C374800844A63 /* Overlook.m */; };
 		370E1E82180C375800844A63 /* SkylineDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E81180C375800844A63 /* SkylineDataFetcher.m */; };
 		370E1E85180C376900844A63 /* SkylinePointBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E84180C376900844A63 /* SkylinePointBuilder.m */; };
@@ -98,14 +97,8 @@
 		37083D79180CC6930049FCC5 /* SkylineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylineViewController.h; sourceTree = "<group>"; };
 		37083D7A180CC6930049FCC5 /* SkylineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineViewController.m; sourceTree = "<group>"; };
 		37083D7C180CCE390049FCC5 /* SkylineViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineViewControllerTests.m; sourceTree = "<group>"; };
-		37083D84180D9F290049FCC5 /* PlaceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMapViewController.h; sourceTree = "<group>"; };
-		37083D85180D9F290049FCC5 /* PlaceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMapViewController.m; sourceTree = "<group>"; };
 		37083D87180DC6700049FCC5 /* PlaceCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCollectionViewController.h; sourceTree = "<group>"; };
 		37083D88180DC6700049FCC5 /* PlaceCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCollectionViewController.m; sourceTree = "<group>"; };
-		37083D8A180DCC6A0049FCC5 /* ToggleContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleContainerViewController.h; sourceTree = "<group>"; };
-		37083D8B180DCC6A0049FCC5 /* ToggleContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleContainerViewController.m; sourceTree = "<group>"; };
-		37083D8D180DD7510049FCC5 /* ToggleSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleSegue.h; sourceTree = "<group>"; };
-		37083D8E180DD7510049FCC5 /* ToggleSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleSegue.m; sourceTree = "<group>"; };
 		370E1E7D180C374800844A63 /* Overlook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Overlook.h; sourceTree = "<group>"; };
 		370E1E7E180C374800844A63 /* Overlook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Overlook.m; sourceTree = "<group>"; };
 		370E1E80180C375800844A63 /* SkylineDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylineDataFetcher.h; sourceTree = "<group>"; };
@@ -388,12 +381,6 @@
 				3717F6D7185AB7D10006F3DE /* PlaceNavigationController.m */,
 				37083D87180DC6700049FCC5 /* PlaceCollectionViewController.h */,
 				37083D88180DC6700049FCC5 /* PlaceCollectionViewController.m */,
-				37083D84180D9F290049FCC5 /* PlaceMapViewController.h */,
-				37083D85180D9F290049FCC5 /* PlaceMapViewController.m */,
-				37083D8A180DCC6A0049FCC5 /* ToggleContainerViewController.h */,
-				37083D8B180DCC6A0049FCC5 /* ToggleContainerViewController.m */,
-				37083D8D180DD7510049FCC5 /* ToggleSegue.h */,
-				37083D8E180DD7510049FCC5 /* ToggleSegue.m */,
 				37431DA318199B330093F2C1 /* PlaceCategoryMenuDelegate.h */,
 				372753931822C2FD00E286B3 /* PlaceCategoryMenuViewController.h */,
 				372753941822C2FD00E286B3 /* PlaceCategoryMenuViewController.m */,
@@ -622,7 +609,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				37EF1CE8180C55380096467B /* SkylinePoint.m in Sources */,
-				37083D8F180DD7510049FCC5 /* ToggleSegue.m in Sources */,
 				37A42DED185A09A20086F2C4 /* SkylineView.m in Sources */,
 				37E6EA8917E22BE7004976DC /* AppDelegate.m in Sources */,
 				37BEFB331808C9DA007EF741 /* PlaceTableViewCell.m in Sources */,

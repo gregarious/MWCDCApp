@@ -12,7 +12,6 @@
 #import "PlaceDetailViewController.h"
 #import "PlaceTableViewCell.h"
 #import "PlaceCategoryMenuViewController.h"
-#import "ToggleContainerViewController.h"
 #import "Place.h"
 
 #import <MapKit/MapKit.h>
