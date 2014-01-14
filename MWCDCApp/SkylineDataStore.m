@@ -1,24 +1,24 @@
 //
-//  SkylineDataFetcher.m
+//  SkylineDataStore.m
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 10/14/13.
 //  Copyright (c) 2013 Scenable. All rights reserved.
 //
 
-#import "SkylineDataFetcher.h"
+#import "SkylineDataStore.h"
 #import "APICommunicator.h"
 #import "SkylinePointBuilder.h"
 
-@interface SkylineDataFetcher ()
+@interface SkylineDataStore ()
 - (void)notifyDelegateAboutAPIFetchError:(NSError *)underlyingError;
 @end
 
-@implementation SkylineDataFetcher
+@implementation SkylineDataStore
 
-+ (SkylineDataFetcher *)defaultFetcher
++ (SkylineDataStore *)defaultFetcher
 {
-    SkylineDataFetcher *fetcher = [[SkylineDataFetcher alloc] init];
+    SkylineDataStore *fetcher = [[SkylineDataStore alloc] init];
     fetcher.communicator = [[APICommunicator alloc] init];
     fetcher.communicator.delegate = fetcher;
     

@@ -15,7 +15,7 @@
 		37083D7D180CCE390049FCC5 /* SkylineViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D7C180CCE390049FCC5 /* SkylineViewControllerTests.m */; };
 		37083D89180DC6700049FCC5 /* PlaceCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37083D88180DC6700049FCC5 /* PlaceCollectionViewController.m */; };
 		370E1E7F180C374800844A63 /* Overlook.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E7E180C374800844A63 /* Overlook.m */; };
-		370E1E82180C375800844A63 /* SkylineDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E81180C375800844A63 /* SkylineDataFetcher.m */; };
+		370E1E82180C375800844A63 /* SkylineDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E81180C375800844A63 /* SkylineDataStore.m */; };
 		370E1E85180C376900844A63 /* SkylinePointBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E84180C376900844A63 /* SkylinePointBuilder.m */; };
 		370E1E8A180C37E400844A63 /* OverlookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 370E1E89180C37E400844A63 /* OverlookTests.m */; };
 		3717F6D5185AB4AB0006F3DE /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3717F6D4185AB4AB0006F3DE /* RootTabBarController.m */; };
@@ -101,11 +101,11 @@
 		37083D88180DC6700049FCC5 /* PlaceCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCollectionViewController.m; sourceTree = "<group>"; };
 		370E1E7D180C374800844A63 /* Overlook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Overlook.h; sourceTree = "<group>"; };
 		370E1E7E180C374800844A63 /* Overlook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Overlook.m; sourceTree = "<group>"; };
-		370E1E80180C375800844A63 /* SkylineDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylineDataFetcher.h; sourceTree = "<group>"; };
-		370E1E81180C375800844A63 /* SkylineDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineDataFetcher.m; sourceTree = "<group>"; };
+		370E1E80180C375800844A63 /* SkylineDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylineDataStore.h; sourceTree = "<group>"; };
+		370E1E81180C375800844A63 /* SkylineDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylineDataStore.m; sourceTree = "<group>"; };
 		370E1E83180C376900844A63 /* SkylinePointBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkylinePointBuilder.h; sourceTree = "<group>"; };
 		370E1E84180C376900844A63 /* SkylinePointBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkylinePointBuilder.m; sourceTree = "<group>"; };
-		370E1E87180C379B00844A63 /* SkylineDataFetcherDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkylineDataFetcherDelegate.h; sourceTree = "<group>"; };
+		370E1E87180C379B00844A63 /* SkylineDataStoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkylineDataStoreDelegate.h; sourceTree = "<group>"; };
 		370E1E89180C37E400844A63 /* OverlookTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlookTests.m; sourceTree = "<group>"; };
 		3717F6D3185AB4AB0006F3DE /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
 		3717F6D4185AB4AB0006F3DE /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
@@ -268,9 +268,9 @@
 				378F67D1180C4ED600066E6B /* InterestPoint.m */,
 				37EF1CE6180C55380096467B /* SkylinePoint.h */,
 				37EF1CE7180C55380096467B /* SkylinePoint.m */,
-				370E1E80180C375800844A63 /* SkylineDataFetcher.h */,
-				370E1E81180C375800844A63 /* SkylineDataFetcher.m */,
-				370E1E87180C379B00844A63 /* SkylineDataFetcherDelegate.h */,
+				370E1E80180C375800844A63 /* SkylineDataStore.h */,
+				370E1E81180C375800844A63 /* SkylineDataStore.m */,
+				370E1E87180C379B00844A63 /* SkylineDataStoreDelegate.h */,
 				370E1E83180C376900844A63 /* SkylinePointBuilder.h */,
 				370E1E84180C376900844A63 /* SkylinePointBuilder.m */,
 			);
@@ -618,7 +618,7 @@
 				37A42DF5185A22540086F2C4 /* InterestPointDetailView.m in Sources */,
 				37083D7B180CC6930049FCC5 /* SkylineViewController.m in Sources */,
 				3761D6AE1802F887004BC847 /* PlaceDetailViewController.m in Sources */,
-				370E1E82180C375800844A63 /* SkylineDataFetcher.m in Sources */,
+				370E1E82180C375800844A63 /* SkylineDataStore.m in Sources */,
 				3717F6D8185AB7D10006F3DE /* PlaceNavigationController.m in Sources */,
 				37B599FB17E359D700BFAA46 /* APICommunicator.m in Sources */,
 				370E1E85180C376900844A63 /* SkylinePointBuilder.m in Sources */,

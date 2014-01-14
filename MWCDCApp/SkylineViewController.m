@@ -9,7 +9,7 @@
 #import "SkylineViewController.h"
 #import "Overlook.h"
 #import "SkylinePoint.h"
-#import "SkylineDataFetcher.h"
+#import "SkylineDataStore.h"
 #import "SkylineView.h"
 #import "MarkerView.h"
 #import "InterestPointDetailView.h"
@@ -52,11 +52,16 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    dataFetcher = [SkylineDataFetcher defaultFetcher];
+    dataFetcher = [SkylineDataStore defaultFetcher];
     dataFetcher.delegate = self;
     
-    dataStatus = SkylineViewDataStatusUninitialized;
     [self reloadData];
+    
+    self.dataStatusView.layer.cornerRadius = 8;
+    self.dataStatusView.layer.masksToBounds = YES;
+    
+    // ensure rotation message is always on top
+    self.rotationMessageLabel.layer.zPosition = 100;
     
     /* Configure ScrollView to contain SkylineView */
     
@@ -135,14 +140,16 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
     // if device is in portrait mode, hide the content so the rotate message underneath shows
     if (orientation == UIInterfaceOrientationLandscapeLeft ||
         orientation == UIInterfaceOrientationLandscapeRight) {
+        self.rotationMessageLabel.hidden = YES;
         scrollView.hidden = NO;
     }
     else {
+        self.rotationMessageLabel.hidden = NO;
         scrollView.hidden = YES;
     }
 }
 
-#pragma mark - SkylineDataFetcherDelegate methods
+#pragma mark - SkylineDataStoreDelegate methods
 
 - (void)didReceiveSkylinePoints:(NSArray *)points forOverlook:(NSInteger)overlookID
 {
@@ -174,14 +181,16 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
             }
      ];
     
-    dataStatus = SkylineViewDataStatusInitialized;
+    [self hideDataStatus];
 }
 
 - (void)fetchingSkylinePointsFailedWithError:(NSError *)error
 {
-    // ignore the error if we already have data
     if (skylineView.markerViews == nil) {
-        dataStatus = SkylineViewDataStatusError;
+        [self showDataStatusWithMessage:@"Problem loading data"
+                   showLoadingIndicator:NO
+                           retryEnabled:YES];
+        [self.view bringSubviewToFront:self.dataStatusView];
     }
 }
 
@@ -338,11 +347,46 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
      ];
 }
 
+#pragma mark - Data status view methods
+
+- (void)showDataStatusWithMessage:(NSString *)message showLoadingIndicator:(BOOL)shouldShowLoadingIndicator retryEnabled:(BOOL)shouldEnableRetry
+{
+    self.dataStatusLabel.text = message;
+    if (shouldShowLoadingIndicator) {
+        [self.dataStatusLoadingIndicator startAnimating];
+    }
+    else {
+        [self.dataStatusLoadingIndicator stopAnimating];
+    }
+    
+    self.dataStatusRetryButton.enabled = shouldEnableRetry;
+    self.dataStatusRetryButton.hidden = !shouldEnableRetry;
+    
+    self.dataStatusView.hidden = NO;
+    
+    [self.dataStatusView layoutIfNeeded];
+}
+
+- (void)hideDataStatus
+{
+    self.dataStatusView.hidden = YES;
+}
+
+- (void)retryDataLoad:(id)sender
+{
+    [self reloadData];
+}
+
 #pragma mark - Misc utility methods
 
 - (void)reloadData
 {
     [dataFetcher fetchSkylinePoints:_overlook._id];
+    [self showDataStatusWithMessage:@"Loading..."
+               showLoadingIndicator:YES
+                       retryEnabled:NO];
+    [self.view bringSubviewToFront:self.dataStatusView];
+
 }
 
 @end

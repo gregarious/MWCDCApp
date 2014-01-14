@@ -1,5 +1,5 @@
 //
-//  SkylineDataFetcher.h
+//  SkylineDataStore.h
 //  MWCDCApp
 //
 //  Created by Greg Nicholas on 10/14/13.
@@ -7,21 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SkylineDataFetcherDelegate.h"
+#import "SkylineDataStoreDelegate.h"
 #import "APICommunicatorDelegate.h"
 
 @class SkylinePointBuilder;
 @class APICommunicator;
 
-@interface SkylineDataFetcher : NSObject <APICommunicatorDelegate>
+@interface SkylineDataStore : NSObject <APICommunicatorDelegate>
 {
     NSInteger currentlyFetchingOverlookID;
 }
-@property (nonatomic, weak) id<SkylineDataFetcherDelegate> delegate;
+@property (nonatomic, weak) id<SkylineDataStoreDelegate> delegate;
 @property (nonatomic, strong) APICommunicator *communicator;
 @property (nonatomic, strong) SkylinePointBuilder *objectBuilder;
 
-+ (SkylineDataFetcher *)defaultFetcher;
++ (SkylineDataStore *)defaultFetcher;
 
 - (void)fetchSkylinePoints:(NSInteger)overlookID;
 

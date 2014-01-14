@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SkylineDataFetcherDelegate.h"
+#import "SkylineDataStoreDelegate.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 @class Overlook;
-@class SkylineDataFetcher;
+@class SkylineDataStore;
 @class SkylineView;
 
 typedef NS_ENUM(NSUInteger, SkylineViewDataStatus) {
@@ -19,13 +21,22 @@ typedef NS_ENUM(NSUInteger, SkylineViewDataStatus) {
     SkylineViewDataStatusError
 };
 
-@interface SkylineViewController : UIViewController <SkylineDataFetcherDelegate>
+@interface SkylineViewController : UIViewController <SkylineDataStoreDelegate>
 {
-    SkylineDataFetcher *dataFetcher;
-    
+    SkylineDataStore *dataFetcher;
     SkylineViewDataStatus dataStatus;
 }
 
 @property (nonatomic, strong) Overlook *overlook;
+@property (weak, nonatomic) IBOutlet UILabel *rotationMessageLabel;
+
+// data status window outlets
+@property (weak, nonatomic) IBOutlet UIView *dataStatusView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *dataStatusLoadingIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *dataStatusLabel;
+@property (weak, nonatomic) IBOutlet UIButton *dataStatusRetryButton;
+
+- (IBAction)retryDataLoad:(id)sender;
+
 
 @end

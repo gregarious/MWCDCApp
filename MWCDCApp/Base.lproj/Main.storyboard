@@ -238,7 +238,6 @@
         <!--Place Detail View Controller-->
         <scene sceneID="RSK-8P-0sj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ENp-br-aZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="yME-hU-tX8" customClass="PlaceDetailViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="r1o-wG-Noa"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -246,6 +245,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ENp-br-aZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1320" y="44"/>
         </scene>
@@ -322,9 +322,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your iPhone to view the skyline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-iB-SvB">
-                                <rect key="frame" x="50" y="222" width="220" height="36"/>
+                            <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRP-ri-maR" userLabel="Data Status View">
+                                <rect key="frame" x="96" y="176" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppy-cc-lkv">
+                                        <rect key="frame" x="46" y="78" width="37" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Retry">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="retryDataLoad:" destination="1YW-U5-i8I" eventType="touchUpInside" id="9FO-Bx-Gbn"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="88" translatesAutoresizingMaskIntoConstraints="NO" id="Mt3-n6-RVl">
+                                        <rect key="frame" x="20" y="20" width="88" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="88" id="GVo-oC-fVx"/>
+                                            <constraint firstAttribute="height" constant="42" id="al5-Ro-gGN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="1Yc-E1-7Pq">
+                                        <rect key="frame" x="54" y="83" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Mt3-n6-RVl" firstAttribute="top" secondItem="ZRP-ri-maR" secondAttribute="top" constant="20" id="18o-rl-CRw"/>
+                                    <constraint firstItem="Mt3-n6-RVl" firstAttribute="centerX" secondItem="ZRP-ri-maR" secondAttribute="centerX" id="4vu-S0-gFh"/>
+                                    <constraint firstAttribute="height" constant="128" id="7hB-i9-N38"/>
+                                    <constraint firstAttribute="centerX" secondItem="Ppy-cc-lkv" secondAttribute="centerX" constant="-0.5" id="O80-gJ-Bi9"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ppy-cc-lkv" secondAttribute="bottom" constant="20" id="Ond-8c-Sef"/>
+                                    <constraint firstAttribute="centerX" secondItem="1Yc-E1-7Pq" secondAttribute="centerX" id="ec2-J1-isK"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Yc-E1-7Pq" secondAttribute="bottom" constant="25" id="i2Q-UW-MU7"/>
+                                    <constraint firstAttribute="width" constant="128" id="sGk-EZ-mDU"/>
+                                    <constraint firstItem="Mt3-n6-RVl" firstAttribute="centerX" secondItem="1Yc-E1-7Pq" secondAttribute="centerX" id="yyc-9c-Ezd"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your iPhone to view the skyline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-iB-SvB" userLabel="Rotation message">
+                                <rect key="frame" x="50" y="165" width="220" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="GWo-su-FEd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -332,11 +380,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ZRP-ri-maR" secondAttribute="centerX" id="Lip-an-rRK"/>
                             <constraint firstAttribute="centerX" secondItem="s6s-iB-SvB" secondAttribute="centerX" id="Vkf-u3-yV9"/>
+                            <constraint firstItem="ZRP-ri-maR" firstAttribute="centerY" secondItem="s6s-iB-SvB" secondAttribute="centerY" id="awY-nF-saG"/>
                             <constraint firstAttribute="centerY" secondItem="s6s-iB-SvB" secondAttribute="centerY" constant="0.5" id="s4t-Aj-Jf0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Skyline" id="Foo-4h-E6Y"/>
+                    <connections>
+                        <outlet property="dataStatusLabel" destination="Mt3-n6-RVl" id="su8-JB-Rpj"/>
+                        <outlet property="dataStatusLoadingIndicator" destination="1Yc-E1-7Pq" id="atg-T3-Kvc"/>
+                        <outlet property="dataStatusRetryButton" destination="Ppy-cc-lkv" id="naL-W2-qbv"/>
+                        <outlet property="dataStatusView" destination="ZRP-ri-maR" id="EMk-oE-FnX"/>
+                        <outlet property="rotationMessageLabel" destination="s6s-iB-SvB" id="x9V-76-DQj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0l3-Mc-Cfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

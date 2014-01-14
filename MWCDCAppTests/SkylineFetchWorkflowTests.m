@@ -15,12 +15,12 @@
 #import "APICommunicator.h"
 #import "SkylinePoint.h"
 #import "SkylinePointBuilder.h"
-#import "SkylineDataFetcher.h"
-#import "SkylineDataFetcherDelegate.h"
+#import "SkylineDataStore.h"
+#import "SkylineDataStoreDelegate.h"
 
 @interface SkylineFetchWorkflowTests : XCTestCase
 {
-    SkylineDataFetcher *fetcher;
+    SkylineDataStore *fetcher;
 
     id mockDelegate;
     id mockBuilder;
@@ -36,9 +36,9 @@
 {
     [super setUp];
     
-    fetcher = [[SkylineDataFetcher alloc] init];
+    fetcher = [[SkylineDataStore alloc] init];
     
-    mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SkylineDataFetcherDelegate)];
+    mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SkylineDataStoreDelegate)];
     fetcher.delegate = mockDelegate;
     mockBuilder = [OCMockObject niceMockForClass:[SkylinePointBuilder class]];
     fetcher.objectBuilder = mockBuilder;
@@ -59,14 +59,14 @@
 
 - (void)testDefaultFetcherConfiguresAllComponents
 {
-    SkylineDataFetcher *defaultFetcher = [SkylineDataFetcher defaultFetcher];
+    SkylineDataStore *defaultFetcher = [SkylineDataStore defaultFetcher];
     XCTAssertNotNil(defaultFetcher.communicator);
     XCTAssertNotNil(defaultFetcher.objectBuilder);
 }
 
 - (void)testDefaultFetcherSetsCommunicatorDelegateToSelf
 {
-    SkylineDataFetcher *defaultFetcher = [SkylineDataFetcher defaultFetcher];
+    SkylineDataStore *defaultFetcher = [SkylineDataStore defaultFetcher];
     XCTAssertNotNil(defaultFetcher);
     XCTAssertEqualObjects(defaultFetcher.communicator.delegate,
                           defaultFetcher,
