@@ -42,7 +42,7 @@
     //  4. a PlaceBuilder to build Place objects from PDF
 
     fetcher = [[PlaceDataStore alloc] init];
-    delegate = [OCMockObject niceMockForProtocol:@protocol(PlaceDataFetcherDelegate)];
+    delegate = [OCMockObject niceMockForProtocol:@protocol(PlaceDataFetcherStore)];
     fakeBuilder = [[FakePlaceBuilder alloc] init];
 
     fetcher.delegate = delegate;
@@ -66,14 +66,14 @@
 
 - (void)testDefaultFetcherConfiguresAllComponents
 {
-    PlaceDataStore *defaultFetcher = [PlaceDataStore defaultFetcher];
+    PlaceDataStore *defaultFetcher = [PlaceDataStore defaultStore];
     XCTAssertNotNil(defaultFetcher.communicator);
     XCTAssertNotNil(defaultFetcher.placeBuilder);
 }
 
 - (void)testDefaultFetcherSetsCommunicatorDelegateToSelf
 {
-    PlaceDataStore *defaultFetcher = [PlaceDataStore defaultFetcher];
+    PlaceDataStore *defaultFetcher = [PlaceDataStore defaultStore];
     XCTAssertNotNil(defaultFetcher);
     XCTAssertEqualObjects(defaultFetcher.communicator.delegate,
                           defaultFetcher,

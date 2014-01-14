@@ -18,7 +18,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface PlaceCollectionViewController ()
-
+{
+    BOOL isObservingManagerData;
+}
 - (void)closeModalPicker;
 - (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place;
 - (void)reloadContentViewData;
@@ -36,10 +38,6 @@
     return self;
 }
 
-- (void)awakeFromNib {
-    dataManager = [PlaceViewDataManager new];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -54,32 +52,27 @@
     
     self.dataStatusView.layer.cornerRadius = 8;
     self.dataStatusView.layer.masksToBounds = YES;
-}
-
-- (void)showDataStatusWithMessage:(NSString *)message showLoadingIndicator:(BOOL)shouldShowLoadingIndicator retryEnabled:(BOOL)shouldEnableRetry
-{
-    self.dataStatusLabel.text = message;
     
-    self.dataStatusLoadingIndicator.hidden = !shouldShowLoadingIndicator;
+    // create a data manager to store data once it is fetched
+    dataManager = [PlaceViewDataManager new];
+    // watch the manager's displayPlaces property for changes
+    [dataManager addObserver:self
+                  forKeyPath:@"displayPlaces"
+                     options:NSKeyValueObservingOptionNew
+                     context:NULL];
 
-    self.dataStatusRetryButton.enabled = shouldEnableRetry;
-    self.dataStatusRetryButton.hidden = !shouldEnableRetry;
-    
-    self.dataStatusView.hidden = NO;
-    
-    [self.dataStatusView layoutIfNeeded];
-}
-
-- (void)hideDataStatus
-{
-    self.dataStatusView.hidden = YES;
-}
-
-- (void)retryDataLoad:(id)sender
-{
+    // do the initial fetch of data
+    self.dataStore.delegate = self;
     [self.dataStore fetchPlaces];
+    
     [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
     self.contentView.enabled = NO;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 NSString * const placeCellReuseIdenitifier = @"PlaceCell";
@@ -152,12 +145,6 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.dataStore.delegate = self;
-    [self.dataStore fetchPlaces];
-    
-    [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
-    self.contentView.enabled = NO;
-    
     self.filterSearchBar.delegate = self;
     
     // set the filter category if it exists, else use "All Places"
@@ -173,12 +160,6 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
     }
     
     [super viewWillAppear:animated];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Segues
@@ -217,15 +198,11 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
     [self hideDataStatus];
     self.contentView.enabled = YES;
     dataManager.places = places;
-
-    // TODO: either tie directly to datastore with KVO or genrealize this for map view
-    [self reloadContentViewData];
 }
 
 - (void)fetchingPlacesFailedWithError:(NSError *)error
 {
-    // TODO: suppress user notification of error if we have some data at least
-    [self showDataStatusWithMessage:@"Error loading data." showLoadingIndicator:NO retryEnabled:YES];
+    [self showDataStatusWithMessage:@"Problem loading data" showLoadingIndicator:NO retryEnabled:YES];
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -302,7 +279,6 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     dataManager.filterQuery = searchText;
-    // TODO: need hook to live update content view
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
@@ -339,19 +315,57 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
         dataManager.filterCategory = category;
     }
     
-    // TODO: need hook to live update content view
-    
     [self.categoryButton setTitle:category forState:UIControlStateNormal];
     
     [self closeModalPicker];
 }
 
-#pragma mark - Private methods
+#pragma mark - Data status view methods
+
+- (void)showDataStatusWithMessage:(NSString *)message showLoadingIndicator:(BOOL)shouldShowLoadingIndicator retryEnabled:(BOOL)shouldEnableRetry
+{
+    self.dataStatusLabel.text = message;
+    if (shouldShowLoadingIndicator) {
+        [self.dataStatusLoadingIndicator startAnimating];
+    }
+    else {
+        [self.dataStatusLoadingIndicator stopAnimating];
+    }
+    
+    self.dataStatusRetryButton.enabled = shouldEnableRetry;
+    self.dataStatusRetryButton.hidden = !shouldEnableRetry;
+    
+    self.dataStatusView.hidden = NO;
+    
+    [self.dataStatusView layoutIfNeeded];
+}
+
+- (void)hideDataStatus
+{
+    self.dataStatusView.hidden = YES;
+}
+
+- (void)retryDataLoad:(id)sender
+{
+    [self.dataStore fetchPlaces];
+    [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
+    self.contentView.enabled = NO;
+}
+
+#pragma mark - Data manager KVO methods
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"displayPlaces"]) {
+        [self reloadContentViewData];
+    }
+}
+
+#pragma mark - Private utility methods
 
 - (void)closeModalPicker
 {
-    // TODO: what is better way to do this?
-    [[[self presentedViewController] presentingViewController] dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place

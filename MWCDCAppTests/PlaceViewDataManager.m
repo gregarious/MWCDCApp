@@ -23,19 +23,6 @@
     [self filterPlaces];
 }
 
-- (PlaceViewDataStatus)dataStatus
-{
-    if (self.lastError) {
-        return PlaceViewDataStatusError;
-    }
-    else if (self.places) {
-        return PlaceViewDataStatusInitialized;
-    }
-    else {
-        return PlaceViewDataStatusUninitialized;
-    }
-}
-
 - (void)setFilterQuery:(NSString *)filterQuery
 {
     _filterQuery = filterQuery;

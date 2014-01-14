@@ -25,7 +25,7 @@
     UITabBarController *rootVC = (UITabBarController *)[[self window] rootViewController];
     UINavigationController *placeNavVC = [rootVC viewControllers][1];
     PlaceCollectionViewController *placeVC = (PlaceCollectionViewController *)(placeNavVC.topViewController);
-    placeVC.dataStore = [PlaceDataStore defaultFetcher];
+    placeVC.dataStore = [PlaceDataStore defaultStore];
     
     return YES;
 }

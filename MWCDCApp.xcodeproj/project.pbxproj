@@ -121,7 +121,7 @@
 		37353CB317E352320062B12A /* PlaceFetchWorkflowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceFetchWorkflowTests.m; sourceTree = "<group>"; };
 		37353CB517E3546C0062B12A /* PlaceDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDataStore.h; path = MWCDCApp/PlaceDataStore.h; sourceTree = SOURCE_ROOT; };
 		37353CB617E3546C0062B12A /* PlaceDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDataStore.m; path = MWCDCApp/PlaceDataStore.m; sourceTree = SOURCE_ROOT; };
-		37353CBA17E354FE0062B12A /* PlaceDataFetcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDataFetcherDelegate.h; sourceTree = "<group>"; };
+		37353CBA17E354FE0062B12A /* PlaceDataStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDataStoreDelegate.h; sourceTree = "<group>"; };
 		373565301828149C00942F14 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		373565311828149C00942F14 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		37431D9D18187C060093F2C1 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
@@ -377,6 +377,8 @@
 		37BEFB2E1808C5FE007EF741 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3786658317EBBDD400F341C1 /* PlaceViewDataManager.h */,
+				3786658417EBBDD400F341C1 /* PlaceViewDataManager.m */,
 				3717F6D6185AB7D10006F3DE /* PlaceNavigationController.h */,
 				3717F6D7185AB7D10006F3DE /* PlaceNavigationController.m */,
 				37083D87180DC6700049FCC5 /* PlaceCollectionViewController.h */,
@@ -395,11 +397,9 @@
 				376F275917E23F7400178A06 /* Place.m */,
 				37353CB517E3546C0062B12A /* PlaceDataStore.h */,
 				37353CB617E3546C0062B12A /* PlaceDataStore.m */,
-				37353CBA17E354FE0062B12A /* PlaceDataFetcherDelegate.h */,
+				37353CBA17E354FE0062B12A /* PlaceDataStoreDelegate.h */,
 				37D5D09F17E9FB9D0051A7B5 /* PlaceBuilder.h */,
 				37D5D0A017E9FB9D0051A7B5 /* PlaceBuilder.m */,
-				3786658317EBBDD400F341C1 /* PlaceViewDataManager.h */,
-				3786658417EBBDD400F341C1 /* PlaceViewDataManager.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";

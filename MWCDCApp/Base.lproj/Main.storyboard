@@ -122,7 +122,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="HOR-BO-Hop">
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="HOR-BO-Hop">
                                         <rect key="frame" x="54" y="83" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>

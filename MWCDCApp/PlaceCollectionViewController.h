@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-#import "PlaceDataFetcherDelegate.h"
+#import "PlaceDataStoreDelegate.h"
 #import "PlaceCategoryMenuDelegate.h"
 
 @class PlaceDataStore;
@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, PlaceCollectionViewMode) {
 };
 
 @interface PlaceCollectionViewController : UIViewController <
-     PlaceDataFetcherDelegate,                          // respond to async data fetching events
+     PlaceDataFetcherStore,                          // respond to async data fetching events
      UISearchBarDelegate, PlaceCategoryMenuDelegate,    // respond to search/filter UI elements
      UITableViewDelegate, UITableViewDataSource,        // respond to typical UITableView events
      MKMapViewDelegate>                                 // respond to typical MKMapView events
