@@ -51,4 +51,11 @@
     [self.view layoutSubviews];
 }
 
+- (IBAction)businessButtonTapped:(id)sender {
+    [[self tabBarController] setSelectedIndex:1];
+}
+
+- (IBAction)overlookButtonTapped:(id)sender {
+    [[self tabBarController] setSelectedIndex:2];
+}
 @end

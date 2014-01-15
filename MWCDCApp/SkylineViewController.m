@@ -61,7 +61,7 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
     self.dataStatusView.layer.masksToBounds = YES;
     
     // ensure rotation message is always on top
-    self.rotationMessageLabel.layer.zPosition = 100;
+    self.rotationMessageView.layer.zPosition = 100;
     
     /* Configure ScrollView to contain SkylineView */
     
@@ -143,11 +143,11 @@ CGFloat DEFAULT_MARKER_ALPHA = 0.7;
     // if device is in portrait mode, hide the content so the rotate message underneath shows
     if (orientation == UIInterfaceOrientationLandscapeLeft ||
         orientation == UIInterfaceOrientationLandscapeRight) {
-        self.rotationMessageLabel.hidden = YES;
+        self.rotationMessageView.hidden = YES;
         scrollView.hidden = NO;
     }
     else {
-        self.rotationMessageLabel.hidden = NO;
+        self.rotationMessageView.hidden = NO;
         scrollView.hidden = YES;
     }
 }

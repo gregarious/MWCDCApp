@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, SkylineViewDataStatus) {
 }
 
 @property (nonatomic, strong) Overlook *overlook;
-@property (weak, nonatomic) IBOutlet UILabel *rotationMessageLabel;
+@property (weak, nonatomic) IBOutlet UIView *rotationMessageView;
 
 // data status window outlets
 @property (weak, nonatomic) IBOutlet UIView *dataStatusView;

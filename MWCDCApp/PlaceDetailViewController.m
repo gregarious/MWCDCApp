@@ -113,16 +113,8 @@
 
 - (void)placeDetailContainerViewFacebookButtonTapped:(id)view
 {
-    // TODO: hook up fb id lookup
-//    // try to open with Facebook app
-//    NSString* fbURL = [NSString stringWithFormat:@"fb://profile/%@", self.place.fbId];
-//    BOOL fbOpened = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fbURL]];
-//
-//    // fall back to Safari at facebook.com if that fails
-//    if (!fbOpened) {
-        NSString *webURL = [NSString stringWithFormat:@"http://www.facebook.com/%@", self.place.fbId];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:webURL]];
-//    }
+    NSString *webURL = [NSString stringWithFormat:@"https://www.facebook.com/%@", self.place.fbId];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:webURL]];
 }
 
 - (void)placeDetailContainerViewTwitterButtonTapped:(id)view

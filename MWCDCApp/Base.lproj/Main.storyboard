@@ -366,24 +366,40 @@
                                     <constraint firstItem="Mt3-n6-RVl" firstAttribute="centerX" secondItem="1Yc-E1-7Pq" secondAttribute="centerX" id="yyc-9c-Ezd"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your iPhone to view the skyline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-iB-SvB" userLabel="Rotation message">
-                                <rect key="frame" x="50" y="165" width="220" height="150"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-vI-bKg" userLabel="Rotation Notice View">
+                                <rect key="frame" x="30" y="145" width="260" height="190"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate your iPhone to view the skyline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-iB-SvB" userLabel="Rotation message">
+                                        <rect key="frame" x="20" y="20" width="220" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orientationRotateIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OlH-sv-thi">
+                                        <rect key="frame" x="68" y="81" width="105" height="89"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="GWo-su-FEd"/>
+                                    <constraint firstAttribute="bottom" secondItem="OlH-sv-thi" secondAttribute="bottom" constant="20" id="8qD-U3-LXV"/>
+                                    <constraint firstAttribute="width" constant="260" id="9iI-O2-Yhu"/>
+                                    <constraint firstAttribute="centerX" secondItem="s6s-iB-SvB" secondAttribute="centerX" id="RaD-sl-VcB"/>
+                                    <constraint firstAttribute="centerX" secondItem="OlH-sv-thi" secondAttribute="centerX" constant="9.5" id="TK3-Ex-PfJ"/>
+                                    <constraint firstItem="s6s-iB-SvB" firstAttribute="top" secondItem="ipd-vI-bKg" secondAttribute="top" constant="20" id="Vh3-vM-yCg"/>
+                                    <constraint firstAttribute="height" constant="190" id="eeA-qW-4Q8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ipd-vI-bKg" secondAttribute="centerX" id="1N1-to-2My"/>
+                            <constraint firstAttribute="centerY" secondItem="ZRP-ri-maR" secondAttribute="centerY" id="DOP-Yc-gJn"/>
                             <constraint firstAttribute="centerX" secondItem="ZRP-ri-maR" secondAttribute="centerX" id="Lip-an-rRK"/>
-                            <constraint firstAttribute="centerX" secondItem="s6s-iB-SvB" secondAttribute="centerX" id="Vkf-u3-yV9"/>
-                            <constraint firstItem="ZRP-ri-maR" firstAttribute="centerY" secondItem="s6s-iB-SvB" secondAttribute="centerY" id="awY-nF-saG"/>
-                            <constraint firstAttribute="centerY" secondItem="s6s-iB-SvB" secondAttribute="centerY" constant="0.5" id="s4t-Aj-Jf0"/>
+                            <constraint firstAttribute="centerY" secondItem="ipd-vI-bKg" secondAttribute="centerY" id="qlZ-HQ-n22"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Skyline" id="Foo-4h-E6Y"/>
@@ -392,7 +408,7 @@
                         <outlet property="dataStatusLoadingIndicator" destination="1Yc-E1-7Pq" id="atg-T3-Kvc"/>
                         <outlet property="dataStatusRetryButton" destination="Ppy-cc-lkv" id="naL-W2-qbv"/>
                         <outlet property="dataStatusView" destination="ZRP-ri-maR" id="EMk-oE-FnX"/>
-                        <outlet property="rotationMessageLabel" destination="s6s-iB-SvB" id="x9V-76-DQj"/>
+                        <outlet property="rotationMessageView" destination="ipd-vI-bKg" id="vQu-pO-LpY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0l3-Mc-Cfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -491,12 +507,36 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faz-uT-aeC">
+                                <rect key="frame" x="171" y="105" width="131" height="136"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="homeOverlookBtn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="overlookButtonTapped:" destination="CzD-g5-eVa" eventType="touchUpInside" id="o5v-pE-pms"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAD-Y5-D8c">
+                                <rect key="frame" x="18" y="105" width="131" height="136"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="homeBusinessBtn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="businessButtonTapped:" destination="CzD-g5-eVa" eventType="touchUpInside" id="EOh-Fg-nTG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EIt-12-7sB" firstAttribute="top" secondItem="KG1-mK-zvR" secondAttribute="top" id="3Ot-z0-3aW"/>
+                            <constraint firstItem="JAD-Y5-D8c" firstAttribute="leading" secondItem="KG1-mK-zvR" secondAttribute="leading" constant="18" id="3tb-kE-5Ht"/>
+                            <constraint firstItem="7R1-x8-3FW" firstAttribute="top" secondItem="JAD-Y5-D8c" secondAttribute="bottom" constant="30" id="DfB-E4-jN0"/>
+                            <constraint firstItem="7R1-x8-3FW" firstAttribute="top" secondItem="faz-uT-aeC" secondAttribute="bottom" constant="30" id="HJl-13-zSI"/>
                             <constraint firstAttribute="centerX" secondItem="EIt-12-7sB" secondAttribute="centerX" id="NGm-ps-Fry"/>
                             <constraint firstItem="EIt-12-7sB" firstAttribute="centerX" secondItem="tMb-1Z-Zkr" secondAttribute="centerX" id="PJW-p8-CB2"/>
+                            <constraint firstAttribute="trailing" secondItem="faz-uT-aeC" secondAttribute="trailing" constant="18" id="Pj1-Q4-FR4"/>
                             <constraint firstItem="tMb-1Z-Zkr" firstAttribute="top" secondItem="qhC-QF-EY9" secondAttribute="bottom" constant="30" id="ViN-MY-qaB"/>
                             <constraint firstItem="7R1-x8-3FW" firstAttribute="centerX" secondItem="EIt-12-7sB" secondAttribute="centerX" id="b1y-50-dPj"/>
                             <constraint firstItem="ecA-w3-n9l" firstAttribute="top" secondItem="tMb-1Z-Zkr" secondAttribute="bottom" constant="12" id="nKp-t4-BFJ"/>
@@ -518,7 +558,10 @@
     <resources>
         <image name="about" width="320" height="480"/>
         <image name="home" width="320" height="480"/>
+        <image name="homeBusinessBtn" width="131" height="136"/>
+        <image name="homeOverlookBtn" width="131" height="136"/>
         <image name="logo" width="296" height="66"/>
+        <image name="orientationRotateIcon" width="105" height="89"/>
         <image name="overlookOverlay" width="320" height="480"/>
         <image name="tabAbout" width="25" height="31"/>
         <image name="tabBusinesses" width="25" height="25"/>
