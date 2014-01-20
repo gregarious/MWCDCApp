@@ -14,13 +14,17 @@
 
 @property (nonatomic, readonly, assign) NSInteger _id;
 @property (nonatomic, readonly, copy) NSString *name;
+@property (nonatomic, readonly, copy) NSString *address;
 @property (nonatomic, readonly, assign) CLLocationCoordinate2D coordinate;
 
 @property (nonatomic, strong) UIImage *skylineImage;
 
-- (id)initWithId:(NSInteger)_id name:(NSString *)name coordinate:(CLLocationCoordinate2D)coord;
+- (id)initWithId:(NSInteger)_id name:(NSString *)name
+         address:(NSString *)address
+      coordinate:(CLLocationCoordinate2D)coord;
 
-// alias for name property (for MKAnnotation)
+// alias for name/address property (for MKAnnotation)
 - (NSString *)title;
+- (NSString *)subtitle;
 
 @end

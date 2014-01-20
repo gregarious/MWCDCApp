@@ -116,25 +116,31 @@ NSString * const skylineSegueIdentifier = @"showSkyline";
 #pragma mark - Private methods
 - (NSArray *)fixedOverlooks;
 {
+    // this data is hardcoded on the server -- the ID must be matched manually
+    
+    Overlook *mon = [[Overlook alloc] initWithId:1
+                                            name:@"Mon Incline"
+                                         address:nil
+                                      coordinate:CLLocationCoordinate2DMake(40.431647, -80.006502)];
+    mon.skylineImage = [UIImage imageNamed:@"Grandview_Panorama1"];
+
     Overlook *duq = [[Overlook alloc] initWithId:2
-                                                  name:@"Duquesne Incline"
-                                            coordinate:CLLocationCoordinate2DMake(40.438477, -80.019465)];
+                                            name:@"Duquesne Incline"
+                                         address:nil
+                                      coordinate:CLLocationCoordinate2DMake(40.438477, -80.019465)];
     duq.skylineImage = [UIImage imageNamed:@"Mount-Washington"];
 
     Overlook *wabash = [[Overlook alloc] initWithId:3
-                                                  name:@"Wabash Overlook"
-                                            coordinate:CLLocationCoordinate2DMake(40.433733, -80.010225)];
+                                               name:@"Wabash Overlook"
+                                            address:nil
+                                         coordinate:CLLocationCoordinate2DMake(40.433733, -80.010225)];
     wabash.skylineImage = [UIImage imageNamed:@"Grandview_Panorama2"];
 
     Overlook *mccardle = [[Overlook alloc] initWithId:4
-                                                  name:@"McCardle Overlook"
-                                            coordinate:CLLocationCoordinate2DMake(40.434513, -80.011293)];
+                                                 name:@"McCardle Overlook"
+                                              address:nil
+                                           coordinate:CLLocationCoordinate2DMake(40.434513, -80.011293)];
     mccardle.skylineImage = [UIImage imageNamed:@"McCardle_Panorama1"];
-
-    Overlook *mon = [[Overlook alloc] initWithId:1
-                                                  name:@"Mon Incline"
-                                            coordinate:CLLocationCoordinate2DMake(40.431647, -80.006502)];
-    mon.skylineImage = [UIImage imageNamed:@"Grandview_Panorama1"];
 
     return @[duq, wabash, mccardle, mon];
 }
