@@ -122,12 +122,11 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
     // Hack to force a layout problem during the first time the Places tab opens: the top
     // layout guide isn't set the first time this method is called, so we have to fake it
     // here. Probably related to the layout guide constraint hacks in Welcome/About VCs?
-    NSNumber *topLayoutOffset;
-    if (self.topLayoutGuide.length == 0.0) {
-        topLayoutOffset = [NSNumber numberWithFloat:-64.0];
-    }
-    else {
-        topLayoutOffset = [NSNumber numberWithFloat:0.0];
+    NSNumber *topLayoutOffset = [NSNumber numberWithFloat:0.0];
+    if ([self respondsToSelector:@selector(topLayoutGuide)]) {
+        if (self.topLayoutGuide.length == 0.0) {
+            topLayoutOffset = [NSNumber numberWithFloat:-64.0];
+        }
     }
     
     // set up constraints so subview takes up whole content view frame

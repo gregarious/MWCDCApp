@@ -36,6 +36,21 @@
     return YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (UIDeviceOrientationIsLandscape(orientation)) {
+        self.businessButton.hidden = YES;
+        self.overlookButton.hidden = YES;
+    }
+    else {
+        self.businessButton.hidden = NO;
+        self.overlookButton.hidden = NO;
+    }
+    
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLayoutSubviews
 {
     // fix for potential bug in iOS 7 where the bottomLayoutGuide in a UITabBarController

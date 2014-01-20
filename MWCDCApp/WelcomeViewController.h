@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutSpaceConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
+@property (weak, nonatomic) IBOutlet UIButton *businessButton;
+@property (weak, nonatomic) IBOutlet UIButton *overlookButton;
+
 - (IBAction)businessButtonTapped:(id)sender;
 - (IBAction)overlookButtonTapped:(id)sender;
 

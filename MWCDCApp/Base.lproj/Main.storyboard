@@ -548,6 +548,8 @@
                     <connections>
                         <outlet property="backgroundImage" destination="EIt-12-7sB" id="p9T-k3-Ty7"/>
                         <outlet property="bottomLayoutSpaceConstraint" destination="nKp-t4-BFJ" id="RFk-NQ-XyF"/>
+                        <outlet property="businessButton" destination="JAD-Y5-D8c" id="2gm-yp-nFM"/>
+                        <outlet property="overlookButton" destination="faz-uT-aeC" id="I4h-Nf-bMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYf-32-bmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
