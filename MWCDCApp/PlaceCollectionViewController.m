@@ -17,13 +17,18 @@
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+// refresh data no more often than every 5 min
+NSTimeInterval REFRESH_INTERVAL = 60 * 5;
+
 @interface PlaceCollectionViewController ()
 {
     BOOL isObservingManagerData;
+    NSDate *dataLastFetchedAt;
 }
 - (void)closeModalPicker;
 - (void)initializeCell:(PlaceTableViewCell *)cell withPlace:(Place *)place;
 - (void)reloadContentViewData;
+- (void)initiateDataFetch;
 
 @end
 
@@ -63,10 +68,6 @@
 
     // do the initial fetch of data
     self.dataStore.delegate = self;
-    [self.dataStore fetchPlaces];
-    
-    [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
-    self.contentView.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,6 +145,9 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // every time the view appears, refresh data from the server
+    [self initiateDataFetch];
+    
     self.filterSearchBar.delegate = self;
     
     // set the filter category if it exists, else use "All Places"
@@ -194,6 +198,7 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
 
 - (void)didReceivePlaces:(NSArray *)places
 {
+    NSLog(@"got some places");
     [self hideDataStatus];
     self.contentView.enabled = YES;
     dataManager.places = places;
@@ -201,7 +206,11 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
 
 - (void)fetchingPlacesFailedWithError:(NSError *)error
 {
-    [self showDataStatusWithMessage:@"Problem loading data" showLoadingIndicator:NO retryEnabled:YES];
+    NSLog(@"error getting places");
+    // only show error message if the fetch was for initial data
+    if (!dataManager.places.count) {
+        [self showDataStatusWithMessage:@"Problem loading data" showLoadingIndicator:NO retryEnabled:YES];
+    }
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -346,9 +355,7 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
 
 - (void)retryDataLoad:(id)sender
 {
-    [self.dataStore fetchPlaces];
-    [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
-    self.contentView.enabled = NO;
+    [self initiateDataFetch];
 }
 
 #pragma mark - Data manager KVO methods
@@ -388,5 +395,24 @@ NSString * const placeAnnotationReuseIdentifier = @"PlaceAnnotation";
         [mapView addAnnotations:dataManager.displayPlaces];
     }
 }
+
+- (void)initiateDataFetch
+{
+    // only refresh data every REFRESH_INTERVAL seconds
+    if (dataLastFetchedAt == nil || [dataLastFetchedAt timeIntervalSinceNow] < -REFRESH_INTERVAL)
+    {
+        // refetch the places and up
+        [self.dataStore fetchPlaces];
+        
+        dataLastFetchedAt = [NSDate date];
+        
+        // only show loading message if the fetch is for initial data
+        if (!dataManager.places.count) {
+            [self showDataStatusWithMessage:@"Loading..." showLoadingIndicator:YES retryEnabled:NO];
+            self.contentView.enabled = NO;
+        }
+    }
+}
+
 
 @end
